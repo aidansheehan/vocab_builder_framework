@@ -20,7 +20,14 @@ npm install
 TBD
 
 ### Testing
-TBD
+
+```
+npm run test
+```
+
+Execute unit tests on files with `.test` file extension on the console and produce coverage report into `spec > coverage`
+
+See [Jest CLI Options](https://jestjs.io/docs/cli) for more testing options.
 
 ### Development
 
@@ -30,13 +37,12 @@ npm run start
 
 Will launch a development server providing live reloading and hot module replacement.
 
-### Deployment
-
+### Deployment
 ````
 npm run build
 ````
 
-Builds minified JS files into `root > dist`.
+Builds minified JS files into `dist`.
 
 ## Built With
 
@@ -47,7 +53,7 @@ Builds minified JS files into `root > dist`.
 
 ## Authors
 * **Aidan Sheehan** <aidannmsheehan@gmail.com>
-* **Amith Ravinder** <amithravindar2493@gmail.com>
+* **Amith Ravindar** <amithravindar2493@gmail.com>
 
 ## Ticketing
 TBD

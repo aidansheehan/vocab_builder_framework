@@ -1,11 +1,9 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "./pages/home.page";
-import Layout from "./pages/layout";
-import MyCollectionsPage from "./pages/my-collections.page";
-import UpdateCollectionPage from "./pages/update-collection.page";
-import { createRoot } from 'react-dom/client';
+import { BrowserRouter, Route, Routes }     from "react-router-dom";
+import HomePage                             from "./pages/home.page";
+import Layout                               from "./pages/layout";
+import MyCollectionsPage                    from "./pages/my-collections.page";
+import UpdateCollectionPage                 from "./pages/update-collection.page";
+import { createRoot }                       from 'react-dom/client';
 
 const App = () => {
 
@@ -23,6 +21,5 @@ const App = () => {
 
 }
 
-// ReactDOM.render(<App />, document.getElementById("root"));
 const root = createRoot(document.getElementById("root")!)
 root.render(<App />);

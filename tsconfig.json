@@ -2,11 +2,22 @@
     "compilerOptions": {
         "outDir": "./dist/",
         "noImplicitAny": true,
-        "module": "es6",
+        "module": "commonjs",
         "target": "es5",
-        "jsx": "react",
+        "jsx": "react-jsx",
         "allowJs": true,
         "allowSyntheticDefaultImports": true,
-        "moduleResolution": "Node"
-    }
+        "moduleResolution": "Node",
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+    },
+    "include": [
+        "./src/**/*.ts",
+        "./src/**/*.tsx"
+    ],
+    "exclude": [
+        "node_modules",
+        "./src/**/*.test.ts",
+        "./src/**/*.test.tsx"
+    ]
 }

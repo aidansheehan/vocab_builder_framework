@@ -1,4 +1,6 @@
-import React from "react";
+/**
+ * Collection Details Page
+ */
 
 const CollectionDetailsPage = () => {
 

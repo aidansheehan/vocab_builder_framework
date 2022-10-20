@@ -1,5 +1,3 @@
-import React from "react"
-
 /**
  * Update collections page
  */
