@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes }     from "react-router-dom";
+import { MemoryRouter, Route, Routes }     from "react-router-dom";
 import HomePage                             from "./pages/home.page";
 import Layout                               from "./pages/layout";
 import MyCollectionsPage                    from "./pages/my-collections.page";
@@ -8,7 +8,7 @@ import { createRoot }                       from 'react-dom/client';
 const App = () => {
 
     return (
-        <BrowserRouter>
+        <MemoryRouter>
             <Routes>
                 <Route path="/" element={<Layout />}>
                     <Route index element={<HomePage />} />
@@ -16,7 +16,7 @@ const App = () => {
                     <Route path="update-collection" element={<UpdateCollectionPage />} />
                 </Route>
             </Routes>
-        </BrowserRouter>
+        </MemoryRouter>
     )
 
 }
