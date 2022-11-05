@@ -3,6 +3,13 @@ import styles   from './header.component.scss';
 
 /**
  * Header component
+ * @author Aidan Sheehan <aidanmsheehan@gmail.com>
+ * @version 0.1.0
+ * @component
+ * @example
+ * return (
+ *   <HeaderComponent />
+ * )
  */
 const HeaderComponent = () => {
 

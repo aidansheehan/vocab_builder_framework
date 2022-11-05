@@ -5,3 +5,5 @@ dist/
 .DS_Store
 coverage/
 .vscode/
+spec/docs
+spec/coverage
