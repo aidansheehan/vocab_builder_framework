@@ -1,20 +1,20 @@
-import { render }               from "@testing-library/react"
-import HeaderComponent          from "./header.component"
-import { Router }               from "react-router-dom"
-
-//TODO how to test router components
+import { render, screen }           from "@testing-library/react"
+import HeaderComponent              from "./header.component"
+import { MemoryRouter }             from "react-router-dom"
+import React                        from "react"
+import userEvent                    from '@testing-library/user-event'
 
 describe('HeaderComponent', () => {
 
     test('HeaderComponent should exist', () => {
 
-        const history = createMemoryHistory()
+        const { container } = render(<HeaderComponent />, {wrapper: MemoryRouter})
 
-        let { container } = render(
-            <Router history={history} >
-                <HeaderComponent />
-            </Router>
-            )
         expect(container).toBeInTheDocument()
+    })
+
+    test('HeaderComponent should navigate to other views', async () => {
+
+        //TBD
     })
 })
