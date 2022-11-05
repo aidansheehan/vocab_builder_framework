@@ -4,6 +4,7 @@ import Layout                               from "./pages/layout";
 import MyCollectionsPage                    from "./pages/my-collections.page";
 import UpdateCollectionPage                 from "./pages/update-collection.page";
 import { createRoot }                       from 'react-dom/client';
+import './global.scss'
 
 const App = () => {
 

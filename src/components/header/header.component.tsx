@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import './header.component.scss';
+import styles   from './header.component.scss';
 
 /**
  * Header component
@@ -7,7 +7,7 @@ import './header.component.scss';
 const HeaderComponent = () => {
 
     return (
-            <div className="header">
+            <div className={styles.header}>
                 <ul>
                     <li>
                         <Link to="/">Home</Link>
