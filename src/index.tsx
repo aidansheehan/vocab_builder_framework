@@ -9,10 +9,14 @@ import ErrorPage                from './pages/error/error.page'
 import CollectionEditorPage     from './pages/collection-editor/collection.editor.page'
 import CollectionDetailsPage    from './pages/collection-details/collection-details.page'
 import GamePage                 from './pages/game/game.page'
+import LandingPage              from './pages/landing/landing.page'
+import NewCollectionPage        from './pages/new-collection/new-collection.page'
 //Layouts?
-import Root from './routes/root'
+import AuthLayout from './layouts/auth.layout'
+import MainLayout from './layouts/main.layout'
 //Stylesheets
 import './global.scss'
+
 
 
 /**
@@ -26,13 +30,19 @@ import './global.scss'
  */
 const App = () => {
 
-    //@ts-ignore
+    //Whether user authenticated
     const [ isAuth, setIsAuth ] = useState<boolean>(false)
 
+    //Function to authenticate user
+    const login = () => {
+        setIsAuth(true)
+    }
+
+    //Authenticated routes
     const mainRouter = createMemoryRouter([
         {
             path: "/",
-            element: <Root />,
+            element: <MainLayout />,
             errorElement: <ErrorPage />,
             children: [
                 {
@@ -44,7 +54,7 @@ const App = () => {
                     children: [
                         {
                             path: "new",//Todo this should maybe be CreateCollectionPage no translations just title langs etc
-                            element: <CollectionEditorPage />
+                            element: <NewCollectionPage />
                         },
                         {
                             path: "view/:collectionId",
@@ -65,11 +75,36 @@ const App = () => {
         }
     ])
 
-    //TODO create authRouter
+    //Unauthenticated routes
+    const authRouter = createMemoryRouter([
+        {
+            path: "/",
+            element: <AuthLayout />,
+            errorElement: <ErrorPage />,
+            children: [
+                {
+                    index: true,
+                    element: <LandingPage login={login} />
+                },
+                {
+                    path: "new",
+                    element: <NewCollectionPage />
+                },
+                {
+                    path: "edit",
+                    element: <CollectionEditorPage />
+                },
+                {
+                    path: "play",
+                    element: <GamePage />
+                }
+            ]
+        },
+    ])
 
-    return <RouterProvider router={mainRouter} />
+    return <RouterProvider router={ isAuth ? mainRouter : authRouter } />
 
 }
 
-const root = createRoot(document.getElementById("root"))
+const root = createRoot(document.getElementById("root")!)
 root.render(<App />);
