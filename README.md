@@ -54,6 +54,7 @@ Builds minified JS files into `dist`.
 * [React](http://reactjs.org/) (v18.2.0) - A JavaScript library for building user interfaces maintained by Facebook
 * [TypeScript](https://www.typescriptlang.org/) (v4.8.4) - Strict syntactical superset of JavaScript, developed and maintained by Microsoft.
 * [Babel](http://babeljs.io) (v7.19.3) - Free and open-source JavaScript compiler and and configurable transpiler
+* [React-Router] (https://reactrouter.com/en/main) (v6.4.2) - Lightweight, fully-featured routing library for React
 
 ## Authors
 * **Aidan Sheehan** <aidannmsheehan@gmail.com>
