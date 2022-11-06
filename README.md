@@ -60,7 +60,7 @@ Builds minified JS files into `dist`.
 * **Amith Ravindar** <amithravindar2493@gmail.com>
 
 ## Ticketing
-TBD
+See [Jira Project](https://vocab-builder.atlassian.net/jira/software/projects/VBF/boards/3) to track current tickets.
 
 ## Versioning
 TBD
