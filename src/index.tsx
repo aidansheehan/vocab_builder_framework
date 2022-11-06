@@ -6,6 +6,8 @@ import UpdateCollectionPage                 from "./pages/update-collection.page
 import { createRoot }                       from 'react-dom/client';
 import './global.scss'
 
+console.log('Test ticket VBF-2')
+
 const App = () => {
 
     return (
