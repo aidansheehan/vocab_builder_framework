@@ -7,13 +7,13 @@
  *   <NewCollectionPage />
  * )
  */
-const NewCollectionPage = (): JSX.Element => {
+const CreateCollectionPage = (): JSX.Element => {
 
     return (
         <div>
-            I am the new collection page
+            I am the create collection page
         </div>
     )
 }
 
-export default NewCollectionPage
+export default CreateCollectionPage
