@@ -1,4 +1,5 @@
 /** LandingPageProps */
+//@ts-ignore
 type LandingPageProps = {
 
     /** Function to log user in */
@@ -14,14 +15,14 @@ type LandingPageProps = {
  *  <LandingPage />
  * )
  */
-const LandingPage = (props: LandingPageProps) => {
+const LandingPage = (/*props: LandingPageProps*/) => {
 
-    const { login } = props //destructure props
+    // const { login } = props //destructure props
 
     return (
         <div>
             I am the Landing Page.
-            <button onClick={login} >Log In</button>
+            {/* <button onClick={login} >Log In</button> */}
         </div>
     )
 }

@@ -1,42 +1,25 @@
 //Core
 import { createRoot }   from 'react-dom/client'
-import { useState }     from "react"
+//Redux
+import { Provider } from 'react-redux'
+import store from './store'
 //React Router
-import { RouterProvider } from "react-router-dom"
-//Routers
-import mainRouter from './routes/main.router'
-import authRouter from './routes/auth.router'
-//Stylesheets
+import { BrowserRouter } from "react-router-dom"
+//Stylesheets TODO where should this be imported (would still prefer as global module)
 import './global.scss'
+import App from './app'
 
 /**
  * Root entry point of the application
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
- * @component
- * @example
- * return (
- *   <App />
- * )
+ * TODO document
  */
-const App = () => {
-
-    //Whether user authenticated
-    const [ isAuth, setIsAuth ] = useState<boolean>(false)
-
-    //Function to authenticate user
-    const login = () => {
-        setIsAuth(true)
-    }
-
-    //Authenticated routes
-    const MAIN_ROUTER = mainRouter()
-
-    //Unauthenticated routes
-    const AUTH_ROUTER = authRouter(login)
-
-    return <RouterProvider router={ isAuth ? MAIN_ROUTER : AUTH_ROUTER } />
-
-}
 
 const root = createRoot(document.getElementById("root")!)
-root.render(<App />);
+root.render(
+    <Provider store={store}>
+        <BrowserRouter>
+            <App />
+        </BrowserRouter>
+    </Provider>
+    );
