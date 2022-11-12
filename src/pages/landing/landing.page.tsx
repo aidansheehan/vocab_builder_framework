@@ -1,9 +1,9 @@
 /** LandingPageProps */
-type LandingPageProps = {
+// type LandingPageProps = {
 
-    /** Function to log user in */
-    login: () => void
-}
+//     /** Function to log user in */
+//     login: () => void
+// }
 
 /**
  * Landing (!auth) Page
@@ -14,14 +14,11 @@ type LandingPageProps = {
  *  <LandingPage />
  * )
  */
-const LandingPage = (props: LandingPageProps) => {
-
-    const { login } = props //destructure props
+const LandingPage = () => {
 
     return (
         <div>
             I am the Landing Page.
-            <button onClick={login} >Log In</button>
         </div>
     )
 }
