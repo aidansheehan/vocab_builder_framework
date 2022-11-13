@@ -1,10 +1,3 @@
-/** LandingPageProps */
-// type LandingPageProps = {
-
-//     /** Function to log user in */
-//     login: () => void
-// }
-
 /**
  * Landing (!auth) Page
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>

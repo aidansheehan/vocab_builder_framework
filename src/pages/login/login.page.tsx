@@ -58,6 +58,7 @@ const LoginPage = (): JSX.Element => {
                     type='username'
                     {...register('username')}
                     required
+                    autoComplete='off'
                 />
             </div>
 
@@ -67,6 +68,7 @@ const LoginPage = (): JSX.Element => {
                     type='password'
                     {...register('password')}
                     required
+                    autoComplete='off'
                 />
 
             </div>

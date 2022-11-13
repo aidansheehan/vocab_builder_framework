@@ -1,7 +1,8 @@
-import { NavLink, Outlet }  from 'react-router-dom'
-import FooterComponent      from '../../components/footer/footer.component'
-import HeaderComponent      from '../../components/header/header.component'
-import useAppSelector       from '../../hooks/redux/use-app-selector.hook'
+import { useEffect }            from 'react'
+import { Outlet, useNavigate }  from 'react-router-dom'
+import FooterComponent          from '../../components/footer/footer.component'
+import HeaderComponent          from '../../components/header/header.component'
+import useAppSelector           from '../../hooks/redux/use-app-selector.hook'
 
 /**
  * Generic protected route
@@ -17,19 +18,12 @@ const ProtectedRoute = () => {
 
     const { userInfo } = useAppSelector(state => state.user) //Destructure user state
 
-    //show unauthorized screen if no user is found in redux store TODO just redirect user to landing page
-    if (!userInfo) {
-        return (
-            <div>
-                <h1>Unauthorized :(</h1>
+    const navigate = useNavigate()  //Init useNavigate
 
-                <span>
-                    <NavLink to='/login'>Login</NavLink> to gain access
-                </span>
-
-            </div>
-        )
-    }
+    //redirect to landing page if no user is found in redux store
+    useEffect(() => {
+        if (!userInfo) navigate('/')
+    }, [ userInfo ] )
 
     //return child route elements
     return (
