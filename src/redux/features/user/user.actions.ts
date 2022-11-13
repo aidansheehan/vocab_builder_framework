@@ -65,3 +65,35 @@ export const userLogin = createAsyncThunk(
         }
     }
 )
+
+export const getUserDetails = createAsyncThunk(
+
+    'user/getUserDetails',
+
+    //@ts-ignore
+    async (arg, { getState, rejectWithValue }) => {
+
+        try {
+
+            //Get user data from store
+            //@ts-ignore
+            const { user } = getState()
+
+            //Configure authorization header with user's token
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${user.userToken}`,
+                },
+            }
+
+            const { data } = await axios.get('http://localhost:3000/api/test/user', config)
+            return data
+        } catch (error) {
+            if (error.response && error.response.data && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)

@@ -36,7 +36,7 @@ const LoginPage = (): JSX.Element => {
     useEffect(() => {
 
         if (userInfo && Object.keys(userInfo).length) {
-            navigate('/home')
+            navigate('/collections')
         }
     }, [ navigate, userInfo ])
 

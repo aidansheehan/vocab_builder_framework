@@ -1,5 +1,5 @@
-import { createSlice }              from "@reduxjs/toolkit";
-import { registerUser, userLogin }  from "./user.actions";
+import { createSlice }                              from "@reduxjs/toolkit";
+import { getUserDetails, registerUser, userLogin }  from "./user.actions";
 
 //Initialize userToken from localStorage TODO need to store somewhere better
 const userToken = localStorage.getItem('userToken')
@@ -27,7 +27,16 @@ const initialState: UserType = {
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+            //@ts-ignore
+            logout: (state) => {
+                localStorage.removeItem('userToken') //Deletes token from storage
+                state.loading       = false
+                state.userInfo      = null
+                state.userToken     = null
+                state.error         = null
+        },
+    },
     extraReducers: {
 
         //Login user
@@ -61,14 +70,30 @@ const userSlice = createSlice({
             state.loading = false
             state.success = true    //Registration successful
         },
-
         //@ts-ignore
         [registerUser.rejected]: (state, { payload }) => {
 
             state.loading   = false
             state.error     = payload
-        }
+        },
+
+        //Get user details
+        //@ts-ignore
+        [getUserDetails.pending]: (state) => {
+            state.loading = true
+        },
+        //@ts-ignore
+        [getUserDetails.fulfilled]: (state, { payload }) => {
+            state.loading = false
+            state.userInfo = payload
+        },
+        //@ts-ignore
+        [getUserDetails.rejected]: (state, { payload }) => {
+            state.loading = false
+        },
     },
 })
 
+//Export actions
+export const { logout } = userSlice.actions
 export default userSlice.reducer

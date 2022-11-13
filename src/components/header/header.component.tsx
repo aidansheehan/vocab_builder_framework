@@ -1,5 +1,9 @@
-import { Link } from "react-router-dom";
-import styles   from './header.component.scss';
+import { useEffect }                    from 'react';
+import { useDispatch, useSelector }     from 'react-redux'
+import { NavLink }                      from 'react-router-dom';
+import { getUserDetails }               from '../../redux/features/user/user.actions';
+import { logout }                       from '../../redux/features/user/user.slice';
+import styles                           from './header.component.scss';
 
 /**
  * Header component
@@ -13,31 +17,46 @@ import styles   from './header.component.scss';
  */
 const HeaderComponent = () => {
 
-    /**
-     * ToDo
-     *  - need to get mainRouter, authRouter arrays and loop through them
-     *  - generate links appropriately
-     */
+    /** Dispatch getUserDetails when userToken changes - TODO can this logic go somewhere more sensible */
+    //@ts-ignore
+    const { userInfo, userToken }   = useSelector((state) => state.user)    //Destructure user state
+    const dispatch                  = useDispatch()                         //Init useDispatch
+
+    //automatically authenticate user if token is found
+    useEffect(() => {
+        if (userToken && Object.keys(userToken).length) {
+
+            //@ts-ignore
+            dispatch(getUserDetails())
+        }
+    }, [ userToken, dispatch ])
 
     return (
             <div className={styles.header}>
-                <ul>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/collections/new">New Collection</Link>
-                    </li>
-                    <li>
-                        <Link to="/collections/view/5">Example Collection 5</Link>
-                    </li>
-                    <li>
-                        <Link to="/collections/edit/5">Example Collection Edit 5</Link>
-                    </li>
-                    <li>
-                        <Link to="/play/5">Example Game Collection 5</Link>
-                    </li>
-                </ul>
+                <span>
+                    {userInfo ? `Logged in as ${userInfo.username}` : 'You\'re not logged in'}
+                </span>
+                
+                <div>
+                    {userInfo ? (
+                        <button onClick={() => dispatch(logout())} >
+                            Logout
+                        </button>
+                    ) : (
+                        <NavLink to='/login'>
+                            Login
+                        </NavLink>
+                    )}
+                </div>
+
+                <nav>
+                    <NavLink to='/'>Landing Page</NavLink>
+                    <NavLink to='/login'>Login</NavLink>
+                    <NavLink to='/register'>Register</NavLink>
+                    <NavLink to='/collections'>Profile</NavLink>
+                </nav>
+                
+                I am the header
             </div>
     )
 }
