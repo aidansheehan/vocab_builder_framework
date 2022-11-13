@@ -1,37 +1,31 @@
-import { createSlice, PayloadAction }               from "@reduxjs/toolkit";
-import { getUserDetails, registerUser, userLogin }  from "./user.actions";
+//Redux
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+//Actions
+import { getUserDetails, registerUser, userLogin } from "./user.actions";
+//Types
+import { LoginResponseType }    from "./types/response.types";
+import { UserType }             from "./types/user.types";
 
 //Initialize userToken from localStorage TODO need to store somewhere better
 const userToken = localStorage.getItem('userToken')
 ? localStorage.getItem('userToken')
 : null
 
-//TODO type properly
-type UserType = {
-    loading: boolean,
-    userInfo: any,
-    userToken: string | null,   //TODO can we remove and access from userInfo?
-    error: any,
-    success: boolean
-}
 
+/** Initial State */
 const initialState: UserType = {
     loading: false,
-    userInfo: {},   //for user object
+    userInfo: null,
     userToken,    //for storing the JWT
     error: null,
     success: false
 }
 
-type LoginResponse = {
-    accessToken: string,
-    email: string,
-    id: number,
-    roles: Array<string>,
-    username: string
-}
-
-/** User Slice 🍕 */
+/**
+ * User Slice 🍕
+ * @author Aidan Sheehan <aidanmsheehan@gmail.com>
+ * @version 0.1.0
+ */
 const userSlice = createSlice({
     name: 'user',
     initialState,
@@ -53,9 +47,9 @@ const userSlice = createSlice({
             state.error     = null
         })
         //fulfilled
-        builder.addCase(userLogin.fulfilled, (state, { payload }: PayloadAction<LoginResponse>) => {
-            state.loading = false
-            state.userInfo = payload            //ToDo does this set userToken in two places?
+        builder.addCase(userLogin.fulfilled, (state, { payload }: PayloadAction<LoginResponseType>) => {
+            state.loading   = false
+            state.userInfo  = { id: payload.id, username: payload.username, email: payload.email, roles: payload.roles }
             state.userToken = payload.accessToken
         })
         //rejected TODO type response once finalized from backend
@@ -86,11 +80,10 @@ const userSlice = createSlice({
         builder.addCase(getUserDetails.pending, state => {
             state.loading = true
         })
-        //fulfilled TODO decide what to return from backend and type response
-        builder.addCase(getUserDetails.fulfilled, (state, { payload }: PayloadAction<any>) => {
-            console.log('get user deets fulfilled: ', payload)
+        //fulfilled TODO decide what to return from backend and type response need to send user info on getUserDetails!
+        builder.addCase(getUserDetails.fulfilled, (state) => {
             state.loading   = false
-            state.userInfo  = payload
+            // state.userInfo  = payload
         })
         //rejected
         builder.addCase(getUserDetails.rejected, state => {

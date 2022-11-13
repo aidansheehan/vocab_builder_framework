@@ -82,7 +82,9 @@ export const getUserDetails = createAsyncThunk(
             //Configure authorization header with user's token
             const config = {
                 headers: {
-                    Authorization: `Bearer ${user.userToken}`,
+                    // Authorization: `Bearer ${user.userToken}`, TODO investigate bearer tokens
+                    'x-access-token': user.userToken
+
                 },
             }
 

@@ -18,7 +18,6 @@ import { userLogin }                from '../../redux/features/user/user.actions
 const LoginPage = (): JSX.Element => {
 
     //Pull out user state values to handle UI state
-    //@ts-ignore
     const { loading, error, userInfo }  = useAppSelector((state) => state.user)    //Pull out user state values to handle UI state
     const { register, handleSubmit }    = useForm()                             //Get register and handleSubmit useForm methods
 
@@ -36,7 +35,7 @@ const LoginPage = (): JSX.Element => {
     //Redirect authenticated users to their home screen TODO test if userInfo object changes triggered as may be property change rather than var reassignment
     useEffect(() => {
 
-        if (userInfo && Object.keys(userInfo).length) {
+        if (userInfo) {
             navigate('/collections')
         }
     }, [ navigate, userInfo ])

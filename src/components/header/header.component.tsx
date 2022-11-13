@@ -24,7 +24,7 @@ const HeaderComponent = () => {
 
     //automatically authenticate user if token is found
     useEffect(() => {
-        if (userToken && Object.keys(userToken).length) {
+        if (userToken) {
 
             dispatch(getUserDetails())
         }
@@ -33,7 +33,7 @@ const HeaderComponent = () => {
     return (
             <div className={styles.header}>
                 <span>
-                    {userInfo && Object.keys(userInfo).length ? `Logged in as ${userInfo.username}` : 'You\'re not logged in'}
+                    {userInfo ? `Logged in as ${userInfo.username}` : 'You\'re not logged in'}
                 </span>
                 
                 <div>
