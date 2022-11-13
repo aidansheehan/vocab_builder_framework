@@ -93,5 +93,6 @@ module.exports = {
         new webpack.DefinePlugin({
             process: { env: {} }
         })
-    ]
+    ],
+    devtool: (isDevelopment ? "source-map" : false)
 }
