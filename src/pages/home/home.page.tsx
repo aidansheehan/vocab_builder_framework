@@ -1,4 +1,4 @@
-import { useSelector } from 'react-redux'
+import useAppSelector from '../../hooks/redux/use-app-selector.hook'
 
 /**
  * User Home Page Component
@@ -13,8 +13,7 @@ import { useSelector } from 'react-redux'
 const HomePage = (): JSX.Element => {
 
     //Get user info
-    //@ts-ignore
-    const { userInfo } = useSelector((state) => state.user)
+    const { userInfo } = useAppSelector((state) => state.user)
 
     //TODO get user collection data here (but think how to update if changes and how will be retrieved if user accesses specific page first - may need to call getCollectionById & getTranslationsByCollectionId in collection editor/view and game components too)
 

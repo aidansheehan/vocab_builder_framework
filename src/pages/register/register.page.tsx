@@ -1,8 +1,9 @@
-import { useForm } from 'react-hook-form'
+import { useForm }      from 'react-hook-form'
 import { registerUser } from "../../redux/features/user/user.actions"
-import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useNavigate }  from 'react-router-dom'
+import { useEffect }    from 'react'
+import useAppSelector   from '../../hooks/redux/use-app-selector.hook'
+import useAppDispatch   from '../../hooks/redux/use-app-dispatch.hook'
 
 /**
  * Page to register a new user
@@ -17,15 +18,11 @@ import { useEffect } from 'react'
 const RegisterPage = (): JSX.Element => {
 
     //Pull out user state values to handle UI state
-    const { loading, error, success, userInfo } = useSelector(
+    const { loading, error, success, userInfo } = useAppSelector(state => state.user)
 
-        //@ts-ignore
-        (state) => state.user
-    )
-
-    const dispatch                      = useDispatch()
-    const { register, handleSubmit }    = useForm()
-    const navigate                      = useNavigate()
+    const dispatch                      = useAppDispatch()  //Init useAppDispatch
+    const { register, handleSubmit }    = useForm()         //Destrucutre use form
+    const navigate                      = useNavigate()     //init useNavigate
 
     //Function to submit login form
     const submitForm = (data: any) => {
@@ -40,14 +37,12 @@ const RegisterPage = (): JSX.Element => {
         data.email = data.email.toLowerCase()
 
         //dispatch action to register user
-        //@ts-ignore
+        //@ts-ignore TODO
         dispatch(registerUser(data))
     }
 
     //Handle redirects TODO should log user in & redirect to home?
     useEffect(() => {
-
-        console.log('user info: ', userInfo)
 
         //Redirect user to login if registration was successful
         if (success) navigate('/login')

@@ -1,4 +1,4 @@
-import { createSlice }                              from "@reduxjs/toolkit";
+import { createSlice, PayloadAction }               from "@reduxjs/toolkit";
 import { getUserDetails, registerUser, userLogin }  from "./user.actions";
 
 //Initialize userToken from localStorage TODO need to store somewhere better
@@ -10,7 +10,7 @@ const userToken = localStorage.getItem('userToken')
 type UserType = {
     loading: boolean,
     userInfo: any,
-    userToken: string | null,
+    userToken: string | null,   //TODO can we remove and access from userInfo?
     error: any,
     success: boolean
 }
@@ -23,12 +23,19 @@ const initialState: UserType = {
     success: false
 }
 
+type LoginResponse = {
+    accessToken: string,
+    email: string,
+    id: number,
+    roles: Array<string>,
+    username: string
+}
+
 /** User Slice 🍕 */
 const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-            //@ts-ignore
             logout: (state) => {
                 localStorage.removeItem('userToken') //Deletes token from storage
                 state.loading       = false
@@ -37,61 +44,60 @@ const userSlice = createSlice({
                 state.error         = null
         },
     },
-    extraReducers: {
+    extraReducers(builder) {
 
-        //Login user
-        //@ts-ignore
-        [userLogin.pending]: (state) => {
+        /** Login User */
+        //pending
+        builder.addCase(userLogin.pending, (state) => {
             state.loading   = true
             state.error     = null
-        },
-        //@ts-ignore
-        [userLogin.fulfilled]: (state, { payload }) => {
-            state.loading   = false
-            state.userInfo  = payload           //TODO does this set userToken in two places?
-            state.userToken = payload.userToken
-        },
-        //@ts-ignore
-        [userLogin.rejected]: (state, { payload }) => {
-            state.loading   = false
-            state.error     = payload
-        },
-
-        //register user
-        //@ts-ignore
-        [registerUser.pending]: (state) => {
-
-            state.loading   = true
-            state.error     = null
-       },
-       //@ts-ignore
-        [registerUser.fulfilled]: (state, { payload }) => {
-
+        })
+        //fulfilled
+        builder.addCase(userLogin.fulfilled, (state, { payload }: PayloadAction<LoginResponse>) => {
             state.loading = false
-            state.success = true    //Registration successful
-        },
-        //@ts-ignore
-        [registerUser.rejected]: (state, { payload }) => {
-
+            state.userInfo = payload            //ToDo does this set userToken in two places?
+            state.userToken = payload.accessToken
+        })
+        //rejected TODO type response once finalized from backend
+        builder.addCase(userLogin.rejected, (state, { payload }: PayloadAction<any>) => {
             state.loading   = false
             state.error     = payload
-        },
+        })
 
-        //Get user details
-        //@ts-ignore
-        [getUserDetails.pending]: (state) => {
+        /** Register User */
+        //pending
+        builder.addCase(registerUser.pending, (state) => {
+            state.loading   = true
+            state.error     = null
+        })
+        //fulfilled
+        builder.addCase(registerUser.fulfilled, state => {
+            state.loading = false
+            state.success = true
+        })
+        //rejected TODO type response once finalized from backend
+        builder.addCase(registerUser.rejected, (state, { payload }: PayloadAction<any>) => {
+            state.loading   = false
+            state.error     = payload
+        })
+
+        /** Get User Details */
+        //pending
+        builder.addCase(getUserDetails.pending, state => {
             state.loading = true
-        },
-        //@ts-ignore
-        [getUserDetails.fulfilled]: (state, { payload }) => {
+        })
+        //fulfilled TODO decide what to return from backend and type response
+        builder.addCase(getUserDetails.fulfilled, (state, { payload }: PayloadAction<any>) => {
+            console.log('get user deets fulfilled: ', payload)
+            state.loading   = false
+            state.userInfo  = payload
+        })
+        //rejected
+        builder.addCase(getUserDetails.rejected, state => {
             state.loading = false
-            state.userInfo = payload
-        },
-        //@ts-ignore
-        [getUserDetails.rejected]: (state, { payload }) => {
-            state.loading = false
-        },
-    },
+        })
+    }
+
 })
 
 //Export actions

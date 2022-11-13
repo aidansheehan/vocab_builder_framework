@@ -1,7 +1,8 @@
 import { useEffect }                from 'react'
 import { useForm }                  from 'react-hook-form'
-import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate }              from 'react-router-dom'
+import useAppDispatch               from '../../hooks/redux/use-app-dispatch.hook'
+import useAppSelector               from '../../hooks/redux/use-app-selector.hook'
 import { userLogin }                from '../../redux/features/user/user.actions'
 
 
@@ -18,11 +19,11 @@ const LoginPage = (): JSX.Element => {
 
     //Pull out user state values to handle UI state
     //@ts-ignore
-    const { loading, error, userInfo }  = useSelector((state) => state.user)    //Pull out user state values to handle UI state
+    const { loading, error, userInfo }  = useAppSelector((state) => state.user)    //Pull out user state values to handle UI state
     const { register, handleSubmit }    = useForm()                             //Get register and handleSubmit useForm methods
 
-    const dispatch = useDispatch()  //Init useDispatch
-    const navigate = useNavigate()  //Init useNavigate
+    const dispatch = useAppDispatch()   //Init useDispatch
+    const navigate = useNavigate()      //Init useNavigate
     
 
     //Function to submit login form TODO type

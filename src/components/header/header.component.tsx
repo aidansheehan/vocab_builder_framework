@@ -1,6 +1,7 @@
 import { useEffect }                    from 'react';
-import { useDispatch, useSelector }     from 'react-redux'
 import { NavLink }                      from 'react-router-dom';
+import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook';
+import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
 import { getUserDetails }               from '../../redux/features/user/user.actions';
 import { logout }                       from '../../redux/features/user/user.slice';
 import styles                           from './header.component.scss';
@@ -18,15 +19,13 @@ import styles                           from './header.component.scss';
 const HeaderComponent = () => {
 
     /** Dispatch getUserDetails when userToken changes - TODO can this logic go somewhere more sensible */
-    //@ts-ignore
-    const { userInfo, userToken }   = useSelector((state) => state.user)    //Destructure user state
-    const dispatch                  = useDispatch()                         //Init useDispatch
+    const { userInfo, userToken }   = useAppSelector((state) => state.user)    //Destructure user state
+    const dispatch                  = useAppDispatch()                         //Init useAppDispatch
 
     //automatically authenticate user if token is found
     useEffect(() => {
         if (userToken && Object.keys(userToken).length) {
 
-            //@ts-ignore
             dispatch(getUserDetails())
         }
     }, [ userToken, dispatch ])
@@ -34,7 +33,7 @@ const HeaderComponent = () => {
     return (
             <div className={styles.header}>
                 <span>
-                    {userInfo ? `Logged in as ${userInfo.username}` : 'You\'re not logged in'}
+                    {userInfo && Object.keys(userInfo).length ? `Logged in as ${userInfo.username}` : 'You\'re not logged in'}
                 </span>
                 
                 <div>
