@@ -1,7 +1,8 @@
 const path                      = require('path')
 const HtmlWebpackPlugin         = require('html-webpack-plugin');
 const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
-const { CleanWebpackPlugin }    = require('clean-webpack-plugin')
+const { CleanWebpackPlugin }    = require('clean-webpack-plugin');
+const  webpack                  = require('webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'prodcution'
 
@@ -9,10 +10,14 @@ module.exports = {
     entry: './src/index.tsx',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
+        publicPath: '/'
     },
     devServer: {
-        port: 8080
+        port: 8081,
+        historyApiFallback: true,
+        hot: true,
+        proxy: { "/api/**": { target: 'http;//localhost:3000', secure: false } }
     },
     module: {
         rules: [
@@ -66,7 +71,16 @@ module.exports = {
         ],
     },
     resolve: {
-        extensions: [ '.tsx', '.ts', '.js', '.scss' ]
+        extensions: [ '.tsx', '.ts', '.js', '.scss' ],
+        fallback: { 
+            "url": require.resolve("url/"),
+            "http": require.resolve("stream-http"),
+            "stream": require.resolve("stream-browserify"),
+            "https": require.resolve("https-browserify"),
+            "assert": require.resolve("assert/"),
+            "buffer": require.resolve("buffer/"),
+            "zlib": require.resolve('browserify-zlib')
+        }
     },
     plugins:[
         new MiniCssExtractPlugin({
@@ -76,6 +90,10 @@ module.exports = {
         new HtmlWebpackPlugin({
             template: path.join(__dirname, '/src/index.html')
         }),
-        new CleanWebpackPlugin()
-    ]
+        new CleanWebpackPlugin(),
+        new webpack.DefinePlugin({
+            process: { env: {} }
+        })
+    ],
+    devtool: (isDevelopment ? "source-map" : false)
 }
