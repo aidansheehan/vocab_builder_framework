@@ -1,12 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// import axios from "axios";
+import { RootState } from "../../store";
+import { RegisterUserRequestType, UserLoginRequestType } from "./types/request.types";
 
 const axios = require('axios')
 
+/** registerUser action */
 export const registerUser = createAsyncThunk(
     'user/register',
-    //@ts-ignore
-    async ( { username, email, password }, { rejectWithValue }) => {
+    async ( { username, email, password }: RegisterUserRequestType, { rejectWithValue }) => {
         try {
             // configure header's Content-Type as JSON
             const config = {
@@ -31,10 +32,10 @@ export const registerUser = createAsyncThunk(
         }
     )
 
+/** userLogin action */
 export const userLogin = createAsyncThunk(
     'user/login',
-    //@ts-ignore
-    async ({ username, password }, { rejectWithValue }) => {
+    async ({ username, password }: UserLoginRequestType, { rejectWithValue }) => {
         try {
             //configure header's Content-Type as JSON
             const config = {
@@ -43,7 +44,6 @@ export const userLogin = createAsyncThunk(
                 },
             }
 
-            //@ts-ignore
             const { data } = await axios.post(
                 // 'api/user/login',
                 'http://localhost:3000/api/auth/signin',
@@ -66,18 +66,18 @@ export const userLogin = createAsyncThunk(
     }
 )
 
+/** getUserDetails action (for accessing protected routes) */
 export const getUserDetails = createAsyncThunk(
 
     'user/getUserDetails',
 
-    //@ts-ignore
+    //@ts-ignore TODO do we need callback for getUserDetails
     async (arg, { getState, rejectWithValue }) => {
 
         try {
 
             //Get user data from store
-            //@ts-ignore
-            const { user } = getState()
+            const { user } = getState() as RootState
 
             //Configure authorization header with user's token
             const config = {

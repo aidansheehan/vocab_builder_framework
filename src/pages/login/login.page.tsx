@@ -1,9 +1,16 @@
-import { useEffect }                from 'react'
-import { useForm }                  from 'react-hook-form'
-import { useNavigate }              from 'react-router-dom'
-import useAppDispatch               from '../../hooks/redux/use-app-dispatch.hook'
-import useAppSelector               from '../../hooks/redux/use-app-selector.hook'
-import { userLogin }                from '../../redux/features/user/user.actions'
+//Core
+import { useEffect } from 'react'
+//React Hook Form (Client Side Validation)
+import { useForm } from 'react-hook-form'
+//Router
+import { useNavigate } from 'react-router-dom'
+//Hooks
+import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
+import useAppSelector from '../../hooks/redux/use-app-selector.hook'
+//Types
+import { UserLoginRequestType } from '../../redux/features/user/types/request.types'
+//Actions
+import { userLogin } from '../../redux/features/user/user.actions'
 
 
 /**
@@ -18,17 +25,16 @@ import { userLogin }                from '../../redux/features/user/user.actions
 const LoginPage = (): JSX.Element => {
 
     //Pull out user state values to handle UI state
-    const { loading, error, userInfo }  = useAppSelector((state) => state.user)    //Pull out user state values to handle UI state
-    const { register, handleSubmit }    = useForm()                             //Get register and handleSubmit useForm methods
+    const { loading, error, userInfo }  = useAppSelector((state) => state.user)     //Pull out user state values to handle UI state
+    const { register, handleSubmit }    = useForm()                                 //Get register and handleSubmit useForm methods
 
     const dispatch = useAppDispatch()   //Init useDispatch
     const navigate = useNavigate()      //Init useNavigate
     
 
-    //Function to submit login form TODO type
-    const submitForm = (data: any) => {
+    //Function to submit login form
+    const submitForm = (data: UserLoginRequestType) => {
 
-        //@ts-ignore
         dispatch(userLogin(data))
     }
 

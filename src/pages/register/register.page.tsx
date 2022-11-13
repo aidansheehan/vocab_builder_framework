@@ -1,9 +1,23 @@
-import { useForm }      from 'react-hook-form'
+//Core
+import { useEffect } from 'react'
+//React Hook Form (Client Side Validation)
+import { useForm } from 'react-hook-form'
+//Actions
 import { registerUser } from "../../redux/features/user/user.actions"
+//Router
 import { useNavigate }  from 'react-router-dom'
-import { useEffect }    from 'react'
+//Hooks
 import useAppSelector   from '../../hooks/redux/use-app-selector.hook'
 import useAppDispatch   from '../../hooks/redux/use-app-dispatch.hook'
+//Types
+import { RegisterUserRequestType } from '../../redux/features/user/types/request.types'
+
+/** RegisterUserFormtype */
+type RegisterUserFormType = RegisterUserRequestType & {
+    
+    /** Confirm Password for Validation */
+    confirmPassword: string
+}
 
 /**
  * Page to register a new user
@@ -25,7 +39,7 @@ const RegisterPage = (): JSX.Element => {
     const navigate                      = useNavigate()     //init useNavigate
 
     //Function to submit login form
-    const submitForm = (data: any) => {
+    const submitForm = (data: RegisterUserFormType) => {
 
         //Check if passwords match
         if (data.password !== data.confirmPassword) {
@@ -37,7 +51,6 @@ const RegisterPage = (): JSX.Element => {
         data.email = data.email.toLowerCase()
 
         //dispatch action to register user
-        //@ts-ignore TODO
         dispatch(registerUser(data))
     }
 
