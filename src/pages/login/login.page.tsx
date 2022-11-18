@@ -53,10 +53,10 @@ const LoginPage = (): JSX.Element => {
             {error && <h1>Error TBD</h1>}
 
             <div>
-                <label htmlFor='username'>Username</label>
+                <label htmlFor='email'>Email</label>
                 <input 
-                    type='username'
-                    {...register('username')}
+                    type='email'
+                    {...register('email')}
                     required
                     autoComplete='off'
                 />

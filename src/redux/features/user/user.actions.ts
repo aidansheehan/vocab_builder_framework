@@ -7,7 +7,7 @@ const axios = require('axios')
 /** registerUser action */
 export const registerUser = createAsyncThunk(
     'user/register',
-    async ( { username, email, password }: RegisterUserRequestType, { rejectWithValue }) => {
+    async ( { username, email, password, passwordConfirm }: RegisterUserRequestType, { rejectWithValue }) => {
         try {
             // configure header's Content-Type as JSON
             const config = {
@@ -18,8 +18,8 @@ export const registerUser = createAsyncThunk(
             //Make request to backend
             await axios.post(
                 // '/api/user/register',
-                'http://localhost:3000/api/auth/signup',    //TODO configure proxy so don't need to hardcode this
-                { username, email, password },
+                'http://localhost:8000/api/auth/register',    //TODO configure proxy so don't need to hardcode this
+                { username, email, password, passwordConfirm },
                 config
             )
         } catch (error) {
@@ -35,7 +35,7 @@ export const registerUser = createAsyncThunk(
 /** userLogin action */
 export const userLogin = createAsyncThunk(
     'user/login',
-    async ({ username, password }: UserLoginRequestType, { rejectWithValue }) => {
+    async ({ email, password }: UserLoginRequestType, { rejectWithValue }) => {
         try {
             //configure header's Content-Type as JSON
             const config = {
@@ -46,14 +46,14 @@ export const userLogin = createAsyncThunk(
 
             const { data } = await axios.post(
                 // 'api/user/login',
-                'http://localhost:3000/api/auth/signin',
-                { username, password },
+                'http://localhost:8000/api/auth/login',
+                { email, password },
                 config
             )
 
             //Store user's token in local storage TODO need more secure place to store
             localStorage.setItem('userToken', data.accessToken)
-            return data
+            return data.user
         } catch (error) {
 
             //Return custom error message from API if any
@@ -82,13 +82,13 @@ export const getUserDetails = createAsyncThunk(
             //Configure authorization header with user's token
             const config = {
                 headers: {
-                    // Authorization: `Bearer ${user.userToken}`, TODO investigate bearer tokens
-                    'x-access-token': user.userToken
+                    Authorization: `Bearer ${user.userToken}`
+                    // 'x-access-token': user.userToken
 
                 },
             }
 
-            const { data } = await axios.get('http://localhost:3000/api/test/user', config)
+            const { data } = await axios.get('http://localhost:8000/api/users/me', config)
             return data
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {

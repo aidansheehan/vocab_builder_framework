@@ -1,8 +1,8 @@
 /** UserLoginRequestType */
 export type UserLoginRequestType = {
 
-    /** User's username TODO email? Must be unique */
-    username: string,
+    /** User email*/
+    email: string,
 
     /** User's password */
     password: string
@@ -18,5 +18,8 @@ export type RegisterUserRequestType = {
     email: string,
 
     /** new user's password */
-    password: string
+    password: string,
+
+    /** new user's password (confirm) */
+    passwordConfirm: string
 }

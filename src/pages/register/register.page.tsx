@@ -12,13 +12,6 @@ import useAppDispatch   from '../../hooks/redux/use-app-dispatch.hook'
 //Types
 import { RegisterUserRequestType } from '../../redux/features/user/types/request.types'
 
-/** RegisterUserFormtype */
-type RegisterUserFormType = RegisterUserRequestType & {
-    
-    /** Confirm Password for Validation */
-    confirmPassword: string
-}
-
 /**
  * Page to register a new user
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
@@ -39,10 +32,10 @@ const RegisterPage = (): JSX.Element => {
     const navigate                      = useNavigate()     //init useNavigate
 
     //Function to submit login form
-    const submitForm = (data: RegisterUserFormType) => {
+    const submitForm = (data: RegisterUserRequestType) => {
 
         //Check if passwords match
-        if (data.password !== data.confirmPassword) {
+        if (data.password !== data.passwordConfirm) {
             alert('Password Mismatch TBD')
             return
         }
@@ -104,10 +97,10 @@ const RegisterPage = (): JSX.Element => {
                 </div>
 
                 <div>
-                    <label htmlFor='confirmPassword'>Confirm Password</label>
+                    <label htmlFor='passwordConfirm'>Confirm Password</label>
                     <input 
                         type='password'
-                        {...register('confirmPassword')}
+                        {...register('passwordConfirm')}
                         required
                         autoComplete='off'
                     />

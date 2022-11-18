@@ -14,10 +14,10 @@ module.exports = {
         publicPath: '/'
     },
     devServer: {
-        port: 8081,
+        port: 8080,
         historyApiFallback: true,
         hot: true,
-        proxy: { "/api/**": { target: 'http;//localhost:3000', secure: false } }
+        proxy: { "/api/**": { target: 'http;//localhost:8000', secure: false } }
     },
     module: {
         rules: [

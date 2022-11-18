@@ -9,7 +9,7 @@
     "test": "jest",
     "docs": "jsdoc -c jsdoc.conf.json"
   },
-  "proxy": "http://localhost:3000",
+  "proxy": "http://localhost:8000",
   "author": "Aidan Sheehan",
   "license": "ISC",
   "dependencies": {
