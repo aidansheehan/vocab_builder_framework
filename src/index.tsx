@@ -1,10 +1,13 @@
 //Core
-import { StrictMode } from 'react';
-import { createRoot }   from 'react-dom/client'
-import { BrowserRouter } from 'react-router-dom';
-import App from './app';
-import store from './redux/store';
-import { Provider } from 'react-redux'
+import { StrictMode }       from 'react';
+import { createRoot }       from 'react-dom/client'
+//Router
+import { BrowserRouter }    from 'react-router-dom';
+//Redux
+import store                from './redux/store';
+import { Provider }         from 'react-redux'
+//App
+import App                  from './app';
 
 /**
  * Root entry point of the application
