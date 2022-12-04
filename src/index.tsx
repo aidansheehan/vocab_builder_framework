@@ -1,26 +1,32 @@
-import { MemoryRouter, Route, Routes }     from "react-router-dom";
-import HomePage                             from "./pages/home.page";
-import Layout                               from "./pages/layout";
-import MyCollectionsPage                    from "./pages/my-collections.page";
-import UpdateCollectionPage                 from "./pages/update-collection.page";
-import { createRoot }                       from 'react-dom/client';
-import './global.scss'
+//Core
+import { StrictMode }       from 'react';
+import { createRoot }       from 'react-dom/client'
+//Router
+import { BrowserRouter }    from 'react-router-dom';
+//Redux
+import store                from './redux/store';
+import { Provider }         from 'react-redux'
+//App
+import App                  from './app';
 
-const App = () => {
-
-    return (
-        <MemoryRouter>
-            <Routes>
-                <Route path="/" element={<Layout />}>
-                    <Route index element={<HomePage />} />
-                    <Route path="my-collections" element={<MyCollectionsPage />} />
-                    <Route path="update-collection" element={<UpdateCollectionPage />} />
-                </Route>
-            </Routes>
-        </MemoryRouter>
-    )
-
-}
+/**
+ * Root entry point of the application
+ * @author Aidan Sheehan <aidanmsheehan@gmail.com>
+ * @component
+ * @example
+ * return (
+ *   <App />
+ * )
+ */
 
 const root = createRoot(document.getElementById("root")!)
-root.render(<App />);
+
+root.render(
+    <StrictMode>
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    </StrictMode>
+)
