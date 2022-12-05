@@ -5,6 +5,7 @@ const { CleanWebpackPlugin }    = require('clean-webpack-plugin');
 const  webpack                  = require('webpack');
 
 const isDevelopment = process.env.NODE_ENV !== 'prodcution'
+const CSSModules    = { localIdentName: 'fcb-[local]' }
 
 module.exports = {
     entry: './src/index.tsx',
@@ -36,36 +37,19 @@ module.exports = {
                 use: [ 'style-loader', 'css-loader' ]
             },
             {
-                test: /\.component\.s(a|c)ss$/,
+                test: /\.s(a|c)ss$/,
                 use: [
-                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
+                    isDevelopment ? "style-loader" : MiniCssExtractPlugin.loader,
                     {
-                        loader: 'css-loader',
+                        loader: "css-loader",
                         options: {
-                            modules: true,
+                            importLoaders: 1,
+                            modules: CSSModules,
                             sourceMap: isDevelopment
                         }
                     },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: isDevelopment
-                        }
-                    }
-                ]
-            },
-            {
-                test: /\.s(a|c)ss$/,
-                exclude: /\.component.(s(a|c)ss)$/,
-                use: [
-                    isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: isDevelopment
-                        }
-                    }
+                    "postcss-loader",
+                    "sass-loader"
                 ]
             }
         ],

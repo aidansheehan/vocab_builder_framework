@@ -1,3 +1,7 @@
+import ButtonComponent from '../../components/button/button.component'
+//@ts-ignore
+import  globalStyles from '../../global.scss'
+
 /**
  * Landing (!auth) Page
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
@@ -12,6 +16,12 @@ const LandingPage = () => {
     return (
         <div>
             I am the Landing Page.
+
+            <ButtonComponent 
+            style={globalStyles.buttonPrimary}
+            textRef={'Click Me'}
+            onClick={() => alert('I got clicked!')}
+            />
         </div>
     )
 }
