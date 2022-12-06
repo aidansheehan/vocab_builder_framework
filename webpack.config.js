@@ -4,13 +4,20 @@ const MiniCssExtractPlugin      = require('mini-css-extract-plugin');
 const { CleanWebpackPlugin }    = require('clean-webpack-plugin');
 const  webpack                  = require('webpack');
 
-const isDevelopment = process.env.NODE_ENV !== 'prodcution'
+const isDevelopment = process.env.NODE_ENV !== 'production'
+
+const entryPoints = {
+    main: [ path.resolve(__dirname, "src/index.tsx")]
+}
 
 module.exports = {
     entry: './src/index.tsx',
+    entry: entryPoints,
+    mode: isDevelopment ? 'development' : 'production',
     output: {
+        clean: true,
         path: path.join(__dirname, '/dist'),
-        filename: 'bundle.js',
+        filename: '[name].min.js',
         publicPath: '/'
     },
     devServer: {
