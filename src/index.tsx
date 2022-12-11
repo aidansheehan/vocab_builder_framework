@@ -2,12 +2,15 @@
 import { StrictMode }       from 'react';
 import { createRoot }       from 'react-dom/client'
 //Router
-import { BrowserRouter }    from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes }    from 'react-router-dom';
 //Redux
 import store                from './redux/store';
 import { Provider }         from 'react-redux'
-//App
-import App                  from './app';
+//Localized app component for users current locale
+import LocalizedApp from './components/localized-app/localized-app.component';
+//Cookies
+import Cookies from 'universal-cookie';
+
 
 /**
  * Root entry point of the application
@@ -19,13 +22,26 @@ import App                  from './app';
  * )
  */
 
+const cookies   = new Cookies(document.cookie)  //get cookies
+const lang      = cookies.get('lang') ?? 'en';  //get language cookie or default to english
+
 const root = createRoot(document.getElementById("root")!)
 
 root.render(
     <StrictMode>
         <Provider store={store}>
             <BrowserRouter>
-                <App />
+                <Routes>
+                    {['en', 'hi'].map(v_ => (
+                        <Route 
+                            key={v_}
+                            path={`/${v_.toLowerCase()}/`}
+                            element={<LocalizedApp lang={v_} />}
+                        />
+                    ))}
+                    <Route path='/' element={<Navigate to={`/${lang.toLowerCase()}`} />} />
+                    <Route path='*' element={<Navigate to={`/${lang.toLowerCase()}/404`} />} />
+                </Routes>
             </BrowserRouter>
         </Provider>
     </StrictMode>

@@ -1,3 +1,5 @@
+import TextComponent from "../../components/text/text.component"
+
 /**
  * Landing (!auth) Page
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
@@ -11,7 +13,7 @@ const LandingPage = () => {
 
     return (
         <div>
-            I am the Landing Page.
+            <TextComponent textRef="header_home_link_title" />
         </div>
     )
 }
