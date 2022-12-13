@@ -1,5 +1,9 @@
 {
     "header_home_link_title": "Home",
     "header_about_link_title": "About us",
-    "header_movies_link_title": "Movies"
+    "header_movies_link_title": "Movies",
+    "common_email_tag": "Email",
+    "common_password_tag": "Password",
+    "common_username_tag": "Username",
+    "register_confirm_password_tag": "Confirm Password"
 }

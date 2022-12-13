@@ -11,6 +11,8 @@ import useAppSelector   from '../../hooks/redux/use-app-selector.hook'
 import useAppDispatch   from '../../hooks/redux/use-app-dispatch.hook'
 //Types
 import { RegisterUserRequestType } from '../../redux/features/user/types/request.types'
+//Components
+import TextComponent from '../../components/text/text.component'
 
 /**
  * Page to register a new user
@@ -67,7 +69,9 @@ const RegisterPage = (): JSX.Element => {
                 {error && <h1>Error!</h1>}
 
                 <div>
-                    <label htmlFor="username">Username</label>
+                    <label htmlFor="username">
+                        <TextComponent textRef="common_username_tag" />
+                    </label>
                     <input 
                         type='text'
                         {...register('username')}
@@ -77,7 +81,9 @@ const RegisterPage = (): JSX.Element => {
                 </div>
 
                 <div>
-                    <label htmlFor='email'>Email</label>
+                    <label htmlFor='email'>
+                        <TextComponent textRef="common_email_tag" />
+                    </label>
                     <input 
                         type='email'
                         {...register('email')}
@@ -87,7 +93,9 @@ const RegisterPage = (): JSX.Element => {
                 </div>
 
                 <div>
-                    <label htmlFor='password'>Password</label>
+                    <label htmlFor='password'>
+                        <TextComponent textRef="common_password_tag" />
+                    </label>
                     <input 
                         type='password'
                         {...register('password')}
@@ -97,7 +105,9 @@ const RegisterPage = (): JSX.Element => {
                 </div>
 
                 <div>
-                    <label htmlFor='passwordConfirm'>Confirm Password</label>
+                    <label htmlFor='passwordConfirm'>
+                        <TextComponent textRef="register_confirm_password_tag" />
+                    </label>
                     <input 
                         type='password'
                         {...register('passwordConfirm')}

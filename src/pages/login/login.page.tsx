@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 //Router
 import { useNavigate } from 'react-router-dom'
+//Components
+import TextComponent from '../../components/text/text.component'
 //Hooks
 import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'
@@ -52,7 +54,9 @@ const LoginPage = (): JSX.Element => {
             {error && <h1>Error TBD</h1>}
 
             <div>
-                <label htmlFor='email'>Email</label>
+                <label htmlFor='email'>
+                    <TextComponent textRef="common_email_tag" />
+                </label>
                 <input 
                     type='email'
                     {...register('email')}
@@ -62,7 +66,9 @@ const LoginPage = (): JSX.Element => {
             </div>
 
             <div>
-                <label htmlFor='password'>Password</label>
+                <label htmlFor='password'>
+                    <TextComponent textRef="common_password_tag" />
+                </label>
                 <input 
                     type='password'
                     {...register('password')}

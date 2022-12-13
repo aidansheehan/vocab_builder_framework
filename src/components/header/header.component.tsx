@@ -1,4 +1,5 @@
 import { useEffect }                    from 'react';
+import { useIntl }                      from 'react-intl';
 import { NavLink }                      from 'react-router-dom';
 import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook';
 import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
@@ -16,11 +17,15 @@ import styles                           from './header.component.scss';
  *   <HeaderComponent />
  * )
  */
-const HeaderComponent = () => {
+const HeaderComponent = (): JSX.Element => {
 
     /** Dispatch getUserDetails when userToken changes - TODO can this logic go somewhere more sensible */
     const { userInfo, userToken }   = useAppSelector((state) => state.user)    //Destructure user state
     const dispatch                  = useAppDispatch()                         //Init useAppDispatch
+
+    //Logic for handling links to localized routes
+    const intl          = useIntl() //Get current locale object
+    const { locale }    = intl      //Destructure locale object
 
     //automatically authenticate user if token is found
     useEffect(() => {
@@ -35,24 +40,31 @@ const HeaderComponent = () => {
                 <span>
                     {userInfo ? `Logged in as ${userInfo.username}` : 'You\'re not logged in'}
                 </span>
-                
-                <div>
-                    {userInfo ? (
-                        <button onClick={() => dispatch(logout())} >
-                            Logout
-                        </button>
-                    ) : (
-                        <NavLink to='/login'>
-                            Login
-                        </NavLink>
-                    )}
-                </div>
 
                 <nav>
-                    <NavLink to='/'>Landing Page</NavLink>
-                    <NavLink to='/login'>Login</NavLink>
-                    <NavLink to='/register'>Register</NavLink>
-                    <NavLink to='/collections'>Profile</NavLink>
+                    {userInfo ? (
+                        <>
+                            <button onClick={() => dispatch(logout())}>
+                                Logout
+                            </button>
+                            <NavLink to={`${locale}/collections`}>
+                                My Collections
+                            </NavLink>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink to={`/${locale}`} >
+                                Home
+                            </NavLink>
+                            <NavLink to={`/${locale}/login`}>
+                                Login
+                            </NavLink>
+                            <NavLink to={`/${locale}/register`}>
+                                Register
+                            </NavLink>
+                        </>
+                    )}
+
                 </nav>
                 
                 I am the header

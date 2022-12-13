@@ -1,5 +1,9 @@
 {
     "header_home_link_title": "घर",
     "header_about_link_title": "हमारे बारे में",
-    "header_movies_link_title": "चलचित्र"
+    "header_movies_link_title": "चलचित्र",
+    "common_email_tag": "ईमेल",
+    "common_password_tag": "पासवर्ड",
+    "common_username_tag": "उपयोगकर्ता नाम",
+    "register_confirm_password_tag": "पासवर्ड की पुष्टि कीजिये"
 }

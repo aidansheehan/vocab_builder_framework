@@ -10,6 +10,8 @@ import { Provider }         from 'react-redux'
 import LocalizedApp from './components/localized-app/localized-app.component';
 //Cookies
 import Cookies from 'universal-cookie';
+//Constants
+import SUPPORTED_LANGUAGES from './localization/constants/supported-languages.constant';
 
 
 /**
@@ -32,15 +34,15 @@ root.render(
         <Provider store={store}>
             <BrowserRouter>
                 <Routes>
-                    {['en', 'hi'].map(v_ => (
+                    {SUPPORTED_LANGUAGES.map(v_ => (
                         <Route 
-                            key={v_}
-                            path={`/${v_.toLowerCase()}/`}
-                            element={<LocalizedApp lang={v_} />}
+                            key={v_.code}
+                            path={`/${v_.code.toLowerCase()}//*`}
+                            element={<LocalizedApp lang={v_.code} />}
                         />
                     ))}
                     <Route path='/' element={<Navigate to={`/${lang.toLowerCase()}`} />} />
-                    <Route path='*' element={<Navigate to={`/${lang.toLowerCase()}/404`} />} />
+                    {/* <Route path='*' element={<Navigate to={`/${lang.toLowerCase()}/404`} />} /> */}
                 </Routes>
             </BrowserRouter>
         </Provider>

@@ -1,16 +1,18 @@
-import { useEffect, useMemo }   from 'react'
-import { IntlProvider }         from 'react-intl'
-import Cookies                  from 'universal-cookie'
-import App                      from '../../app'
-import enMessages               from '../../localization/en.json'
-import hiMessages               from '../../localization/hi.json'
+import { useEffect, useMemo }               from 'react'
+import { IntlProvider }                     from 'react-intl'
+import Cookies                              from 'universal-cookie'
+import App                                  from '../../app'
+import enMessages                           from '../../localization/en.json'
+import hiMessages                           from '../../localization/hi.json'
+import viMessages                           from '../../localization/vi.json'
 
 /**
- * Translations by language
+ * Translations by language TODO should refactor with SUPPORTED_LANGUAGES constant for SST
  */
 export const messages: { [index: string]: any } = {
     'en': enMessages,
-    'hi': hiMessages
+    'hi': hiMessages,
+    'vi': viMessages
 }
 
 /** LocalizedApp Props Type */
