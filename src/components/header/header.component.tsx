@@ -47,7 +47,7 @@ const HeaderComponent = (): JSX.Element => {
                             <button onClick={() => dispatch(logout())}>
                                 Logout
                             </button>
-                            <NavLink to={`${locale}/collections`}>
+                            <NavLink to={`/${locale}/collections`}>
                                 My Collections
                             </NavLink>
                         </>

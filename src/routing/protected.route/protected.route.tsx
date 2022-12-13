@@ -1,4 +1,5 @@
 import { useEffect }            from 'react'
+import { useIntl }              from 'react-intl'
 import { Outlet, useNavigate }  from 'react-router-dom'
 import FooterComponent          from '../../components/footer/footer.component'
 import HeaderComponent          from '../../components/header/header.component'
@@ -18,11 +19,13 @@ const ProtectedRoute = () => {
 
     const { userInfo } = useAppSelector(state => state.user) //Destructure user state
 
-    const navigate = useNavigate()  //Init useNavigate
+    const navigate      = useNavigate()     //Init useNavigate
+    const intl          = useIntl()         //Get current locale object
+    const { locale }    = intl              //Destructure current locale object
 
     //redirect to landing page if no user is found in redux store
     useEffect(() => {
-        if (!userInfo) navigate('/')
+        if (!userInfo) navigate(`/${locale}`)
     }, [ userInfo ] )
 
     //return child route elements

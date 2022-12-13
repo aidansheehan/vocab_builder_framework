@@ -9,6 +9,7 @@ import TextComponent from '../../components/text/text.component'
 //Hooks
 import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'
+import { useIntl } from 'react-intl'
 //Types
 import { UserLoginRequestType } from '../../redux/features/user/types/request.types'
 //Actions
@@ -29,8 +30,10 @@ const LoginPage = (): JSX.Element => {
     const { loading, error, userInfo }  = useAppSelector((state) => state.user)     //Pull out user state values to handle UI state
     const { register, handleSubmit }    = useForm()                                 //Get register and handleSubmit useForm methods
 
-    const dispatch = useAppDispatch()   //Init useDispatch
-    const navigate = useNavigate()      //Init useNavigate
+    const dispatch      = useAppDispatch()      //Init useDispatch
+    const navigate      = useNavigate()         //Init useNavigate
+    const intl          = useIntl()             //Get current locale object
+    const { locale }    = intl                  //Destructure locale object
     
 
     //Function to submit login form
@@ -43,7 +46,7 @@ const LoginPage = (): JSX.Element => {
     useEffect(() => {
 
         if (userInfo) {
-            navigate('/collections')
+            navigate(`/${locale}/collections`)
         }
     }, [ navigate, userInfo ])
 
