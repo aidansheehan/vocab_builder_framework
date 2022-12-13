@@ -5,7 +5,7 @@ import useAppDispatch                   from '../../hooks/redux/use-app-dispatch
 import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
 import { getUserDetails }               from '../../redux/features/user/user.actions';
 import { logout }                       from '../../redux/features/user/user.slice';
-import TextComponent from '../text/text.component';
+import TextComponent                    from '../text/text.component';
 import styles                           from './header.component.scss';
 
 /**
