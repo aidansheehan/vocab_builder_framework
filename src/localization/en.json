@@ -1,7 +1,9 @@
 {
-    "header_home_link_title": "Home",
-    "header_about_link_title": "About us",
-    "header_movies_link_title": "Movies",
+    "nav_home_link_title": "Home",
+    "nav_login_link_title": "Login",
+    "nav_register_link_title": "Register",
+    "nav_collections_link_title": "My Collections",
+    "nav_logout_link_title": "Log Out",
     "common_email_tag": "Email",
     "common_password_tag": "Password",
     "common_username_tag": "Username",

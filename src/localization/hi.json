@@ -1,7 +1,9 @@
 {
-    "header_home_link_title": "घर",
-    "header_about_link_title": "हमारे बारे में",
-    "header_movies_link_title": "चलचित्र",
+    "nav_home_link_title": "घर",
+    "nav_login_link_title": "लॉग इन करें",
+    "nav_register_link_title": "रजिस्टर करें",
+    "nav_collections_link_title": "मेरे संग्रह",
+    "nav_logout_link_title": "लॉग आउट",
     "common_email_tag": "ईमेल",
     "common_password_tag": "पासवर्ड",
     "common_username_tag": "उपयोगकर्ता नाम",

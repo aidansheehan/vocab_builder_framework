@@ -5,6 +5,7 @@ import useAppDispatch                   from '../../hooks/redux/use-app-dispatch
 import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
 import { getUserDetails }               from '../../redux/features/user/user.actions';
 import { logout }                       from '../../redux/features/user/user.slice';
+import TextComponent from '../text/text.component';
 import styles                           from './header.component.scss';
 
 /**
@@ -44,23 +45,24 @@ const HeaderComponent = (): JSX.Element => {
                 <nav>
                     {userInfo ? (
                         <>
+                            {/* TODO this should be generic button component */}
                             <button onClick={() => dispatch(logout())}>
-                                Logout
+                                <TextComponent textRef='nav_logout_link_title' />
                             </button>
                             <NavLink to={`/${locale}/collections`}>
-                                My Collections
+                                <TextComponent textRef='nav_collections_link_title' />
                             </NavLink>
                         </>
                     ) : (
                         <>
                             <NavLink to={`/${locale}`} >
-                                Home
+                                <TextComponent textRef='nav_home_link_title' />
                             </NavLink>
                             <NavLink to={`/${locale}/login`}>
-                                Login
+                                <TextComponent textRef='nav_login_link_title' />
                             </NavLink>
                             <NavLink to={`/${locale}/register`}>
-                                Register
+                                <TextComponent textRef='nav_register_link_title' />
                             </NavLink>
                         </>
                     )}

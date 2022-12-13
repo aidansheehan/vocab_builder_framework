@@ -1,7 +1,9 @@
 {
-    "header_home_link_title": "Nhà",
-    "header_about_link_title": "Về chúng tôi",
-    "header_movies_link_title": "Movies",
+    "nav_home_link_title": "Nhà",
+    "nav_login_link_title": "đăng nhập",
+    "nav_register_link_title": "Đăng ký",
+    "nav_collections_link_title": "bộ sưu tập của tôi",
+    "nav_logout_link_title": "đăng xuất",
     "common_email_tag": "E-mail",
     "common_password_tag": "mật khẩu mở khóa",
     "common_username_tag": "tên tài khoản",
