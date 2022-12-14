@@ -1,6 +1,6 @@
 {
   "name": "vocab_builder_framework",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "UI framework for vocab builder app",
   "main": "index.js",
   "scripts": {
