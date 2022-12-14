@@ -1,5 +1,6 @@
-import { render }       from '@testing-library/react'
-import FooterComponent  from './footer.component'
+import { render } from '@testing-library/react'
+import React from 'react'
+import FooterComponent from './footer.component'
 
 describe('FooterComponent', () => {
 
