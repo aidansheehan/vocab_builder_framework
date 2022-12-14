@@ -59,7 +59,7 @@ const RegisterPage = (): JSX.Element => {
     }, [ navigate, userInfo, success ])
 
     return (
-        <div>
+        <div data-testid='register-page' >
 
             <form onSubmit={handleSubmit(submitForm)}>
 

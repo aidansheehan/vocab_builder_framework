@@ -47,7 +47,7 @@ const LoginPage = (): JSX.Element => {
 
     return (
 
-        <form onSubmit={handleSubmit(submitForm)}>
+        <form onSubmit={handleSubmit(submitForm)} data-testid='login-page'>
 
             {error && <h1>Error TBD</h1>}
 

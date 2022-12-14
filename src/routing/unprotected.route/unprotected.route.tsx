@@ -1,6 +1,6 @@
-import { Outlet } from "react-router-dom"
-import FooterComponent from "../../components/footer/footer.component"
-import HeaderComponent from "../../components/header/header.component"
+import { Outlet }       from "react-router-dom"
+import FooterComponent  from "../../components/footer/footer.component"
+import HeaderComponent  from "../../components/header/header.component"
 
 /**
  * Generic unprotected route
@@ -15,7 +15,7 @@ const UnprotectedRoute = () => {
 
     //return child route elements
     return (
-        <div id='unprotected-route'>
+        <div id='unprotected-route' data-testid='unprotected-route' >
             <HeaderComponent />
             <Outlet />
             <FooterComponent />
