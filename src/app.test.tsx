@@ -31,11 +31,8 @@ const renderApp = (iE_?: Array<string>) => {
 describe('AppComponent', () => {
 
     test('AppComponent should exist', () => {
-
         let { container } = renderApp()
-
         expect(container).toBeInTheDocument()
-
     })
 
     describe('AppComponent should contain unauthenticated routes', () => {

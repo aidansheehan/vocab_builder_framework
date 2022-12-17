@@ -73,6 +73,7 @@ const RegisterPage = (): JSX.Element => {
                         {...register('username')}
                         required
                         autoComplete='off'
+                        role='username-input'
                     />
                 </div>
 
@@ -83,6 +84,7 @@ const RegisterPage = (): JSX.Element => {
                         {...register('email')}
                         required
                         autoComplete='off'
+                        role='email-input'
                     />
                 </div>
 
@@ -93,6 +95,7 @@ const RegisterPage = (): JSX.Element => {
                         {...register('password')}
                         required
                         autoComplete='off'
+                        role='password-input'
                     />
                 </div>
 
@@ -103,6 +106,7 @@ const RegisterPage = (): JSX.Element => {
                         {...register('passwordConfirm')}
                         required
                         autoComplete='off'
+                        role='confirm-password-input'
                     />
                 </div>
 
