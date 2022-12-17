@@ -16,7 +16,11 @@ import useAppSelector           from '../../hooks/redux/use-app-selector.hook'
  */
 const ProtectedRoute = () => {
 
+    const state = useAppSelector(state => state)
+    console.log('state: ', state)
+
     const { userInfo } = useAppSelector(state => state.user) //Destructure user state
+    console.log('user info: ', userInfo)
 
     const navigate = useNavigate()  //Init useNavigate
 
@@ -27,7 +31,7 @@ const ProtectedRoute = () => {
 
     //return child route elements
     return (
-        <div id='protected-route'>
+        <div id='protected-route' data-testid='protected-route'>
             <HeaderComponent />
             <Outlet />
             <FooterComponent />

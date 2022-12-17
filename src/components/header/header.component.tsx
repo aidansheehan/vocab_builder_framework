@@ -42,7 +42,7 @@ const HeaderComponent = () => {
                             Logout
                         </button>
                     ) : (
-                        <NavLink to='/login'>
+                        <NavLink to='/login' data-testid='login-link'>
                             Login
                         </NavLink>
                     )}

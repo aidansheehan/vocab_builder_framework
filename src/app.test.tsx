@@ -91,6 +91,13 @@ describe('AppComponent', () => {
 
     describe('AppComponent should contain authenticated routes', () => {
 
+        /**
+         * TBD
+         *  - to be implemented after persist user authentication on refresh implemented (VBF-9) as can mock localStorage, API call
+         *  - best approach is to use real store and mock API calls and local storage around it
+         *  - if not alternative approach may have to mock redux store with a fake authenticated user
+         */
+
         test('protected route', () => {
 
         })

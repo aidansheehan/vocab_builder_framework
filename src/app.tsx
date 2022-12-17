@@ -1,8 +1,8 @@
 //Router
 import { useRoutes } from 'react-router-dom'
 //Routes
-import ProtectedRoute           from './routing/protected.route/protected.route'
-import UnprotectedRoute         from './routing/unprotected.route/unprotected.route'
+import ProtectedRoute           from './routes/protected.route/protected.route'
+import UnprotectedRoute         from './routes/unprotected.route/unprotected.route'
 //Pages
 import HomePage                 from './pages/home/home.page'
 import LandingPage              from './pages/landing/landing.page'
