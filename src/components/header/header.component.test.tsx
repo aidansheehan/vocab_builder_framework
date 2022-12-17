@@ -1,9 +1,10 @@
 import { render, screen }           from "@testing-library/react"
 import HeaderComponent              from "./header.component"
-import { MemoryRouter }             from "react-router-dom"
 import React                        from "react"
 import { Provider }                 from 'react-redux'
 import store                        from '../../redux/store'
+import { createMemoryHistory }      from 'history'
+import { MemoryRouter }             from "react-router-dom"
 import userEvent                    from '@testing-library/user-event'
 
 /**
@@ -31,12 +32,30 @@ jest.mock('axios', () => {
     }
 })
 
-const renderHeader = () => {
+// jest.mock('react-router-dom', () => (
+    
+//     NavLink: ({to: string}): JSX.Element => {
+
+//         return (
+//             <div>
+//             </div>
+//         )
+//     }
+// ))
+
+// jest.mock('react-router-dom', () => {
+
+//     const navigate = 
+// })
+
+const renderHeader = (iE_?: Array<string>) => {
 
     return render(
-        <Provider store={store}>
-            <HeaderComponent />
-        </Provider>
+        <MemoryRouter initialEntries={iE_}>
+            <Provider store={store}>
+                <HeaderComponent />
+            </Provider>
+        </MemoryRouter>
     )
 }
 
@@ -49,32 +68,46 @@ describe('HeaderComponent', () => {
         expect(container).toBeInTheDocument()
     })
 
-    //Mock NavLinkComponent? or think about how a user would progress through this
+    describe('HeaderComponent should route to appropriate routes if user unauthenticated', () => {
 
-    // test('HeaderComponent should ')
-    describe('HeaderComponent should generate appropriate links if user unauthenticated', () => {
+        const history = createMemoryHistory()   //Not sure if this should be on each test
+
+        history.push = jest.fn()
+    
+        const user = userEvent.setup()
 
         test('navigate to login', () => {
-            // render()
+            renderHeader()
+            expect(screen.getByTestId('login-link')).toBeInTheDocument()
+            user.click(screen.getByTestId('login-link')).then(() => expect(history.push).toBeCalledWith('/login'))
+
         })
 
         test('navigate to register', () => {
+            renderHeader()
+            expect(screen.getByTestId('register-link')).toBeInTheDocument()
+            user.click(screen.getByTestId('register-link')).then(() => expect(history.push).toBeCalledWith('/register'))
             
         })
 
         test('navigate to landing page', () => {
-            
+            renderHeader()
+            expect(screen.getByTestId('landing-link')).toBeInTheDocument()
+            user.click(screen.getByTestId('landing-link')).then(() => expect(history.push).toBeCalledWith('/'))
         })
 
-        test('no other navigations', () => {
-
+        test('no other navigations', async () => {
+            renderHeader()
+            const navLinks = await screen.findAllByRole('nav-link')
+            expect(navLinks).toHaveLength(3)
         })
     })
 
     describe('HeaderComponent should generate appropriate links if user authenticated', () => {
 
         /**
-         * TBD will need to mock authentication
+         * TBD
+         *  - to be implemented after persist user authentication on refresh implemented (VBF-9) as can mock localStorage, API call
          */
 
         test('navigate to collections', () => {

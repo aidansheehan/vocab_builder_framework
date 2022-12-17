@@ -1,10 +1,9 @@
 import App from './app'
 import { render, screen } from '@testing-library/react'
-import { BrowserRouter, MemoryRouter } from 'react-router-dom'
+import { MemoryRouter } from 'react-router-dom'
 import React from 'react'
 import { Provider } from 'react-redux'
 import store from './redux/store'
-import userEvent from '@testing-library/user-event'
 
 /**
  * App component should test each individual route calling 
@@ -48,8 +47,6 @@ describe('AppComponent', () => {
 
     describe('AppComponent should contain unauthenticated routes', () => {
 
-        const user = userEvent.setup()
-
         test('unprotected route', () => {
 
             renderApp(['/'])
@@ -59,7 +56,7 @@ describe('AppComponent', () => {
 
         test('error element', () => {
 
-            //TBD as error handling not yet properly implemented!
+            //TBD as error handling not yet properly implemented
 
             // renderApp(['/somenonsense'])
             // expect(screen.getByTestId('error-page')).toBeInTheDocument()
