@@ -10,8 +10,8 @@
 const LandingPage = () => {
 
     return (
-        <div>
-            I am the landing page.
+        <div data-testid='landing-page' >
+            I am the Landing Page.
         </div>
     )
 }

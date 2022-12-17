@@ -7,18 +7,6 @@ jest.mock('../../localization/en.json', () => {return {"test": "test"}}, { virtu
 jest.mock('../../localization/hi.json', () => {return {"test": "test"}}, { virtual: true })
 jest.mock('../../localization/vi.json', () => {return {"test": "test"}}, { virtual: true })
 
-jest.mock("axios", () => {
-    return {
-        defaults: {
-            headers: {
-                common: {
-                    Authorization: ""
-                }
-            }
-        }
-    }
-})
-
 jest.mock("universal-cookie", () => {
     const mCookie = {
         get: jest.fn()

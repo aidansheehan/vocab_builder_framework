@@ -46,22 +46,22 @@ const HeaderComponent = (): JSX.Element => {
                     {userInfo ? (
                         <>
                             {/* TODO this should be generic button component */}
-                            <button onClick={() => dispatch(logout())}>
+                            <button role='nav-link' data-testid='logout-link' onClick={() => dispatch(logout())}>
                                 <TextComponent textRef='nav_logout_link_title' />
                             </button>
-                            <NavLink to={`/${locale}/collections`}>
+                            <NavLink role='nav-link' data-testid='collections-link' to={`/${locale}/collections`}>
                                 <TextComponent textRef='nav_collections_link_title' />
                             </NavLink>
                         </>
                     ) : (
                         <>
-                            <NavLink to={`/${locale}`} >
+                            <NavLink role='nav-link' data-testid='landing-link' to={`/${locale}`} >
                                 <TextComponent textRef='nav_home_link_title' />
                             </NavLink>
-                            <NavLink to={`/${locale}/login`}>
+                            <NavLink role='nav-link' data-testid='login-link' to={`/${locale}/login`}>
                                 <TextComponent textRef='nav_login_link_title' />
                             </NavLink>
-                            <NavLink to={`/${locale}/register`}>
+                            <NavLink role='nav-link' data-testid='register-link' to={`/${locale}/register`}>
                                 <TextComponent textRef='nav_register_link_title' />
                             </NavLink>
                         </>

@@ -52,7 +52,7 @@ const LoginPage = (): JSX.Element => {
 
     return (
 
-        <form onSubmit={handleSubmit(submitForm)}>
+        <form onSubmit={handleSubmit(submitForm)} data-testid='login-page'>
 
             {error && <h1>Error TBD</h1>}
 
@@ -65,6 +65,7 @@ const LoginPage = (): JSX.Element => {
                     {...register('email')}
                     required
                     autoComplete='off'
+                    role='email-input'
                 />
             </div>
 
@@ -77,11 +78,12 @@ const LoginPage = (): JSX.Element => {
                     {...register('password')}
                     required
                     autoComplete='off'
+                    role='password-input'
                 />
 
             </div>
 
-            <button type='submit' disabled={loading} >Login</button>
+            <button type='submit' role='login-submit' disabled={loading} >Login</button>
 
         </form>
     )

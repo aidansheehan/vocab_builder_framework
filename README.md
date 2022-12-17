@@ -48,6 +48,13 @@ npm run build
 
 Builds minified JS files into `dist`.
 
+````
+npm run serve
+````
+Serves the production version of the app build in `dist` on a local server on port 3000.
+
+To build and run the app statically for use in non-browser environments instances of `<BrowserRouter>` should be changed to `<HashRouter>`
+
 ## Built With
 
 * [Webpack](http://webpack.js.org) (v5.74.0) - Open-source JavaScript module bundler
