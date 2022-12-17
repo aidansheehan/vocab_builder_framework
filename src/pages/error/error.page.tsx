@@ -18,7 +18,7 @@ const ErrorPage = (): JSX.Element => {
     console.error(error)
 
     return (
-        <div id="error-page">
+        <div id='error-page' data-testid='error-page'>
             <h1>Oops!</h1>
             <p>Sorry, an unexpected error has ocurred.</p>
             <p>

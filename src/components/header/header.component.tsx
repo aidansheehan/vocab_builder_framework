@@ -38,21 +38,20 @@ const HeaderComponent = () => {
                 
                 <div>
                     {userInfo ? (
-                        <button onClick={() => dispatch(logout())} >
+                        <button onClick={() => dispatch(logout())} role='nav-link' >
                             Logout
                         </button>
                     ) : (
-                        <NavLink to='/login'>
+                        <NavLink to='/login' data-testid='login-link' role='nav-link'>
                             Login
                         </NavLink>
                     )}
                 </div>
 
                 <nav>
-                    <NavLink to='/'>Landing Page</NavLink>
-                    <NavLink to='/login'>Login</NavLink>
-                    <NavLink to='/register'>Register</NavLink>
-                    <NavLink to='/collections'>Profile</NavLink>
+                    <NavLink to='/' data-testid='landing-link' role='nav-link' >Landing Page</NavLink>
+                    <NavLink to='/register' data-testid='register-link' role='nav-link' >Register</NavLink>
+                    <NavLink to='/collections' role='nav-link' >Profile</NavLink>
                 </nav>
                 
                 I am the header
