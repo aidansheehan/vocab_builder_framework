@@ -5,13 +5,6 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
-/**
- * App component should test each individual route calling 
- * navigate() or MemoryRouter.navigate() or whatever, and check
- * div's with given test-ids are in each route
- * 
- */
-
 jest.mock("axios", () => {
     return {
         defaults: {

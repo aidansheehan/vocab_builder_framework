@@ -7,19 +7,6 @@ import { createMemoryHistory }      from 'history'
 import { MemoryRouter }             from "react-router-dom"
 import userEvent                    from '@testing-library/user-event'
 
-/**
- * Header component should:
- * 
- *  - test that the header links pass correct routes to mock navigate() 
- * function that does nothing
- * 
- *  - test that the correct links are generated for
- *     auth route
- *     !auth route
- *          
- *          (..so you will have to mock authentication)
- */
-
 jest.mock('axios', () => {
     return {
         defaults: {
@@ -31,22 +18,6 @@ jest.mock('axios', () => {
         }
     }
 })
-
-// jest.mock('react-router-dom', () => (
-    
-//     NavLink: ({to: string}): JSX.Element => {
-
-//         return (
-//             <div>
-//             </div>
-//         )
-//     }
-// ))
-
-// jest.mock('react-router-dom', () => {
-
-//     const navigate = 
-// })
 
 const renderHeader = (iE_?: Array<string>) => {
 
@@ -70,7 +41,7 @@ describe('HeaderComponent', () => {
 
     describe('HeaderComponent should route to appropriate routes if user unauthenticated', () => {
 
-        const history = createMemoryHistory()   //Not sure if this should be on each test
+        const history = createMemoryHistory()
 
         history.push = jest.fn()
     
