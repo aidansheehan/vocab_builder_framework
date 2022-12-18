@@ -30,4 +30,22 @@ describe('LocalizedAppComponent', () => {
         // let { container } = render(<LocalizedAppComponent lang='en' />)
         // expect(container).toBeInTheDocument()
     })
+
+    describe('LocalizedAppComponent should monitor for changes to language and cookies and update routes accordingly', () => {
+
+        test('Monitors and updates routes on language change', () => {
+
+        })
+
+        test('Monitors and updates routes on cookies change', () => {
+
+        })
+    })
+
+    describe('LocalizedAppComponent should wrap App so app can implement i18n', () => {
+
+        test('App component should have Intl context', () => {
+            
+        })
+    })
 })

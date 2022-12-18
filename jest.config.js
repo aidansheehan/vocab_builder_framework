@@ -4,7 +4,8 @@ const config = {
         './src/**/*.(ts|tsx)',
         '!./src/index.tsx',
         '!node_modules/**',
-        '!./src/redux/**'
+        '!./src/redux/**',
+        '!./src/localization/**'
     ],
     coverageDirectory: './spec/coverage',
     moduleNameMapper: {
