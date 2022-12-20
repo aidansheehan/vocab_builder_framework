@@ -9,7 +9,6 @@ import { useNavigate }  from 'react-router-dom'
 //Hooks
 import useAppSelector   from '../../hooks/redux/use-app-selector.hook'
 import useAppDispatch   from '../../hooks/redux/use-app-dispatch.hook'
-import { useIntl }      from 'react-intl'
 //Types
 import { RegisterUserRequestType } from '../../redux/features/user/types/request.types'
 //Components
@@ -33,8 +32,6 @@ const RegisterPage = (): JSX.Element => {
     const dispatch                      = useAppDispatch()  //Init useAppDispatch
     const { register, handleSubmit }    = useForm()         //Destrucutre use form
     const navigate                      = useNavigate()     //init useNavigate
-    const intl                          = useIntl()         //get current locale object
-    const { locale }                    = intl              //destructure locale object
 
     //Function to submit login form
     const submitForm = (data: RegisterUserRequestType) => {
@@ -56,10 +53,10 @@ const RegisterPage = (): JSX.Element => {
     useEffect(() => {
 
         //Redirect user to login if registration was successful
-        if (success) navigate(`/${locale}/login`)
+        if (success) navigate(`/login`)
 
          //Redirect authenticated user to their home screen TODO may need to revisit how check authenticated
-        if (userInfo) navigate(`/${locale}/collections`)
+        if (userInfo) navigate(`/collections`)
 
     }, [ navigate, userInfo, success ])
 

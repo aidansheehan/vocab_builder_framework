@@ -1,18 +1,18 @@
-/**
- * Supported languages and required info to generate language switcher and localized routes
- */
-const SUPPORTED_LANGUAGES = [
+import SUPPORTED_LANGUAGES_TYPE from '../types/supported-languages.type'
+
+const SUPPORTED_LANGUAGES: SUPPORTED_LANGUAGES_TYPE = [
     {
-        name: 'English',
         code: 'en',
+        name: 'English',
+        // path: '' TODO can have path set so we know where to load JSON from
     },
     {
-        name: 'Vietnamese',
-        code: 'vi'
+        code: 'vi',
+        name: 'Tiếng Việt',
     },
     {
-        name: 'Hindi',
-        code: 'hi'
+        code: 'hi',
+        name: 'हिंदी'
     }
 ]
 

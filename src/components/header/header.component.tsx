@@ -1,5 +1,4 @@
 import { useEffect }                    from 'react';
-import { useIntl }                      from 'react-intl';
 import { NavLink }                      from 'react-router-dom';
 import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook';
 import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
@@ -25,10 +24,6 @@ const HeaderComponent = (): JSX.Element => {
     const { userInfo, userToken }   = useAppSelector((state) => state.user)    //Destructure user state
     const dispatch                  = useAppDispatch()                         //Init useAppDispatch
 
-    //Logic for handling links to localized routes
-    const intl          = useIntl() //Get current locale object
-    const { locale }    = intl      //Destructure locale object
-
     //automatically authenticate user if token is found
     useEffect(() => {
         if (userToken) {
@@ -50,19 +45,19 @@ const HeaderComponent = (): JSX.Element => {
                             <button role='nav-link' data-testid='logout-link' onClick={() => dispatch(logout())}>
                                 <TextComponent textRef='nav_logout_link_title' />
                             </button>
-                            <NavLink role='nav-link' data-testid='collections-link' to={`/${locale}/collections`}>
+                            <NavLink role='nav-link' data-testid='collections-link' to={`/collections`}>
                                 <TextComponent textRef='nav_collections_link_title' />
                             </NavLink>
                         </>
                     ) : (
                         <>
-                            <NavLink role='nav-link' data-testid='landing-link' to={`/${locale}`} >
+                            <NavLink role='nav-link' data-testid='landing-link' to={`/`} >
                                 <TextComponent textRef='nav_home_link_title' />
                             </NavLink>
-                            <NavLink role='nav-link' data-testid='login-link' to={`/${locale}/login`}>
+                            <NavLink role='nav-link' data-testid='login-link' to={`/login`}>
                                 <TextComponent textRef='nav_login_link_title' />
                             </NavLink>
-                            <NavLink role='nav-link' data-testid='register-link' to={`/${locale}/register`}>
+                            <NavLink role='nav-link' data-testid='register-link' to={`/register`}>
                                 <TextComponent textRef='nav_register_link_title' />
                             </NavLink>
                         </>

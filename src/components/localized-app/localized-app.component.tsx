@@ -1,23 +1,17 @@
-import { useEffect, useMemo }               from 'react'
-import { IntlProvider }                     from 'react-intl'
-import Cookies                              from 'universal-cookie'
-import App                                  from '../../app'
-import enMessages                           from '../../localization/en.json'
-import hiMessages                           from '../../localization/hi.json'
-import viMessages                           from '../../localization/vi.json'
+import { IntlProvider, MessageFormatElement }       from 'react-intl'
+import App                                          from '../../app'
 
-/**
- * Translations by language TODO should refactor with SUPPORTED_LANGUAGES constant for SST
- */
-export const messages: { [index: string]: any } = {
-    'en': enMessages,
-    'hi': hiMessages,
-    'vi': viMessages
-}
+/** LocalizedAppComponentPropsType */
+type LocalizedAppComponentPropsType = {
 
-/** LocalizedApp Props Type */
-type LocalizedAppProps = {
-    lang: string
+    /** Current locale */
+    locale: string,
+
+    /** Translated Messages */
+    messages: Record<string, string> | Record<string, MessageFormatElement[]>,
+
+    /** defaultLocale */
+    defaultLocale: string
 }
 
 /**
@@ -30,25 +24,19 @@ type LocalizedAppProps = {
  *   <LocalizedApp lang={lang} />
  * )
  */
-const LocalizedApp = (props: LocalizedAppProps): JSX.Element => {
+const LocalizedAppComponent = (props: LocalizedAppComponentPropsType): JSX.Element => {
 
-    const { lang }  = props                                             //Destructure props
-    const cookies   = useMemo(() => new Cookies(document.cookie), [])   //Access cookies
-
-    //Monitor for changes to language and cookies and update routes accordingly
-    useEffect(() => {
-        cookies.set('lang', lang, { path: '/' })
-    }, [lang, cookies])
+    const { locale, messages, defaultLocale } = props   //destructure props
 
     return (
         <IntlProvider
-            locale={lang}
-            messages={messages[lang]}
-            defaultLocale={'en'}
+        locale={locale}
+        messages={messages}
+        defaultLocale={defaultLocale}
         >
             <App />
         </IntlProvider>
     )
 }
 
-export default LocalizedApp
+export default LocalizedAppComponent
