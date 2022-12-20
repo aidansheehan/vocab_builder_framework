@@ -1,4 +1,4 @@
-import { messages } from '../../components/localized-app/localized-app.container'
+import { messages } from '../../components/localized-app/localized-app.component'
 
 /** Language Config Type */
 type LANGUAGE_CONFIG_TYPE = {

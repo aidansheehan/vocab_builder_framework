@@ -1,5 +1,8 @@
 import SUPPORTED_LANGUAGES_TYPE from '../types/supported-languages.type'
 
+/**
+ * Defines supported language codes, display names, and will define routes to JSON resources once only required translations fetching implemented
+ */
 const SUPPORTED_LANGUAGES: SUPPORTED_LANGUAGES_TYPE = [
     {
         code: 'en',

@@ -1,11 +1,11 @@
 //Core
-import { StrictMode }       from 'react';
+import { StrictMode }       from 'react'
 import { createRoot }       from 'react-dom/client'
 //Redux
-import store                from './redux/store';
+import store                from './redux/store'
 import { Provider }         from 'react-redux'
 //Localized app
-import LocalizedAppContainer from './components/localized-app/localized-app.container';
+import LocalizedAppComponent from './components/localized-app/localized-app.component'
 
 
 /**
@@ -22,7 +22,7 @@ const root = createRoot(document.getElementById("root")!)
 root.render(
     <StrictMode>
         <Provider store={store}>
-            <LocalizedAppContainer />
+            <LocalizedAppComponent />
         </Provider>
     </StrictMode>
 )
