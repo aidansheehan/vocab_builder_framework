@@ -12,10 +12,6 @@ const SUPPORTED_LANGUAGES: SUPPORTED_LANGUAGES_TYPE = [
     {
         code: 'vi',
         name: 'Tiếng Việt',
-    },
-    {
-        code: 'hi',
-        name: 'हिंदी'
     }
 ]
 

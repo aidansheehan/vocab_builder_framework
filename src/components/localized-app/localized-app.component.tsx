@@ -1,18 +1,17 @@
 import { useEffect, useState }      from "react"
 import Cookies                      from "universal-cookie"
-import { LocaleContext }            from "../../context/locale.context"
+import LocaleContext                from "../../context/locale.context"
 import { IntlProvider }             from "react-intl"
 import App                          from '../../app'
 
 import enMessages   from '../../localization/en.json'
-import hiMessages   from '../../localization/hi.json'
 import viMessages   from '../../localization/vi.json'
+
 import { BrowserRouter } from "react-router-dom"
 
 //TODO: should pull in only required translations and update on change using react suspense to keep old texts until new JSON loaded
 export const messages: { [index: string]: any } = {
     'en': enMessages,
-    'hi': hiMessages,
     'vi': viMessages
 }
 
