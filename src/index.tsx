@@ -4,8 +4,12 @@ import { createRoot }       from 'react-dom/client'
 //Redux
 import store                from './redux/store'
 import { Provider }         from 'react-redux'
-//Localized app
-import LocalizedAppComponent from './components/localized-app/localized-app.component'
+//Providers
+import I18nProvider from './context/providers/i18n/i18n.provider'
+//React-router
+import { BrowserRouter } from 'react-router-dom'
+//Main App Component
+import App from './app'
 
 
 /**
@@ -22,7 +26,11 @@ const root = createRoot(document.getElementById("root")!)
 root.render(
     <StrictMode>
         <Provider store={store}>
-            <LocalizedAppComponent />
+            <I18nProvider>
+                <BrowserRouter>
+                    <App />
+                </BrowserRouter>
+            </I18nProvider>
         </Provider>
     </StrictMode>
 )
