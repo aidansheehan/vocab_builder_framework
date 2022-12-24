@@ -1,6 +1,6 @@
-import { Outlet }       from "react-router-dom"
-import FooterComponent  from "../../components/footer/footer.component"
-import HeaderComponent  from "../../components/header/header.component"
+import { Outlet }       from 'react-router-dom'
+import FooterComponent  from '../../components/footer/footer.component'
+import HeaderComponent  from '../../components/header/header.component'
 
 /**
  * Generic unprotected route

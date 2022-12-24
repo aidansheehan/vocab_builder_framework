@@ -1,5 +1,5 @@
-import { render } from "@testing-library/react"
-import React from "react"
+import { render } from '@testing-library/react'
+import React from 'react'
 import CollectionDetailsPage from './collection-details.page'
 
 describe('CollectionDetailsPage', () => {

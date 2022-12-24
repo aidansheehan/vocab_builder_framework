@@ -1,40 +1,39 @@
-import { render, screen }           from "@testing-library/react"
-import HeaderComponent              from "./header.component"
-import React                        from "react"
-import { Provider }                 from 'react-redux'
-import store                        from '../../redux/store'
-import { createMemoryHistory }      from 'history'
-import { MemoryRouter }             from "react-router-dom"
-import userEvent                    from '@testing-library/user-event'
+import { render as rtlRender, screen }      from '@testing-library/react'
+import HeaderComponent                      from './header.component'
+import React                                from 'react'
+import { Provider }                         from 'react-redux'
+import store                                from '../../redux/store'
+import { createMemoryHistory }              from 'history'
+import { MemoryRouter }                     from 'react-router-dom'
+import userEvent                            from '@testing-library/user-event'
+import enMessages                           from '../../localization/en.json'
+import { IntlProvider }                     from 'react-intl'
 
-jest.mock('axios', () => {
-    return {
-        defaults: {
-            headers: {
-                common: {
-                    Authorization: ""
-                }
-            }
-        }
-    }
-})
 
-const renderHeader = (iE_?: Array<string>) => {
+const renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_?: Array<string>) => {
 
-    return render(
-        <MemoryRouter initialEntries={iE_}>
-            <Provider store={store}>
-                <HeaderComponent />
-            </Provider>
-        </MemoryRouter>
+    const CombinedWrapper = ({children}) => (
+        <IntlProvider locale={locale} messages={enMessages}>
+            <MemoryRouter initialEntries={iE_}>
+                <Provider store={store} >
+                    {children}
+                </Provider>
+            </MemoryRouter>
+        </IntlProvider>
     )
+
+    return rtlRender(ui, {wrapper: CombinedWrapper, ...renderOptions})
+}
+
+const intlRoute = (r_: string) => {
+
 }
 
 describe('HeaderComponent', () => {
 
     test('HeaderComponent should exist', () => {
 
-        const { container } = renderHeader()
+        const { container } = renderComponent(<HeaderComponent/>)
 
         expect(container).toBeInTheDocument()
     })
@@ -48,27 +47,27 @@ describe('HeaderComponent', () => {
         const user = userEvent.setup()
 
         test('navigate to login', () => {
-            renderHeader()
+            renderComponent(<HeaderComponent/>)
             expect(screen.getByTestId('login-link')).toBeInTheDocument()
-            user.click(screen.getByTestId('login-link')).then(() => expect(history.push).toBeCalledWith('/login'))
+            user.click(screen.getByTestId('login-link')).then(() => expect(history.push).toBeCalledWith('en/login'))
 
         })
 
         test('navigate to register', () => {
-            renderHeader()
+            renderComponent(<HeaderComponent />)
             expect(screen.getByTestId('register-link')).toBeInTheDocument()
-            user.click(screen.getByTestId('register-link')).then(() => expect(history.push).toBeCalledWith('/register'))
+            user.click(screen.getByTestId('register-link')).then(() => expect(history.push).toBeCalledWith('/en/register'))
             
         })
 
         test('navigate to landing page', () => {
-            renderHeader()
+            renderComponent(<HeaderComponent />)
             expect(screen.getByTestId('landing-link')).toBeInTheDocument()
-            user.click(screen.getByTestId('landing-link')).then(() => expect(history.push).toBeCalledWith('/'))
+            user.click(screen.getByTestId('landing-link')).then(() => expect(history.push).toBeCalledWith('/en'))
         })
 
         test('no other navigations', async () => {
-            renderHeader()
+            renderComponent(<HeaderComponent />)
             const navLinks = await screen.findAllByRole('nav-link')
             expect(navLinks).toHaveLength(3)
         })

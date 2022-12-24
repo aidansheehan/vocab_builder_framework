@@ -1,10 +1,10 @@
 //Redux
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //Actions
-import { getUserDetails, registerUser, userLogin } from "./user.actions";
+import { getUserDetails, registerUser, userLogin } from './user.actions'
 //Types
-import { LoginResponseType }    from "./types/response.types";
-import { UserType }             from "./types/user.types";
+import { LoginResponseType }    from './types/response.types'
+import { UserType }             from './types/user.types'
 
 //Initialize userToken from localStorage TODO need to store somewhere better
 const userToken = localStorage.getItem('userToken')

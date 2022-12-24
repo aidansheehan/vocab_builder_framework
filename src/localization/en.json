@@ -1,0 +1,15 @@
+{
+    "nav_home_link_title": "Home",
+    "nav_login_link_title": "Login",
+    "nav_register_link_title": "Register",
+    "nav_collections_link_title": "My Collections",
+    "nav_logout_link_title": "Log Out",
+    "common_email_tag": "Email",
+    "common_password_tag": "Password",
+    "common_username_tag": "Username",
+    "register_confirm_password_tag": "Confirm Password",
+    "landing_text_1": "Are you tired of struggling to remember important information? Do you want to boost your studying efficiency and ace your exams? Look no further! Our flash card app is here to help.",
+    "landing_text_2": "With an easy-to-use interface and a vast selection of pre-made flash card decks, you'll be able to quickly and effectively study any subject.",
+    "landing_text_3": "Plus, you can create your own custom decks to suit your specific needs.",
+    "landing_text_4": "Don't let memorization hold you back any longer. Try our flash card app today and watch your knowledge and confidence grow!"
+}

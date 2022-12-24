@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 //Router
 import { useNavigate } from 'react-router-dom'
+//Components
+import TextComponent from '../../components/text/text.component'
 //Hooks
 import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'
@@ -27,9 +29,8 @@ const LoginPage = (): JSX.Element => {
     const { loading, error, userInfo }  = useAppSelector((state) => state.user)     //Pull out user state values to handle UI state
     const { register, handleSubmit }    = useForm()                                 //Get register and handleSubmit useForm methods
 
-    const dispatch = useAppDispatch()   //Init useDispatch
-    const navigate = useNavigate()      //Init useNavigate
-    
+    const dispatch      = useAppDispatch()      //Init useDispatch
+    const navigate      = useNavigate()         //Init useNavigate
 
     //Function to submit login form
     const submitForm = (data: UserLoginRequestType) => {
@@ -41,7 +42,7 @@ const LoginPage = (): JSX.Element => {
     useEffect(() => {
 
         if (userInfo) {
-            navigate('/collections')
+            navigate(`/collections`)
         }
     }, [ navigate, userInfo ])
 
@@ -52,7 +53,9 @@ const LoginPage = (): JSX.Element => {
             {error && <h1>Error TBD</h1>}
 
             <div>
-                <label htmlFor='email'>Email</label>
+                <label htmlFor='email'>
+                    <TextComponent textRef="common_email_tag" />
+                </label>
                 <input 
                     type='email'
                     {...register('email')}
@@ -63,7 +66,9 @@ const LoginPage = (): JSX.Element => {
             </div>
 
             <div>
-                <label htmlFor='password'>Password</label>
+                <label htmlFor='password'>
+                    <TextComponent textRef="common_password_tag" />
+                </label>
                 <input 
                     type='password'
                     {...register('password')}

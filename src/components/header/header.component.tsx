@@ -4,6 +4,8 @@ import useAppDispatch                   from '../../hooks/redux/use-app-dispatch
 import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
 import { getUserDetails }               from '../../redux/features/user/user.actions';
 import { logout }                       from '../../redux/features/user/user.slice';
+import LocaleSelectorComponent          from '../locale-selector/locale-selector.component';
+import TextComponent                    from '../text/text.component';
 import styles                           from './header.component.scss';
 
 /**
@@ -16,7 +18,7 @@ import styles                           from './header.component.scss';
  *   <HeaderComponent />
  * )
  */
-const HeaderComponent = () => {
+const HeaderComponent = (): JSX.Element => {
 
     /** Dispatch getUserDetails when userToken changes - TODO can this logic go somewhere more sensible */
     const { userInfo, userToken }   = useAppSelector((state) => state.user)    //Destructure user state
@@ -35,26 +37,35 @@ const HeaderComponent = () => {
                 <span>
                     {userInfo ? `Logged in as ${userInfo.username}` : 'You\'re not logged in'}
                 </span>
-                
-                <div>
-                    {userInfo ? (
-                        <button onClick={() => dispatch(logout())} role='nav-link' >
-                            Logout
-                        </button>
-                    ) : (
-                        <NavLink to='/login' data-testid='login-link' role='nav-link'>
-                            Login
-                        </NavLink>
-                    )}
-                </div>
 
                 <nav>
-                    <NavLink to='/' data-testid='landing-link' role='nav-link' >Landing Page</NavLink>
-                    <NavLink to='/register' data-testid='register-link' role='nav-link' >Register</NavLink>
-                    <NavLink to='/collections' role='nav-link' >Profile</NavLink>
+                    {userInfo ? (
+                        <>
+                            {/* TODO this should be generic button component */}
+                            <button role='nav-link' data-testid='logout-link' onClick={() => dispatch(logout())}>
+                                <TextComponent textRef='nav_logout_link_title' />
+                            </button>
+                            <NavLink role='nav-link' data-testid='collections-link' to={`/collections`}>
+                                <TextComponent textRef='nav_collections_link_title' />
+                            </NavLink>
+                        </>
+                    ) : (
+                        <>
+                            <NavLink role='nav-link' data-testid='landing-link' to={`/`} >
+                                <TextComponent textRef='nav_home_link_title' />
+                            </NavLink>
+                            <NavLink role='nav-link' data-testid='login-link' to={`/login`}>
+                                <TextComponent textRef='nav_login_link_title' />
+                            </NavLink>
+                            <NavLink role='nav-link' data-testid='register-link' to={`/register`}>
+                                <TextComponent textRef='nav_register_link_title' />
+                            </NavLink>
+                        </>
+                    )}
+
                 </nav>
                 
-                I am the header
+                <LocaleSelectorComponent />
             </div>
     )
 }
