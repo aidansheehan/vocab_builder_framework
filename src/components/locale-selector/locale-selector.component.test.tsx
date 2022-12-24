@@ -23,7 +23,8 @@ describe('LocaleSelectorComponent', () => {
             const MockLocaleContext = createContext({locale: mockLocale, setLocale: mockSetLocale})
 
             render(<MockLocaleContext.Provider value={{locale: mockLocale, setLocale: mockSetLocale}} ><LocaleSelectorComponent /></MockLocaleContext.Provider>)
-            user.click(screen.getByText('English')).then(() => expect(mockSetLocale).toBeCalledWith('en'))
+
+            user.click(screen.getByText('Tiếng Việt')).then(() => expect(mockSetLocale).toBeCalledWith('vi'))
 
 
         })

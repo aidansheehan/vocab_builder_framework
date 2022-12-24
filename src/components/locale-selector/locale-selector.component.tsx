@@ -21,7 +21,7 @@ const LocaleSelectorComponent = (): JSX.Element => {
     const localeChangeHandler = ((e_: React.ChangeEvent<HTMLSelectElement>) => {
         
         const { value } = e_.target //get selected value from event object
-        setLocale(value)     //update locale with new selected value
+        setLocale(value)            //update locale with new selected value
     })
 
     return (
