@@ -4,17 +4,9 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import store from '../../redux/store'
 
-jest.mock('axios', () => {
-    return {
-        defaults: {
-            headers: {
-                common: {
-                    Authorization: ''
-                }
-            }
-        }
-    }
-})
+import { IntlProvider } from 'react-intl'
+import { MemoryRouter } from 'react-router-dom'
+import enMessages from '../../localization/en.json'
 
 const mockedUseNavigate = jest.fn()
 
@@ -23,20 +15,26 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedUseNavigate
 }))
 
-const renderLoginPage = () => {
+const renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_?: Array<string>) => {
 
-    return render(
-        <Provider store={store}>
-            <LoginPage />
-        </Provider>
+    const CombinedWrapper = ({children}) => (
+        <IntlProvider locale={locale} messages={enMessages} >
+            <MemoryRouter initialEntries={iE_}>
+                <Provider store={store} >
+                    {children}
+                </Provider>
+            </MemoryRouter>
+        </IntlProvider>
     )
+
+    return render(ui, {wrapper: CombinedWrapper, ...renderOptions})
 }
 
 describe('LoginPage', () => {
 
     test('LoginPage should exist', () => {
 
-        let { container } = renderLoginPage()
+        let { container } = renderComponent(<LoginPage />)
         expect(container).toBeInTheDocument()
     })
 
@@ -50,17 +48,17 @@ describe('LoginPage', () => {
         describe('required user inputs present', () => {
 
             test('LoginPage should have email input', () => {
-                renderLoginPage()
+                renderComponent(<LoginPage />)
                 expect(screen.getByRole('email-input')).toBeInTheDocument()
             })
 
             test('LoginPage should have password input', () => {
-                renderLoginPage()
+                renderComponent(<LoginPage />)
                 expect(screen.getByRole('password-input')).toBeInTheDocument()
             })
 
             test('LoginPage should have login submit button', () => {
-                renderLoginPage()
+                renderComponent(<LoginPage />)
                 expect(screen.getByRole('login-submit')).toBeInTheDocument()
             })
         })

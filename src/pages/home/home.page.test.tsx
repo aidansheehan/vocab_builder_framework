@@ -4,18 +4,6 @@ import HomePage from './home.page'
 import store from '../../redux/store'
 import { Provider } from 'react-redux'
 
-jest.mock("axios", () => {
-    return {
-        defaults: {
-            headers: {
-                common: {
-                    Authorization: ""
-                }
-            }
-        }
-    }
-})
-
 describe('HomePage', () => {
 
     test('HomePage should exist', () => {

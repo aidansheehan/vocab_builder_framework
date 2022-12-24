@@ -16,17 +16,13 @@ import useAppSelector           from '../../hooks/redux/use-app-selector.hook'
  */
 const ProtectedRoute = () => {
 
-    const state = useAppSelector(state => state)
-    console.log('state: ', state)
-
     const { userInfo } = useAppSelector(state => state.user) //Destructure user state
-    console.log('user info: ', userInfo)
 
-    const navigate = useNavigate()  //Init useNavigate
+    const navigate      = useNavigate()     //Init useNavigate
 
     //redirect to landing page if no user is found in redux store
     useEffect(() => {
-        if (!userInfo) navigate('/')
+        if (!userInfo) navigate(`/`)
     }, [ userInfo ] )
 
     //return child route elements

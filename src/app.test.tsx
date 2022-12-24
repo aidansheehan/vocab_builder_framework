@@ -5,33 +5,28 @@ import React from 'react'
 import { Provider } from 'react-redux'
 import store from './redux/store'
 
-jest.mock("axios", () => {
-    return {
-        defaults: {
-            headers: {
-                common: {
-                    Authorization: ""
-                }
-            }
-        }
-    }
-})
+import { IntlProvider } from 'react-intl'
+import enMessages from './localization/en.json'
 
-const renderApp = (iE_?: Array<string>) => {
+const renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_?: Array<string>) => {
 
-    return render(
-        <MemoryRouter initialEntries={iE_}>
-            <Provider store={store}>
-                <App />
-            </Provider>
-        </MemoryRouter>
+    const CombinedWrapper = ({children}) => (
+        <IntlProvider locale={locale} messages={enMessages} >
+            <MemoryRouter initialEntries={iE_}>
+                <Provider store={store} >
+                    {children}
+                </Provider>
+            </MemoryRouter>
+        </IntlProvider>
     )
+
+    return render(ui, {wrapper: CombinedWrapper, ...renderOptions})
 }
 
 describe('AppComponent', () => {
 
     test('AppComponent should exist', () => {
-        let { container } = renderApp()
+        let { container } = renderComponent(<App />)
         expect(container).toBeInTheDocument()
     })
 
@@ -39,7 +34,7 @@ describe('AppComponent', () => {
 
         test('unprotected route', () => {
 
-            renderApp(['/'])
+            renderComponent(<App />, {}, ['/'])
             expect(screen.getByTestId('unprotected-route')).toBeInTheDocument()
 
         })
@@ -55,21 +50,21 @@ describe('AppComponent', () => {
 
         test('landing', () => {
 
-            renderApp(['/'])
+            renderComponent(<App />, {}, ['/'])
             expect(screen.getByTestId('landing-page')).toBeInTheDocument()
 
         })
 
         test('login', () => {
 
-            renderApp(['/login'])
+            renderComponent(<App />, {}, ['/login'])
             expect(screen.getByTestId('login-page')).toBeInTheDocument()
 
         })
 
         test('register', () => {
 
-            renderApp(['/register'])
+            renderComponent(<App />, {}, ['/register'])
             expect(screen.getByTestId('register-page')).toBeInTheDocument()
 
         })
