@@ -3,7 +3,7 @@ import { useEffect } from 'react'
 //React Hook Form (Client Side Validation)
 import { useForm } from 'react-hook-form'
 //Actions
-import { registerUser } from "../../redux/features/user/user.actions"
+import { registerUser } from '../../redux/features/user/user.actions'
 //Router
 import { useNavigate }  from 'react-router-dom'
 //Hooks

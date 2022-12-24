@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react"
-import { IntlProvider } from "react-intl"
-import Cookies from "universal-cookie"
-import LocaleContext from "../../locale.context"
+import { useEffect, useState }  from 'react'
+import { IntlProvider }         from 'react-intl'
+import Cookies                  from 'universal-cookie'
+import LocaleContext            from '../../locale.context'
 
 import enMessages from '../../../localization/en.json'
 import viMessages from '../../../localization/vi.json'

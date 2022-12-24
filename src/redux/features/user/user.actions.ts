@@ -1,6 +1,6 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
-import { RootState } from "../../store";
-import { RegisterUserRequestType, UserLoginRequestType } from "./types/request.types";
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { RootState } from '../../store'
+import { RegisterUserRequestType, UserLoginRequestType } from './types/request.types'
 
 const axios = require('axios')
 

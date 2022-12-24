@@ -1,10 +1,10 @@
-import { render as rtlRender, screen }      from "@testing-library/react"
-import HeaderComponent                      from "./header.component"
-import React                                from "react"
+import { render as rtlRender, screen }      from '@testing-library/react'
+import HeaderComponent                      from './header.component'
+import React                                from 'react'
 import { Provider }                         from 'react-redux'
 import store                                from '../../redux/store'
 import { createMemoryHistory }              from 'history'
-import { MemoryRouter }                     from "react-router-dom"
+import { MemoryRouter }                     from 'react-router-dom'
 import userEvent                            from '@testing-library/user-event'
 import enMessages                           from '../../localization/en.json'
 import { IntlProvider }                     from 'react-intl'
