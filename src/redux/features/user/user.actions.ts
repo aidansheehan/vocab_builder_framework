@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit'
-import { RootState } from '../../store'
+// import { RootState } from '../../store'
 import { RegisterUserRequestType, UserLoginRequestType } from './types/request.types'
 
 const axios = require('axios')
@@ -66,23 +66,32 @@ export const userLogin = createAsyncThunk(
     }
 )
 
+/** userRefresh action */
+// export const userRefresh = createAsyncThunk(
+//     'user/refresh',
+//     async ( accessToken: string, { rejectWithValue }) => {
+//         try {
+
+//         } catch(error) {
+
+//         }
+//     }
+// )
+
 /** getUserDetails action (for accessing protected routes) */
+//TODO can we access token from localStorage directly within this function? And remove from component logic?
 export const getUserDetails = createAsyncThunk(
 
     'user/getUserDetails',
 
-    //@ts-ignore TODO do we need callback for getUserDetails
-    async (arg, { getState, rejectWithValue }) => {
+    async (userToken: string, { rejectWithValue }) => {
 
         try {
-
-            //Get user data from store
-            const { user } = getState() as RootState
 
             //Configure authorization header with user's token
             const config = {
                 headers: {
-                    Authorization: `Bearer ${user.userToken}`
+                    Authorization: `Bearer ${userToken}`
                     // 'x-access-token': user.userToken
 
                 },

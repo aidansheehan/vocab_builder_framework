@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //Actions
 import { getUserDetails, registerUser, userLogin } from './user.actions'
 //Types
-import { LoginResponseType }    from './types/response.types'
+import { LoginResponseType, UserDetailsResponseType }    from './types/response.types'
 import { UserType }             from './types/user.types'
 
 //Initialize userToken from localStorage TODO need to store somewhere better
@@ -16,7 +16,7 @@ const userToken = localStorage.getItem('userToken')
 const initialState: UserType = {
     loading: false,
     userInfo: null,
-    userToken,    //for storing the JWT
+    userToken,    //for storing the JWT TODO remove? shouldn't be stored in redux as can be read in redux dev tools.
     error: null,
     success: false
 }
@@ -81,8 +81,17 @@ const userSlice = createSlice({
             state.loading = true
         })
         //fulfilled TODO decide what to return from backend and type response need to send user info on getUserDetails!
-        builder.addCase(getUserDetails.fulfilled, (state) => {
+        builder.addCase(getUserDetails.fulfilled, (state, { payload }: PayloadAction<UserDetailsResponseType>) => {
             state.loading   = false
+
+            const { user } = payload.data
+
+            state.userInfo = {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                roles: [ user.role ],   //TODO type on backend and once returns non unique array this can be roles: user.roles
+            }
             // state.userInfo  = payload
         })
         //rejected

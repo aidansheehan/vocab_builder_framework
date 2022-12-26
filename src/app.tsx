@@ -1,8 +1,13 @@
+//Core
+import { useEffect } from 'react'
 //Router
 import { useRoutes } from 'react-router-dom'
+//Redux
+import { getUserDetails } from './redux/features/user/user.actions'
+import useAppDispatch from './hooks/redux/use-app-dispatch.hook'
 //Routes
-import ProtectedRoute           from './routes/protected.route/protected.route'
-import UnprotectedRoute         from './routes/unprotected.route/unprotected.route'
+import PrivateRoute from './routes/private.route'
+import PublicRoute  from './routes/public.route'
 //Pages
 import HomePage                 from './pages/home/home.page'
 import LandingPage              from './pages/landing/landing.page'
@@ -26,15 +31,26 @@ import './global.scss'
 */
 const App = () => {
 
+    const accessToken = localStorage.getItem('userToken')   //Get access token
+
+    const dispatch = useAppDispatch()  //Init useAppDispatch
+
+    //Automatically authenticate user if token is found
+    useEffect(() => {
+        if (accessToken) {
+            dispatch(getUserDetails(accessToken))
+        }
+    }, [ accessToken, dispatch ] )
+
     const routes = useRoutes([
         {
             path: '/',
-            element: <UnprotectedRoute />,
+            element: <PublicRoute />,
             errorElement: <ErrorPage />,
             children: [
                 {
                     index: true,
-                    element: <LandingPage />
+                    element: <LandingPage /> 
                 },
                 {
                     path: '/login',
@@ -48,7 +64,7 @@ const App = () => {
         },
         {
             path: '/collections',
-            element: <ProtectedRoute />,
+            element: <PrivateRoute />,
             errorElement: <ErrorPage />,
             children: [
                 {

@@ -2,7 +2,7 @@
 export type UserInfoType = {
 
     /** User ID */
-    id: number,
+    id: string,
 
     /** Username (for display, not unique) */
     username: string,
