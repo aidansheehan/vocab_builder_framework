@@ -1,9 +1,11 @@
 //Core
 import { useEffect } from 'react'
 //Router
-import { Outlet, useLocation, useNavigate, useRoutes } from 'react-router-dom'
+import { useLocation, useNavigate, useRoutes } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
+//Layout
+import AppLayout from './layouts/app.layout'
 //Pages
 import HomePage                 from './pages/home/home.page'
 import LandingPage              from './pages/landing/landing.page'
@@ -15,21 +17,6 @@ import CollectionEditorPage     from './pages/collection-editor/collection-edito
 import CreateCollectionPage     from './pages/create-collection/create-collection.page'
 //Stylesheets TODO would be better if global module
 import './global.scss'
-
-//TODO should be own component
-import HeaderComponent from './components/header/header.component'
-import FooterComponent from './components/footer/footer.component'
-
-const LayoutComponent = () => {
-
-    return (
-        <>
-            <HeaderComponent />
-            <Outlet />
-            <FooterComponent />
-        </>
-    )
-}
 
 /**
  * Main app component
@@ -79,7 +66,7 @@ const App = () => {
     const routes = useRoutes([
         {
             path: '/',
-            element: <LayoutComponent />,
+            element: <AppLayout />,
             errorElement: <ErrorPage />,
             children: [
                 {
