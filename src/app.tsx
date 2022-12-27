@@ -38,7 +38,7 @@ const App = () => {
     //Automatically authenticate user if token is found
     useEffect(() => {
         if (accessToken) {
-            dispatch(getUserDetails(accessToken))
+            dispatch(getUserDetails())
         }
     }, [ accessToken, dispatch ] )
 

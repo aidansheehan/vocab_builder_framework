@@ -84,7 +84,9 @@ export const getUserDetails = createAsyncThunk(
 
     'user/getUserDetails',
 
-    async (userToken: string, { rejectWithValue }) => {
+    async (_, { rejectWithValue }) => {
+
+        const userToken = localStorage.getItem('userToken')
 
         try {
 
