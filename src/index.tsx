@@ -6,10 +6,8 @@ import store                from './redux/store'
 import { Provider }         from 'react-redux'
 //Providers
 import I18nProvider from './context/providers/i18n/i18n.provider'
-//React-router
-import { BrowserRouter } from 'react-router-dom'
-//Main App Component
-import App from './app'
+//Components
+import PreloaderComponent from './components/preloader/preloader.component'
 
 
 /**
@@ -27,9 +25,7 @@ root.render(
     <StrictMode>
         <Provider store={store}>
             <I18nProvider>
-                <BrowserRouter>
-                    <App />
-                </BrowserRouter>
+                <PreloaderComponent />
             </I18nProvider>
         </Provider>
     </StrictMode>

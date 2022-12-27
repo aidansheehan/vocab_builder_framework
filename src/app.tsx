@@ -1,13 +1,9 @@
 //Core
 import { useEffect } from 'react'
 //Router
-import { useRoutes } from 'react-router-dom'
+import { Outlet, useLocation, useNavigate, useRoutes } from 'react-router-dom'
 //Redux
-import { getUserDetails } from './redux/features/user/user.actions'
-import useAppDispatch from './hooks/redux/use-app-dispatch.hook'
-//Routes
-import PrivateRoute from './routes/private.route'
-import PublicRoute  from './routes/public.route'
+import useAppSelector from './hooks/redux/use-app-selector.hook'
 //Pages
 import HomePage                 from './pages/home/home.page'
 import LandingPage              from './pages/landing/landing.page'
@@ -20,6 +16,21 @@ import CreateCollectionPage     from './pages/create-collection/create-collectio
 //Stylesheets TODO would be better if global module
 import './global.scss'
 
+//TODO should be own component
+import HeaderComponent from './components/header/header.component'
+import FooterComponent from './components/footer/footer.component'
+
+const LayoutComponent = () => {
+
+    return (
+        <>
+            <HeaderComponent />
+            <Outlet />
+            <FooterComponent />
+        </>
+    )
+}
+
 /**
  * Main app component
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
@@ -31,21 +42,44 @@ import './global.scss'
 */
 const App = () => {
 
-    const accessToken = localStorage.getItem('userToken')   //Get access token
+    const { userInfo } = useAppSelector(state => state.user)    //Get userInfo
 
-    const dispatch = useAppDispatch()  //Init useAppDispatch
+    const location = useLocation()  //Init useLocation
+    const navigate = useNavigate()  //Init useNavigate
 
-    //Automatically authenticate user if token is found
+    /** Route Guard Redirect Logic */
     useEffect(() => {
-        if (accessToken) {
-            dispatch(getUserDetails())
+
+        //If user is logged in
+        if (!!userInfo) {
+
+            //If user is trying to access public route
+            if (!location.pathname.includes('collections')) {
+
+                //Redirect to user home page
+                navigate('/collections')
+                // console.log(' should nav to collections ')
+            }
         }
-    }, [ accessToken, dispatch ] )
+
+        //If user is not logged in
+        if (!userInfo) {
+
+            //If user is trying to access private route
+            if (location.pathname.includes('collections')) {
+
+                //Redirect to login page
+                navigate('/login')
+                // console.log(' should nav to login ')
+            }
+        }
+
+    }, [ userInfo, navigate ] )
 
     const routes = useRoutes([
         {
             path: '/',
-            element: <PublicRoute />,
+            element: <LayoutComponent />,
             errorElement: <ErrorPage />,
             children: [
                 {
@@ -60,31 +94,29 @@ const App = () => {
                     path: '/register',
                     element: <RegisterPage />
                 },
+                {
+                    path: '/collections',
+                    children: [
+                        {
+                            index: true,
+                            element: <HomePage />
+                        },
+                        {
+                            path: 'new',
+                            element: <CreateCollectionPage />
+                        },
+                        {
+                            path: ':collectionId',
+                            element: <CollectionDetailsPage />
+                        },
+                        {
+                            path: ':collectionId/edit',
+                            element: <CollectionEditorPage />
+                        }
+                    ]
+                }
             ],
         },
-        {
-            path: '/collections',
-            element: <PrivateRoute />,
-            errorElement: <ErrorPage />,
-            children: [
-                {
-                    index: true,
-                    element: <HomePage />
-                },
-                {
-                    path: 'new',
-                    element: <CreateCollectionPage />
-                },
-                {
-                    path: ':collectionId',
-                    element: <CollectionDetailsPage />
-                },
-                {
-                    path: ':collectionId/edit',
-                    element: <CollectionEditorPage />
-                }
-            ]
-        }
     ])
 
     return routes
