@@ -22,33 +22,35 @@ export type LoginResponseType = {
 export type UserDetailsResponseType = {
 
     /** Response successful */
-    status: string,
+    status: number,
     
     /** Data */
     data: {
 
-        /** userinfo TODO should be UserInfoType from user types once finalised on backend VBF-37 */
-        user: {
+        status: string
 
-            /** Date user created */
-            createdAt: string,
+        /** User data */
+        data: {
+            user: {
+                /** Date user created */
+                createdAt: string,
 
-            /** User email */
-            email: string,
+                /** User email */
+                email: string,
 
-            /** User role TODO see roles on LoginResponseType */
-            role: string,
+                /** User role TODO see roles on LoginResponseType */
+                role: string,
 
-            /** Date last updated */
-            updatedAt: string,
+                /** Date last updated */
+                updatedAt: string,
 
-            /** Username */
-            username: string,
+                /** Username */
+                username: string,
 
-            /** UserID */
-            _id: string
+                /** UserID */
+                _id: string
+            }
         }
-        createdAt: string,
 
     }
 }

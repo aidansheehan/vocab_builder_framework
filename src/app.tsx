@@ -45,7 +45,6 @@ const App = () => {
 
                 //Redirect to user home page
                 navigate('/collections')
-                // console.log(' should nav to collections ')
             }
         }
 
@@ -57,7 +56,6 @@ const App = () => {
 
                 //Redirect to login page
                 navigate('/login')
-                // console.log(' should nav to login ')
             }
         }
 

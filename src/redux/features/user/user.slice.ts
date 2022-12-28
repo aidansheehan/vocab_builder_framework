@@ -84,7 +84,7 @@ const userSlice = createSlice({
         builder.addCase(getUserDetails.fulfilled, (state, { payload }: PayloadAction<UserDetailsResponseType>) => {
             state.loading   = false
 
-            const { user } = payload.data
+            const { user } = payload.data.data
 
             state.userInfo = {
                 id: user._id,
@@ -92,7 +92,6 @@ const userSlice = createSlice({
                 email: user.email,
                 roles: [ user.role ],   //TODO type on backend and once returns non unique array this can be roles: user.roles
             }
-            // state.userInfo  = payload
         })
         //rejected
         builder.addCase(getUserDetails.rejected, state => {
