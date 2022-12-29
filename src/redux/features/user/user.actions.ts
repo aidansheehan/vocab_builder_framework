@@ -60,7 +60,7 @@ export const getUserDetails = createAsyncThunk(
 
             const data = await PrivateHttpClient.get('users/me')
 
-            return data
+            return data.data
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)

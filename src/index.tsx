@@ -1,5 +1,3 @@
-//Core
-import { StrictMode }       from 'react'
 import { createRoot }       from 'react-dom/client'
 //Redux
 import store                from './redux/store'
@@ -22,11 +20,9 @@ import PreloaderComponent from './components/preloader/preloader.component'
 const root = createRoot(document.getElementById("root")!)
 
 root.render(
-    <StrictMode>
         <Provider store={store}>
             <I18nProvider>
                 <PreloaderComponent />
             </I18nProvider>
         </Provider>
-    </StrictMode>
 )

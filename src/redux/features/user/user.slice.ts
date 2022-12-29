@@ -84,7 +84,7 @@ const userSlice = createSlice({
         builder.addCase(getUserDetails.fulfilled, (state, { payload }: PayloadAction<UserDetailsResponseType>) => {
             state.loading   = false
 
-            const { user } = payload.data.data
+            const { user } = payload.data
 
             state.userInfo = {
                 id: user._id,

@@ -60,8 +60,8 @@ const PrivateHttpClient = axios.create({
 PrivateHttpClient.interceptors.request.use(
     async (config: AxiosRequestConfig) => {
 
-        //Send cookie credentials with request
-        config.withCredentials = true
+        config.withCredentials          = true                  //Send cookie credentials with request
+        config.headers['Content-Type']  = 'application/json'    //Configure content-type as json
 
         //Get the access token from local storage
         const accessToken = localStorage.getItem('userToken')
