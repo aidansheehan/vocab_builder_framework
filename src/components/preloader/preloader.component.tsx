@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react"
-import { BrowserRouter } from "react-router-dom"
-import App from "../../app"
-import useAppDispatch from "../../hooks/redux/use-app-dispatch.hook"
-import { getUserDetails/*, userRefresh */} from "../../redux/features/user/user.actions"
+import { useEffect, useState }  from 'react'
+import App                      from '../../app'
+import useAppDispatch           from '../../hooks/redux/use-app-dispatch.hook'
+import { getUserDetails }       from '../../redux/features/user/user.actions'
 
 /**
  * Preloader Component
@@ -36,9 +35,7 @@ const PreloaderComponent = () => {
                 ?
                 <div>Loading...</div>
                 :
-                <BrowserRouter>
-                    <App />
-                </BrowserRouter>
+                <App />
             }
         </div>
     )
