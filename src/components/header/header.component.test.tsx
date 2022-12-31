@@ -1,33 +1,8 @@
-import { render as rtlRender, screen }      from '@testing-library/react'
+import { screen }                           from '@testing-library/react'
 import HeaderComponent                      from './header.component'
 import React                                from 'react'
-import { Provider }                         from 'react-redux'
-import store                                from '../../redux/store'
 import { createMemoryHistory }              from 'history'
-import { MemoryRouter }                     from 'react-router-dom'
 import userEvent                            from '@testing-library/user-event'
-import enMessages                           from '../../localization/en.json'
-import { IntlProvider }                     from 'react-intl'
-
-
-const renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_?: Array<string>) => {
-
-    const CombinedWrapper = ({children}) => (
-        <IntlProvider locale={locale} messages={enMessages}>
-            <MemoryRouter initialEntries={iE_}>
-                <Provider store={store} >
-                    {children}
-                </Provider>
-            </MemoryRouter>
-        </IntlProvider>
-    )
-
-    return rtlRender(ui, {wrapper: CombinedWrapper, ...renderOptions})
-}
-
-const intlRoute = (r_: string) => {
-
-}
 
 describe('HeaderComponent', () => {
 

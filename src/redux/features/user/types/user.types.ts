@@ -24,7 +24,7 @@ export type UserType = {
     /** User Info Object */
     userInfo: UserInfoType,
 
-    /** User's Access Token (JWT) */
+    /** User's Access Token (JWT)  TODO can this be removed? */
     userToken: string | null,
 
     /** Error */

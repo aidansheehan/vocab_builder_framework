@@ -1,0 +1,1 @@
+declare function renderComponent(ui: any, config?: any, iE_?: any ): any;

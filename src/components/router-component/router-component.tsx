@@ -1,5 +1,5 @@
 import { BrowserRouter }    from 'react-router-dom'
-import RootComponent        from '../root-component/root.component'
+import RootComponent        from '../root-component/root-component'
 
 /**
  * Component for intiialising router

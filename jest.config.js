@@ -13,7 +13,12 @@ const config = {
     },
     moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'scss', 'json', 'node'],
     setupFilesAfterEnv: [ './jest-setup.js' ],
-    testEnvironment: 'jsdom'
+    testEnvironment: 'jsdom',
+    globals: {
+        "ts-jest": {
+            tsconfig: "tsconfig.test.json"
+        }
+    }
 }
 
 module.exports = config
