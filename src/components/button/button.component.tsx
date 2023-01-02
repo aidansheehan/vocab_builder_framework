@@ -26,7 +26,7 @@ type ButtonComponentPropsType = {
  * @component
  * @example
  * let onClick=() => alert('I got clicked');
- * let text = 'Example Button';
+ * let text = 'text-reference';
  * return (
  *   <ButtonComponent onClick={onClick} text={text} />)
  */
