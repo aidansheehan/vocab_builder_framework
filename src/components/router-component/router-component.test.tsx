@@ -28,11 +28,7 @@ describe('RouterComponent', () => {
 
     it('renders the RootComponent', async () => {
 
-        // act(() => {
-            const { container } = renderRouter(<RouterComponent />)
-            
-        // })
-
+        const { container } = renderRouter(<RouterComponent />)
         expect(container).toBeInTheDocument()
 
     })

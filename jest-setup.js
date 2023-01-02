@@ -7,7 +7,7 @@ import enMessages from './src/localization/en.json'
 import store from './src/redux/store'
 const axios = require('axios')
 
-//TODO should be provider -> I18nProvider -> Router
+//Function to render components with required wrapper functions
 global.renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_) => {
 
     const CombinedWrapper = ({children}) => (
