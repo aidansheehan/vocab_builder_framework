@@ -1,0 +1,13 @@
+$background-color: #649DFF;
+$text-color: #FFF;
+
+$opacity-unselected: 0.8;
+
+.button {
+    cursor: pointer;
+    border-color: transparent;
+    background-color: $background-color;
+    color: $text-color;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
