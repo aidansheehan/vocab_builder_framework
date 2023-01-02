@@ -3,20 +3,13 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //Actions
 import { getUserDetails, registerUser, userLogin } from './user.actions'
 //Types
-import { LoginResponseType }    from './types/response.types'
-import { UserType }             from './types/user.types'
-
-//Initialize userToken from localStorage TODO need to store somewhere better
-const userToken = localStorage.getItem('userToken')
-? localStorage.getItem('userToken')
-: null
-
+import { LoginResponseType, UserDetailsResponseType }   from './types/response.types'
+import { UserType }                                     from './types/user.types'
 
 /** Initial State */
 const initialState: UserType = {
     loading: false,
     userInfo: null,
-    userToken,    //for storing the JWT
     error: null,
     success: false
 }
@@ -34,7 +27,6 @@ const userSlice = createSlice({
                 localStorage.removeItem('userToken') //Deletes token from storage
                 state.loading       = false
                 state.userInfo      = null
-                state.userToken     = null
                 state.error         = null
         },
     },
@@ -50,7 +42,6 @@ const userSlice = createSlice({
         builder.addCase(userLogin.fulfilled, (state, { payload }: PayloadAction<LoginResponseType>) => {
             state.loading   = false
             state.userInfo  = { id: payload.id, username: payload.username, email: payload.email, roles: payload.roles }
-            state.userToken = payload.accessToken
         })
         //rejected TODO type response once finalized from backend
         builder.addCase(userLogin.rejected, (state, { payload }: PayloadAction<any>) => {
@@ -81,9 +72,17 @@ const userSlice = createSlice({
             state.loading = true
         })
         //fulfilled TODO decide what to return from backend and type response need to send user info on getUserDetails!
-        builder.addCase(getUserDetails.fulfilled, (state) => {
+        builder.addCase(getUserDetails.fulfilled, (state, { payload }: PayloadAction<UserDetailsResponseType>) => {
             state.loading   = false
-            // state.userInfo  = payload
+
+            const { user } = payload.data
+
+            state.userInfo = {
+                id: user._id,
+                username: user.username,
+                email: user.email,
+                roles: [ user.role ],   //TODO type on backend and once returns non unique array this can be roles: user.roles
+            }
         })
         //rejected
         builder.addCase(getUserDetails.rejected, state => {

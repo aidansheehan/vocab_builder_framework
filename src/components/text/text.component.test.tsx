@@ -31,7 +31,6 @@ describe('TextComponent', () => {
     test('TextComponent should display localized text', () => {
         let { container } = renderWithReactIntl(<TextComponent textRef={'nav_home_link_title'} />, 'en')
 
-        console.log('container: ', container.textContent)
         expect(container).toHaveTextContent('test')
     })
 

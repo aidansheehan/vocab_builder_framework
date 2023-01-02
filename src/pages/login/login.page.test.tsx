@@ -1,12 +1,6 @@
 import LoginPage from './login.page'
-import { render, screen } from '@testing-library/react'
+import { screen } from '@testing-library/react'
 import React from 'react'
-import { Provider } from 'react-redux'
-import store from '../../redux/store'
-
-import { IntlProvider } from 'react-intl'
-import { MemoryRouter } from 'react-router-dom'
-import enMessages from '../../localization/en.json'
 
 const mockedUseNavigate = jest.fn()
 
@@ -14,21 +8,6 @@ jest.mock('react-router-dom', () => ({
     ...jest.requireActual('react-router-dom') as any,
     useNavigate: () => mockedUseNavigate
 }))
-
-const renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_?: Array<string>) => {
-
-    const CombinedWrapper = ({children}) => (
-        <IntlProvider locale={locale} messages={enMessages} >
-            <MemoryRouter initialEntries={iE_}>
-                <Provider store={store} >
-                    {children}
-                </Provider>
-            </MemoryRouter>
-        </IntlProvider>
-    )
-
-    return render(ui, {wrapper: CombinedWrapper, ...renderOptions})
-}
 
 describe('LoginPage', () => {
 

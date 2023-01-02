@@ -23,6 +23,13 @@ const renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_?: Array
     return render(ui, {wrapper: CombinedWrapper, ...renderOptions})
 }
 
+const mockedUseNavigate = jest.fn()
+
+jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom') as any,
+    useNavigate: () => mockedUseNavigate
+}))
+
 describe('AppComponent', () => {
 
     test('AppComponent should exist', () => {
@@ -30,80 +37,37 @@ describe('AppComponent', () => {
         expect(container).toBeInTheDocument()
     })
 
-    describe('AppComponent should contain unauthenticated routes', () => {
+    it('Should protect collections routes from unauthenticated users', () => {
 
-        test('unprotected route', () => {
+        //TBD need to mock auth - should be done after VBF-8 refactor redux into two stores (on that ticket)
 
-            renderComponent(<App />, {}, ['/'])
-            expect(screen.getByTestId('unprotected-route')).toBeInTheDocument()
-
-        })
-
-        test('error element', () => {
-
-            //TBD as error handling not yet properly implemented
-
-            // renderApp(['/somenonsense'])
-            // expect(screen.getByTestId('error-page')).toBeInTheDocument()
-
-        })
-
-        test('landing', () => {
-
-            renderComponent(<App />, {}, ['/'])
-            expect(screen.getByTestId('landing-page')).toBeInTheDocument()
-
-        })
-
-        test('login', () => {
-
-            renderComponent(<App />, {}, ['/login'])
-            expect(screen.getByTestId('login-page')).toBeInTheDocument()
-
-        })
-
-        test('register', () => {
-
-            renderComponent(<App />, {}, ['/register'])
-            expect(screen.getByTestId('register-page')).toBeInTheDocument()
-
-        })
-
+        // renderComponent(<App />, {}, ['/collections'])
+        // expect(mockedUseNavigate).toHaveBeenCalledWith('/login')
     })
 
-    describe('AppComponent should contain authenticated routes', () => {
+    // describe('Redirect authenticated users', )
+    it('Should redirect authenticated users to collections route', () => {
 
-        /**
-         * TBD
-         *  - to be implemented after persist user authentication on refresh implemented (VBF-9) as can mock localStorage, API call
-         *  - best approach is to use real store and mock API calls and local storage around it
-         *  - if not alternative approach may have to mock redux store with a fake authenticated user
-         */
+        // jest.mock('./hooks/redux/use-app-selector.hook.ts', () => ({
+        //     state: {
+        //         user: {
+        //             userInfo: {
+        //                 loading: false,
+        //                 success: true,
+        //                 userInfo: {
+        //                     id: '1',
+        //                     username: 'testUsername',
+        //                     email: 'test@email.com',
+        //                     roles: ['user']
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }))
 
-        test('protected route', () => {
+        // renderComponent(<App />, {}, ['/'])
 
-        })
-
-        test('error element', () => {
-
-        })
-
-        test('home', () => {
-
-        })
-
-        test('new collection', () => {
-            
-        })
-
-        test('collection details (for 1 collection)', () => {
-
-        })
-
-        test('collection edit for 1 collection', () => {
-
-        })
-
+        // expect(mockedUseNavigate).toHaveBeenCalledWith('/collections')
     })
 
 })

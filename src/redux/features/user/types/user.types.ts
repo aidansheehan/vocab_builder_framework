@@ -2,7 +2,7 @@
 export type UserInfoType = {
 
     /** User ID */
-    id: number,
+    id: string,
 
     /** Username (for display, not unique) */
     username: string,
@@ -23,9 +23,6 @@ export type UserType = {
 
     /** User Info Object */
     userInfo: UserInfoType,
-
-    /** User's Access Token (JWT) */
-    userToken: string | null,
 
     /** Error */
     error: any, //TBD
