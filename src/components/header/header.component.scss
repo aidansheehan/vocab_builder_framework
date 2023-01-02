@@ -1,3 +1,47 @@
+$header-background: #E0E7EC;
+$header-border: #94A2Ab;
+$header-height: 30px;
+$header-text: rgba(0, 0, 0, 0.8);
+
 .header {
-    background-color: pink;
+    background-color: $header-background;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: $header-border;
+    display: flex;
+    height: $header-height;
+    color: $header-text;
+    >.headerLeft {
+        height: inherit;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 50%;
+        >.logo {
+            margin-right: 5px;
+        }
+    }
+    >.headerRight {
+        height: inherit;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 50%;
+        > nav {
+            > .logoutButton {
+                height: 20px;
+                box-sizing: border-box;
+                margin: 0px 5px;
+                padding: 0;
+                background-color: unset;
+                color: inherit;
+            }
+            > a {
+                color: inherit;
+                text-decoration: none;
+                padding: 0;
+                margin: 5px;
+            }   
+        }
+    }
 }
