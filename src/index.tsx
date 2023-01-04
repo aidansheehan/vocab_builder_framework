@@ -7,6 +7,8 @@ import { Provider }         from 'react-redux'
 import I18nProvider from './context/providers/i18n/i18n.provider'
 //Components
 import RouterComponent from './components/router-component/router-component'
+//Font Awesome
+import FontAwesomeIcons from './functions/fontawesome-icons.function'
 
 
 /**
@@ -27,3 +29,6 @@ root.render(
             </I18nProvider>
         </Provider>
 )
+
+//Expose core icons across framework
+FontAwesomeIcons()

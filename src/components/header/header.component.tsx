@@ -3,6 +3,7 @@ import useAppDispatch                   from '../../hooks/redux/use-app-dispatch
 import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
 import { logout }                       from '../../redux/features/user/user.slice';
 import ButtonComponent                  from '../button/button.component';
+import IconComponent                    from '../icon/icon.component';
 import LocaleSelectorComponent          from '../locale-selector/locale-selector.component';
 import TextComponent                    from '../text/text.component';
 import styles                           from './header.component.scss';
@@ -38,7 +39,8 @@ const HeaderComponent = (): JSX.Element => {
                         {userInfo ? (
                             <>
                                 <NavLink role='nav-link' data-testid='collections-link' to={`/collections`}>
-                                    <TextComponent textRef='nav_collections_link' />
+                                    {/* <TextComponent textRef='nav_collections_link' /> */}
+                                    <IconComponent icon={{icon: 'house'}} />
                                 </NavLink>
                                 <NavLink role='nav-link' to={'/collections/new'}>
                                     <TextComponent textRef='nav_new-collection_link' />
@@ -52,7 +54,8 @@ const HeaderComponent = (): JSX.Element => {
                         ) : (
                             <>
                                 <NavLink role='nav-link' data-testid='landing-link' to={`/`} >
-                                    <TextComponent textRef='nav_home_link' />
+                                    {/* <TextComponent textRef='nav_home_link' /> */}
+                                    <IconComponent icon={{icon: 'house'}} />
                                 </NavLink>
                                 <NavLink role='nav-link' data-testid='login-link' to={`/login`}>
                                     <TextComponent textRef='nav_login_link' />
