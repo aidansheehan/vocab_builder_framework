@@ -1,7 +1,10 @@
 //React Hook Form (Client Side Validation)
 import { useForm } from 'react-hook-form'
+//Router
+import { useNavigate } from 'react-router-dom'
 //Components
-import TextComponent from '../../components/text/text.component'
+import TextComponent    from '../../components/text/text.component'
+import ButtonComponent  from '../../components/button/button.component'
 //Hooks
 import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'
@@ -26,6 +29,7 @@ const LoginPage = (): JSX.Element => {
     const { register, handleSubmit }    = useForm()                                 //Get register and handleSubmit useForm methods
 
     const dispatch      = useAppDispatch()      //Init useDispatch
+    const navigate      = useNavigate()         //Init useNavigate
 
     //Function to submit login form
     const submitForm = (data: UserLoginRequestType) => {
@@ -36,6 +40,8 @@ const LoginPage = (): JSX.Element => {
     return (
 
         <form onSubmit={handleSubmit(submitForm)} data-testid='login-page'>
+
+            <TextComponent textRef='login_header' />
 
             {error && <h1>Error TBD</h1>}
 
@@ -66,7 +72,12 @@ const LoginPage = (): JSX.Element => {
 
             </div>
 
-            <button type='submit' role='login-submit' disabled={loading} >Login</button>
+            <button type='submit' role='login-submit' disabled={loading} ><TextComponent textRef='nav_login_link' /></button>
+
+            <hr />
+
+            <TextComponent textRef='login_signup_link' />
+            <ButtonComponent textRef='nav_register_link' onClick={() => navigate('/register')} />
 
         </form>
     )

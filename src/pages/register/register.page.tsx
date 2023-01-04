@@ -63,6 +63,8 @@ const RegisterPage = (): JSX.Element => {
     return (
         <div data-testid='register-page' >
 
+            <TextComponent textRef='register_header' />
+
             <form onSubmit={handleSubmit(submitForm)}>
 
                 {/* Render error message if any TBD */}
@@ -126,7 +128,6 @@ const RegisterPage = (): JSX.Element => {
 
             </form>
 
-            I am the register page.
         </div>
     )
 }

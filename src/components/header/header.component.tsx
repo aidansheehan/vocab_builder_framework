@@ -20,16 +20,15 @@ import styles                           from './header.component.scss';
  */
 const HeaderComponent = (): JSX.Element => {
 
-    const { userInfo }   = useAppSelector((state) => state.user)    //Destructure user state
-    
-    const dispatch                  = useAppDispatch()                         //Init useAppDispatch
+    const { userInfo }   = useAppSelector((state) => state.user) //Destructure user state
+
+    const dispatch = useAppDispatch() //Init useAppDispatch
 
     return (
             <div className={styles.header}>
 
                 <div className={styles.headerLeft} >
                     <span className={styles.logo}>VOCAB BUILDER</span>
-                    <LocaleSelectorComponent />
                 </div>
 
 
@@ -38,31 +37,34 @@ const HeaderComponent = (): JSX.Element => {
                     <nav>
                         {userInfo ? (
                             <>
+                                <LocaleSelectorComponent style={styles.headerLocaleSelector} />
                                 <NavLink role='nav-link' data-testid='collections-link' to={`/collections`}>
-                                    {/* <TextComponent textRef='nav_collections_link' /> */}
+                                    {/* TODO should render <TextComponent textRef='nav_collections_link' /> on hover */}
                                     <IconComponent icon={{icon: 'house'}} />
                                 </NavLink>
                                 <NavLink role='nav-link' to={'/collections/new'}>
-                                    <TextComponent textRef='nav_new-collection_link' />
+                                    {/* TODO should render <TextComponent textRef='nav_new-collection_link' /> on hover */}
+                                    <IconComponent icon={{icon: 'file-circle-plus'}} />
                                 </NavLink>
                                 <ButtonComponent
-                                    textRef='nav_logout_link'
+                                    // textRef='nav_logout_link' TODO should render as text component popup on hover
+                                    icon='right-from-bracket'
                                     onClick={() => dispatch(logout())}
                                     style={styles.logoutButton}
                                 />
                             </>
                         ) : (
                             <>
-                                <NavLink role='nav-link' data-testid='landing-link' to={`/`} >
-                                    {/* <TextComponent textRef='nav_home_link' /> */}
-                                    <IconComponent icon={{icon: 'house'}} />
-                                </NavLink>
+                                <LocaleSelectorComponent style={styles.headerLocaleSelector} />
                                 <NavLink role='nav-link' data-testid='login-link' to={`/login`}>
                                     <TextComponent textRef='nav_login_link' />
                                 </NavLink>
-                                <NavLink role='nav-link' data-testid='register-link' to={`/register`}>
-                                    <TextComponent textRef='nav_register_link' />
+
+                                <NavLink role='nav-link' data-testid='landing-link' to={`/`} >
+                                    {/* TODO should render <TextComponent textRef='nav_home_link' /> on hover */}
+                                    <IconComponent icon={{icon: 'house'}} />
                                 </NavLink>
+
                             </>
                         )}
 

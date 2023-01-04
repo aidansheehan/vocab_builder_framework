@@ -1,7 +1,7 @@
 $header-background: #E0E7EC;
-$header-border: #94A2Ab;
+$header-border: #94A2AB;
+$header-color: #94A2AB;
 $header-height: 30px;
-$header-text: rgba(0, 0, 0, 0.8);
 
 .header {
     background-color: $header-background;
@@ -10,13 +10,13 @@ $header-text: rgba(0, 0, 0, 0.8);
     border-bottom-color: $header-border;
     display: flex;
     height: $header-height;
-    color: $header-text;
+    color: $header-color;
     >.headerLeft {
         height: inherit;
         display: flex;
         justify-content: flex-start;
         align-items: center;
-        width: 50%;
+        width: 40%;
         >.logo {
             margin-right: 5px;
         }
@@ -26,8 +26,11 @@ $header-text: rgba(0, 0, 0, 0.8);
         display: flex;
         justify-content: flex-end;
         align-items: center;
-        width: 50%;
+        width: 60%;
         > nav {
+            > .headerLocaleSelector {
+                margin-right: 5px;
+            }
             > .logoutButton {
                 height: 20px;
                 box-sizing: border-box;

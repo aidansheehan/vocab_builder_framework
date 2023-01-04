@@ -1,6 +1,16 @@
 import { useContext }           from 'react'
 import LocaleContext            from '../../context/locale.context'
 import SUPPORTED_LANGUAGES      from '../../localization/constants/supported-languages.constant'
+import classNames               from 'classnames'
+import styles                   from './locale-selector.component.scss'
+
+/** LocaleSelectorComponentProps type */
+type LocaleSelectorProps = {
+
+    /** Additional styles to be applied */
+    style?: string
+
+}
 
 /**
  * Locale selector component
@@ -12,10 +22,12 @@ import SUPPORTED_LANGUAGES      from '../../localization/constants/supported-lan
  *   <LocaleSelectorComponent />
  * )
  */
-const LocaleSelectorComponent = (): JSX.Element => {
+const LocaleSelectorComponent = (props: LocaleSelectorProps): JSX.Element => {
 
     //Get current locale and function to switch locale
     const { locale, setLocale } = useContext(LocaleContext)
+
+    const { style } = props //Destructure props
 
     //Handle user select new locale
     const localeChangeHandler = ((e_: React.ChangeEvent<HTMLSelectElement>) => {
@@ -24,9 +36,11 @@ const LocaleSelectorComponent = (): JSX.Element => {
         setLocale(value)            //update locale with new selected value
     })
 
+    const className = classNames(styles.localeSelector, style)
+
     return (
 
-        <select value={locale} name='locale' onChange={localeChangeHandler} >
+        <select className={className} value={locale} name='locale' onChange={localeChangeHandler} >
             {
                 SUPPORTED_LANGUAGES.map((l_, i_) => (
                     <option key={i_} value={l_.code}>
@@ -36,6 +50,7 @@ const LocaleSelectorComponent = (): JSX.Element => {
             }
 
         </select>
+
     )
 }
 

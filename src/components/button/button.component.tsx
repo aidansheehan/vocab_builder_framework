@@ -2,6 +2,7 @@ import { MouseEventHandler } from 'react'
 import styles from './button.component.scss'
 import classNames from 'classnames'
 import TextComponent from '../text/text.component'
+import IconComponent from '../icon/icon.component'
 
 /** ButtonComponent Props Type */
 type ButtonComponentPropsType = {
@@ -13,6 +14,7 @@ type ButtonComponentPropsType = {
     textRef?: string,
 
     /** faRef? iconRef? TODO this needs font awesome implemented VBF-34 */
+    icon?: string
 
     /* Additional Styles to be applied */
     style?: string
@@ -32,7 +34,7 @@ type ButtonComponentPropsType = {
  */
 const ButtonComponent = (props: ButtonComponentPropsType) => {
 
-    const { onClick, textRef, style } = props   //Destructure props
+    const { onClick, textRef, style, icon } = props   //Destructure props
 
     const className = classNames(styles.button, style)
 
@@ -42,6 +44,7 @@ const ButtonComponent = (props: ButtonComponentPropsType) => {
             onClick={onClick}
         >
             {textRef ? <TextComponent textRef={textRef} /> : null }
+            {icon ? <IconComponent icon={{icon}} /> : null}
         </button>
     )
 }

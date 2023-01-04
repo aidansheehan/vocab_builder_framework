@@ -2,7 +2,9 @@
 import { library } from '@fortawesome/fontawesome-svg-core'
 
 import {
-    faHouse
+    faHouse,
+    faFileCirclePlus,
+    faRightFromBracket
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -14,6 +16,8 @@ export default function FontAwesomeIcons(): void {
 
     //Expose core icons across framework
     library.add(
-        faHouse
+        faHouse,
+        faFileCirclePlus,
+        faRightFromBracket
     )
 }
