@@ -13,7 +13,7 @@ type ButtonComponentPropsType = {
     /** Reference for text to display in the button */
     textRef?: string,
 
-    /** faRef? iconRef? TODO this needs font awesome implemented VBF-34 */
+    /** Font Awesome icon reference */
     icon?: string
 
     /* Additional Styles to be applied */

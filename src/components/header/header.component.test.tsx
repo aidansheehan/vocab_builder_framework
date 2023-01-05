@@ -28,13 +28,6 @@ describe('HeaderComponent', () => {
 
         })
 
-        test('navigate to register', () => {
-            renderComponent(<HeaderComponent />)
-            expect(screen.getByTestId('register-link')).toBeInTheDocument()
-            user.click(screen.getByTestId('register-link')).then(() => expect(history.push).toBeCalledWith('/en/register'))
-            
-        })
-
         test('navigate to landing page', () => {
             renderComponent(<HeaderComponent />)
             expect(screen.getByTestId('landing-link')).toBeInTheDocument()
@@ -44,7 +37,7 @@ describe('HeaderComponent', () => {
         test('no other navigations', async () => {
             renderComponent(<HeaderComponent />)
             const navLinks = await screen.findAllByRole('nav-link')
-            expect(navLinks).toHaveLength(3)
+            expect(navLinks).toHaveLength(2)
         })
     })
 
@@ -57,11 +50,19 @@ describe('HeaderComponent', () => {
 
         test('navigate to collections', () => {
 
+            //TBD
+
+        })
+
+        test('navigate to new collection', () => {
+
+            //TBD
+
         })
 
         test('user can logout', () => {
 
-            //TBD mock logout function and check this can be called from header
+            //TBD 
         })
     })
 
