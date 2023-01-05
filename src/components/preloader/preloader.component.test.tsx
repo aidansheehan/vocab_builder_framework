@@ -5,12 +5,8 @@ import { IntlProvider } from 'react-intl'
 
 import enMessages from '../../localization/en.json'
 import store from '../../redux/store'
-import { render, screen } from '@testing-library/react'
-import { act } from 'react-dom/test-utils'
+import { render } from '@testing-library/react'
 
-import { getUserDetails } from '../../redux/features/user/user.actions'
-
-// jest.mock('../../hooks/redux/use-app-dispatch.hook.ts', () => jest.fn(() => () => {}))
 jest.mock('../../hooks/redux/use-app-dispatch.hook.ts', () => jest.fn(() => jest.fn()))
 
 jest.mock('../../redux/features/user/user.actions.ts', () => ({

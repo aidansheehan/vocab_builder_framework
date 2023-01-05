@@ -1,9 +1,10 @@
 {
-    "nav_home_link_title": "Nhà",
-    "nav_login_link_title": "đăng nhập",
-    "nav_register_link_title": "Đăng ký",
-    "nav_collections_link_title": "bộ sưu tập của tôi",
-    "nav_logout_link_title": "đăng xuất",
+    "nav_home_link": "Nhà",
+    "nav_login_link": "Đăng nhập",
+    "nav_register_link": "Đăng ký",
+    "nav_collections_link": "Bộ sưu tập",
+    "nav_new-collection_link": "Mới",
+    "nav_logout_link": "Đăng xuất",
     "common_email_tag": "E-mail",
     "common_password_tag": "mật khẩu mở khóa",
     "common_username_tag": "tên tài khoản",
@@ -11,5 +12,8 @@
     "landing_text_1": "Bạn có mệt mỏi vì phải cố gắng nhớ thông tin quan trọng không? Bạn muốn tăng hiệu suất học tập và đạt điểm cao trong kì thi không? Đừng tìm nữa! Ứng dụng thẻ flash của chúng tôi sẽ giúp bạn.",
     "landing_text_2": "Với giao diện dễ sử dụng và một lựa chọn lớn các bộ thẻ flash đã sẵn sàng, bạn sẽ có thể học hiệu quả và nhanh chóng bất cứ môn học nào.",
     "landing_text_3": "Ngoài ra, bạn cũng có thể tạo các bộ thẻ tùy chỉnh để phù hợp với nhu cầu của mình.",
-    "landing_text_4": "Thử sử dụng ứng dụng thẻ flash của chúng tôi hôm nay và xem kiến thức và tự tin của bạn tăng lên!"
+    "landing_text_4": "Thử sử dụng ứng dụng thẻ flash của chúng tôi hôm nay và xem kiến thức và tự tin của bạn tăng lên!",
+    "login_header": "Đăng nhập vào tài khoản của bạn",
+    "login_signup_link": "Bạn không có tài khoản?",
+    "register_header": "Đăng ký một tài khoản mới"
 }
