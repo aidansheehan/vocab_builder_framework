@@ -10,6 +10,9 @@ type ButtonComponentPropsType = {
     /** Function to execute on button click TODO should this maybe be handled within button? */
     onClick: MouseEventHandler<HTMLButtonElement>,
 
+    /** Children to render */
+    children?: JSX.Element,
+
     /** Reference for text to display in the button */
     textRef?: string,
 
@@ -34,7 +37,7 @@ type ButtonComponentPropsType = {
  */
 const ButtonComponent = (props: ButtonComponentPropsType) => {
 
-    const { onClick, textRef, style, icon } = props   //Destructure props
+    const { onClick, children, textRef, style, icon } = props   //Destructure props
 
     const className = classNames(styles.button, style)
 
@@ -43,8 +46,9 @@ const ButtonComponent = (props: ButtonComponentPropsType) => {
             className={className}
             onClick={onClick}
         >
-            {textRef ? <TextComponent textRef={textRef} /> : null }
-            {icon ? <IconComponent icon={{icon}} /> : null}
+            { textRef ? <TextComponent textRef={textRef} /> : null }
+            { icon ? <IconComponent icon={{icon}} /> : null }
+            { children && children }
         </button>
     )
 }
