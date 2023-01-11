@@ -37,7 +37,7 @@ const RootComponent = (): JSX.Element => {
                     element: <RegisterPage />
                 },
                 {
-                    path: 'collections',
+                    path: 'collections',    //TODO i think these routes should be on user/ not collections/
                     children: [
                         {
                             index: true,

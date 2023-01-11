@@ -1,6 +1,8 @@
 import { useState }                     from 'react'
 import { NavLink }                      from 'react-router-dom'
 import useAppSelector                   from '../../hooks/redux/use-app-selector.hook'
+import HEADER_ITEMS_AUTH_CONFIG         from '../header-menu/constants/header-menu.header-items-auth-config.constant'
+import HeaderMenuComponent              from '../header-menu/header-menu.component'
 import IconComponent                    from '../icon/icon.component'
 import LocaleSelectorComponent          from '../locale-selector/locale-selector.component'
 import MenuBtnComponent                 from '../menu-btn/menu-btn.component'
@@ -66,6 +68,10 @@ const HeaderComponent = (): JSX.Element => {
                     </nav>
 
                 </div>
+                
+                {/* TODO render auth config or not auth config (need better names) based on whether userInfo */}
+                <HeaderMenuComponent config={/* userInfo ? */HEADER_ITEMS_AUTH_CONFIG} expanded={expanded} />
+
             </div>
     )
 }

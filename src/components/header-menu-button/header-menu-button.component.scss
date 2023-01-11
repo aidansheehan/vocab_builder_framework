@@ -1,0 +1,27 @@
+@use '../header/header.component.scss' as *;
+
+.headerMenuButton {
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    padding: 0 20px 0 10px;    //Or 20?
+    height: 30px;
+    width: 100%;
+    border-width: 1px 0 0 0;
+    box-sizing: border-box;
+    border-style: solid;
+    border-color: rgba(0, 0, 0, 0.1);
+    justify-content: space-between;
+    background: inherit;
+    color: inherit;
+    align-items: center;
+    span {
+        padding-left: 20px;
+    }
+    opacity: .7;
+    &:hover {
+        opacity: 1;
+    }
+
+    
+}
