@@ -2,7 +2,16 @@
 
 $background-color: #F3F5F8;
 
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    src: url('./assets/fonts/Inter-Regular.ttf') format('truetype');
+}
+
 body {
     background-color: $background-color;
     margin: 0;
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
 }
