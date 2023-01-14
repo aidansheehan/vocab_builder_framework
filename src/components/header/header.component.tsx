@@ -44,9 +44,9 @@ const HeaderComponent = (): JSX.Element => {
                     <nav className={styles.headerNav}>
                         {userInfo ? (
                             <>
-                                <NavLink role='nav-link' data-testid='collections-link' to={`/collections`}>
-                                    {/* TODO should render <TextComponent textRef='nav_collections_link' /> on hover */}
-                                    <IconComponent icon={{icon: 'house'}} />
+                                {/* TODO implement help page */}
+                                <NavLink role='nav-link' data-testid='collections-link' to={`/help`}>
+                                    <IconComponent icon={{icon: 'circle-question'}} />
                                 </NavLink>
                                 <MenuBtnComponent expanded={expanded} handleClick={toggleMenuExpanded} />
                             </>
@@ -70,7 +70,7 @@ const HeaderComponent = (): JSX.Element => {
                 </div>
                 
                 {/* TODO render auth config or not auth config (need better names) based on whether userInfo */}
-                <HeaderMenuComponent config={/* userInfo ? */HEADER_ITEMS_AUTH_CONFIG} expanded={expanded} />
+                <HeaderMenuComponent config={/* userInfo ? */HEADER_ITEMS_AUTH_CONFIG} expanded={expanded} toggleExpanded={toggleMenuExpanded} />
 
             </div>
     )

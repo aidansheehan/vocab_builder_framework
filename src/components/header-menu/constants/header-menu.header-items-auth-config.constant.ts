@@ -1,16 +1,23 @@
-import { HeaderItemsConfigType } from "../types/header-menu.header-items-config.type";
+import { logout }                   from "../../../redux/features/user/user.slice";
+import { HeaderItemsConfigType }    from "../types/header-menu.header-items-config.type";
 
 /**
- * Config for rendering items inside header menu
+ * Config for rendering items inside header menu (authorized users)
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  */
 const HEADER_ITEMS_AUTH_CONFIG: HeaderItemsConfigType = {
 
-    buttons: [
+    routeButtons: [
 
         { route: '/', icon: 'house', ref: 'nav_collections_link' },
         { route: '/collections/new', icon: 'file-circle-plus', ref: 'nav_new-collection_link' }
+    ],
+
+    dispatchButtons: [
+
+        { callback: logout, icon: 'right-from-bracket', ref: 'nav_logout_link' }
+
     ]
 }
 

@@ -4,7 +4,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import {
     faHouse,
     faFileCirclePlus,
-    faRightFromBracket
+    faRightFromBracket,
+    faCircleQuestion
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -18,6 +19,7 @@ export default function FontAwesomeIcons(): void {
     library.add(
         faHouse,
         faFileCirclePlus,
-        faRightFromBracket
+        faRightFromBracket,
+        faCircleQuestion
     )
 }

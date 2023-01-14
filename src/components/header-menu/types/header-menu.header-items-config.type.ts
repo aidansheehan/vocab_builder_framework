@@ -2,18 +2,24 @@
 export type HeaderItemsConfigType = {
 
     /** config for header buttons */
-    buttons: HeaderButtonConfig[]
+    routeButtons: HeaderRouteButtonConfig[],
+
+    dispatchButtons: HeaderDispatchButtonConfig[]
+
 }
 
-/** HeaderButtonConfig */
-export type HeaderButtonConfig = HeaderItemConfig & {
+/** HeaderRouteButtonConfig */
+export type HeaderRouteButtonConfig = HeaderItemConfig & {
 
-    /** Name of modal to open  */
-    //TBD
+    /** Route to navigate to on click */
+    route: string
 
-    /** Name of route to navigate to */
-    route: string   //TODO type routes
+}
 
+export type HeaderDispatchButtonConfig = HeaderItemConfig & {
+    
+    /** Dispatch function to execute on click */
+    callback: Function
 }
 
 /** HeaderItemConfig */
