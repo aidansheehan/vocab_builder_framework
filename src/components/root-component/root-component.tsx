@@ -8,6 +8,7 @@ import HomePage                 from '../../pages/home/home.page'
 import LandingPage              from '../../pages/landing/landing.page'
 import LoginPage                from '../../pages/login/login.page'
 import RegisterPage             from '../../pages/register/register.page'
+import HelpPage                 from '../../pages/help/help-page'
 
 /**
   * Route container element for application to render
@@ -37,7 +38,7 @@ const RootComponent = (): JSX.Element => {
                     element: <RegisterPage />
                 },
                 {
-                    path: 'collections',    //TODO i think these routes should be on user/ not collections/
+                    path: 'user',    //TODO i think these routes should be on user/ not collections/
                     children: [
                         {
                             index: true,
@@ -46,6 +47,10 @@ const RootComponent = (): JSX.Element => {
                         {
                             path: 'new',
                             element: <CreateCollectionPage />
+                        },
+                        {
+                            path: 'help',
+                            element: <HelpPage />
                         },
                         {
                             path: ':collectionId',

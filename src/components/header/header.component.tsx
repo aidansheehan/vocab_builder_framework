@@ -45,7 +45,8 @@ const HeaderComponent = (): JSX.Element => {
                         {userInfo ? (
                             <>
                                 {/* TODO implement help page */}
-                                <NavLink role='nav-link' data-testid='collections-link' to={`/help`}>
+                                <NavLink role='nav-link' data-testid='collections-link' to={`user/help`}>
+                                    {/* TODO should render <TextComponent /> with 'help' on hover */}
                                     <IconComponent icon={{icon: 'circle-question'}} />
                                 </NavLink>
                                 <MenuBtnComponent expanded={expanded} handleClick={toggleMenuExpanded} />

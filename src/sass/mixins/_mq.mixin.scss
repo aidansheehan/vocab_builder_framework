@@ -1,0 +1,34 @@
+@use '../breakpoints' as *;
+
+@mixin mq($device) {
+
+    $breakpoint: 0;
+
+    @if $device == mobile-small {
+        $breakpoint: $bp-mobile-small;
+    }
+    @else if $device == mobile {
+        $breakpoint: $bp-mobile;
+    }
+    @else if $device == mobile-landscape {
+        $breakpoint: $bp-mobile-landscape;
+    }
+    @else if $device == mobile-portrait {
+        $breakpoint: $bp-mobile-portrait;
+    }
+    @else if $device == tablet {
+        $breakpoint: $bp-tablet;
+    }
+    @else if $device == tablet-landscape {
+        $breakpoint: $bp-tablet-landscape;
+    }
+    @else if $device == tablet-portrait {
+        $breakpoint: $bp-tablet-portrait;
+    }
+    @else if $device == desktop {
+        $breakpoint: $bp-desktop;
+    }
+
+    @media #{$breakpoint} { @content; }
+
+}

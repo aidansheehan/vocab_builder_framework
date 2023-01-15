@@ -8,10 +8,7 @@ $header-height: 30px;
     height: $header-height;
     color: $header-color;
     >.headerLeft {
-        height: inherit;
-        display: flex;
         justify-content: flex-start;
-        align-items: center;
         width: 40%;
         >.logo {
             margin-right: 5px;
@@ -19,10 +16,7 @@ $header-height: 30px;
         }
     }
     >.headerRight {
-        height: inherit;
-        display: flex;
         justify-content: flex-end;
-        align-items: center;
         width: 60%;
         > .headerNav {
             display: flex;
@@ -46,5 +40,12 @@ $header-height: 30px;
                 margin: 5px;
             }   
         }
+    }
+    > .headerLeft, > .headerRight {
+        height: inherit;
+        background-color: inherit;
+        display: flex;
+        align-items: center;
+        z-index: 1;
     }
 }

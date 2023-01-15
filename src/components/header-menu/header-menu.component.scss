@@ -1,4 +1,5 @@
 @use '../header/header.component.scss' as *;
+@use '../../sass/mixins/mq.mixin' as mq;
 
 .headerMenu {
     position: absolute;
@@ -6,11 +7,11 @@
     flex-direction: column;
     width: 100%;
     top: 30px;
-    z-index: 3;
 
-    //TODO desktop only
-    width:250px;
-    right: 0;
+    @include mq.mq(desktop) {
+        width: 250px;
+        right: 0;
+    }
 
     background-color: $header-background;
     color: $header-color;

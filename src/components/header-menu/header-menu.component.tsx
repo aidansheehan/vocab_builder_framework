@@ -4,6 +4,7 @@ import { Transition }                   from 'react-transition-group'
 import HeaderMenuButtonComponent        from '../header-menu-button/header-menu-button.component'
 import { useNavigate }                  from 'react-router-dom'
 import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook'
+import useDevice                        from '../../hooks/useDevice.hook'
 
 /** HeaderMenuComponentProps type */
 type HeaderMenuComponentProps = {
@@ -39,7 +40,6 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
 
     const TRANSITION_TIMER = 350;
 
-    const device = 'desktop'    //TODO need useDevice hook implemented on this ticket VBF-43
 
     const MENU_DEFAULT_STYLE: { [device: string]: React.CSSProperties } = {
         desktop: {
@@ -83,6 +83,8 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
         dispatch(callback())
     }
 
+    const device = useDevice()
+
     return (
         <>
         
@@ -123,7 +125,6 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
 
                             else {
                                 return <HeaderMenuButtonComponent key={i_} handleClick={() => handleDispatch(callback)} icon={icon} label={ref}  />
-                                // return <HeaderMenuButtonComponent key={i_} handleClick={(() => dispatch(callback())} ) />
                             }
 
                         })}

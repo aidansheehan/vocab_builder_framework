@@ -10,8 +10,8 @@ const HEADER_ITEMS_AUTH_CONFIG: HeaderItemsConfigType = {
 
     routeButtons: [
 
-        { route: '/', icon: 'house', ref: 'nav_collections_link' },
-        { route: '/collections/new', icon: 'file-circle-plus', ref: 'nav_new-collection_link' }
+        { route: '/user', icon: 'house', ref: 'nav_collections_link' },
+        { route: '/user/new', icon: 'file-circle-plus', ref: 'nav_new-collection_link' }
     ],
 
     dispatchButtons: [

@@ -1,0 +1,7 @@
+@mixin hover($value) {
+
+    $hover-mq: "(hover: #{$value})";
+
+    @media #{$hover-mq} { @content; };
+    
+}
