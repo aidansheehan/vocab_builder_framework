@@ -9,7 +9,7 @@ const config = {
     ],
     coverageDirectory: './spec/coverage',
     moduleNameMapper: {
-        '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js'
+        '\\.(css|scss)$': '<rootDir>/test/__mocks__/styleMock.js'
     },
     moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'scss', 'json', 'node'],
     setupFilesAfterEnv: [ './jest-setup.js' ],
