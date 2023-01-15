@@ -1,6 +1,6 @@
 import { useSelector }                  from 'react-redux'
 import type { TypedUseSelectorHook }    from 'react-redux'
-import { RootState }                    from '../../redux/store'
+import { RootState }                    from '../../../redux/store'
 
 /**
  * useAppSelector hook for typed redux store data retrieval

@@ -1,6 +1,6 @@
 import { useEffect, useState }  from 'react'
 import App                      from '../../app'
-import useAppDispatch           from '../../../hooks/redux/use-app-dispatch.hook'
+import useAppDispatch           from '../../hooks/redux/use-app-dispatch.hook'
 import { getUserDetails }       from '../../../redux/features/user/user.actions'
 
 /**

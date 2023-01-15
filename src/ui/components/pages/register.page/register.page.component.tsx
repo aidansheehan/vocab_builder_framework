@@ -7,8 +7,8 @@ import { registerUser } from '../../../../redux/features/user/user.actions'
 //Router
 import { useNavigate }  from 'react-router-dom'
 //Hooks
-import useAppSelector   from '../../../../hooks/redux/use-app-selector.hook'
-import useAppDispatch   from '../../../../hooks/redux/use-app-dispatch.hook'
+import useAppSelector   from '../../../hooks/redux/use-app-selector.hook'
+import useAppDispatch   from '../../../hooks/redux/use-app-dispatch.hook'
 //Types
 import { RegisterUserRequestType } from '../../../../redux/features/user/types/request.types'
 //Components

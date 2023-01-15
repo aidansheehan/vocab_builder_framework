@@ -6,8 +6,8 @@ import { useNavigate } from 'react-router-dom'
 import TextComponent    from '../../text/text.component'
 import ButtonComponent  from '../../button/button.component'
 //Hooks
-import useAppDispatch from '../../../../hooks/redux/use-app-dispatch.hook'
-import useAppSelector from '../../../../hooks/redux/use-app-selector.hook'
+import useAppDispatch from '../../../hooks/redux/use-app-dispatch.hook'
+import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
 //Types
 import { UserLoginRequestType } from '../../../../redux/features/user/types/request.types'
 //Actions

@@ -7,7 +7,7 @@ import enMessages from '../../localization/en.json'
 import store from '../../redux/store'
 import { render } from '@testing-library/react'
 
-jest.mock('../../hooks/redux/use-app-dispatch.hook.ts', () => jest.fn(() => jest.fn()))
+jest.mock('../hooks/redux/use-app-dispatch.hook.ts', () => jest.fn(() => jest.fn()))
 
 jest.mock('../../redux/features/user/user.actions.ts', () => ({
     getUserDetails: jest.fn(() => Promise.resolve())

@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { AppDispatch } from '../../redux/store'
+import { AppDispatch } from '../../../redux/store'
 
 /**
  * useAppDispatch hook for typed redux store data dispatch
