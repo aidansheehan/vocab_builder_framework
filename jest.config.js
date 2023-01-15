@@ -16,7 +16,7 @@ const config = {
     testEnvironment: 'jsdom',
     globals: {
         "ts-jest": {
-            tsconfig: "tsconfig.test.json"
+            tsconfig: "./test/tsconfig.test.json"
         }
     }
 }

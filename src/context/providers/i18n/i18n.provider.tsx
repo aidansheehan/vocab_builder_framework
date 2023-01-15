@@ -3,8 +3,8 @@ import { IntlProvider }         from 'react-intl'
 import Cookies                  from 'universal-cookie'
 import LocaleContext            from '../../locale.context'
 
-import enMessages from '../../../localization/en.json'
-import viMessages from '../../../localization/vi.json'
+import enMessages from '../../../i18n/en.json'
+import viMessages from '../../../i18n/vi.json'
 
 //TODO: should pull in only required translations and update on change using react suspense to keep old texts until new JSON loaded
 export const messages: { [index: string]: any } = {
