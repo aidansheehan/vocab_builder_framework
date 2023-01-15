@@ -3,15 +3,15 @@ import { useForm } from 'react-hook-form'
 //Router
 import { useNavigate } from 'react-router-dom'
 //Components
-import TextComponent    from '../../ui/components/text/text.component'
-import ButtonComponent  from '../../ui/components/button/button.component'
+import TextComponent    from '../../text/text.component'
+import ButtonComponent  from '../../button/button.component'
 //Hooks
-import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
-import useAppSelector from '../../hooks/redux/use-app-selector.hook'
+import useAppDispatch from '../../../../hooks/redux/use-app-dispatch.hook'
+import useAppSelector from '../../../../hooks/redux/use-app-selector.hook'
 //Types
-import { UserLoginRequestType } from '../../redux/features/user/types/request.types'
+import { UserLoginRequestType } from '../../../../redux/features/user/types/request.types'
 //Actions
-import { userLogin } from '../../redux/features/user/user.actions'
+import { userLogin } from '../../../../redux/features/user/user.actions'
 
 
 /**
@@ -20,10 +20,10 @@ import { userLogin } from '../../redux/features/user/user.actions'
  * @version 0.1.0
  * @component
  * @example (
- *   <LoginPage />
+ *   <LoginPageComponent />
  * )
  */
-const LoginPage = (): JSX.Element => {
+const LoginPageComponent = (): JSX.Element => {
 
     const { loading, error }            = useAppSelector((state) => state.user)     //Pull out user state values to handle UI state
     const { register, handleSubmit }    = useForm()                                 //Get register and handleSubmit useForm methods
@@ -83,4 +83,4 @@ const LoginPage = (): JSX.Element => {
     )
 }
 
-export default LoginPage
+export default LoginPageComponent

@@ -6,10 +6,10 @@ import { useRouteError } from 'react-router-dom'
  * @version 0.1.0
  * @component
  * @example (
- *  <ErrorPage />
+ *  <ErrorPageComponent />
  * )
  */
-const ErrorPage = (): JSX.Element => {
+const ErrorPageComponent = (): JSX.Element => {
 
     //TODO type
     const error = useRouteError() as any
@@ -28,4 +28,4 @@ const ErrorPage = (): JSX.Element => {
     )
 }
 
-export default ErrorPage
+export default ErrorPageComponent

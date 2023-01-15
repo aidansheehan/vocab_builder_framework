@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react'
 import React from 'react'
 import { HashRouter } from 'react-router-dom'
-import ErrorPage from './error.page'
+import ErrorPageComponent from './error.page.component'
 
 jest.mock('react-router-dom', () => ({
     useRouteError: () => ({
@@ -10,13 +10,13 @@ jest.mock('react-router-dom', () => ({
     })
 }))
 
-describe('ErrorPage', () => {
+describe('ErrorPageComponent', () => {
 
-    test('ErrorPage should exist', () => {
+    test('ErrorPageComponent should exist', () => {
 
         //TODO
 
-        let { container } = render(<ErrorPage />)
+        let { container } = render(<ErrorPageComponent />)
         expect(container).toBeInTheDocument()
     })
 })

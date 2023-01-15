@@ -4,10 +4,10 @@
  * @version 0.1.0
  * @component
  * @example (
- *   <GamePage />
+ *   <GamePageComponent />
  * )
  */
-const GamePage = (): JSX.Element => {
+const GamePageComponent = (): JSX.Element => {
 
     return (
         <div>
@@ -16,4 +16,4 @@ const GamePage = (): JSX.Element => {
     )
 }
 
-export default GamePage
+export default GamePageComponent

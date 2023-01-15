@@ -1,4 +1,4 @@
-import RegisterPage from './register.page'
+import RegisterPageComponent from './register.page.component'
 import { screen } from '@testing-library/react'
 import React from 'react'
 
@@ -9,11 +9,11 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedUseNavigate
 }))
 
-describe('RegisterPage', () => {
+describe('RegisterPageComponent', () => {
 
-    test('RegisterPage should exist', () => {
+    test('RegisterPageComponent should exist', () => {
 
-        let { container } = renderComponent(<RegisterPage />)
+        let { container } = renderComponent(<RegisterPageComponent />)
         expect(container).toBeInTheDocument()
     })
 
@@ -26,23 +26,23 @@ describe('RegisterPage', () => {
 
         describe('required user inputs present', () => {
 
-            test('RegisterPage should have username input', () => {
-                renderComponent(<RegisterPage />)
+            test('RegisterPageComponent should have username input', () => {
+                renderComponent(<RegisterPageComponent />)
                 expect(screen.getByRole('username-input')).toBeInTheDocument()
             })
 
-            test('RegisterPage should have email input', () => {
-                renderComponent(<RegisterPage />)
+            test('RegisterPageComponent should have email input', () => {
+                renderComponent(<RegisterPageComponent />)
                 expect(screen.getByRole('email-input')).toBeInTheDocument()
             })
 
-            test('RegisterPage should have password input', () => {
-                renderComponent(<RegisterPage />)
+            test('RegisterPageComponent should have password input', () => {
+                renderComponent(<RegisterPageComponent />)
                 expect(screen.getByRole('password-input')).toBeInTheDocument()
             })
 
-            test('RegisterPage should have confirm password input', () => {
-                renderComponent(<RegisterPage />)
+            test('RegisterPageComponent should have confirm password input', () => {
+                renderComponent(<RegisterPageComponent />)
                 expect(screen.getByRole('confirm-password-input')).toBeInTheDocument()
             })
         })

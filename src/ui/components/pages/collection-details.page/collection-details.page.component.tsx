@@ -4,10 +4,10 @@
  * @version 0.1.0
  * @component
  * @example (
- *   <CollectionDetailsPage />
+ *   <CollectionDetailsPageComponent />
  * )
  */
-const CollectionDetailsPage = (): JSX.Element => {
+const CollectionDetailsPageComponent = (): JSX.Element => {
 
     //Todo this page HAS to have a collection ID
 
@@ -18,4 +18,4 @@ const CollectionDetailsPage = (): JSX.Element => {
     )
 }
 
-export default CollectionDetailsPage
+export default CollectionDetailsPageComponent

@@ -1,4 +1,4 @@
-import LoginPage from './login.page'
+import LoginPageComponent from './login.page.component'
 import { screen } from '@testing-library/react'
 import React from 'react'
 
@@ -9,35 +9,35 @@ jest.mock('react-router-dom', () => ({
     useNavigate: () => mockedUseNavigate
 }))
 
-describe('LoginPage', () => {
+describe('LoginPageComponent', () => {
 
-    test('LoginPage should exist', () => {
+    test('LoginPageComponent should exist', () => {
 
-        let { container } = renderComponent(<LoginPage />)
+        let { container } = renderComponent(<LoginPageComponent />)
         expect(container).toBeInTheDocument()
     })
 
-    test('LoginPage should redirect to home if user already authenticated', () => {
+    test('LoginPageComponent should redirect to home if user already authenticated', () => {
 
         //TBD after persist user authentication VBF-9
     })
 
-    describe('LoginPage functionality', () => {
+    describe('LoginPageComponent functionality', () => {
 
         describe('required user inputs present', () => {
 
-            test('LoginPage should have email input', () => {
-                renderComponent(<LoginPage />)
+            test('LoginPageComponent should have email input', () => {
+                renderComponent(<LoginPageComponent />)
                 expect(screen.getByRole('email-input')).toBeInTheDocument()
             })
 
-            test('LoginPage should have password input', () => {
-                renderComponent(<LoginPage />)
+            test('LoginPageComponent should have password input', () => {
+                renderComponent(<LoginPageComponent />)
                 expect(screen.getByRole('password-input')).toBeInTheDocument()
             })
 
-            test('LoginPage should have login submit button', () => {
-                renderComponent(<LoginPage />)
+            test('LoginPageComponent should have login submit button', () => {
+                renderComponent(<LoginPageComponent />)
                 expect(screen.getByRole('login-submit')).toBeInTheDocument()
             })
         })
@@ -47,7 +47,7 @@ describe('LoginPage', () => {
             //TBD
         })
 
-        test('LoginPage should redirect to home page on successful login', () => {
+        test('LoginPageComponent should redirect to home page on successful login', () => {
 
             //TBD
         })

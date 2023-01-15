@@ -1,4 +1,4 @@
-import TextComponent from '../../ui/components/text/text.component'
+import TextComponent from '../../text/text.component'
 
 /**
  * Landing (!auth) Page
@@ -6,10 +6,10 @@ import TextComponent from '../../ui/components/text/text.component'
  * @version 0.1.0
  * @component
  * @example (
- *  <LandingPage />
+ *  <LandingPageComponent />
  * )
  */
-const LandingPage = () => {
+const LandingPageComponent = () => {
 
     return (
         <div data-testid='landing-page' >
@@ -29,4 +29,4 @@ const LandingPage = () => {
     )
 }
 
-export default LandingPage
+export default LandingPageComponent

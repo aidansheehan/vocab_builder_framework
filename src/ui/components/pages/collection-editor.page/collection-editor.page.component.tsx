@@ -1,4 +1,4 @@
-type CollectionEditorPageProps = {
+type CollectionEditorPageComponentProps = {
 
     collectionId?: number
 
@@ -10,10 +10,10 @@ type CollectionEditorPageProps = {
  * @version 0.1.0
  * @component
  * @example (
- *   <CollectionEditorPage />
+ *   <CollectionEditorPageComponent />
  * )
  */
-const CollectionEditorPage = (props: CollectionEditorPageProps): JSX.Element => {
+const CollectionEditorPageComponent = (props: CollectionEditorPageComponentProps): JSX.Element => {
 
     const { collectionId } = props
 
@@ -25,4 +25,4 @@ const CollectionEditorPage = (props: CollectionEditorPageProps): JSX.Element => 
     )
 }
 
-export default CollectionEditorPage
+export default CollectionEditorPageComponent

@@ -1,4 +1,4 @@
-import useAppSelector from '../../hooks/redux/use-app-selector.hook'
+import useAppSelector from '../../../../hooks/redux/use-app-selector.hook'
 
 /**
  * User Home Page Component

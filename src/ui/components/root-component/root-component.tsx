@@ -1,13 +1,13 @@
 import { useRoutes }            from 'react-router-dom'
 import PreloaderComponent       from '../preloader/preloader.component'
-import CollectionDetailsPage    from '../../../pages/collection-details/collection-details.page'
-import CollectionEditorPage     from '../../../pages/collection-editor/collection-editor.page'
-import CreateCollectionPage     from '../../../pages/create-collection/create-collection.page'
-import ErrorPage                from '../../../pages/error/error.page'
-import HomePage                 from '../../../pages/home/home.page'
-import LandingPage              from '../../../pages/landing/landing.page'
-import LoginPage                from '../../../pages/login/login.page'
-import RegisterPage             from '../../../pages/register/register.page'
+import CollectionDetailsPageComponent    from '../pages/collection-details.page/collection-details.page.component'
+import CollectionEditorPageComponent     from '../pages/collection-editor.page/collection-editor.page.component'
+import CreateCollectionPageComponent     from '../pages/create-collection.page/create-collection.page.component'
+import ErrorPageComponent                from '../pages/error.page/error.page.component'
+import HomePage                 from '../pages/home.page/home.page.component'
+import LandingPageComponent              from '../pages/landing.page/landing.page.component'
+import LoginPageComponent                from '../pages/login.page/login.page.component'
+import RegisterPageComponent             from '../pages/register.page/register.page.component'
 
 /**
   * Route container element for application to render
@@ -22,19 +22,19 @@ const RootComponent = (): JSX.Element => {
         {
             path: '/',
             element: <PreloaderComponent />,
-            errorElement: <ErrorPage />,
+            errorElement: <ErrorPageComponent />,
             children: [
                 {
                     index: true,
-                    element: <LandingPage />
+                    element: <LandingPageComponent />
                 },
                 {
                     path: 'login',
-                    element: <LoginPage />
+                    element: <LoginPageComponent />
                 },
                 {
                     path: 'register',
-                    element: <RegisterPage />
+                    element: <RegisterPageComponent />
                 },
                 {
                     path: 'collections',
@@ -45,18 +45,18 @@ const RootComponent = (): JSX.Element => {
                         },
                         {
                             path: 'new',
-                            element: <CreateCollectionPage />
+                            element: <CreateCollectionPageComponent />
                         },
                         {
                             path: ':collectionId',
                             children: [
                                 {
                                     index: true,
-                                    element: <CollectionDetailsPage />
+                                    element: <CollectionDetailsPageComponent />
                                 },
                                 {
                                     path: 'edit',
-                                    element: <CollectionEditorPage />
+                                    element: <CollectionEditorPageComponent />
                                 }
                             ]
                         }

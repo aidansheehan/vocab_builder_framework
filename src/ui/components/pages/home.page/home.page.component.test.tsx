@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react'
 import React from 'react'
-import HomePage from './home.page'
+import HomePage from './home.page.component'
 import store from '../../redux/store'
 import { Provider } from 'react-redux'
 

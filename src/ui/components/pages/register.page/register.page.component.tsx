@@ -3,16 +3,16 @@ import { useEffect } from 'react'
 //React Hook Form (Client Side Validation)
 import { useForm } from 'react-hook-form'
 //Actions
-import { registerUser } from '../../redux/features/user/user.actions'
+import { registerUser } from '../../../../redux/features/user/user.actions'
 //Router
 import { useNavigate }  from 'react-router-dom'
 //Hooks
-import useAppSelector   from '../../hooks/redux/use-app-selector.hook'
-import useAppDispatch   from '../../hooks/redux/use-app-dispatch.hook'
+import useAppSelector   from '../../../../hooks/redux/use-app-selector.hook'
+import useAppDispatch   from '../../../../hooks/redux/use-app-dispatch.hook'
 //Types
-import { RegisterUserRequestType } from '../../redux/features/user/types/request.types'
+import { RegisterUserRequestType } from '../../../../redux/features/user/types/request.types'
 //Components
-import TextComponent from '../../ui/components/text/text.component'
+import TextComponent from '../../text/text.component'
 
 /**
  * Page to register a new user
@@ -21,10 +21,10 @@ import TextComponent from '../../ui/components/text/text.component'
  * @component
  * @example
  * return (
- *   <RegisterPage />
+ *   <RegisterPageComponent />
  * )
  */
-const RegisterPage = (): JSX.Element => {
+const RegisterPageComponent = (): JSX.Element => {
 
     //Pull out user state values to handle UI state
     const { loading, error, success, userInfo } = useAppSelector(state => state.user)
@@ -132,4 +132,4 @@ const RegisterPage = (): JSX.Element => {
     )
 }
 
-export default RegisterPage
+export default RegisterPageComponent

@@ -7,7 +7,7 @@
  *   <NewCollectionPage />
  * )
  */
-const CreateCollectionPage = (): JSX.Element => {
+const CreateCollectionPageComponent = (): JSX.Element => {
 
     return (
         <div>
@@ -16,4 +16,4 @@ const CreateCollectionPage = (): JSX.Element => {
     )
 }
 
-export default CreateCollectionPage
+export default CreateCollectionPageComponent
