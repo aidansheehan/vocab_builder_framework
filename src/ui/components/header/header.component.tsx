@@ -1,7 +1,7 @@
 import { NavLink }                      from 'react-router-dom';
-import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook';
-import useAppSelector                   from '../../hooks/redux/use-app-selector.hook';
-import { logout }                       from '../../redux/features/user/user.slice';
+import useAppDispatch                   from '../../../hooks/redux/use-app-dispatch.hook';
+import useAppSelector                   from '../../../hooks/redux/use-app-selector.hook';
+import { logout }                       from '../../../redux/features/user/user.slice';
 import ButtonComponent                  from '../button/button.component';
 import IconComponent                    from '../icon/icon.component';
 import LocaleSelectorComponent          from '../locale-selector/locale-selector.component';

@@ -5,8 +5,8 @@ import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
 //Components
-import HeaderComponent from './components/header/header.component'
-import FooterComponent from './components/footer/footer.component'
+import HeaderComponent from './ui/components/header/header.component'
+import FooterComponent from './ui/components/footer/footer.component'
 //Stylesheets TODO would be better if global module
 import './global.scss'
 

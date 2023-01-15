@@ -3,8 +3,8 @@ import { useForm } from 'react-hook-form'
 //Router
 import { useNavigate } from 'react-router-dom'
 //Components
-import TextComponent    from '../../components/text/text.component'
-import ButtonComponent  from '../../components/button/button.component'
+import TextComponent    from '../../ui/components/text/text.component'
+import ButtonComponent  from '../../ui/components/button/button.component'
 //Hooks
 import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'

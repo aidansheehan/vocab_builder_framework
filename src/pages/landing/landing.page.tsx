@@ -1,4 +1,4 @@
-import TextComponent from '../../components/text/text.component'
+import TextComponent from '../../ui/components/text/text.component'
 
 /**
  * Landing (!auth) Page

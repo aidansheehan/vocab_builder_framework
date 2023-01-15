@@ -1,6 +1,6 @@
 import { useContext }           from 'react'
-import LocaleContext            from '../../context/locale.context'
-import SUPPORTED_LANGUAGES      from '../../i18n/constants/supported-languages.constant'
+import LocaleContext            from '../../../context/locale.context'
+import SUPPORTED_LANGUAGES      from '../../../i18n/constants/supported-languages.constant'
 import classNames               from 'classnames'
 import styles                   from './locale-selector.component.scss'
 

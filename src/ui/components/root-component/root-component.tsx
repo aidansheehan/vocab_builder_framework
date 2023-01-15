@@ -1,13 +1,13 @@
 import { useRoutes }            from 'react-router-dom'
 import PreloaderComponent       from '../preloader/preloader.component'
-import CollectionDetailsPage    from '../../pages/collection-details/collection-details.page'
-import CollectionEditorPage     from '../../pages/collection-editor/collection-editor.page'
-import CreateCollectionPage     from '../../pages/create-collection/create-collection.page'
-import ErrorPage                from '../../pages/error/error.page'
-import HomePage                 from '../../pages/home/home.page'
-import LandingPage              from '../../pages/landing/landing.page'
-import LoginPage                from '../../pages/login/login.page'
-import RegisterPage             from '../../pages/register/register.page'
+import CollectionDetailsPage    from '../../../pages/collection-details/collection-details.page'
+import CollectionEditorPage     from '../../../pages/collection-editor/collection-editor.page'
+import CreateCollectionPage     from '../../../pages/create-collection/create-collection.page'
+import ErrorPage                from '../../../pages/error/error.page'
+import HomePage                 from '../../../pages/home/home.page'
+import LandingPage              from '../../../pages/landing/landing.page'
+import LoginPage                from '../../../pages/login/login.page'
+import RegisterPage             from '../../../pages/register/register.page'
 
 /**
   * Route container element for application to render

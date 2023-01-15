@@ -12,7 +12,7 @@ import useAppDispatch   from '../../hooks/redux/use-app-dispatch.hook'
 //Types
 import { RegisterUserRequestType } from '../../redux/features/user/types/request.types'
 //Components
-import TextComponent from '../../components/text/text.component'
+import TextComponent from '../../ui/components/text/text.component'
 
 /**
  * Page to register a new user
