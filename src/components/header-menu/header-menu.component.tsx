@@ -96,31 +96,27 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
 
                         {config.routeButtons.map((v_, i_) => {
 
-                            const { route, icon, ref } = v_    //Destructure config
-
-                            //If menu button displayed only on certain devices TBD
-                            const devices = false
+                            const { route, icon, ref, devices } = v_    //Destructure config
 
                             if (devices) {
-                                //TBD
+
+                                return devices.includes(device) && <HeaderMenuButtonComponent key={i_} handleClick={() => handleNavigate(route)} icon={icon} label={ref} />
                             }
 
                             else {
-                                return <HeaderMenuButtonComponent key={i_} handleClick={() => handleNavigate(route)} icon={icon} label={ref} style={i_ === 0 && styles.headerMenuButtonFirst}/>
+                                return <HeaderMenuButtonComponent key={i_} handleClick={() => handleNavigate(route)} icon={icon} label={ref} />
                             }
 
 
                         })}
 
-                        {config.dispatchButtons.map((v_, i_) => {
+                        {config.dispatchButtons?.map((v_, i_) => {
 
-                            const { callback, icon, ref } = v_  //Destructure config
+                            const { callback, icon, ref, devices } = v_  //Destructure config
 
-                            //If menu button displayed only on certain devices TBD
-                            const devices = false
 
                             if (devices) {
-                                //TBD
+                                return devices.includes(device) && <HeaderMenuButtonComponent key={i_} handleClick={() => handleDispatch(callback)} icon={icon} label={ref} />
                             }
 
                             else {

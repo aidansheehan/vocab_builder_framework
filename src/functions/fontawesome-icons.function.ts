@@ -5,7 +5,12 @@ import {
     faHouse,
     faFileCirclePlus,
     faRightFromBracket,
-    faCircleQuestion
+    faRightToBracket,
+    faCircleQuestion,
+    faInfo,
+    faFileCircleQuestion,
+    faAddressBook,
+    faUserPlus,
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -20,6 +25,11 @@ export default function FontAwesomeIcons(): void {
         faHouse,
         faFileCirclePlus,
         faRightFromBracket,
-        faCircleQuestion
+        faRightToBracket,
+        faUserPlus,
+        faCircleQuestion,
+        faInfo,
+        faFileCircleQuestion,
+        faAddressBook
     )
 }

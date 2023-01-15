@@ -1,13 +1,21 @@
-import { useState }                     from 'react'
-import { NavLink }                      from 'react-router-dom'
-import useAppSelector                   from '../../hooks/redux/use-app-selector.hook'
-import HEADER_ITEMS_AUTH_CONFIG         from '../header-menu/constants/header-menu.header-items-auth-config.constant'
-import HeaderMenuComponent              from '../header-menu/header-menu.component'
-import IconComponent                    from '../icon/icon.component'
-import LocaleSelectorComponent          from '../locale-selector/locale-selector.component'
-import MenuBtnComponent                 from '../menu-btn/menu-btn.component'
-import TextComponent                    from '../text/text.component'
+//Core
+import { useState } from 'react'
+//Router
+import { /*NavLink,*/ useNavigate } from 'react-router-dom'
+//Redux
+import useAppSelector from '../../hooks/redux/use-app-selector.hook'
+//Components
+import ButtonPrimaryComponent       from '../button/components/button-primary.component'
+import HeaderMenuComponent          from '../header-menu/header-menu.component'
+import LocaleSelectorComponent      from '../locale-selector/locale-selector.component'
+import MenuBtnComponent             from '../menu-btn/menu-btn.component'
+//Constants
+import HEADER_ITEMS_PRIVATE_CONFIG  from '../header-menu/constants/header-menu.header-items-private-config.constant'
+import HEADER_ITEMS_PUBLIC_CONFIG   from '../header-menu/constants/header-menu.header-items-public-config.constant'
+//Styles
 import styles                           from './header.component.scss'
+import useDevice from '../../hooks/useDevice.hook'
+import ButtonComponent from '../button/button.component'
 
 /**
  * Header component
@@ -26,6 +34,9 @@ const HeaderComponent = (): JSX.Element => {
     //Menu expanded flag
     const [ expanded, setExpanded ] = useState<boolean>(false)
 
+    const device    = useDevice()
+    const navigate  = useNavigate()
+
     //Function to toggle menu expanded
     const toggleMenuExpanded = () => {
         setExpanded(!expanded)
@@ -43,35 +54,32 @@ const HeaderComponent = (): JSX.Element => {
 
                     <nav className={styles.headerNav}>
                         {userInfo ? (
-                            <>
-                                {/* TODO implement help page */}
-                                <NavLink role='nav-link' data-testid='collections-link' to={`user/help`}>
-                                    {/* TODO should render <TextComponent /> with 'help' on hover */}
-                                    <IconComponent icon={{icon: 'circle-question'}} />
-                                </NavLink>
-                                <MenuBtnComponent expanded={expanded} handleClick={toggleMenuExpanded} />
-                            </>
+
+                                <ButtonComponent onClick={() => navigate('/user/help')} icon='circle-question' />
                         ) : (
                             <>
-                                <LocaleSelectorComponent style={styles.headerLocaleSelector} />
-                                <NavLink role='nav-link' data-testid='login-link' to={`/login`}>
-                                    <TextComponent textRef='nav_login_link' />
-                                </NavLink>
+                                {
+                                    device !== 'mobile' ?
+                                    <>
+                                        <ButtonPrimaryComponent onClick={() => navigate('/register')} textRef='nav_register_link' style={styles.headerButton} />
+                                        <ButtonPrimaryComponent onClick={() => navigate('/login')} textRef='nav_login_link' style={styles.headerButton} />
+                                    </>
+                                    :
+                                    <></>
+                                }
 
-                                <NavLink role='nav-link' data-testid='landing-link' to={`/`} >
-                                    {/* TODO should render <TextComponent textRef='nav_home_link' /> on hover */}
-                                    <IconComponent icon={{icon: 'house'}} />
-                                </NavLink>
+                                <LocaleSelectorComponent style={styles.headerLocaleSelector} />
 
                             </>
                         )}
+                        <MenuBtnComponent expanded={expanded} handleClick={toggleMenuExpanded} />
 
                     </nav>
 
                 </div>
                 
                 {/* TODO render auth config or not auth config (need better names) based on whether userInfo */}
-                <HeaderMenuComponent config={/* userInfo ? */HEADER_ITEMS_AUTH_CONFIG} expanded={expanded} toggleExpanded={toggleMenuExpanded} />
+                <HeaderMenuComponent config={ userInfo ? HEADER_ITEMS_PRIVATE_CONFIG : HEADER_ITEMS_PUBLIC_CONFIG } expanded={expanded} toggleExpanded={toggleMenuExpanded} />
 
             </div>
     )

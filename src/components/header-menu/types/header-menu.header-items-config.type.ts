@@ -1,10 +1,11 @@
+import { Device } from "../../../types/device.type"
+
 /** HeaderItemsConfigType */
 export type HeaderItemsConfigType = {
 
-    /** config for header buttons */
-    routeButtons: HeaderRouteButtonConfig[],
+    routeButtons?: HeaderRouteButtonConfig[],
 
-    dispatchButtons: HeaderDispatchButtonConfig[]
+    dispatchButtons?: HeaderDispatchButtonConfig[]
 
 }
 
@@ -20,17 +21,19 @@ export type HeaderDispatchButtonConfig = HeaderItemConfig & {
     
     /** Dispatch function to execute on click */
     callback: Function
+
 }
 
 /** HeaderItemConfig */
 export type HeaderItemConfig = {
-
-    /** Devices to display item */
-    //TBD
 
     /** Display item config */
     icon: string,
 
     /** Display item translation reference */
     ref: string
+
+    /** Devices to display item */
+    devices?: Device[]
+    
 }

@@ -6,11 +6,11 @@ import { HeaderItemsConfigType }    from "../types/header-menu.header-items-conf
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  */
-const HEADER_ITEMS_AUTH_CONFIG: HeaderItemsConfigType = {
+const HEADER_ITEMS_PRIVATE_CONFIG: HeaderItemsConfigType = {
 
     routeButtons: [
 
-        { route: '/user', icon: 'house', ref: 'nav_collections_link' },
+        { route: '/user', icon: 'house', ref: 'nav_home_link' },
         { route: '/user/new', icon: 'file-circle-plus', ref: 'nav_new-collection_link' }
     ],
 
@@ -21,4 +21,4 @@ const HEADER_ITEMS_AUTH_CONFIG: HeaderItemsConfigType = {
     ]
 }
 
-export default HEADER_ITEMS_AUTH_CONFIG
+export default HEADER_ITEMS_PRIVATE_CONFIG
