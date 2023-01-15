@@ -12,7 +12,7 @@ const config = {
         '\\.(css|scss)$': '<rootDir>/test/__mocks__/styleMock.js'
     },
     moduleFileExtensions: [ 'ts', 'tsx', 'js', 'jsx', 'scss', 'json', 'node'],
-    setupFilesAfterEnv: [ './jest-setup.js' ],
+    setupFilesAfterEnv: [ './test/jest-setup.js' ],
     testEnvironment: 'jsdom',
     globals: {
         "ts-jest": {

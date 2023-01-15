@@ -3,8 +3,8 @@ import { render } from '@testing-library/react'
 import { IntlProvider } from 'react-intl'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
-import enMessages from './src/localization/en.json'
-import store from './src/redux/store'
+import enMessages from '../src/localization/en.json'
+import store from '../src/redux/store'
 const axios = require('axios')
 
 //Function to render components with required wrapper functions
