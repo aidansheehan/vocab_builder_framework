@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react'
 import { MemoryRouter } from 'react-router-dom'
 import React from 'react'
 import { Provider } from 'react-redux'
-import store from './redux/store'
+import store from '../redux/store'
 
 import { IntlProvider } from 'react-intl'
-import enMessages from './localization/en.json'
+import enMessages from '../i18n/en.json'
 
 const renderComponent = (ui, {locale = 'en', ...renderOptions} = {}, iE_?: Array<string>) => {
 
