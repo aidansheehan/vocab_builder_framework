@@ -19,7 +19,6 @@
     span {
         padding-left: 20px;
     }
-    // opacity: .7;
     @include hover.hover(hover) {
         opacity: .7;
         &:hover { 

@@ -1,28 +1,8 @@
-import { MouseEventHandler } from 'react'
-import styles from './button.component.scss'
-import classNames from 'classnames'
-import TextComponent from '../text/text.component'
-import IconComponent from '../icon/icon.component'
-
-/** ButtonComponent Props Type */
-type ButtonComponentPropsType = {
-
-    /** Function to execute on button click TODO should this maybe be handled within button? */
-    onClick: MouseEventHandler<HTMLButtonElement>,
-
-    /** Children to render */
-    children?: JSX.Element,
-
-    /** Reference for text to display in the button */
-    textRef?: string,
-
-    /** Font Awesome icon reference */
-    icon?: string
-
-    /* Additional Styles to be applied */
-    style?: string
-
-}
+import styles                       from './button.component.scss'
+import classNames                   from 'classnames'
+import TextComponent                from '../text/text.component'
+import IconComponent                from '../icon/icon.component'
+import { ButtonComponentProps }     from './types/button.component.props.type'
 
 /**
  * Generic Button Component
@@ -35,9 +15,9 @@ type ButtonComponentPropsType = {
  * return (
  *   <ButtonComponent onClick={onClick} text={text} />)
  */
-const ButtonComponent = (props: ButtonComponentPropsType) => {
+const ButtonComponent = (props: ButtonComponentProps) => {
 
-    const { onClick, children, textRef, style, icon } = props   //Destructure props
+    const { onClick, children, textRef, style, icon, disabled } = props   //Destructure props
 
     const className = classNames(styles.button, style)
 
@@ -45,6 +25,7 @@ const ButtonComponent = (props: ButtonComponentPropsType) => {
         <button
             className={className}
             onClick={onClick}
+            disabled={disabled}
         >
             { textRef ? <TextComponent textRef={textRef} /> : null }
             { icon ? <IconComponent icon={{icon}} /> : null }

@@ -1,7 +1,8 @@
-import styles       from './header-menu-button.component.scss'
-import classNames   from 'classnames'
-import IconComponent from '../icon/icon.component'
-import TextComponent from '../text/text.component'
+import styles           from './header-menu-button.component.scss'
+import classNames       from 'classnames'
+import IconComponent    from '../icon/icon.component'
+import TextComponent    from '../text/text.component'
+import ButtonComponent  from '../button/button.component'
 
 /** HeaderMenuButtonComponentProps */
 type HeaderMenuButtonComponentProps = {
@@ -44,9 +45,11 @@ const HeaderMenuButtonComponent = (props: HeaderMenuButtonComponentProps): JSX.E
     )
 
     return (
-        <button className={className} onClick={handleClick} >
-            {headerMenuButtonJsx}
-        </button>
+        <ButtonComponent 
+            style={className}
+            onClick={handleClick}
+            children={headerMenuButtonJsx}
+        />
     )
 
 }

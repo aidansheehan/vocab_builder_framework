@@ -1,5 +1,6 @@
-import styles       from './menu-btn.component.scss'
-import classNames   from 'classnames'
+import styles           from './menu-btn.component.scss'
+import classNames       from 'classnames'
+import ButtonComponent  from '../button/button.component'
 
 /** MenuBtnComponentProps type */
 type MenuBtnComponentProps = {
@@ -32,9 +33,11 @@ const MenuBtnComponent = (props: MenuBtnComponentProps): JSX.Element => {
     })
 
     return (
-        <button onClick={handleClick} className={className} >
-            <div className={styles.hamburger}></div>
-        </button>
+        <ButtonComponent 
+            onClick={handleClick}
+            style={className}
+            children={<div className={styles.hamburger} ></div>}
+        />
     )
 
 }
