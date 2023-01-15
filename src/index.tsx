@@ -8,7 +8,7 @@ import I18nProvider from './ui/context/providers/i18n/i18n.provider'
 //Components
 import RouterComponent from './ui/components/router-component/router-component'
 //Font Awesome
-import FontAwesomeIcons from './functions/fontawesome-icons.function'
+import FontAwesomeIcons from './ui/functions/fontawesome-icons.function'
 
 
 /**
