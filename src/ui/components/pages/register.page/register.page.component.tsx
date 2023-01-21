@@ -1,5 +1,5 @@
 //Core
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 //React Hook Form (Client Side Validation)
 import { useForm } from 'react-hook-form'
 //Actions
@@ -12,7 +12,8 @@ import useAppDispatch   from '../../../hooks/redux/use-app-dispatch.hook'
 //Types
 import { RegisterUserRequestType } from '../../../../redux/features/user/types/request.types'
 //Components
-import TextComponent from '../../text/text.component'
+import TextComponent            from '../../text/text.component'
+import ButtonPrimaryComponent   from '../../button/components/button-primary.component'
 
 /**
  * Page to register a new user
@@ -32,6 +33,9 @@ const RegisterPageComponent = (): JSX.Element => {
     const dispatch                      = useAppDispatch()  //Init useAppDispatch
     const { register, handleSubmit }    = useForm()         //Destrucutre use form
     const navigate                      = useNavigate()     //init useNavigate
+
+    //Reference for register form
+    const registerRef = useRef<HTMLFormElement>(null)
 
     //Function to submit login form
     const submitForm = (data: RegisterUserRequestType) => {
@@ -65,7 +69,7 @@ const RegisterPageComponent = (): JSX.Element => {
 
             <TextComponent textRef='register_header' />
 
-            <form onSubmit={handleSubmit(submitForm)}>
+            <form onSubmit={handleSubmit(submitForm)} ref={registerRef} >
 
                 {/* Render error message if any TBD */}
                 {error && <h1>Error!</h1>}
@@ -122,9 +126,11 @@ const RegisterPageComponent = (): JSX.Element => {
                     />
                 </div>
 
-                <button type='submit' disabled={loading}>
-                    Register
-                </button>
+                <ButtonPrimaryComponent 
+                    disabled={loading}
+                    textRef='nav_register_link'
+                    onClick={registerRef.current?.submit}
+                />
 
             </form>
 
