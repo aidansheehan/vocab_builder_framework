@@ -1,12 +1,22 @@
-import { NavLink }                      from 'react-router-dom'
-import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook'
-import useAppSelector                   from '../../hooks/redux/use-app-selector.hook'
-import { logout }                       from '../../../redux/features/user/user.slice'
-import ButtonComponent                  from '../button/button.component'
-import IconComponent                    from '../icon/icon.component'
-import LocaleSelectorComponent          from '../locale-selector/locale-selector.component'
-import TextComponent                    from '../text/text.component'
-import styles                           from './header.component.scss'
+//Core
+import { useState } from 'react'
+//Router
+import { useNavigate } from 'react-router-dom'
+//Redux
+import useAppSelector from '../../hooks/redux/use-app-selector.hook'
+//Components
+import ButtonPrimaryComponent       from '../button/components/button-primary.component'
+import HeaderMenuComponent          from '../header-menu/header-menu.component'
+import LocaleSelectorComponent      from '../locale-selector/locale-selector.component'
+import MenuBtnComponent             from '../menu-btn/menu-btn.component'
+import ButtonComponent              from '../button/button.component'
+//Constants
+import HEADER_ITEMS_PRIVATE_CONFIG  from '../header-menu/constants/header-menu.header-items-private-config.constant'
+import HEADER_ITEMS_PUBLIC_CONFIG   from '../header-menu/constants/header-menu.header-items-public-config.constant'
+//Hooks
+import useDevice from '../../hooks/useDevice.hook'
+//Styles
+import styles from './header.component.scss'
 
 /**
  * Header component
@@ -22,55 +32,56 @@ const HeaderComponent = (): JSX.Element => {
 
     const { userInfo }   = useAppSelector((state) => state.user) //Destructure user state
 
-    const dispatch = useAppDispatch() //Init useAppDispatch
+    //Menu expanded flag
+    const [ expanded, setExpanded ] = useState<boolean>(false)
+
+    const device    = useDevice()
+    const navigate  = useNavigate()
+
+    //Function to toggle menu expanded
+    const toggleMenuExpanded = () => {
+        setExpanded(!expanded)
+    }
 
     return (
             <div className={styles.header}>
 
                 <div className={styles.headerLeft} >
-                    <span className={styles.logo}>VOCAB BUILDER</span>
+                    <span className={styles.logo}>Flashcard Factory</span>
                 </div>
 
 
                 <div className={styles.headerRight} >
 
-                    <nav>
+                    <nav className={styles.headerNav}>
                         {userInfo ? (
-                            <>
-                                <LocaleSelectorComponent style={styles.headerLocaleSelector} />
-                                <NavLink role='nav-link' data-testid='collections-link' to={`/collections`}>
-                                    {/* TODO should render <TextComponent textRef='nav_collections_link' /> on hover */}
-                                    <IconComponent icon={{icon: 'house'}} />
-                                </NavLink>
-                                <NavLink role='nav-link' to={'/collections/new'}>
-                                    {/* TODO should render <TextComponent textRef='nav_new-collection_link' /> on hover */}
-                                    <IconComponent icon={{icon: 'file-circle-plus'}} />
-                                </NavLink>
-                                <ButtonComponent
-                                    // textRef='nav_logout_link' TODO should render as text component popup on hover
-                                    icon='right-from-bracket'
-                                    onClick={() => dispatch(logout())}
-                                    style={styles.logoutButton}
-                                />
-                            </>
+
+                                <ButtonComponent onClick={() => navigate('/user/help')} icon='circle-question' />
                         ) : (
                             <>
-                                <LocaleSelectorComponent style={styles.headerLocaleSelector} />
-                                <NavLink role='nav-link' data-testid='login-link' to={`/login`}>
-                                    <TextComponent textRef='nav_login_link' />
-                                </NavLink>
+                                {
+                                    device !== 'mobile' ?
+                                    <>
+                                        <ButtonPrimaryComponent onClick={() => navigate('/register')} textRef='nav_register_link' style={styles.headerButton} />
+                                        <ButtonPrimaryComponent onClick={() => navigate('/login')} textRef='nav_login_link' style={styles.headerButton} />
+                                    </>
+                                    :
+                                    <></>
+                                }
 
-                                <NavLink role='nav-link' data-testid='landing-link' to={`/`} >
-                                    {/* TODO should render <TextComponent textRef='nav_home_link' /> on hover */}
-                                    <IconComponent icon={{icon: 'house'}} />
-                                </NavLink>
+                                <LocaleSelectorComponent style={styles.headerLocaleSelector} />
 
                             </>
                         )}
+                        <MenuBtnComponent expanded={expanded} handleClick={toggleMenuExpanded} />
 
                     </nav>
 
                 </div>
+                
+                {/* TODO render auth config or not auth config (need better names) based on whether userInfo */}
+                <HeaderMenuComponent config={ userInfo ? HEADER_ITEMS_PRIVATE_CONFIG : HEADER_ITEMS_PUBLIC_CONFIG } expanded={expanded} toggleExpanded={toggleMenuExpanded} />
+
             </div>
     )
 }

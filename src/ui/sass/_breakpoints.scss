@@ -1,0 +1,12 @@
+$mobile-small:  320;
+$mobile-l:      896;
+$mobile-p:      480; 
+$tablet:        1200;
+
+$bp-mobile-landscape:   "(max-width: #{$mobile-l}px) and (orientation: landscape)";
+$bp-mobile-portrait:    "(max-width: #{$mobile-p}px) and (orientation: portrait)";
+$bp-mobile:             "#{$bp-mobile-landscape}, #{$bp-mobile-portrait}";
+$bp-tablet-landscape:   "(min-width: #{$mobile-l + 1}px) and (max-width: #{$tablet}px) and (orientation: landscape)";
+$bp-tablet-portrait:    "(min-width: #{$mobile-p + 1}px) and (max-width: #{$tablet}px) and (orientation: portrait)";
+$bp-tablet:             "#{$bp-tablet-landscape}, #{$bp-tablet-portrait}";
+$bp-desktop:            "(min-width: #{$tablet + 1}px)";

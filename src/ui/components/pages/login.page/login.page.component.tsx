@@ -1,10 +1,12 @@
+//Core
+import { useRef } from 'react'
 //React Hook Form (Client Side Validation)
 import { useForm } from 'react-hook-form'
 //Router
 import { useNavigate } from 'react-router-dom'
 //Components
-import TextComponent    from '../../text/text.component'
-import ButtonComponent  from '../../button/button.component'
+import TextComponent            from '../../text/text.component'
+import ButtonPrimaryComponent   from '../../button/components/button-primary.component'
 //Hooks
 import useAppDispatch from '../../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
@@ -12,7 +14,6 @@ import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
 import { UserLoginRequestType } from '../../../../redux/features/user/types/request.types'
 //Actions
 import { userLogin } from '../../../../redux/features/user/user.actions'
-
 
 /**
  * Login Page Component
@@ -37,9 +38,12 @@ const LoginPageComponent = (): JSX.Element => {
         dispatch(userLogin(data))
     }
 
+    //Reference for login form
+    const formRef = useRef<HTMLFormElement>(null)
+
     return (
 
-        <form onSubmit={handleSubmit(submitForm)} data-testid='login-page'>
+        <form onSubmit={handleSubmit(submitForm)} data-testid='login-page' ref={formRef} >
 
             <TextComponent textRef='login_header' />
 
@@ -72,12 +76,16 @@ const LoginPageComponent = (): JSX.Element => {
 
             </div>
 
-            <button type='submit' role='login-submit' disabled={loading} ><TextComponent textRef='nav_login_link' /></button>
+            <ButtonPrimaryComponent
+                disabled={loading}
+                textRef='nav_login_link'
+                onClick={formRef.current?.submit}
+            />
 
             <hr />
 
             <TextComponent textRef='login_signup_link' />
-            <ButtonComponent textRef='nav_register_link' onClick={() => navigate('/register')} />
+            <ButtonPrimaryComponent textRef='nav_register_link' onClick={() => navigate('/register')} />
 
         </form>
     )

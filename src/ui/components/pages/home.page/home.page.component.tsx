@@ -7,10 +7,10 @@ import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
  * @component
  * @example
  * return (
- *   <HomePage />
+ *   <HomePageComponent />
  * )
  */
-const HomePage = (): JSX.Element => {
+const HomePageComponent = (): JSX.Element => {
 
     //Get user info
     const { userInfo } = useAppSelector((state) => state.user)
@@ -30,4 +30,4 @@ const HomePage = (): JSX.Element => {
     )
 }
 
-export default HomePage
+export default HomePageComponent

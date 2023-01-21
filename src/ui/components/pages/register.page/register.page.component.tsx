@@ -56,7 +56,7 @@ const RegisterPageComponent = (): JSX.Element => {
         if (success) navigate(`/login`)
 
          //Redirect authenticated user to their home screen TODO may need to revisit how check authenticated
-        if (userInfo) navigate(`/collections`)
+        if (userInfo) navigate(`/user`)
 
     }, [ navigate, userInfo, success ])
 
