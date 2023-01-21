@@ -1,0 +1,11 @@
+@use '../../sass/placeholders/remove-tap-highlight';
+
+.button {
+    @extend %remove-tap-highlight;
+    cursor: pointer;
+    border-color: transparent;
+    background-color: transparent;
+    font-weight: inherit;
+    pointer-events: all;
+    color: inherit;
+}

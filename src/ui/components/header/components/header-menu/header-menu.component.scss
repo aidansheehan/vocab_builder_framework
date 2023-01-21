@@ -1,0 +1,19 @@
+@use '../../header.component.scss' as *;
+@use '../../../../sass/mixins/mq.mixin' as mq;
+
+.headerMenu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    top: $header-height + $border-width;
+
+    @include mq.mq(desktop) {
+        width: 250px;
+        right: 0;
+    }
+
+    background-color: $header-background;
+    color: $header-color;
+
+}

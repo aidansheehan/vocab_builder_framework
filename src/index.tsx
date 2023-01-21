@@ -4,11 +4,11 @@ import { createRoot }       from 'react-dom/client'
 import store                from './redux/store'
 import { Provider }         from 'react-redux'
 //Providers
-import I18nProvider from './context/providers/i18n/i18n.provider'
+import I18nProvider from './ui/context/providers/i18n/i18n.provider'
 //Components
-import RouterComponent from './components/router-component/router-component'
+import RouterComponent from './ui/components/router-component/router-component'
 //Font Awesome
-import FontAwesomeIcons from './functions/fontawesome-icons.function'
+import FontAwesomeIcons from './ui/functions/fontawesome-icons.function'
 
 
 /**
