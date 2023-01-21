@@ -33,10 +33,10 @@ const App = () => {
         if (!!userInfo) {
 
             //If user is trying to access public route
-            if (!location.pathname.includes('collections')) {
+            if (!location.pathname.includes('user')) {
 
                 //Redirect to user home page
-                navigate('/collections')
+                navigate('/user')
             }
         }
 
@@ -44,7 +44,7 @@ const App = () => {
         if (!userInfo) {
 
             //If user is trying to access private route
-            if (location.pathname.includes('collections')) {
+            if (location.pathname.includes('user')) {
 
                 //Redirect to login page
                 navigate('/login')

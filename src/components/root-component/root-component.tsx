@@ -1,5 +1,8 @@
-import { useRoutes }            from 'react-router-dom'
-import PreloaderComponent       from '../preloader/preloader.component'
+//Router
+import { useRoutes } from 'react-router-dom'
+//Components
+import PreloaderComponent from '../preloader/preloader.component'
+//Pages
 import CollectionDetailsPage    from '../../pages/collection-details/collection-details.page'
 import CollectionEditorPage     from '../../pages/collection-editor/collection-editor.page'
 import CreateCollectionPage     from '../../pages/create-collection/create-collection.page'
@@ -8,6 +11,9 @@ import HomePage                 from '../../pages/home/home.page'
 import LandingPage              from '../../pages/landing/landing.page'
 import LoginPage                from '../../pages/login/login.page'
 import RegisterPage             from '../../pages/register/register.page'
+import HelpPage                 from '../../pages/help/help-page'
+import FAQPage                  from '../../pages/faq/faq-page'
+import ContactPage              from '../../pages/contact/contact.page'
 
 /**
   * Route container element for application to render
@@ -37,7 +43,15 @@ const RootComponent = (): JSX.Element => {
                     element: <RegisterPage />
                 },
                 {
-                    path: 'collections',
+                    path: 'faq',
+                    element: <FAQPage />
+                },
+                {
+                    path: 'contact',
+                    element: <ContactPage />
+                },
+                {
+                    path: 'user',
                     children: [
                         {
                             index: true,
@@ -46,6 +60,10 @@ const RootComponent = (): JSX.Element => {
                         {
                             path: 'new',
                             element: <CreateCollectionPage />
+                        },
+                        {
+                            path: 'help',
+                            element: <HelpPage />
                         },
                         {
                             path: ':collectionId',
