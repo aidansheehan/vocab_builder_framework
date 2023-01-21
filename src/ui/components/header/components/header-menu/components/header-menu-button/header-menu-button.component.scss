@@ -1,5 +1,5 @@
-@use '../header/header.component.scss' as *;
-@use '../../sass/mixins/hover.mixin' as hover;
+@use '../../header-menu.component.scss' as *;
+@use '../../../../../../sass/mixins/hover.mixin' as hover;
 
 .headerMenuButton {
     cursor: pointer;

@@ -1,4 +1,4 @@
-import { Device } from "../../../types/device.type"
+import { Device } from "../../../../../types/device.type"
 
 /** HeaderItemsConfigType */
 export type HeaderItemsConfigType = {

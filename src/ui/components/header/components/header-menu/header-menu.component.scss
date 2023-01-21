@@ -1,5 +1,5 @@
-@use '../header/header.component.scss' as *;
-@use '../../sass/mixins/mq.mixin' as mq;
+@use '../../header.component.scss' as *;
+@use '../../../../sass/mixins/mq.mixin' as mq;
 
 .headerMenu {
     position: absolute;

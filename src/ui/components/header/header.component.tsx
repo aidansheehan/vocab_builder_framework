@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'
 //Components
 import ButtonPrimaryComponent       from '../button/components/button-primary.component'
-import HeaderMenuComponent          from '../header-menu/header-menu.component'
+import HeaderMenuComponent          from './components/header-menu/header-menu.component'
 import LocaleSelectorComponent      from '../locale-selector/locale-selector.component'
-import MenuBtnComponent             from '../menu-btn/menu-btn.component'
+import MenuBtnComponent             from './components/menu-btn/menu-btn.component'
 import ButtonComponent              from '../button/button.component'
 //Constants
-import HEADER_ITEMS_PRIVATE_CONFIG  from '../header-menu/constants/header-menu.header-items-private-config.constant'
-import HEADER_ITEMS_PUBLIC_CONFIG   from '../header-menu/constants/header-menu.header-items-public-config.constant'
+import HEADER_ITEMS_PRIVATE_CONFIG  from './components/header-menu/constants/header-menu.header-items-private-config.constant'
+import HEADER_ITEMS_PUBLIC_CONFIG   from './components/header-menu/constants/header-menu.header-items-public-config.constant'
 //Hooks
 import useDevice from '../../hooks/useDevice.hook'
 //Styles

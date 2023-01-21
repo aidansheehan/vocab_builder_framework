@@ -1,6 +1,6 @@
 import styles           from './menu-btn.component.scss'
 import classNames       from 'classnames'
-import ButtonComponent  from '../button/button.component'
+import ButtonComponent  from '../../../button/button.component'
 
 /** MenuBtnComponentProps type */
 type MenuBtnComponentProps = {

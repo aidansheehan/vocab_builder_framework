@@ -1,8 +1,8 @@
 import styles           from './header-menu-button.component.scss'
 import classNames       from 'classnames'
-import IconComponent    from '../icon/icon.component'
-import TextComponent    from '../text/text.component'
-import ButtonComponent  from '../button/button.component'
+import IconComponent    from '../../../../../icon/icon.component'
+import TextComponent    from '../../../../../text/text.component'
+import ButtonComponent  from '../../../../../button/button.component'
 
 /** HeaderMenuButtonComponentProps */
 type HeaderMenuButtonComponentProps = {

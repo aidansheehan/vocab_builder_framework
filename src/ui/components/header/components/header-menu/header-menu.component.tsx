@@ -1,10 +1,10 @@
 import styles                           from './header-menu.component.scss'
 import { HeaderItemsConfigType }        from './types/header-menu.header-items-config.type'
 import { Transition }                   from 'react-transition-group'
-import HeaderMenuButtonComponent        from '../header-menu-button/header-menu-button.component'
+import HeaderMenuButtonComponent        from './components/header-menu-button/header-menu-button.component'
 import { useNavigate }                  from 'react-router-dom'
-import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook'
-import useDevice                        from '../../hooks/useDevice.hook'
+import useAppDispatch                   from '../../../../hooks/redux/use-app-dispatch.hook'
+import useDevice                        from '../../../../hooks/useDevice.hook'
 
 /** HeaderMenuComponentProps type */
 type HeaderMenuComponentProps = {
