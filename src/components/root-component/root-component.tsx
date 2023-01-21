@@ -51,7 +51,7 @@ const RootComponent = (): JSX.Element => {
                     element: <ContactPage />
                 },
                 {
-                    path: 'user',    //TODO i think these routes should be on user/ not collections/
+                    path: 'user',
                     children: [
                         {
                             index: true,
