@@ -1,3 +1,5 @@
+import { useState } from 'react'
+import TextInputComponent from '../../text-input/text-input.component'
 import TextComponent from '../../text/text.component'
 
 /**
@@ -10,6 +12,8 @@ import TextComponent from '../../text/text.component'
  * )
  */
 const LandingPageComponent = () => {
+    
+    const [ testValue, setTestValue ] = useState<string>('')
 
     return (
         <div data-testid='landing-page' >
@@ -25,6 +29,9 @@ const LandingPageComponent = () => {
             <p>
                 <TextComponent textRef='landing_text_4' />
             </p>
+
+            <TextInputComponent value={testValue} setValue={setTestValue} />
+
         </div>
     )
 }

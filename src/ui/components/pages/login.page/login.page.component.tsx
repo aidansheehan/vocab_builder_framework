@@ -14,6 +14,7 @@ import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
 import { UserLoginRequestType } from '../../../../redux/features/user/types/request.types'
 //Actions
 import { userLogin } from '../../../../redux/features/user/user.actions'
+import TextInputComponent from '../../text-input/text-input.component'
 
 /**
  * Login Page Component
@@ -53,6 +54,7 @@ const LoginPageComponent = (): JSX.Element => {
                 <label htmlFor='email'>
                     <TextComponent textRef="common_email_tag" />
                 </label>
+
                 <input 
                     type='email'
                     {...register('email')}
