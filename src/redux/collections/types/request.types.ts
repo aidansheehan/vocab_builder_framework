@@ -1,4 +1,4 @@
-import { CollectionType, CollectionWithIdType } from './collection.types'
+import { CollectionType, CollectionWithIdType } from './collections.types'
 
 /** CreateCollectionRequestType */
 export type CreateCollectionRequestType = CollectionType

@@ -1,4 +1,14 @@
-import { CollectionWithIdType } from './collection.types'
+import { CollectionWithIdType } from './collections.types'
+
+/** GetOneCollectionResponseType */
+export type GetOneCollectionResponseType = {
+
+    /** Response status TODO */
+    status: number,
+
+        collection: CollectionWithIdType
+
+}
 
 /** getCollections response type */
 export type GetCollectionsResponseType = {
