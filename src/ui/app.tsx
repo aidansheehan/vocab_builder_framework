@@ -54,11 +54,13 @@ const App = () => {
     }, [ userInfo, navigate ] )
 
     return (
-        <div>
+        <>
             <HeaderComponent />
-            <Outlet />
+            <div id='main'>
+                <Outlet />
+            </div>
             <FooterComponent />
-        </div>
+        </>
     )
 
 }
