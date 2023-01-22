@@ -3,14 +3,14 @@ import { useEffect, useRef } from 'react'
 //React Hook Form (Client Side Validation)
 import { useForm } from 'react-hook-form'
 //Actions
-import { registerUser } from '../../../../redux/features/user/user.actions'
+import { registerUser } from '../../../../redux/user/actions/user.actions'
 //Router
 import { useNavigate }  from 'react-router-dom'
 //Hooks
 import useAppSelector   from '../../../hooks/redux/use-app-selector.hook'
 import useAppDispatch   from '../../../hooks/redux/use-app-dispatch.hook'
 //Types
-import { RegisterUserRequestType } from '../../../../redux/features/user/types/request.types'
+import { RegisterUserRequestType } from '../../../../redux/user/types/request.types'
 //Components
 import TextComponent            from '../../text/text.component'
 import ButtonPrimaryComponent   from '../../button/components/button-primary.component'

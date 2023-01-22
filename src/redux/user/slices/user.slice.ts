@@ -1,10 +1,10 @@
 //Redux
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //Actions
-import { getUserDetails, registerUser, userLogin } from './user.actions'
+import { getUserDetails, registerUser, userLogin } from '../actions/user.actions'
 //Types
-import { LoginResponseType, UserDetailsResponseType }   from './types/response.types'
-import { UserType }                                     from './types/user.types'
+import { LoginResponseType, UserDetailsResponseType }   from '../types/response.types'
+import { UserType }                                     from '../types/user.types'
 
 /** Initial State */
 const initialState: UserType = {

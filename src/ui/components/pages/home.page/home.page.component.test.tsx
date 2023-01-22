@@ -1,8 +1,8 @@
-import { render } from '@testing-library/react'
-import React from 'react'
-import HomePage from './home.page.component'
-import store from '../../redux/store'
-import { Provider } from 'react-redux'
+import { render }           from '@testing-library/react'
+import React                from 'react'
+import HomePageComponent    from './home.page.component'
+import store                from '../../../../redux/store'
+import { Provider }         from 'react-redux'
 
 describe('HomePage', () => {
 
@@ -10,7 +10,7 @@ describe('HomePage', () => {
 
         let { container } = render(
             <Provider store={store}>
-                <HomePage />
+                <HomePageComponent />
             </Provider>
         )
 
