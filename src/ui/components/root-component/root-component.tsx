@@ -43,6 +43,10 @@ const RootComponent = (): JSX.Element => {
                     element: <RegisterPageComponent />
                 },
                 {
+                    path: 'new',
+                    element: <CreateCollectionPageComponent />
+                },
+                {
                     path: 'faq',
                     element: <FAQPageComponent />
                 },

@@ -1,0 +1,38 @@
+$secondary-text-color: #94A2AB;
+
+$tertiary-background-color: #E0E7EC;
+
+.login {
+    height: 50%;
+    width: 75%;
+    max-width: 400px;
+    >.loginForm {
+        height: 100%;
+        width: 100%;
+        max-width: 400px;
+        color: $secondary-text-color;
+        > .loginSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 100%;
+            padding: 0 25%;
+            box-sizing: border-box;
+            > input {
+                width: 100%;
+            }
+            &.loginHeader {
+                height: 50px;
+            }
+            &.loginButtonSection {
+                height: 50px;
+                justify-content: space-between;
+                > .loginFormRegister {
+                    background-color: $tertiary-background-color;
+                }
+    
+            }
+        }
+    }
+}

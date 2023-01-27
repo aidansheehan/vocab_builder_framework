@@ -1,5 +1,8 @@
+import classNames from 'classnames'
 import { useRef }                   from 'react'
 import { useForm }                  from 'react-hook-form'
+import { useIntl } from 'react-intl'
+import { NavLink } from 'react-router-dom'
 import { useNavigate }              from 'react-router-dom'
 import { UserLoginRequestType }     from '../../../redux/features/user/types/request.types'
 import { userLogin }                from '../../../redux/features/user/user.actions'
@@ -37,41 +40,54 @@ const LoginFormComponent = (): JSX.Element => {
     //Reference for login form
     const formRef = useRef<HTMLFormElement>(null)
 
+    //Translate placeholder messages for input components TODO centralize this logic
+    const intl = useIntl()
+
+
     return (
 
-        <form className={styles.login} onSubmit={handleSubmit(submitForm)} >
+        <div className={styles.login}>
+            <form className={styles.loginForm} onSubmit={handleSubmit(submitForm)} >
 
-            <TextComponent textRef='login_header' />
+                <div className={classNames(styles.loginHeader, styles.loginSection)}>
+                    <TextComponent textRef='login_header' />
+                </div>
 
-            {error && <h1>ERROR TBD</h1>}
+                {error && <h1>ERROR TBD</h1>}
 
-            <div>
-                <label htmlFor='email'>
-                    <TextComponent textRef='common_email_tag' />
-                </label>
-                <input 
-                    type='email'
-                    {...register('email')}
-                    required
-                    autoComplete='off'
-                    role='email-input'
-                />
-            </div>
+                <div className={styles.loginSection} >
 
-            <div>
-                        <label htmlFor='password'>
-                            <TextComponent textRef="common_password_tag" />
-                        </label>
-                        <input 
-                            type='password'
-                            {...register('password')}
-                            required
-                            autoComplete='off'
-                            role='password-input'
+                    <input 
+                        type='email'
+                        {...register('email')}
+                        required
+                        autoComplete='off'
+                        role='email-input'
+                        placeholder={intl.formatMessage({id: 'common_email_tag'})}
+                    />
+                    
+                </div>
 
-                        />
+                <div className={styles.loginSection} >
 
-                    </div>
+                    <input 
+                        type='password'
+                        {...register('password')}
+                        required
+                        autoComplete='off'
+                        role='password-input'
+                        placeholder={intl.formatMessage({id: 'common_password_tag'})}
+                    />
+
+                </div>
+
+                <div className={classNames(styles.loginSection, styles.loginButtonSection)}>
+
+                    <ButtonPrimaryComponent 
+                        textRef='nav_register_link'
+                        onClick={() => navigate('/register')}
+                        style={styles.loginFormRegister}
+                    />
 
                     <ButtonPrimaryComponent
                         disabled={loading}
@@ -79,12 +95,16 @@ const LoginFormComponent = (): JSX.Element => {
                         onClick={formRef.current?.submit}
                     />
 
-                    <hr />
+                </div>
 
-                    <TextComponent textRef='login_signup_link' />
-                    <ButtonPrimaryComponent textRef='nav_register_link' onClick={() => navigate('/register')} />
-            
-        </form>
+                <div className={classNames(styles.loginSection)}>
+                    <NavLink to='/new' >
+                        <TextComponent textRef='nav_continue-without-account' />
+                    </NavLink>
+                </div>
+
+            </form>
+        </div>
     )
 }
 

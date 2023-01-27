@@ -22,7 +22,11 @@ const TextComponent = (props: TextComponentPropsType) => {
 
     const { textRef } = props   //Destructure props
 
-    return <FormattedMessage id={textRef} />
+    return (
+        <span>
+            <FormattedMessage id={textRef} />
+        </span>
+    )
 
 }
 
