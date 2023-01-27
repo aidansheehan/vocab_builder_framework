@@ -1,14 +1,14 @@
 
-import classNames from 'classnames'
-import { useRef } from 'react'
-import { FieldValues, SubmitHandler, useForm } from 'react-hook-form'
-import { useIntl } from 'react-intl'
-import { NavLink } from 'react-router-dom'
-import ButtonPrimaryComponent from '../button/components/button-primary.component'
-import TextComponent from '../text/text.component'
-import styles from './auth-form.component.scss'
-import { AuthFormButtonConfig } from './types/auth-form.button-config.type'
-import { AuthFormRequestData } from './types/auth-form.request-data.type'
+import classNames                               from 'classnames'
+import { useRef }                               from 'react'
+import { FieldValues, SubmitHandler, useForm }  from 'react-hook-form'
+import { useIntl }                              from 'react-intl'
+import { NavLink }                              from 'react-router-dom'
+import ButtonPrimaryComponent                   from '../button/components/button-primary.component'
+import TextComponent                            from '../text/text.component'
+import styles                                   from './auth-form.component.scss'
+import { AuthFormButtonConfig }                 from './types/auth-form.button-config.type'
+import { AuthFormRequestData }                  from './types/auth-form.request-data.type'
 
 type AuthFormComponentProps = {
 
