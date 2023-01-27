@@ -85,7 +85,7 @@ const LoginFormComponent = (): JSX.Element => {
 
                     <ButtonPrimaryComponent 
                         textRef='nav_register_link'
-                        onClick={() => navigate('/register')}
+                        onClick={() => navigate('/auth/register')}
                         style={styles.loginFormRegister}
                     />
 

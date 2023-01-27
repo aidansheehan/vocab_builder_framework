@@ -47,7 +47,7 @@ const App = () => {
             if (location.pathname.includes('user')) {
 
                 //Redirect to login page
-                navigate('/login')
+                navigate('auth/login')
             }
         }
 

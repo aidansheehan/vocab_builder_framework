@@ -9,7 +9,7 @@ import BASE_URL                         from './constants/base-url.constant'
  */
 const redirectToLogin = (): null => {
     const navigate = useNavigate()
-    navigate('/login')
+    navigate('auth/login')
     return null
 }
 

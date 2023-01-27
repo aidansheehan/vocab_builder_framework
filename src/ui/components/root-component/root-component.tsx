@@ -1,7 +1,10 @@
 //Router
 import { useRoutes } from 'react-router-dom'
 //Components
-import PreloaderComponent from '../preloader/preloader.component'
+import PreloaderComponent       from '../preloader/preloader.component'
+import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
+import LoginFormComponent       from '../login-form/login-form.component'
+import RegisterFormComponent    from '../register-form/register-form.component'
 //Pages
 import CollectionDetailsPageComponent   from '../pages/collection-details.page/collection-details.page.component'
 import CollectionEditorPageComponent    from '../pages/collection-editor.page/collection-editor.page.component'
@@ -9,8 +12,8 @@ import CreateCollectionPageComponent    from '../pages/create-collection.page/cr
 import ErrorPageComponent               from '../pages/error.page/error.page.component'
 import HomePageComponent                from '../pages/home.page/home.page.component'
 import LandingPageComponent             from '../pages/landing.page/landing.page.component'
-import LoginPageComponent               from '../pages/login.page/login.page.component'
-import RegisterPageComponent            from '../pages/register.page/register.page.component'
+// import LoginPageComponent               from '../pages/login.page/login.page.component'
+// import RegisterPageComponent            from '../pages/register.page/register.page.component'
 import HelpPageComponent                from '../pages/help.page/help-page.component'
 import FAQPageComponent                 from '../pages/faq.page/faq-page.component'
 import ContactPageComponent             from '../pages/contact.page/contact.page.component'
@@ -34,14 +37,14 @@ const RootComponent = (): JSX.Element => {
                     index: true,
                     element: <LandingPageComponent />
                 },
-                {
-                    path: 'login',
-                    element: <LoginPageComponent />
-                },
-                {
-                    path: 'register',
-                    element: <RegisterPageComponent />
-                },
+                // {
+                //     path: 'login',
+                //     element: <LoginPageComponent />
+                // },
+                // {
+                //     path: 'register',
+                //     element: <RegisterPageComponent />
+                // },
                 {
                     path: 'new',
                     element: <CreateCollectionPageComponent />
@@ -53,6 +56,20 @@ const RootComponent = (): JSX.Element => {
                 {
                     path: 'contact',
                     element: <ContactPageComponent />
+                },
+                {
+                    path: 'auth',
+                    element: <AuthLayoutComponent />,
+                    children: [
+                        {
+                            path: 'login',
+                            element: <LoginFormComponent />
+                        },
+                        {
+                            path: 'register',
+                            element: <RegisterFormComponent />
+                        }
+                    ]
                 },
                 {
                     path: 'user',
