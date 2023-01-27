@@ -115,6 +115,7 @@ const AuthFormComponent = (props: AuthFormComponentProps): JSX.Element => {
                                     disabled={loading}
                                     textRef={b_.textReference}
                                     style={styles.authBtnSecondary}
+                                    type='button'
                                     key={i_}
                                 />
                             )) 

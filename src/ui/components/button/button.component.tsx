@@ -17,7 +17,7 @@ import { ButtonComponentProps } from './types/button.component.props.type'
  */
 const ButtonComponent = (props: ButtonComponentProps) => {
 
-    const { onClick, children, textRef, style, icon, disabled } = props   //Destructure props
+    const { onClick, children, textRef, style, icon, disabled, type } = props   //Destructure props
 
     const className = classNames(styles.button, style)
 
@@ -26,6 +26,7 @@ const ButtonComponent = (props: ButtonComponentProps) => {
             className={className}
             onClick={onClick}
             disabled={disabled}
+            type={type}
         >
             {textRef ? <TextComponent textRef={textRef} /> : null }
             {icon ? <IconComponent icon={{icon}} /> : null}
