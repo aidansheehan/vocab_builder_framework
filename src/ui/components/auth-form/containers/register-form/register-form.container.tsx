@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { RegisterUserRequestType } from "../../../../../redux/features/user/types/request.types"
 import { registerUser } from "../../../../../redux/features/user/user.actions"
@@ -21,7 +22,7 @@ import { REGISTER_REQUEST_DATA } from "./constants/register-request-data.constan
 const RegisterFormContainer = (): JSX.Element => {
 
     //User state values to handle UI state
-    const { loading, error, /*success, userInfo*/ } = useAppSelector(state => state.user)
+    const { loading, error, success, userInfo } = useAppSelector(state => state.user)
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -40,8 +41,6 @@ const RegisterFormContainer = (): JSX.Element => {
         //dispatch action to register user
         dispatch(registerUser(data))
 
-        //TODO take registerUser response and use to log user in? or just send JWT? and populate userInfo array directly?
-
     } 
 
     const handleLoginClick = () => {
@@ -54,6 +53,13 @@ const RegisterFormContainer = (): JSX.Element => {
             textReference: 'nav_login_link'
         }
     ]
+
+    //Handle redirects TODO should log user in & redirect to home?
+    useEffect(() => {
+
+        //Redirect user to login if registration was successful
+        if (success) navigate('/auth/login')
+    }, [ navigate, success, userInfo ])
 
     return (
         <AuthFormComponent 
