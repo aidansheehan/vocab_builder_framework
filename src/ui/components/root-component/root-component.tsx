@@ -11,6 +11,7 @@ import LandingPageComponent             from '../pages/landing.page/landing.page
 import HelpPageComponent                from '../pages/help.page/help-page.component'
 import FAQPageComponent                 from '../pages/faq.page/faq-page.component'
 import ContactPageComponent             from '../pages/contact.page/contact.page.component'
+import GamePageComponent                from '../pages/game.page/game.page.component'
 //Layouts
 import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
 //Containers
@@ -87,6 +88,10 @@ const RootComponent = (): JSX.Element => {
                                 {
                                     path: 'edit',
                                     element: <CollectionEditorPageComponent />
+                                },
+                                {
+                                    path: 'play',
+                                    element: <GamePageComponent />
                                 }
                             ]
                         }

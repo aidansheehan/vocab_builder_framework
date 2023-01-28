@@ -8,4 +8,10 @@
     font-weight: inherit;
     pointer-events: all;
     color: inherit;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    > * {
+        margin: 0 2px;
+    }
 }
