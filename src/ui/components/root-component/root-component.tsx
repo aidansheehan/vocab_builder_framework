@@ -19,7 +19,7 @@ import LoginFormContainer       from '../auth-form/containers/login-form/login-f
 import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
 
 /**
-  * Route container element for application to render
+ * Route container element for application to render
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  */
