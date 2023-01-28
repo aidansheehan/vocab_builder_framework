@@ -1,5 +1,6 @@
 import { Outlet }       from 'react-router-dom'
 import ImageComponent   from '../../image/image.component'
+import SidebarComponent from '../../sidebar/sidebar.component'
 import styles           from './auth.layout.component.scss'
 
 /**
@@ -17,10 +18,9 @@ const AuthLayoutComponent = () => {
     return (
         <div className={styles.authPage}>
 
-            {/* TODO investigate if need to conditionally render with useDevice hook */}
-            <div className={styles.authSidebar}>
+            <SidebarComponent style={styles.authSidebar}>
                 <ImageComponent id='placeholder' style={styles.authImage}/>
-            </div>
+            </SidebarComponent>
 
             <div className={styles.authContent}>
 

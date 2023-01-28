@@ -13,17 +13,6 @@
         grid-template-columns: 1fr;
     }
     > .authSidebar {
-        grid-column: 1 / 2;
-        background-color: #E0E7EC;  //TODO refactor as secondary background
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        @include mq.mq(mobile) {
-            display: none;
-        }
-        @include mq.mq(tablet-portrait) {
-            display: none;
-        }
         > .authImage {
             width: 50%;
             opacity: .2;
