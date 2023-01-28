@@ -11,6 +11,8 @@ import {
     faFileCircleQuestion,
     faAddressBook,
     faUserPlus,
+    faPenToSquare,
+    faPlay,
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -30,6 +32,8 @@ export default function FontAwesomeIcons(): void {
         faCircleQuestion,
         faInfo,
         faFileCircleQuestion,
-        faAddressBook
+        faAddressBook,
+        faPenToSquare,
+        faPlay
     )
 }

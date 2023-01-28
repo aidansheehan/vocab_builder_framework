@@ -11,6 +11,7 @@ import LandingPageComponent             from '../pages/landing.page/landing.page
 import HelpPageComponent                from '../pages/help.page/help-page.component'
 import FAQPageComponent                 from '../pages/faq.page/faq-page.component'
 import ContactPageComponent             from '../pages/contact.page/contact.page.component'
+import GamePageComponent                from '../pages/game.page/game.page.component'
 //Layouts
 import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
 //Containers
@@ -18,7 +19,7 @@ import LoginFormContainer       from '../auth-form/containers/login-form/login-f
 import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
 
 /**
-  * Route container element for application to render
+ * Route container element for application to render
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  */
@@ -87,6 +88,10 @@ const RootComponent = (): JSX.Element => {
                                 {
                                     path: 'edit',
                                     element: <CollectionEditorPageComponent />
+                                },
+                                {
+                                    path: 'play',
+                                    element: <GamePageComponent />
                                 }
                             ]
                         }

@@ -1,0 +1,42 @@
+.collectionCard {
+    background-color: #fff;
+    color: #94A2AB;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 120px;
+    margin: 10px;
+    justify-content: space-around;
+    >.collectionCardTop {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        >.collectionCardViewBtn {
+            background-color: #FFF3A4;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 0 10px;
+        }
+        >.collectionCardDetails {
+            display: flex;
+            flex-direction: column;
+            >.collectionCardTitle {
+                width: 100%;
+                color: #94A2AB;
+                font-size: 16px;
+            }
+            >.collectionCardDescription {
+                width: 100%;
+                opacity: .7;
+
+            }
+        }
+    }
+    >.collectionCardBottom {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+        padding: 0 20px;
+    }
+}
