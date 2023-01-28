@@ -14,8 +14,8 @@ import ContactPageComponent             from '../pages/contact.page/contact.page
 //Layouts
 import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
 //Containers
-import LoginFormContainer from '../auth-form/containers/login-form/login-form.container'
-import RegisterFormContainer from '../auth-form/containers/register-form/register-form.container'
+import LoginFormContainer       from '../auth-form/containers/login-form/login-form.container'
+import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
 
 /**
   * Route container element for application to render
@@ -36,14 +36,6 @@ const RootComponent = (): JSX.Element => {
                     index: true,
                     element: <LandingPageComponent />
                 },
-                // {
-                //     path: 'login',
-                //     element: <LoginPageComponent />
-                // },
-                // {
-                //     path: 'register',
-                //     element: <RegisterPageComponent />
-                // },
                 {
                     path: 'new',
                     element: <CreateCollectionPageComponent />

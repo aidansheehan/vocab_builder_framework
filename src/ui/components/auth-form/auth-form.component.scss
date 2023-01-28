@@ -11,6 +11,10 @@ $tertiary-background-color: #E0E7EC;
         width: 100%;
         max-width: 400px;
         color: $secondary-text-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
         > .authSection {
             display: flex;
             justify-content: center;

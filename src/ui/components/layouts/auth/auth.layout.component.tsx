@@ -1,5 +1,6 @@
-import { Outlet } from 'react-router-dom'
-import styles from './auth.layout.component.scss'
+import { Outlet }       from 'react-router-dom'
+import ImageComponent   from '../../image/image.component'
+import styles           from './auth.layout.component.scss'
 
 /**
  * Generic layout for authorization pages (login, register)
@@ -16,8 +17,9 @@ const AuthLayoutComponent = () => {
     return (
         <div className={styles.authPage}>
 
-            <div className={styles.authImage}>
-
+            {/* TODO investigate if need to conditionally render with useDevice hook */}
+            <div className={styles.authSidebar}>
+                <ImageComponent id='placeholder' style={styles.authImage}/>
             </div>
 
             <div className={styles.authContent}>
