@@ -14,7 +14,7 @@ const FooterComponent = () => {
 
     return (
         <div className={styles.footer} >
-            I'm a footer.
+            <span>© Aidan Sheehan 2023</span>
         </div>
     )
 }

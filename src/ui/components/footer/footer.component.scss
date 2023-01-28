@@ -1,6 +1,21 @@
+$footer-background: #E0E7EC;
+$footer-color: #9FA2AB;
+$footer-height: 30px;
+$border-color: rgba(0, 0, 0, 0.1);
+$border-width: 1px;
+
 .footer {
     border-width: 1px 0;
     border-style: solid;
-    border-color: black;
-    height: 30px;
+    border-color: $border-color;
+    height: $footer-height;
+    color: $footer-color;
+    background-color: $footer-background;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    > * {
+        opacity: .6;
+    }
 }
