@@ -1,5 +1,6 @@
 import { configureStore }   from '@reduxjs/toolkit'
-import userReducer          from './features/user/user.slice'
+import userReducer          from './user/slices/user.slice'
+import collectionReducer    from './collections/slices/collections.slice'
 
 /**
  * App Store
@@ -8,7 +9,8 @@ import userReducer          from './features/user/user.slice'
  */
 const store = configureStore({
     reducer: {
-        user: userReducer
+        user: userReducer,
+        collections: collectionReducer
     },
     devTools: true //TODO set false for prod
 })

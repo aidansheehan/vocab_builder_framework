@@ -11,10 +11,9 @@ import ButtonPrimaryComponent   from '../../button/components/button-primary.com
 import useAppDispatch from '../../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
 //Types
-import { UserLoginRequestType } from '../../../../redux/features/user/types/request.types'
+import { UserLoginRequestType } from '../../../../redux/user/types/request.types'
 //Actions
-import { userLogin } from '../../../../redux/features/user/user.actions'
-
+import { userLogin } from '../../../../redux/user/actions/user.actions'
 /**
  * Login Page Component
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
