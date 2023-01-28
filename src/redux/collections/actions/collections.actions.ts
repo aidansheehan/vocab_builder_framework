@@ -55,7 +55,7 @@ export const getCollections = createAsyncThunk(
     }
 )
 
-// /** Create a collection */
+/** Create a collection */
 export const createCollection = createAsyncThunk(
     '/collections/new',
     async ( {title, description, cards}: CreateCollectionRequestType, { rejectWithValue }) => {
