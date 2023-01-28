@@ -41,9 +41,8 @@ export const getCollections = createAsyncThunk(
             
             const data = await PrivateHttpClient.get('collections')
 
-            console.log('COLLECTIONS: ', data.data);
-
             return data.data
+            
         } catch (error) {
 
             if (error.response && error.response.data && error.response.data.message) {

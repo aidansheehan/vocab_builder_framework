@@ -20,5 +20,7 @@
     "login_header": "Đăng nhập vào tài khoản của bạn",
     "login_signup_link": "Bạn không có tài khoản?",
     "register_header": "Đăng ký một tài khoản mới",
-    "collection_play_link": "Chơi"
+    "collection_play_link": "Chơi",
+    "home_greeting": "Xin chào, {name}.",
+    "home_play-random": "Chơi ngẫu nhiên"
 }
