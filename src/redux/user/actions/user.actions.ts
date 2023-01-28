@@ -1,5 +1,5 @@
 import { createAsyncThunk }                                 from '@reduxjs/toolkit'
-import { RegisterUserRequestType, UserLoginRequestType }    from './types/request.types'
+import { RegisterUserRequestType, UserLoginRequestType }    from '../types/request.types'
 import PrivateHttpClient                                    from '../../../services/http-client/private-http-client.service'
 import PublicHttpClient                                     from '../../../services/http-client/public-http-client.service'
 

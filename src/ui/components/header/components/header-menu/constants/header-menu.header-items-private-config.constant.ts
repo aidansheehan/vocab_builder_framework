@@ -1,4 +1,4 @@
-import { logout }                   from '../../../../../../redux/features/user/user.slice'
+import { logout }                   from '../../../../../../redux/user/slices/user.slice'
 import { HeaderItemsConfigType }    from '../types/header-menu.header-items-config.type'
 
 /**
