@@ -1,7 +1,6 @@
 import IMAGES_CONSTANT      from './constants/images.constant'
 
 /** ImageComponentProps */
-//@ts-ignore
 type ImageComponentProps = {
 
     /** Image ID */
