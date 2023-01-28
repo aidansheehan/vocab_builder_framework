@@ -47,18 +47,20 @@ const App = () => {
             if (location.pathname.includes('user')) {
 
                 //Redirect to login page
-                navigate('/login')
+                navigate('auth/login')
             }
         }
 
     }, [ userInfo, navigate ] )
 
     return (
-        <div>
+        <>
             <HeaderComponent />
-            <Outlet />
+            <div id='main'>
+                <Outlet />
+            </div>
             <FooterComponent />
-        </div>
+        </>
     )
 
 }

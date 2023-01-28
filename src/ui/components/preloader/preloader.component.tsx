@@ -29,7 +29,7 @@ const PreloaderComponent = () => {
 
     //TODO implement loader component
     return (
-        <div>
+        <>
             {
                 loading
                 ?
@@ -37,7 +37,7 @@ const PreloaderComponent = () => {
                 :
                 <App />
             }
-        </div>
+        </>
     )
 }
 

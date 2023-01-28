@@ -17,7 +17,7 @@ import styles                   from './button-primary.component.scss'
  */
 const ButtonPrimaryComponent = (props: ButtonComponentProps) => {
 
-    const { onClick, children, textRef, style, icon, disabled } = props   //Destructure props
+    const { onClick, children, textRef, style, icon, disabled, type } = props   //Destructure props
 
     const className = classNames(styles.buttonPrimary, style)
 
@@ -29,6 +29,7 @@ const ButtonPrimaryComponent = (props: ButtonComponentProps) => {
             style={className}
             icon={icon}
             disabled={disabled}
+            type={type}
         />
     )
 }

@@ -10,7 +10,6 @@ import RouterComponent from './ui/components/router-component/router-component'
 //Font Awesome
 import FontAwesomeIcons from './ui/functions/fontawesome-icons.function'
 
-
 /**
  * Root entry point of the application
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
@@ -23,11 +22,11 @@ import FontAwesomeIcons from './ui/functions/fontawesome-icons.function'
 const root = createRoot(document.getElementById("root")!)
 
 root.render(
-        <Provider store={store}>
-            <I18nProvider>
-                <RouterComponent />
-            </I18nProvider>
-        </Provider>
+    <Provider store={store}>
+        <I18nProvider>
+            <RouterComponent />
+        </I18nProvider>
+    </Provider>
 )
 
 //Expose core icons across framework

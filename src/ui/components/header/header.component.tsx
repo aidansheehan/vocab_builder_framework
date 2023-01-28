@@ -62,8 +62,8 @@ const HeaderComponent = (): JSX.Element => {
                                 {
                                     device !== 'mobile' ?
                                     <>
-                                        <ButtonPrimaryComponent onClick={() => navigate('/register')} textRef='nav_register_link' style={styles.headerButton} />
-                                        <ButtonPrimaryComponent onClick={() => navigate('/login')} textRef='nav_login_link' style={styles.headerButton} />
+                                        <ButtonPrimaryComponent onClick={() => navigate('/auth/register')} textRef='nav_register_link' style={styles.headerButton} />
+                                        <ButtonPrimaryComponent onClick={() => navigate('/auth/login')} textRef='nav_login_link' style={styles.headerButton} />
                                     </>
                                     :
                                     <></>

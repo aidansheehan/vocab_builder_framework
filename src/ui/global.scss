@@ -1,6 +1,7 @@
 /** General App Style Rules */
 
 $background-color: #F3F5F8;
+$info-bar-height: 30px;
 
 @font-face {
     font-family: 'Inter';
@@ -9,9 +10,35 @@ $background-color: #F3F5F8;
     src: url('../assets/fonts/Inter-Regular.ttf') format('truetype');
 }
 
+html {
+    &, body {
+        height: 100%;
+        width: 100%;
+    }
+}
 body {
     background-color: $background-color;
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
+    height: 100%;
+    > #root {
+        height: 100%;
+        overflow: hidden;
+        > #main {
+            height: calc(100% - 2 * $info-bar-height);
+        }
+    }
 }
+
+input {
+    border-color: #fff;
+    box-shadow: none;
+    border-style: solid;
+    border-radius: 5px;
+    height: 20px;
+}
+
+a, a:link, a:visited, a:focus, a:hover, a:active{
+    color: inherit;
+  }

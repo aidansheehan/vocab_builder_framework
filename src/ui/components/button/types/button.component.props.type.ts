@@ -19,6 +19,9 @@ export type ButtonComponentProps = {
     style?: string,
 
     /** Whether button disabled */
-    disabled?: boolean
+    disabled?: boolean,
+
+    /** Type of button if needed */
+    type?: 'button' | 'submit' | 'reset'
 
 }

@@ -1,0 +1,42 @@
+$secondary-text-color: #94A2AB;
+
+$tertiary-background-color: #E0E7EC;
+
+.auth {
+    height: 50%;
+    width: 75%;
+    max-width: 400px;
+    >.authForm {
+        height: 100%;
+        width: 100%;
+        max-width: 400px;
+        color: $secondary-text-color;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        > .authSection {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 30px;
+            width: 100%;
+            padding: 0 25%;
+            box-sizing: border-box;
+            > input {
+                width: 100%;
+            }
+            &.authHeader {
+                height: 50px;
+            }
+            &.authButtonSection {
+                height: 50px;
+                justify-content: space-between;
+                > .authBtnSecondary {
+                    background-color: $tertiary-background-color;
+                }
+    
+            }
+        }
+    }
+}

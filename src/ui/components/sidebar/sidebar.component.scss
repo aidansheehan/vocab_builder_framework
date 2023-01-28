@@ -1,0 +1,16 @@
+@use '../../sass/mixins/mq.mixin' as mq;
+
+.sidebar {
+    grid-column: 1 / 2;
+    background-color: #E0E7EC;  //TODO refactor as secondary background
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    @include mq.mq(mobile) {
+        display: none;
+    }
+    @include mq.mq(tablet-portrait) {
+        display: none
+    }
+}
