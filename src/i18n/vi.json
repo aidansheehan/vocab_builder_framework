@@ -21,6 +21,6 @@
     "login_signup_link": "Bạn không có tài khoản?",
     "register_header": "Đăng ký một tài khoản mới",
     "collection_play_link": "Chơi",
-    "home_greeting": "Xin chào, {name}.",
+    "home_greeting": "Xin chào, %v.",
     "home_play-random": "Chơi ngẫu nhiên"
 }

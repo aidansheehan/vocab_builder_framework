@@ -1,12 +1,12 @@
 import classNames               from 'classnames'
 import { useEffect }            from 'react'
-import { FormattedMessage }     from 'react-intl'
 import { useNavigate }          from 'react-router-dom'
 import { getCollections }       from '../../../../redux/collections/actions/collections.actions'
 import useAppDispatch           from '../../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector           from '../../../hooks/redux/use-app-selector.hook'
 import ButtonPrimaryComponent   from '../../button/components/button-primary.component'
 import CollectionCardComponent  from '../../collection-card/collection-card.component'
+import TextComponent            from '../../text/text.component'
 import styles                   from './home.page.component.scss'
 
 /**
@@ -41,13 +41,7 @@ const HomePageComponent = (): JSX.Element => {
             <div className={classNames(styles.control, styles.homePageSection)}>
 
                 <div className={styles.welcomeBanner}>
-                    {/* TODO refactor to use generic text component - think about how to implement placeholdre */}
-                    <FormattedMessage 
-                        id={'home_greeting'}
-                        values={{
-                            name: userInfo?.username
-                        }}
-                    />
+                    {userInfo && userInfo.username ? <TextComponent textRef='home_greeting' values={[userInfo.username]}  /> : null }
                 </div>
 
                 <div className={styles.controlButtons}>

@@ -51,10 +51,8 @@ const AuthFormComponent = (props: AuthFormComponentProps): JSX.Element => {
     //Destructure props
     const { onSubmit, submitBtnTextReference, titleReference, requestData , buttons, loading, error, continueWithoutAccount } = props
 
-    const { register, handleSubmit } = useForm()
-
-    //Translate placeholder
-    const intl = useIntl()
+    const { register, handleSubmit }    = useForm()
+    const intl                          = useIntl()
 
     //Form reference
     const formRef = useRef<HTMLFormElement>(null)

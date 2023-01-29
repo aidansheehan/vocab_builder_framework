@@ -1,10 +1,14 @@
-import { FormattedMessage } from 'react-intl'
+import { useIntl } from 'react-intl'
 
 /** TextComponent props */
 type TextComponentPropsType = {
 
     /** Text Reference */
-    textRef: string
+    textRef: string,
+
+    /** Values to display in string */
+    values?: (string | number)[]
+
 }
 
 /**
@@ -20,11 +24,31 @@ type TextComponentPropsType = {
  */
 const TextComponent = (props: TextComponentPropsType) => {
 
-    const { textRef } = props   //Destructure props
+    const { textRef, values } = props   //Destructure props
+
+    const intl = useIntl()
+
+    //Retrieve localized message
+    let message = intl.formatMessage({ id: textRef })
+
+    // console.log('values: ', values)
+
+    //If values to substitute
+    if (values && values.length) {
+        
+        //Loop through values
+        values.forEach((v_) => {
+
+            //Replace the next instance of placeholder %v with the value
+            message = message.replace(/%v/, `${v_}`)
+
+        })
+
+    }
 
     return (
         <span>
-            <FormattedMessage id={textRef} />
+            {message}
         </span>
     )
 
