@@ -25,8 +25,11 @@ body {
     > #root {
         height: 100%;
         overflow: hidden;
-        > #main {
-            height: calc(100% - 2 * $info-bar-height);
+        > * {
+            > #main {
+                height: calc(100% - 2 * $info-bar-height);
+                overflow-y: scroll;
+            }
         }
     }
 }

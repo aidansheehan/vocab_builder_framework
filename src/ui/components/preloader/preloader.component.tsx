@@ -2,6 +2,7 @@ import { useEffect, useState }  from 'react'
 import App                      from '../../app'
 import useAppDispatch           from '../../hooks/redux/use-app-dispatch.hook'
 import { getUserDetails }       from '../../../redux/user/actions/user.actions'
+import styles                   from './preloader.component.scss'
 
 /**
  * Preloader Component
@@ -29,7 +30,7 @@ const PreloaderComponent = () => {
 
     //TODO implement loader component
     return (
-        <>
+        <div className={styles.preloader}>
             {
                 loading
                 ?
@@ -37,7 +38,7 @@ const PreloaderComponent = () => {
                 :
                 <App />
             }
-        </>
+        </div>
     )
 }
 

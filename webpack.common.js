@@ -8,7 +8,7 @@ module.exports = {
         app: './src/index.tsx'
     },
     output: {
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
         path: path.resolve(__dirname, 'dist'),
         clean: true,
         publicPath: '/'
@@ -37,7 +37,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Production',
+            title: 'Flashcard Factory',
             template: path.join(__dirname, '/src/index.html')
         }),
         new CleanWebpackPlugin(),

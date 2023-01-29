@@ -20,5 +20,7 @@
     "login_header": "Sign in to your account",
     "login_signup_link": "Don't have an account?",
     "register_header": "Sign up for a new account",
-    "collection_play_link": "Play"
+    "collection_play_link": "Play",
+    "home_greeting": "Hello, %v.",
+    "home_play-random": "Play random"
 }

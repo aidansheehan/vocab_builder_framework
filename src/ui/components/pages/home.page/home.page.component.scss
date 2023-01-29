@@ -1,0 +1,63 @@
+@use '../../../sass/mixins/mq.mixin';
+
+.homePage {
+    height: fit-content;
+    width: 100%;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    .homePageSection {
+        margin: 10px 0;
+    }
+    .control {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        margin: auto;
+        >.welcomeBanner {
+            width: 50%;
+            display: flex;
+            align-items: center;
+            color: #94A2AB;
+        }
+        >.controlButtons {
+            display: flex;
+            flex-direction: row;
+            width: 50%;
+            justify-content: center;
+            gap: 10px;
+            align-items: center;
+            @include mq.mq(mobile-portrait) {
+                flex-direction: column;
+            }
+            >.playRandomBtn {
+                background-color: #fff;
+                color: #000;
+            }
+        }
+    }
+    >.searchContainer {
+        width: 100%;
+        display: flex;
+        >.searchInput {
+            display: inline-block;
+            width: 50%;
+            min-width: 200px;
+            @include mq.mq(mobile-portrait) {
+                margin: auto;
+            }
+        }
+    }
+    >.collectionGrid {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 30px;
+        justify-content: flex-start;
+        align-items: center;
+        @include mq.mq(mobile-portrait) {
+            justify-content: center;
+        }
+    }
+}
