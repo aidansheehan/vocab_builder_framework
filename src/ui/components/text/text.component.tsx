@@ -31,8 +31,6 @@ const TextComponent = (props: TextComponentPropsType) => {
     //Retrieve localized message
     let message = intl.formatMessage({ id: textRef })
 
-    // console.log('values: ', values)
-
     //If values to substitute
     if (values && values.length) {
         
