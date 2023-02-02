@@ -24,7 +24,6 @@
         box-sizing: border-box;
         padding-left: 20px;
         @include mq.mq(mobile-portrait) {
-            // padding-left: 0;
             min-width: unset;
         }
 
