@@ -88,6 +88,7 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
         
                 </div>
                 :
+                // TODO: replace with loader component VBF-58
                 <div>LOADING...</div>
             }
         </>
