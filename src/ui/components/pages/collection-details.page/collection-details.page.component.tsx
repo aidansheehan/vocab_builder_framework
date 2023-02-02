@@ -6,6 +6,7 @@ import useAppSelector                           from '../../../hooks/redux/use-a
 import useAppDispatch                           from '../../../hooks/redux/use-app-dispatch.hook'
 import { useEffect }                            from 'react'
 import { getOneCollection }                     from '../../../../redux/collections/actions/collections.actions'
+import { useNavigate } from 'react-router-dom'
 
 /**
  * Collection Details Page
@@ -22,6 +23,7 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
     const collectionId  = params.get('collectionId')                    //Get collectionId from params
 
     const dispatch = useAppDispatch()
+    const navigate = useNavigate()
 
     if (!collectionId) {
         //TODO handle case no collection ID
@@ -72,8 +74,8 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
                         </div>
         
                         <div className={styles.collectionButtons} >
-                            <ButtonPrimaryComponent textRef='collection-details_nav_play' onClick={() => alert('play game')} />
-                            <ButtonPrimaryComponent textRef='collection-details_nav_edit' onClick={() => alert('edit')} style={styles.editBtn} />
+                            <ButtonPrimaryComponent textRef='collection-details_nav_play' onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
+                            <ButtonPrimaryComponent textRef='collection-details_nav_edit' onClick={() => navigate('/user/collection/edit' + `?collectionId=${collectionId}`)} style={styles.editBtn} />
                         </div>
         
                     </div>

@@ -36,7 +36,7 @@ const CollectionCardComponent = (props: CollectionCardComponentProps): JSX.Eleme
 
     //Function to handle click to view and edit collection
     const handleViewClick = () => {
-        navigate('collection' +`?collectionId=${id}`)
+        navigate('collection' + `?collectionId=${id}`)
     }
 
     //Function to handle play click
