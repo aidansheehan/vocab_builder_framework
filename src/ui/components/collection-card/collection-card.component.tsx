@@ -1,6 +1,5 @@
 import { useNavigate }          from 'react-router-dom'
 import ButtonComponent          from '../button/button.component'
-import ButtonPrimaryComponent   from '../button/components/button-primary.component'
 import TextValueComponent       from '../text-value/text-value.component'
 import styles                   from './collection-card.component.scss'
 
@@ -59,7 +58,7 @@ const CollectionCardComponent = (props: CollectionCardComponentProps): JSX.Eleme
             </div>
 
             <div className={styles.collectionCardBottom} >
-                <ButtonPrimaryComponent onClick={handlePlayClick} textRef='collection_play_link' icon='play' />
+                <ButtonComponent onClick={handlePlayClick} textRef='collection_play_link' icon='play' primary />
             </div>
 
         </div>

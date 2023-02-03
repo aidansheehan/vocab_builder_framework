@@ -31,10 +31,6 @@
             @include mq.mq(mobile-portrait) {
                 flex-direction: column;
             }
-            >.playRandomBtn {
-                background-color: $background-secondary;
-                color: $color-tertiary;
-            }
         }
     }
     >.searchContainer {

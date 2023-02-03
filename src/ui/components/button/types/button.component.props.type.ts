@@ -22,6 +22,12 @@ export type ButtonComponentProps = {
     disabled?: boolean,
 
     /** Type of button if needed */
-    type?: 'button' | 'submit' | 'reset'
+    type?: 'button' | 'submit' | 'reset',
+
+    /** Whether a 'primary' button for styling */
+    primary?: boolean,
+
+    /** Whether a 'secondary' button for styling */
+    secondary?: boolean
 
 }

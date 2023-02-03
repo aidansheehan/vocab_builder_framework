@@ -1,3 +1,4 @@
+@use '../../../../sass/placeholders/border';
 @use '../../../../sass/ui.vars' as *;
 @use '../../../../sass/mixins/mq.mixin' as mq;
 
@@ -10,10 +11,13 @@
     top: $header-height;
     background-color: inherit;
     color: inherit;
+    @extend %border;
+    border-width: 0 0 0 $border-width;
     @include mq.mq(mobile) {
         width: 100%;
         left: 0;
         right: unset;
+        border-width: 0;
     }
 
 }

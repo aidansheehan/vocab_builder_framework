@@ -2,6 +2,6 @@
 @use '../ui.vars' as *;
 
 %border {
-    border-style: solid;
-    border-color: $border-color;
+    border-style: solid !important;            
+    border-color: $border-color !important;
 }

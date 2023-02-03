@@ -19,6 +19,7 @@ $width: 35px;
     position: relative;
     width: $width;
     min-width: $width;
+    margin-left: 0 !important;
     cursor: pointer;
     &.open {
         > .hamburger {

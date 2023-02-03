@@ -1,12 +1,12 @@
 import CollectionDetailsCardDisplayComponent    from './components/collection-details.page.card-display/collection-details.page.card-display.component'
 import styles                                   from './collection-details.page.component.scss'
 import TextValueComponent                       from '../../text-value/text-value.component'
-import ButtonPrimaryComponent                   from '../../button/components/button-primary.component'
 import useAppSelector                           from '../../../hooks/redux/use-app-selector.hook'
 import useAppDispatch                           from '../../../hooks/redux/use-app-dispatch.hook'
 import { useEffect }                            from 'react'
 import { getOneCollection }                     from '../../../../redux/collections/actions/collections.actions'
 import { useNavigate }                          from 'react-router-dom'
+import ButtonComponent                          from '../../button/button.component'
 
 /**
  * Collection Details Page
@@ -76,8 +76,8 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
                         </div>
         
                         <div className={styles.collectionButtons} >
-                            <ButtonPrimaryComponent textRef='collection-details_nav_play' onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
-                            <ButtonPrimaryComponent textRef='collection-details_nav_edit' onClick={() => navigate('/user/collection/edit' + `?collectionId=${collectionId}`)} style={styles.editBtn} />
+                            <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
+                            <ButtonComponent textRef='collection-details_nav_edit' secondary onClick={() => navigate('/user/collection/edit' + `?collectionId=${collectionId}`)} />
                         </div>
         
                     </div>

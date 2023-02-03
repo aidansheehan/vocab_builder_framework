@@ -1,17 +1,21 @@
 @use '../../sass/placeholders/remove-tap-highlight';
+@use '../../sass/placeholders/button';
 
 .button {
     @extend %remove-tap-highlight;
     cursor: pointer;
-    border-color: transparent;
     background-color: transparent;
+    border-color: transparent;
     font-weight: inherit;
     pointer-events: all;
     color: inherit;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
     > * {
         margin: 0 2px;
+    }
+    &.primary {
+        @extend %button-primary;
+    }
+    &.secondary {
+        @extend %button-secondary;
     }
 }
