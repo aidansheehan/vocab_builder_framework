@@ -1,5 +1,6 @@
 /** General App Style Rules */
 @use './sass/color.vars' as *;
+@use './sass/ui.vars' as *;
 
 $info-bar-height: 30px; //TODO into _ui.vars
 
@@ -38,7 +39,7 @@ input {
     border-color: #fff;
     box-shadow: none;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: $border-radius;
     height: 20px;
 }
 

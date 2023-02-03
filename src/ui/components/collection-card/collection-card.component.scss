@@ -1,9 +1,10 @@
 @use '../../sass/color.vars' as *;
+@use '../../sass/ui.vars' as *;
 
 .collectionCard {
     background-color: $background-secondary;
     color: $color-primary;
-    border-radius: 5px;
+    border-radius: $border-radius;
     display: flex;
     flex-direction: column;
     width: 280px;
@@ -15,7 +16,7 @@
         width: 100%;
         >.collectionCardViewBtn {
             background-color: #FFF3A4;
-            border-radius: 5px;
+            border-radius: $border-radius;
             padding: 15px;
             margin: 0 10px;
         }
