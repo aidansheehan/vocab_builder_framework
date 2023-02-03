@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom'
+import { useNavigate }          from 'react-router-dom'
 import ButtonComponent          from '../button/button.component'
 import ButtonPrimaryComponent   from '../button/components/button-primary.component'
 import TextValueComponent       from '../text-value/text-value.component'
@@ -19,7 +19,7 @@ type CollectionCardComponentProps = {
 }
 
 /**
- * 'card' component to display a collection & description with links to edit and play
+ * 'Card' component to display a collection & description with links to edit and play
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  * @component
@@ -41,7 +41,7 @@ const CollectionCardComponent = (props: CollectionCardComponentProps): JSX.Eleme
 
     //Function to handle play click
     const handlePlayClick = () => {
-        navigate(`${id}/play`)
+        navigate('collection/play' + `?collectionId=${id}`)
     }
 
     return (
