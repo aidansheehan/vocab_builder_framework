@@ -1,17 +1,12 @@
 @use '../../sass/color.vars' as *;
-
-$header-height: 30px;   //TODO VBF-48 info-bar-height from _ui.vars
-$border-color: rgba(0, 0, 0, 0.1);
-$border-width: 1px;
+@use '../../sass/ui.vars' as *;
+@use '../../sass/placeholders/border';
 
 .header {
     background-color: $background-tertiary;
     display: flex;
     height: $header-height;
     color: $color-primary;
-    border-style: solid;
-    border-width: 0 0 1px 0;
-    border-color: $border-color;
     >.headerLeft {
         justify-content: flex-start;
         >.logo {
@@ -21,7 +16,6 @@ $border-width: 1px;
     }
     >.headerRight {
         justify-content: flex-end;
-        height: 100%;
         align-items: center;
         > .headerNav {
             width: 100%;
@@ -45,7 +39,9 @@ $border-width: 1px;
         }
     }
     > .headerLeft, > .headerRight {
-        height: inherit;
+        @extend %border;
+        box-sizing: border-box;
+        border-width: 0 0 $border-width 0;
         background-color: inherit;
         display: flex;
         align-items: center;

@@ -1,8 +1,6 @@
 @use 'sass:math';
 @use '../../../../sass/color.vars' as *;
-
-//TODO refactor to _ui.vars VBF-48
-$info-bar-height: 30px;
+@use '../../../../sass/ui.vars' as *;
 
 $opacity: 0.75;
 $height: 2px;
@@ -15,7 +13,7 @@ $width: 35px;
     border-width: 0;
     box-sizing: border-box;
     display: flex;
-    height: $info-bar-height;
+    height: $header-height;
     justify-content: center;
     padding: 0;
     position: relative;
