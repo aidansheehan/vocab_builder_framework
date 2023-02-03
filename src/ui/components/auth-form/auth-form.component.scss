@@ -1,7 +1,5 @@
+@use '../../sass/color.vars' as *;
 @use '../../sass/mixins/mq.mixin' as mq;
-
-$secondary-text-color: #94A2AB;
-$tertiary-background-color: #E0E7EC;
 
 .auth {
     height: 50%;
@@ -15,7 +13,7 @@ $tertiary-background-color: #E0E7EC;
         height: 100%;
         width: 100%;
         max-width: 400px;
-        color: $secondary-text-color;
+        color: $color-primary;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -39,7 +37,7 @@ $tertiary-background-color: #E0E7EC;
                 height: 50px;
                 justify-content: space-between;
                 > .authBtnSecondary {
-                    background-color: $tertiary-background-color;
+                    background-color: $background-tertiary;
                 }
     
             }

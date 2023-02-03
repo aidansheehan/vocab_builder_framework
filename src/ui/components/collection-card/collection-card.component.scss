@@ -1,6 +1,8 @@
+@use '../../sass/color.vars' as *;
+
 .collectionCard {
-    background-color: #fff;
-    color: #94A2AB;
+    background-color: $background-secondary;
+    color: $color-primary;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
@@ -22,7 +24,6 @@
             flex-direction: column;
             >.collectionCardTitle {
                 width: 100%;
-                color: #94A2AB;
                 font-size: 16px;
             }
             >.collectionCardDescription {

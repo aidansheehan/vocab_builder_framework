@@ -1,3 +1,5 @@
+@use '../../../sass/color.vars' as *;
+
 .collectionDetails {
     width: 80%;
     margin: auto;
@@ -12,7 +14,7 @@
             flex-direction: column;
             align-items: flex-start;
             justify-content: space-between;
-            color: #94A2AB;
+            color: $color-primary;
             >.title {
                 font-size: 16px;
             }
@@ -28,7 +30,7 @@
                 margin: 0 5px;
             }
             >.editBtn {
-                background-color: #E0E7EC;
+                background-color: $background-tertiary;
             }
         }
     }

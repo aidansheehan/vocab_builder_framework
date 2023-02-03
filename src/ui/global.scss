@@ -1,7 +1,7 @@
 /** General App Style Rules */
+@use './sass/color.vars' as *;
 
-$background-color: #F3F5F8;
-$info-bar-height: 30px;
+$info-bar-height: 30px; //TODO into _ui.vars
 
 @font-face {
     font-family: 'Inter';
@@ -17,7 +17,7 @@ html {
     }
 }
 body {
-    background-color: $background-color;
+    background-color: $background-primary;
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-size: 14px;

@@ -1,6 +1,6 @@
-$footer-background: #E0E7EC;
-$footer-color: #9FA2AB;
-$footer-height: 30px;
+@use '../../sass/color.vars' as *;
+
+$footer-height: 30px;   //TODO vbf-48 info-bar height from _ui.vars
 $border-color: rgba(0, 0, 0, 0.1);
 $border-width: 1px;
 
@@ -9,8 +9,8 @@ $border-width: 1px;
     border-style: solid;
     border-color: $border-color;
     height: $footer-height;
-    color: $footer-color;
-    background-color: $footer-background;
+    color: $color-primary;
+    background-color: $color-secondary;
     display: flex;
     justify-content: center;
     align-items: center;

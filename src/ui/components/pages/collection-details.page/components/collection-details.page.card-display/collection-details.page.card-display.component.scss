@@ -1,7 +1,8 @@
+@use '../../../../../sass/color.vars' as *;
 @use '../../../../../sass/mixins/mq.mixin' as mq;
 
 .card {
-    background-color: #fff;
+    background-color: $background-secondary;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -30,7 +31,7 @@
     }
     >.cardLexi {
         width: 50%;
-        color: #94A2Ab;
+        color: $color-primary;
         @include mq.mq(mobile-portrait) {
             justify-self: center;
             align-self: center;
@@ -39,6 +40,6 @@
     }
     >.cardDescription {
         width: 50%;
-        color: #E0E7Ec;
+        color: $color-secondary;
     }
 }

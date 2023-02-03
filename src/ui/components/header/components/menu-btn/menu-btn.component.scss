@@ -1,6 +1,7 @@
 @use 'sass:math';
-@use '../../header.component.scss' as *;
+@use '../../../../sass/color.vars' as *;
 
+//TODO refactor to _ui.vars VBF-48
 $info-bar-height: 30px;
 
 $opacity: 0.75;
@@ -35,8 +36,7 @@ $width: 35px;
         }
     }
     > .hamburger {
-        background-color: $header-color;
-
+        background-color: $color-primary;
         align-items: center;
         display: flex;
         height: $height;
@@ -51,12 +51,12 @@ $width: 35px;
             width: math.div($width, 2.5);
         }
         &:after {
-            background-color: $header-color;
+            background-color: $color-primary;
             transform: translateY(5px) translateX(3px);
             width: math.div($width, 4.5);
         }
         &:before {
-            background-color: $header-color;
+            background-color: $color-primary;
             transform: translateY(-5px);
             width: math.div($width, 2.5);
         }

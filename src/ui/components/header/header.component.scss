@@ -1,14 +1,14 @@
-$header-background: #E0E7EC;
-$header-color: #94A2AB;
-$header-height: 30px;
+@use '../../sass/color.vars' as *;
+
+$header-height: 30px;   //TODO VBF-48 info-bar-height from _ui.vars
 $border-color: rgba(0, 0, 0, 0.1);
 $border-width: 1px;
 
 .header {
-    background-color: $header-background;
+    background-color: $background-tertiary;
     display: flex;
     height: $header-height;
-    color: $header-color;
+    color: $color-primary;
     border-style: solid;
     border-width: 0 0 1px 0;
     border-color: $border-color;
