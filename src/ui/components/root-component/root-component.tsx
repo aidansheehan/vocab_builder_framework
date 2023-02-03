@@ -79,7 +79,7 @@ const RootComponent = (): JSX.Element => {
                             element: <HelpPageComponent />
                         },
                         {
-                            path: ':collectionId',
+                            path: 'collection',
                             children: [
                                 {
                                     index: true,

@@ -34,6 +34,7 @@ const PreloaderComponent = () => {
             {
                 loading
                 ?
+                // TODO: replace with loader (spinner) component VBF-58
                 <div>Loading...</div>
                 :
                 <App />

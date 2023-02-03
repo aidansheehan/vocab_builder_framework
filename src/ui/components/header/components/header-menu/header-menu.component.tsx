@@ -47,7 +47,7 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
             transition: `transform ${TRANSITION_TIMER}ms ease`
         },
         tablet: {
-            transform: `translateY(-100%)`,
+            transform: 'translateX(100%)',
             transition: `transform ${TRANSITION_TIMER}ms ease`
         },
         mobile: {

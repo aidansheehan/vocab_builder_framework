@@ -22,5 +22,7 @@
     "register_header": "Đăng ký một tài khoản mới",
     "collection_play_link": "Chơi",
     "home_greeting": "Xin chào, %v.",
-    "home_play-random": "Chơi ngẫu nhiên"
+    "home_play-random": "Chơi ngẫu nhiên",
+    "collection-details_nav_play": "Chơi trò chơi",
+    "collection-details_nav_edit": "Sửa đổi"
 }
