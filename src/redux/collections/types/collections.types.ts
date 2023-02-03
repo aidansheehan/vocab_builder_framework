@@ -4,7 +4,7 @@ export type CardType = {
     /** Lexi to be memorized */
     lexi: string,
 
-    /** TODO should rename Prompt for memorization */
+    /** TODO should rename Prompt for memorization VBF-57 */
     // prompt: string
     description: string
 

@@ -6,7 +6,7 @@ import useAppSelector                           from '../../../hooks/redux/use-a
 import useAppDispatch                           from '../../../hooks/redux/use-app-dispatch.hook'
 import { useEffect }                            from 'react'
 import { getOneCollection }                     from '../../../../redux/collections/actions/collections.actions'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate }                          from 'react-router-dom'
 
 /**
  * Collection Details Page
@@ -26,7 +26,7 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
     const navigate = useNavigate()
 
     if (!collectionId) {
-        //TODO handle case no collection ID
+        //TODO handle case no collection ID VBF-59
         console.error('no collection ID provided')
     }
 
@@ -47,6 +47,8 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
 
             //Execute function to retrieve collection
             retrieveCollection()
+
+            //TODO need to handle failed request here possibly too - what to do if retrieveCollection fails VBF-59
 
         }
 

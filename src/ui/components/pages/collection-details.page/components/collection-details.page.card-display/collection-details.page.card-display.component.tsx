@@ -34,7 +34,7 @@ const CollectionDetailsCardDisplayComponent = (props: CollectionDetailsCardDispl
                 <TextValueComponent value={lexi} />
             </div>
 
-            {/* TODO this will need to be refactored to loop through an array of 'prompts' */}
+            {/* TODO this will need to be refactored to loop through an array of 'prompts' VBF-57 */}
             <div className={classNames(styles.cardDescription, styles.cardText)} >
                 <TextValueComponent value={description} />
             </div>
