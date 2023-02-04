@@ -1,0 +1,7 @@
+@use '../color.vars' as *;
+@use '../ui.vars' as *;
+
+%border {
+    border-style: solid !important;            
+    border-color: $border-color !important;
+}

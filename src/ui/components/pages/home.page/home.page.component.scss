@@ -1,4 +1,5 @@
-@use '../../../sass/mixins/mq.mixin';
+@use '../../../sass/color.vars' as *;
+@use '../../../sass/mixins/mq.mixin' as mq;
 
 .homePage {
     height: fit-content;
@@ -18,7 +19,7 @@
             width: 50%;
             display: flex;
             align-items: center;
-            color: #94A2AB;
+            color: $color-primary;
         }
         >.controlButtons {
             display: flex;
@@ -29,10 +30,6 @@
             align-items: center;
             @include mq.mq(mobile-portrait) {
                 flex-direction: column;
-            }
-            >.playRandomBtn {
-                background-color: #fff;
-                color: #000;
             }
         }
     }

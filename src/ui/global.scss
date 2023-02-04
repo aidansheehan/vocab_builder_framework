@@ -1,7 +1,6 @@
 /** General App Style Rules */
-
-$background-color: #F3F5F8;
-$info-bar-height: 30px;
+@use './sass/color.vars' as *;
+@use './sass/ui.vars' as *;
 
 @font-face {
     font-family: 'Inter';
@@ -17,7 +16,7 @@ html {
     }
 }
 body {
-    background-color: $background-color;
+    background-color: $background-primary;
     margin: 0;
     font-family: 'Inter', sans-serif;
     font-size: 14px;
@@ -27,7 +26,7 @@ body {
         overflow: hidden;
         > * {
             > #main {
-                height: calc(100% - 2 * $info-bar-height);
+                height: calc(100% - $header-height - $footer-height);
                 overflow-y: scroll;
             }
         }
@@ -38,7 +37,7 @@ input {
     border-color: #fff;
     box-shadow: none;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: $border-radius;
     height: 20px;
 }
 

@@ -1,4 +1,5 @@
-@use '../../header.component.scss' as *;
+@use '../../../../sass/placeholders/border';
+@use '../../../../sass/ui.vars' as *;
 @use '../../../../sass/mixins/mq.mixin' as mq;
 
 .headerMenu {
@@ -7,15 +8,16 @@
     flex-direction: column;
     width: 250px;
     right: 0;
-    top: $header-height + $border-width;
-
+    top: $header-height;
+    background-color: inherit;
+    color: inherit;
+    @extend %border;
+    border-width: 0 0 0 $border-width;
     @include mq.mq(mobile) {
         width: 100%;
         left: 0;
         right: unset;
+        border-width: 0;
     }
-
-    background-color: $header-background;
-    color: $header-color;
 
 }

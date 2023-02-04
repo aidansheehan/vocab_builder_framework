@@ -1,17 +1,18 @@
+@use '../../../../../../sass/placeholders/border';
 @use '../../header-menu.component.scss' as *;
+@use '../../../../../../sass/ui.vars' as *;
 @use '../../../../../../sass/mixins/hover.mixin' as hover;
 
 .headerMenuButton {
+    @extend %border;
     cursor: pointer;
     display: flex;
     flex-direction: row;
     padding: 0 20px 0 10px;
-    height: 30px;
+    height: $header-menu-btn-height;
     width: 100%;
-    border-width: 0 0 1px 0;
+    border-width: 0 0 $border-width 0;
     box-sizing: border-box;
-    border-style: solid;
-    border-color: rgba(0, 0, 0, 0.1);
     justify-content: space-between;
     background: inherit;
     color: inherit;

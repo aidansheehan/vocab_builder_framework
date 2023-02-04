@@ -1,0 +1,23 @@
+@use '../color.vars' as *;
+
+%button-primary {
+    @extend %button;
+    color: $button-primary-color;
+    background-color: $button-primary-background-color;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+%button-secondary {
+    @extend %button;
+    color: $button-secondary-color;
+    background-color: $button-secondary-background-color;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+%button {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+}

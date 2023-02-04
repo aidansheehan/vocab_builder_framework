@@ -5,7 +5,6 @@ import { useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'
 //Components
-import ButtonPrimaryComponent       from '../button/components/button-primary.component'
 import HeaderMenuComponent          from './components/header-menu/header-menu.component'
 import LocaleSelectorComponent      from '../locale-selector/locale-selector.component'
 import MenuBtnComponent             from './components/menu-btn/menu-btn.component'
@@ -56,14 +55,14 @@ const HeaderComponent = (): JSX.Element => {
                     <nav className={styles.headerNav}>
                         {userInfo ? (
 
-                                <ButtonComponent onClick={() => navigate('/user/help')} icon='circle-question' />
+                                <ButtonComponent style={styles.helpButton} onClick={() => navigate('/user/help')} icon='circle-question' />
                         ) : (
                             <>
                                 {
                                     device !== 'mobile' ?
                                     <>
-                                        <ButtonPrimaryComponent onClick={() => navigate('/auth/register')} textRef='nav_register_link' style={styles.headerButton} />
-                                        <ButtonPrimaryComponent onClick={() => navigate('/auth/login')} textRef='nav_login_link' style={styles.headerButton} />
+                                        <ButtonComponent onClick={() => navigate('/auth/register')} textRef='nav_register_link' style={styles.headerButton} primary />
+                                        <ButtonComponent onClick={() => navigate('/auth/login')} textRef='nav_login_link' style={styles.headerButton} primary />
                                     </>
                                     :
                                     <></>

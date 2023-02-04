@@ -1,7 +1,10 @@
+@use '../../sass/color.vars' as *;
+@use '../../sass/ui.vars' as *;
+
 .collectionCard {
-    background-color: #fff;
-    color: #94A2AB;
-    border-radius: 5px;
+    background-color: $background-secondary;
+    color: $color-primary;
+    border-radius: $border-radius;
     display: flex;
     flex-direction: column;
     width: 280px;
@@ -13,7 +16,7 @@
         width: 100%;
         >.collectionCardViewBtn {
             background-color: #FFF3A4;
-            border-radius: 5px;
+            border-radius: $border-radius;
             padding: 15px;
             margin: 0 10px;
         }
@@ -22,7 +25,6 @@
             flex-direction: column;
             >.collectionCardTitle {
                 width: 100%;
-                color: #94A2AB;
                 font-size: 16px;
             }
             >.collectionCardDescription {

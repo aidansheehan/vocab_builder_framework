@@ -4,7 +4,7 @@ import { useRef }                               from 'react'
 import { FieldValues, SubmitHandler, useForm }  from 'react-hook-form'
 import { useIntl }                              from 'react-intl'
 import { NavLink }                              from 'react-router-dom'
-import ButtonPrimaryComponent                   from '../button/components/button-primary.component'
+import ButtonComponent                          from '../button/button.component'
 import TextComponent                            from '../text/text.component'
 import styles                                   from './auth-form.component.scss'
 import { AuthFormButtonConfig }                 from './types/auth-form.button-config.type'
@@ -108,21 +108,22 @@ const AuthFormComponent = (props: AuthFormComponentProps): JSX.Element => {
 
                         {
                             buttons && buttons.map((b_, i_) => (
-                                <ButtonPrimaryComponent 
+                                <ButtonComponent 
                                     onClick={b_.handleClick}
                                     disabled={loading}
                                     textRef={b_.textReference}
-                                    style={styles.authBtnSecondary}
                                     type='button'
+                                    secondary
                                     key={i_}
                                 />
                             )) 
                         }
 
-                        <ButtonPrimaryComponent 
+                        <ButtonComponent 
                             onClick={formRef.current?.submit}
                             disabled={loading}
                             textRef={submitBtnTextReference}
+                            primary
                         />
 
                     </div>

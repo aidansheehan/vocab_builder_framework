@@ -1,8 +1,9 @@
+@use '../../sass/color.vars' as *;
 @use '../../sass/mixins/mq.mixin' as mq;
 
 .sidebar {
     grid-column: 1 / 2;
-    background-color: #E0E7EC;  //TODO refactor as secondary background
+    background-color: $background-tertiary;
     display: flex;
     justify-content: center;
     align-items: center;

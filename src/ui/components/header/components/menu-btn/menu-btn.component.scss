@@ -1,7 +1,6 @@
 @use 'sass:math';
-@use '../../header.component.scss' as *;
-
-$info-bar-height: 30px;
+@use '../../../../sass/color.vars' as *;
+@use '../../../../sass/ui.vars' as *;
 
 $opacity: 0.75;
 $height: 2px;
@@ -14,12 +13,13 @@ $width: 35px;
     border-width: 0;
     box-sizing: border-box;
     display: flex;
-    height: $info-bar-height;
+    height: $header-height;
     justify-content: center;
     padding: 0;
     position: relative;
     width: $width;
     min-width: $width;
+    margin-left: 0 !important;
     cursor: pointer;
     &.open {
         > .hamburger {
@@ -35,8 +35,7 @@ $width: 35px;
         }
     }
     > .hamburger {
-        background-color: $header-color;
-
+        background-color: $color-primary;
         align-items: center;
         display: flex;
         height: $height;
@@ -51,12 +50,12 @@ $width: 35px;
             width: math.div($width, 2.5);
         }
         &:after {
-            background-color: $header-color;
+            background-color: $color-primary;
             transform: translateY(5px) translateX(3px);
             width: math.div($width, 4.5);
         }
         &:before {
-            background-color: $header-color;
+            background-color: $color-primary;
             transform: translateY(-5px);
             width: math.div($width, 2.5);
         }

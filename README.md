@@ -65,7 +65,6 @@ To build and run the app statically for use in non-browser environments instance
 
 ## Authors
 * **Aidan Sheehan** <aidannmsheehan@gmail.com>
-* **Amith Ravindar** <amithravindar2493@gmail.com>
 
 ## Ticketing
 See [Jira Project](https://vocab-builder.atlassian.net/jira/software/projects/VBF/boards/3) to track current tickets.

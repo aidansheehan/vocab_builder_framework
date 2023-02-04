@@ -4,7 +4,7 @@ import { useNavigate }          from 'react-router-dom'
 import { getCollections }       from '../../../../redux/collections/actions/collections.actions'
 import useAppDispatch           from '../../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector           from '../../../hooks/redux/use-app-selector.hook'
-import ButtonPrimaryComponent   from '../../button/components/button-primary.component'
+import ButtonComponent          from '../../button/button.component'
 import CollectionCardComponent  from '../../collection-card/collection-card.component'
 import TextComponent            from '../../text/text.component'
 import styles                   from './home.page.component.scss'
@@ -45,8 +45,8 @@ const HomePageComponent = (): JSX.Element => {
                 </div>
 
                 <div className={styles.controlButtons}>
-                    <ButtonPrimaryComponent textRef='home_play-random' style={styles.playRandomBtn} onClick={() => alert('play random TBD')} />
-                    <ButtonPrimaryComponent textRef='nav_new-collection_link' onClick={() => navigate('new')} />
+                    <ButtonComponent textRef='home_play-random' secondary onClick={() => alert('play random TBD')} />
+                    <ButtonComponent textRef='nav_new-collection_link' primary onClick={() => navigate('new')} />
                 </div>
             </div>
 
