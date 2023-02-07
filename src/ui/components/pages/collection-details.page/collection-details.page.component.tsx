@@ -2,9 +2,6 @@ import CollectionDetailsCardDisplayComponent    from './components/collection-de
 import styles                                   from './collection-details.page.component.scss'
 import TextValueComponent                       from '../../text-value/text-value.component'
 import useAppSelector                           from '../../../hooks/redux/use-app-selector.hook'
-import useAppDispatch                           from '../../../hooks/redux/use-app-dispatch.hook'
-import { useEffect }                            from 'react'
-import { getOneCollection }                     from '../../../../redux/collections/actions/collections.actions'
 import { useNavigate }                          from 'react-router-dom'
 import ButtonComponent                          from '../../button/button.component'
 
@@ -22,7 +19,6 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId from params
 
-    const dispatch = useAppDispatch()
     const navigate = useNavigate()
 
     if (!collectionId) {
@@ -34,25 +30,10 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
     //Attempt to retrieve collection from redux store
     const collection = useAppSelector(state => state.collections.collections[collectionId])
 
-    //ComponentDidMount
-    useEffect(() => {
-
-        if (!collection) {
-            //Function to make a GET request to retrieve the collection from the backend
-            const retrieveCollection = async () => {
-
-                //Dispatch action to retrieve the collection
-                await dispatch(getOneCollection(collectionId))
-            }
-
-            //Execute function to retrieve collection
-            retrieveCollection()
-
-            //TODO need to handle failed request here possibly too - what to do if retrieveCollection fails VBF-59
-
-        }
-
-    }, [])
+    if (!collection) {
+        //TODO handle case collection for this ID doesn't exist
+        console.error('this collection does not exist or does not belong to current user')
+    }
 
     return (
         <>
@@ -74,11 +55,8 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
                             </div>
         
                         </div>
-        
-                        <div className={styles.collectionButtons} >
-                            <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
-                            <ButtonComponent textRef='collection-details_nav_edit' secondary onClick={() => navigate('/user/collection/edit' + `?collectionId=${collectionId}`)} />
-                        </div>
+
+                        <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
         
                     </div>
         

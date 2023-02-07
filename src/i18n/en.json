@@ -24,5 +24,7 @@
     "home_greeting": "Hello, %v.",
     "home_play-random": "Play random",
     "collection-details_nav_play": "Play games",
-    "collection-details_nav_edit": "Edit"
+    "collection-details_nav_edit": "Edit",
+    "collection-editor_lexi_tag": "Word",
+    "collection-editor_prompt_tag": "Prompt"
 }

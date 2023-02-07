@@ -1,9 +1,8 @@
 //Router
 import { useRoutes } from 'react-router-dom'
 //Components
-import PreloaderComponent       from '../preloader/preloader.component'
+import PreloaderComponent               from '../preloader/preloader.component'
 import CollectionDetailsPageComponent   from '../pages/collection-details.page/collection-details.page.component'
-import CollectionEditorPageComponent    from '../pages/collection-editor.page/collection-editor.page.component'
 import CreateCollectionPageComponent    from '../pages/create-collection.page/create-collection.page.component'
 import ErrorPageComponent               from '../pages/error.page/error.page.component'
 import HomePageComponent                from '../pages/home.page/home.page.component'
@@ -84,10 +83,6 @@ const RootComponent = (): JSX.Element => {
                                 {
                                     index: true,
                                     element: <CollectionDetailsPageComponent />
-                                },
-                                {
-                                    path: 'edit',
-                                    element: <CollectionEditorPageComponent />
                                 },
                                 {
                                     path: 'play',
