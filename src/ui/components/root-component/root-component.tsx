@@ -2,7 +2,7 @@
 import { useRoutes } from 'react-router-dom'
 //Components
 import PreloaderComponent               from '../preloader/preloader.component'
-import CollectionDetailsPageComponent   from '../pages/collection-details.page/collection-details.page.component'
+import CollectionPageComponent          from '../pages/collection.page/collection.page.component'
 import CreateCollectionPageComponent    from '../pages/create-collection.page/create-collection.page.component'
 import ErrorPageComponent               from '../pages/error.page/error.page.component'
 import HomePageComponent                from '../pages/home.page/home.page.component'
@@ -82,7 +82,7 @@ const RootComponent = (): JSX.Element => {
                             children: [
                                 {
                                     index: true,
-                                    element: <CollectionDetailsPageComponent />
+                                    element: <CollectionPageComponent />
                                 },
                                 {
                                     path: 'play',

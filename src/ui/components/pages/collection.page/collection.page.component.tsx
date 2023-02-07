@@ -1,20 +1,21 @@
-import CollectionDetailsCardDisplayComponent    from './components/collection-details.page.card-display/collection-details.page.card-display.component'
-import styles                                   from './collection-details.page.component.scss'
+// import CollectionDetailsCardDisplayComponent    from './components/collection.page.card-display/collection.page.card-display.component'
+import CollectionCardDisplayComponent           from './components/collection.page.card-display/collection.page.card-display.component'
 import TextValueComponent                       from '../../text-value/text-value.component'
 import useAppSelector                           from '../../../hooks/redux/use-app-selector.hook'
 import { useNavigate }                          from 'react-router-dom'
 import ButtonComponent                          from '../../button/button.component'
+import styles                                   from './collection.page.component.scss'
 
 /**
- * Collection Details Page
+ * Collection Page for view, edit & link to play games with a collection
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  * @component
  * @example (
- *   <CollectionDetailsPageComponent />
+ *   <CollectionPageComponent />
  * )
  */
-const CollectionDetailsPageComponent = (): JSX.Element => {
+const CollectionPageComponent = (): JSX.Element => {
 
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId from params
@@ -62,7 +63,7 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
         
                     {
                         collection.cards.map((c_, i_) => (
-                            <CollectionDetailsCardDisplayComponent card={c_} key={i_} />
+                            <CollectionCardDisplayComponent card={c_} key={i_} />
                         ))
                     }
         
@@ -76,4 +77,4 @@ const CollectionDetailsPageComponent = (): JSX.Element => {
     )
 }
 
-export default CollectionDetailsPageComponent
+export default CollectionPageComponent

@@ -1,10 +1,10 @@
 import classNames           from 'classnames'
 import { CardType }         from '../../../../../../redux/collections/types/collections.types'
 import TextValueComponent   from '../../../../text-value/text-value.component'
-import styles               from './collection-details.page.card-display.component.scss'
+import styles               from './collection.page.card-display.component.scss'
 
 /** CollectionDetailsCardDisplayComponentProps type */
-type CollectionDetailsCardDisplayComponentProps = {
+type CollectionCardDisplayComponentProps = {
 
     /** The Card to be displayed */
     card: CardType
@@ -19,10 +19,10 @@ type CollectionDetailsCardDisplayComponentProps = {
  * @example
  * let card = { lexi: "Billi", description: "Cat" } 
  * return (
- *   <CollectionDetailsCardDisplayComponent card={card} />
+ *   <CollectionCardDisplayComponent card={card} />
  * )
  */
-const CollectionDetailsCardDisplayComponent = (props: CollectionDetailsCardDisplayComponentProps): JSX.Element => {
+const CollectionCardDisplayComponent = (props: CollectionCardDisplayComponentProps): JSX.Element => {
 
     const { card }                  = props     //Destructure props
     const { lexi, description }     = card      //Destructure card
@@ -43,4 +43,4 @@ const CollectionDetailsCardDisplayComponent = (props: CollectionDetailsCardDispl
     )
 }
 
-export default CollectionDetailsCardDisplayComponent
+export default CollectionCardDisplayComponent
