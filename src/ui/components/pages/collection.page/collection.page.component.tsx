@@ -1,10 +1,12 @@
-// import CollectionDetailsCardDisplayComponent    from './components/collection.page.card-display/collection.page.card-display.component'
-import CollectionCardDisplayComponent           from './components/collection.page.card-display/collection.page.card-display.component'
 import TextValueComponent                       from '../../text-value/text-value.component'
 import useAppSelector                           from '../../../hooks/redux/use-app-selector.hook'
 import { useNavigate }                          from 'react-router-dom'
 import ButtonComponent                          from '../../button/button.component'
 import styles                                   from './collection.page.component.scss'
+import { useState }                             from 'react'
+import CollectionPageCardEditComponent          from './components/collection.page.card/components/collection.page.card-edit/collection.page.card-edit.component'
+import CollectionPageCardDisplayComponent       from './components/collection.page.card/components/collection.page.card-display/collection.page.card-display.component'
+import classNames                               from 'classnames'
 
 /**
  * Collection Page for view, edit & link to play games with a collection
@@ -19,6 +21,10 @@ const CollectionPageComponent = (): JSX.Element => {
 
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId from params
+
+
+    //Actively editing card ID
+    const [ activeID, setActiveID ] = useState<string>(null)
 
     const navigate = useNavigate()
 
@@ -60,11 +66,28 @@ const CollectionPageComponent = (): JSX.Element => {
                         <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
         
                     </div>
-        
                     {
-                        collection.cards.map((c_, i_) => (
-                            <CollectionCardDisplayComponent card={c_} key={i_} />
-                        ))
+                        collection.cards.map(c_ => {
+
+                            const { id } = c_   //Destructure card for ID
+
+                            //Component className
+                            const sectionClassName = classNames(styles.collectionPageSection, {
+                                [styles.collectionPageSectionActive]: id === activeID
+                            })
+
+                            return (
+                                <div className={sectionClassName} key={id} >
+                                    {
+                                        id === activeID
+                                        ?
+                                        <CollectionPageCardEditComponent card={c_} closeHandler={() => setActiveID(null)}  />
+                                        :
+                                        <CollectionPageCardDisplayComponent card={c_} editHandler={() => setActiveID(id)} />
+                                    }
+                                </div>
+                            )
+                        })
                     }
         
                 </div>

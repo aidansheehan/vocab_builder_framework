@@ -6,7 +6,10 @@ export type CardType = {
 
     /** TODO should rename Prompt for memorization VBF-57 */
     // prompt: string
-    description: string
+    description: string,
+
+    /** Card ID */
+    id: string
 
 }
 

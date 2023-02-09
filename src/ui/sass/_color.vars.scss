@@ -11,9 +11,12 @@ $color-tertiary: #000;
  //Border color
  $border-color: rgba(0, 0, 0, 0.1);
 
+ //Accent color
+ $accent-color: #649DFF;
+
  //Button primary color scheme
  $button-primary-color: #fff;
- $button-primary-background-color: #649DFF;
+ $button-primary-background-color: $accent-color;
 
  //Button secondary color scheme
  $button-secondary-color: #fff;
