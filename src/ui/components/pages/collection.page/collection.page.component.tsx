@@ -3,7 +3,7 @@ import useAppSelector                           from '../../../hooks/redux/use-a
 import { useNavigate }                          from 'react-router-dom'
 import ButtonComponent                          from '../../button/button.component'
 import styles                                   from './collection.page.component.scss'
-import { useState }                             from 'react'
+import { useEffect, useState }                  from 'react'
 import CollectionPageCardEditComponent          from './components/collection.page.card/components/collection.page.card-edit/collection.page.card-edit.component'
 import CollectionPageCardDisplayComponent       from './components/collection.page.card/components/collection.page.card-display/collection.page.card-display.component'
 import classNames                               from 'classnames'
@@ -26,6 +26,9 @@ const CollectionPageComponent = (): JSX.Element => {
     //Actively editing card ID
     const [ activeID, setActiveID ] = useState<string>(null)
 
+    // New card
+    const [ inputNewCard, setInputNewCard ] = useState<boolean>(false)
+
     const navigate = useNavigate()
 
     if (!collectionId) {
@@ -41,6 +44,18 @@ const CollectionPageComponent = (): JSX.Element => {
         //TODO handle case collection for this ID doesn't exist
         console.error('this collection does not exist or does not belong to current user')
     }
+
+    //Monitor for whether user adding a new card
+    useEffect(() => {
+
+        //Stop editing any other card
+        setActiveID(null)
+
+    }, [ inputNewCard ])
+
+    const newCardInputSectionClassName = classNames(styles.collectionPageSection, {
+        [styles.collectionPageSectionActive]: inputNewCard
+    })
 
     return (
         <>
@@ -89,6 +104,17 @@ const CollectionPageComponent = (): JSX.Element => {
                             )
                         })
                     }
+
+                    {/* New Card Input */}
+                    <div className={newCardInputSectionClassName} >
+                        {
+                            inputNewCard
+                            ?
+                            <CollectionPageCardEditComponent collectionId={collectionId} closeHandler={() => setInputNewCard(false)} />
+                            :
+                            <ButtonComponent onClick={() => setInputNewCard(true)} textRef='collection-editor_new-word' style={styles.newCardBtn} />
+                        }
+                    </div>
         
                 </div>
                 :

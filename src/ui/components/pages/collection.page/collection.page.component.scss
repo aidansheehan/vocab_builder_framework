@@ -1,5 +1,6 @@
 @use '../../../sass/color.vars' as *;
 @use '../../../sass/ui.vars' as *;
+@use '../../../sass/mixins/hover.mixin' as hover;
 
 .collectionDetails {
     width: 80%;
@@ -34,5 +35,23 @@
     width: 100%;
     &.collectionPageSectionActive {
         border: 1px solid $accent-color;
+    }
+    >.newCardBtn {
+        height: 50px;
+        background-color: $background-tertiary;
+        width: 100%;
+        border-radius: inherit;
+        color: $accent-color;
+        font-weight: 600;
+        @include hover.hover(hover) {
+            > * {
+                opacity: 0.7;
+            }
+            &:hover {
+                > * {
+                    opacity: 1;
+                }
+            }
+        }
     }
 }

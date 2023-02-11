@@ -5,13 +5,12 @@ import { UpdateCardRequestType }            from '../../../../../../../../redux/
 import useAppDispatch                       from '../../../../../../../hooks/redux/use-app-dispatch.hook'
 import ButtonComponent                      from '../../../../../../button/button.component'
 import TextComponent                        from '../../../../../../text/text.component'
-import { CollectionPageCardComponentProps } from '../../types/collection.page.card.component.props'
 import { useForm }                          from 'react-hook-form'
 import { updateOneCard }                    from '../../../../../../../../redux/collections/actions/collections.actions'
 import styles                               from './collection.page.card-edit.component.scss'
 
 /** CollectionPageCardEditComponentProps type */
-type CollectionPageCardEditComponentProps = CollectionPageCardComponentProps & {
+type CollectionPageCardEditComponentProps = {
 
     //Card to be edited
     card?: CardType,
