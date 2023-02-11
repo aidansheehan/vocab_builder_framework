@@ -14,6 +14,8 @@ import {
     faPenToSquare,
     faPlay,
     faFloppyDisk,
+    faRotateLeft,
+    faTrash,
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -36,6 +38,8 @@ export default function FontAwesomeIcons(): void {
         faAddressBook,
         faPenToSquare,
         faPlay,
-        faFloppyDisk
+        faFloppyDisk,
+        faRotateLeft,
+        faTrash
     )
 }

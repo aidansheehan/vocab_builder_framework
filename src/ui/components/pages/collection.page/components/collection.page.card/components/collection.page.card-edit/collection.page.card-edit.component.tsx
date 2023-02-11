@@ -103,7 +103,10 @@ const CollectionPageCardEditComponent = (props: CollectionPageCardEditComponentP
                 />
             </div>
 
-            <ButtonComponent icon='floppy-disk' onClick={editFormRef.current?.submit} style={styles.saveBtn} textRef='common_save_tag' />
+            <div className={styles.buttonSection}>
+                <ButtonComponent icon='rotate-left' onClick={closeHandler} style={styles.cardEditBtn} textRef='common_back_tag' />
+                <ButtonComponent icon='floppy-disk' onClick={editFormRef.current?.submit} style={styles.cardEditBtn} textRef='common_save_tag' />
+            </div>
 
         </form>
     )

@@ -1,6 +1,8 @@
 @use '../../../../../../../sass/color.vars' as *;
 @use '../../../../../../../sass/mixins/hover.mixin' as hover;
 
+$button-section-width: 100px;
+
 .cardEdit {
     width: 100%;
     display: flex;
@@ -10,7 +12,7 @@
     flex-wrap: nowrap;
     min-height: 100px;
     >.section {
-        width: 45%;
+        width: calc((100% - $button-section-width)/2);
         min-width: 200px;   //TODO investigate what looks best
         display: flex;
         flex-direction: column;
@@ -32,16 +34,20 @@
             color: $color-secondary;
         }
     }
-    >.saveBtn {
-        color: $color-primary;
+    >.buttonSection {
+        width: $button-section-width;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        @include hover.hover(hover) {
-            color: $color-secondary;
-            &:hover {
-                color: $color-primary;
+        >.cardEditBtn {
+            color: $color-primary;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @include hover.hover(hover) {
+                color: $color-secondary;
+                &:hover {
+                    color: $color-primary;
+                }
             }
         }
     }

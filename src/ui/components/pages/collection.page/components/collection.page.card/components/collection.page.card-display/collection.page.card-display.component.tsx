@@ -39,7 +39,11 @@ const CollectionPageCardDisplayComponent = (props: CollectionPageCardDisplayComp
                 <TextValueComponent value={description} />
             </div>
 
-            <ButtonComponent icon='pen-to-square' onClick={editHandler} textRef='common_edit_tag' style={styles.editBtn} />
+            <div className={styles.buttonSection} >
+                <ButtonComponent icon='trash' onClick={() => alert('delete card TBD')} textRef='common_delete_tag' style={styles.cardDisplayBtn} />
+                <ButtonComponent icon='pen-to-square' onClick={editHandler} textRef='common_edit_tag' style={styles.cardDisplayBtn} />
+            </div>
+
         </div>
     )
 }

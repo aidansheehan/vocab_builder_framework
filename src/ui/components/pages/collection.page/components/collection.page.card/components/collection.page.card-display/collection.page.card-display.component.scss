@@ -2,6 +2,8 @@
 @use '../../../../../../../sass/mixins/mq.mixin' as mq;
 @use '../../../../../../../sass/mixins/hover.mixin' as hover;
 
+$button-section-width: 100px;
+
 .cardDisplay {
     width: 100%;
     display: flex;
@@ -32,16 +34,20 @@
     .cardDescription {
         color: $color-secondary;
     }
-    .editBtn {
-        color: $color-primary;
+    >.buttonSection {
+        width: $button-section-width;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        @include hover.hover(hover) {
-            color: $color-secondary;
-            &:hover {
-                color: $color-primary;
+        >.cardDisplayBtn {
+            color: $color-primary;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            @include hover.hover(hover) {
+                color: $color-secondary;
+                &:hover {
+                    color: $color-primary;
+                }
             }
         }
     }
