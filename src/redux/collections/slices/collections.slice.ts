@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction }               from '@reduxjs/toolkit'
-import {    createCollection,
+import {    createCard, 
+            createCollection,
             deleteOneCollection, 
             getCollections, 
             getOneCollection, 
@@ -154,6 +155,26 @@ const collectionsSlice = createSlice({
             state.error     = payload   //Set error state
         })
 
+        /** Add one card to a collection */
+        //pending ~TBD
+        //fulfilled
+        builder.addCase(createCard.fulfilled, (state, { payload }: PayloadAction<UpdateCollectionResponseType>) => {
+
+            //Destructure payload data TODO investigate response as not consistent with others
+            //@ts-ignore
+            const { _id, title, description, cards } = payload.data.collection  //TODO we should only update the changed card
+
+            //Create new collection object
+            const newCollection = { title, description, cards }
+
+            // state.loading = false   //Set loading flag false
+            state.collections[_id] = newCollection  //Update collection object
+        })
+        //rejected
+        builder.addCase(createCard.rejected, (state, { payload }: PayloadAction<any>) => {
+            state.error = payload
+        })
+
         /** Update one card in a collection */
         //pending
         builder.addCase(updateOneCard.pending, (/*state*/) => {
@@ -165,7 +186,7 @@ const collectionsSlice = createSlice({
             
             //Destructure payload data TODO investigate response as not consistent with others
             //@ts-ignore
-            const { _id, title, description, cards } = payload.data.collection //TODO we should only update the card that's updated?
+            const { _id, title, description, cards } = payload.data.collection //TODO we should only update the changed card
 
             //Create new collection object
             const newCollection = { title, description, cards }

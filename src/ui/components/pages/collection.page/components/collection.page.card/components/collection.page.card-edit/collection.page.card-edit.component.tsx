@@ -6,7 +6,7 @@ import useAppDispatch                       from '../../../../../../../hooks/red
 import ButtonComponent                      from '../../../../../../button/button.component'
 import TextComponent                        from '../../../../../../text/text.component'
 import { useForm }                          from 'react-hook-form'
-import { updateOneCard }                    from '../../../../../../../../redux/collections/actions/collections.actions'
+import { createCard, updateOneCard }        from '../../../../../../../../redux/collections/actions/collections.actions'
 import styles                               from './collection.page.card-edit.component.scss'
 
 /** CollectionPageCardEditComponentProps type */
@@ -66,6 +66,16 @@ const CollectionPageCardEditComponent = (props: CollectionPageCardEditComponentP
 
             //Dispatch new card data and wait for response
             await dispatch(updateOneCard({collectionId, lexi, description, id}))
+
+            //Close card editor
+            closeHandler()
+        }
+
+        //No ID provided so create a new card
+        else {
+            
+            //Dispatch new card data and wait for response
+            await dispatch(createCard({collectionId, lexi, description}))
 
             //Close card editor
             closeHandler()

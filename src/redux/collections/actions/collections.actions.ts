@@ -1,7 +1,7 @@
-import { createAsyncThunk }                                     from '@reduxjs/toolkit'
-import PrivateHttpClient                                        from '../../../services/http-client/private-http-client.service'
-import { CollectionWithIdType }                                 from '../types/collections.types'
-import { CreateCollectionRequestType, UpdateCardRequestType }   from '../types/request.types'
+import { createAsyncThunk }                                                             from '@reduxjs/toolkit'
+import PrivateHttpClient                                                                from '../../../services/http-client/private-http-client.service'
+import { CollectionWithIdType }                                                         from '../types/collections.types'
+import { CreateCardRequestType, CreateCollectionRequestType, UpdateCardRequestType }    from '../types/request.types'
 
 /** Get one collection TODO this will need to be implemented so one user can access another users collection (unprotected route) */
 export const getOneCollection = createAsyncThunk(
@@ -140,9 +140,36 @@ export const deleteOneCollection = createAsyncThunk(
 /** Delete all collections */
 //TBD
 
+/** Create a new card */
+export const createCard = createAsyncThunk(
+    '/collections/cards',
+    async ({ collectionId, lexi, description }: CreateCardRequestType, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await PrivateHttpClient.post(
+                `/collections/${collectionId}/cards`,
+                {lexi, description}
+            )
+
+            return data
+        }
+
+        catch (error) {
+
+            //Return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
 /** Update one card */
 export const updateOneCard = createAsyncThunk(
-    '/collections/card/update',
+    '/collections/cards/update',
     async ({ collectionId, lexi, description, id }: UpdateCardRequestType, { rejectWithValue }) => {
 
         try {
