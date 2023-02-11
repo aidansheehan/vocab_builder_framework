@@ -1,11 +1,16 @@
-import { createSlice, PayloadAction }                                                                   from '@reduxjs/toolkit'
-import { createCollection, deleteOneCollection, getCollections, getOneCollection, updateCollection }    from '../actions/collections.actions'
-import { CollectionsStateType }                                                                         from '../types/collections.types'
+import { createSlice, PayloadAction }               from '@reduxjs/toolkit'
+import {    createCollection,
+            deleteOneCollection, 
+            getCollections, 
+            getOneCollection, 
+            updateCollection, 
+            updateOneCard }                         from '../actions/collections.actions'
+import { CollectionsStateType }                     from '../types/collections.types'
 import {    CreateCollectionResponseType,
             DeleteOneCollectionResponseType,
             GetCollectionsResponseType,
             GetOneCollectionResponseType,
-            UpdateCollectionResponseType }                                                              from '../types/response.types'
+            UpdateCollectionResponseType }          from '../types/response.types'
 
 /** Initial State */
 const initialState: CollectionsStateType = {
@@ -147,6 +152,30 @@ const collectionsSlice = createSlice({
         builder.addCase(deleteOneCollection.rejected, (state, { payload }: PayloadAction<any>) => {
             state.loading   = false     //Set loading flag false
             state.error     = payload   //Set error state
+        })
+
+        /** Update one card in a collection */
+        //pending
+        builder.addCase(updateOneCard.pending, (/*state*/) => {
+            //TBD - should add loading state on individual cards either on this ticket or create a new one to improve this logic
+            
+        })
+        //fulfilled
+        builder.addCase(updateOneCard.fulfilled, (state, { payload }: PayloadAction<UpdateCollectionResponseType>) => {
+            
+            //Destructure payload data TODO investigate response as not consistent with others
+            //@ts-ignore
+            const { _id, title, description, cards } = payload.data.collection //TODO we should only update the card that's updated?
+
+            //Create new collection object
+            const newCollection = { title, description, cards }
+
+            // state.loading        = false         //Set loading flag false
+            state.collections[_id]  = newCollection  //Update collection object
+        })
+        //rejected
+        builder.addCase(updateOneCard.rejected, (state, { payload }: PayloadAction<any>) => {
+            state.error = payload
         })
         
     }

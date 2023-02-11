@@ -81,7 +81,7 @@ const CollectionPageComponent = (): JSX.Element => {
                                     {
                                         id === activeID
                                         ?
-                                        <CollectionPageCardEditComponent card={c_} closeHandler={() => setActiveID(null)}  />
+                                        <CollectionPageCardEditComponent collectionId={collectionId} card={c_} closeHandler={() => setActiveID(null)}  />
                                         :
                                         <CollectionPageCardDisplayComponent card={c_} editHandler={() => setActiveID(id)} />
                                     }
