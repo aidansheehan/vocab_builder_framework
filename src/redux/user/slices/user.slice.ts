@@ -41,7 +41,7 @@ const userSlice = createSlice({
         //fulfilled
         builder.addCase(userLogin.fulfilled, (state, { payload }: PayloadAction<LoginResponseType>) => {
             state.loading   = false
-            state.userInfo  = { id: payload.id, username: payload.username, email: payload.email, roles: payload.roles }
+            state.userInfo  = { id: payload._id, username: payload.username, email: payload.email, roles: payload.roles }
         })
         //rejected TODO type response once finalized from backend
         builder.addCase(userLogin.rejected, (state, { payload }: PayloadAction<any>) => {

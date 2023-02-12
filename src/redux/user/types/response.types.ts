@@ -8,7 +8,7 @@ export type LoginResponseType = {
     email: string,
 
     /** User ID */
-    id: string,
+    _id: string,
 
     /** User Roles TBD ['user'] | ['teacher'] | ['student'] or any combination of these - TODO this is currently sent as 'role' and is a string from backend */
     roles: Array<string>

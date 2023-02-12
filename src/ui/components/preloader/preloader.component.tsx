@@ -4,6 +4,7 @@ import useAppDispatch           from '../../hooks/redux/use-app-dispatch.hook'
 import { getUserDetails }       from '../../../redux/user/actions/user.actions'
 import styles                   from './preloader.component.scss'
 import { getCollections }       from '../../../redux/collections/actions/collections.actions'
+import useAppSelector           from '../../hooks/redux/use-app-selector.hook'
 
 /**
  * Preloader Component
@@ -17,45 +18,57 @@ import { getCollections }       from '../../../redux/collections/actions/collect
  */
 const PreloaderComponent = () => {
 
-    const [ loading, setLoading ] = useState(true)
+    const [ userLoaded, setUserLoaded ]                 = useState(false)
+    const [ collectionsLoaded, setCollectionsLoaded ]   = useState(false)
+
     const dispatch = useAppDispatch()
 
-    //Function to fetch required user data
-    const preloadData = async () => {
+    const { userInfo } = useAppSelector(state => state.user)
+
+    const loadUser = async () => {
 
         //Fetch user details from backend
         await dispatch(getUserDetails())
 
-        //Fetch user collections from backend
-        await dispatch(getCollections())
+        //Set userLoaded flag true TODO should check for success before setting flag and handle errors
+        setUserLoaded(true)
+    }
 
-        //Set loading flag false and proceed to application
-        setLoading(false)
+    const loadCollections = async () => {
+
+        //Fetch collection details from backend
+        await (dispatch(getCollections()))
+
+        //set collectionsLoaded flag true TODO should check for success before setting flag and handle errors
+        setCollectionsLoaded(true)
     }
 
     //Attempt to authenticate user
     useEffect(() => {
 
-        //If not already loaded
-        if (loading) {
+        //Attempt to fetch user details
+        loadUser()
 
-            //Execute function to fetch required data to populate store and proceed to application
-            preloadData()
-
-        }
-        
     }, [])
 
-    //TODO implement loader component
+    //Monitor for user changes and retrieve collections
+    useEffect(() => {
+
+        if (userInfo) {
+            loadCollections()
+        }
+
+    }, [userInfo])
+
     return (
         <div className={styles.preloader}>
             {
-                loading
+                (!userInfo && userLoaded) || (userInfo && collectionsLoaded)
                 ?
+                <App />
+                :
                 // TODO: replace with loader (spinner) component VBF-58
                 <div>Loading...</div>
-                :
-                <App />
             }
         </div>
     )
