@@ -48,10 +48,18 @@ const CollectionPageComponent = (): JSX.Element => {
     //Monitor for whether user adding a new card
     useEffect(() => {
 
-        //Stop editing any other card
-        setActiveID(null)
+        //Stop editing any other card if new card being input
+        if (inputNewCard) setActiveID(null)
 
     }, [ inputNewCard ])
+
+    //Monitor for whether user editing existing card
+    useEffect(() => {
+
+        //Stop creating new card if existing card being edited
+        if (activeID) setInputNewCard(false)
+        
+    }, [activeID])
 
     const newCardInputSectionClassName = classNames(styles.collectionPageSection, {
         [styles.collectionPageSectionActive]: inputNewCard

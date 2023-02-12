@@ -38,12 +38,15 @@ const CollectionPageCardDisplayComponent = (props: CollectionPageCardDisplayComp
 
     return (
         <div className={styles.cardDisplay}>
-            <div className={classNames(styles.cardLexi, styles.cardText)} >
-                <TextValueComponent value={lexi} />
-            </div>
 
-            <div className={classNames(styles.cardDescription, styles.cardText)} >
-                <TextValueComponent value={description} />
+            <div className={styles.cardDisplayData} >
+                <div className={classNames(styles.cardLexi, styles.cardText)} >
+                    <TextValueComponent value={lexi} />
+                </div>
+
+                <div className={classNames(styles.cardDescription, styles.cardText)} >
+                    <TextValueComponent value={description} />
+                </div>
             </div>
 
             <div className={styles.buttonSection} >

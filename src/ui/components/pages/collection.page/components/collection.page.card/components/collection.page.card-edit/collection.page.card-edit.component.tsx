@@ -1,4 +1,3 @@
-import classNames                           from 'classnames'
 import { useRef }                           from 'react'
 import { CardType }                         from '../../../../../../../../redux/collections/types/collections.types'
 import { UpdateCardRequestType }            from '../../../../../../../../redux/collections/types/request.types'
@@ -86,21 +85,23 @@ const CollectionPageCardEditComponent = (props: CollectionPageCardEditComponentP
 
     return (
         <form className={styles.cardEdit} ref={editFormRef} onSubmit={handleSubmit(onSubmit)} >
-            
-            <div className={classNames(styles.lexiSection, styles.section)} >
-                <TextComponent textRef='collection-editor_lexi_tag' />
-                <input 
-                    {...register('lexi')}
-                    required
-                />
-            </div>
 
-            <div className={classNames(styles.descriptionSection, styles.section)} >
-                <TextComponent textRef='collection-editor_prompt_tag' />
-                <input 
-                    {...register('description')}
-                    required
-                />
+            <div className={styles.cardEditData}>
+                <div className={styles.section} >
+                    <TextComponent textRef='collection-editor_lexi_tag' />
+                    <input 
+                        {...register('lexi')}
+                        required
+                    />
+                </div>
+
+                <div className={styles.section} >
+                    <TextComponent textRef='collection-editor_prompt_tag' />
+                    <input 
+                        {...register('description')}
+                        required
+                    />
+                </div>
             </div>
 
             <div className={styles.buttonSection}>

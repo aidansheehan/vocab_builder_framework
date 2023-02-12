@@ -2,7 +2,7 @@
 @use '../../../../../../../sass/mixins/mq.mixin' as mq;
 @use '../../../../../../../sass/mixins/hover.mixin' as hover;
 
-$button-section-width: 100px;
+$button-section-width: 120px;
 
 .cardDisplay {
     width: 100%;
@@ -12,31 +12,35 @@ $button-section-width: 100px;
     align-items: center;
     flex-wrap: nowrap;
     min-height: 50px;
-    .cardText {
-        width: 45%;
-        min-width: 200px;   //TODO investigate what looks best
+    >.cardDisplayData {
+        width: calc(100% - $button-section-width);
         display: flex;
+        flex-direction: row;
         justify-content: flex-start;
         align-items: center;
-        box-sizing: border-box;
         padding-left: 20px;
-
-    
-    }
-    .cardLexi {
-        color: $color-primary;
+        box-sizing: border-box;
         @include mq.mq(mobile-portrait) {
-            justify-self: center;
-            align-self: center;
-            height: 100%;
+            flex-direction: column;
         }
-    }
-    .cardDescription {
-        color: $color-secondary;
+        >.cardLexi {
+            color: $color-primary;
+        }
+        >.cardDescription {
+            color: $color-secondary;
+        }
+        >.cardText {
+            width: 50%;
+            @include mq.mq(mobile-portrait) {
+                width: 100%;
+            }
+        }
     }
     >.buttonSection {
         width: $button-section-width;
         display: flex;
+        padding-right: 20px;
+        box-sizing: border-box;
         >.cardDisplayBtn {
             color: $color-primary;
             display: flex;
