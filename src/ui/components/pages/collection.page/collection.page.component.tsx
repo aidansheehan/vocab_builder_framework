@@ -8,6 +8,8 @@ import CollectionPageCardEditComponent          from './components/collection.pa
 import CollectionPageCardDisplayComponent       from './components/collection.page.card-display/collection.page.card-display.component'
 import classNames                               from 'classnames'
 import CollectionInfoFormComponent              from '../../collection-info-form/collection-info.form.component'
+import useAppDispatch                           from '../../../hooks/redux/use-app-dispatch.hook'
+import { deleteOneCollection }                  from '../../../../redux/collections/actions/collections.actions'
 
 /**
  * Collection Page for view, edit & link to play games with a collection
@@ -28,6 +30,7 @@ const CollectionPageComponent = (): JSX.Element => {
     const [ editCollectionInfo, setEditCollectionInfo ] = useState<boolean>(false)      //Whether editing collection info
 
     const navigate = useNavigate()
+    const dispatch = useAppDispatch()
 
     if (!collectionId) {
         //TODO handle case no collection ID VBF-59
@@ -41,6 +44,16 @@ const CollectionPageComponent = (): JSX.Element => {
     if (!collection) {
         //TODO handle case collection for this ID doesn't exist VBF-59
         console.error('this collection does not exist or does not belong to current user')
+    }
+
+    //Function to handle delete collection
+    const handleDelete = async () => {
+
+        //Wait to delete the collection
+        await dispatch(deleteOneCollection(collectionId))
+
+        //Navigate to users home page
+        navigate('/user')
     }
 
     //Monitor for whether user adding a new card
@@ -105,7 +118,7 @@ const CollectionPageComponent = (): JSX.Element => {
                                     editCollectionInfo
                                     ?
                                     <>
-                                        <ButtonComponent warning onClick={() => alert('DELETE TBD')} icon='trash' textRef='collection-editor_delete-collection'  />
+                                        <ButtonComponent warning onClick={handleDelete} icon='trash' textRef='collection-editor_delete-collection'  />
                                         <ButtonComponent secondary icon='rotate-left' onClick={() => setEditCollectionInfo(false)} />
                                     </>
                                     :
