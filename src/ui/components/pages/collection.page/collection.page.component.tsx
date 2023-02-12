@@ -41,7 +41,7 @@ const CollectionPageComponent = (): JSX.Element => {
     const collection = useAppSelector(state => state.collections.collections[collectionId])
 
     if (!collection) {
-        //TODO handle case collection for this ID doesn't exist
+        //TODO handle case collection for this ID doesn't exist VBF-59
         console.error('this collection does not exist or does not belong to current user')
     }
 

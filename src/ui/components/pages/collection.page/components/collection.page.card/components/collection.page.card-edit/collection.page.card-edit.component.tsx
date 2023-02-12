@@ -56,8 +56,6 @@ const CollectionPageCardEditComponent = (props: CollectionPageCardEditComponentP
     //TODO will need data: UpdateCardRequestType | CreateCardRequestType
     const onSubmit = async (data: UpdateCardRequestType) => {
 
-        console.log('data: ', data)
-
         const { lexi, description, id } = data  //Destructure form data
 
         //If card has ID is update request to update existing
