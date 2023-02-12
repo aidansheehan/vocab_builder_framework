@@ -18,4 +18,8 @@
     &.secondary {
         @extend %button-secondary;
     }
+    &.warning {
+        @extend %button-warning;
+    }
+
 }

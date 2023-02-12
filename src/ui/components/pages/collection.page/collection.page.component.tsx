@@ -7,6 +7,7 @@ import { useEffect, useState }                  from 'react'
 import CollectionPageCardEditComponent          from './components/collection.page.card/components/collection.page.card-edit/collection.page.card-edit.component'
 import CollectionPageCardDisplayComponent       from './components/collection.page.card/components/collection.page.card-display/collection.page.card-display.component'
 import classNames                               from 'classnames'
+import CollectionInfoFormComponent              from '../../collection-info-form/collection-info.form.component'
 
 /**
  * Collection Page for view, edit & link to play games with a collection
@@ -22,12 +23,9 @@ const CollectionPageComponent = (): JSX.Element => {
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId from params
 
-
-    //Actively editing card ID
-    const [ activeID, setActiveID ] = useState<string>(null)
-
-    // New card
-    const [ inputNewCard, setInputNewCard ] = useState<boolean>(false)
+    const [ activeID, setActiveID ]                     = useState<string>(null)        //Whether actively editing card
+    const [ inputNewCard, setInputNewCard ]             = useState<boolean>(false)      //Whether inputting new card
+    const [ editCollectionInfo, setEditCollectionInfo ] = useState<boolean>(false)      //Whether editing collection info
 
     const navigate = useNavigate()
 
@@ -75,18 +73,50 @@ const CollectionPageComponent = (): JSX.Element => {
                     <div className={styles.topPanel}>
         
                         <div className={styles.collectionInfo} >
-        
-                            <div className={styles.title} >
-                                <TextValueComponent value={collection.title} />
+
+                            <div className={styles.collectionInfoDetails}>
+                                {
+                                    editCollectionInfo
+                                    ?
+                                    <CollectionInfoFormComponent 
+                                        title={collection.title} 
+                                        description={collection.description} 
+                                        collectionId={collectionId} 
+                                        style={styles.collectionPageInfoForm} 
+                                        buttonSectionStyle={styles.collectionPageInfoFormButtons} 
+                                        afterSubmit={() => setEditCollectionInfo(false)}
+                                    />
+                                    :
+                                    <>
+                                        <div className={styles.title} >
+                                            <TextValueComponent value={collection.title} />
+                                        </div>
+            
+                                        <div className={styles.description}>
+                                            <TextValueComponent value={collection.description} />
+                                        </div>
+                                    </>
+
+                                }
                             </div>
-        
-                            <div className={styles.description}>
-                                <TextValueComponent value={collection.description} />
+
+                            <div className={styles.collectionInfoButtons}>
+                                {
+                                    editCollectionInfo
+                                    ?
+                                    <>
+                                        <ButtonComponent warning onClick={() => alert('DELETE TBD')} icon='trash' textRef='collection-editor_delete-collection'  />
+                                        <ButtonComponent secondary icon='rotate-left' onClick={() => setEditCollectionInfo(false)} />
+                                    </>
+                                    :
+                                    <>
+                                        <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
+                                        <ButtonComponent secondary icon='pen-to-square' onClick={() => setEditCollectionInfo(true)} />
+                                    </>
+                                }
                             </div>
         
                         </div>
-
-                        <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
         
                     </div>
                     {

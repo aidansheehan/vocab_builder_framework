@@ -17,11 +17,12 @@ import { ButtonComponentProps } from './types/button.component.props.type'
  */
 const ButtonComponent = (props: ButtonComponentProps) => {
 
-    const { onClick, children, textRef, style, icon, disabled, type, primary, secondary } = props   //Destructure props
+    const { onClick, children, textRef, style, icon, disabled, type, primary, secondary, warning } = props   //Destructure props
 
     const className = classNames(styles.button, style, {
         [styles.secondary]: !!secondary,
         [styles.primary]: !!primary,
+        [styles.warning]: !!warning
     })
 
     return (

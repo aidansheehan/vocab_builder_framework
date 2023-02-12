@@ -31,6 +31,7 @@
     "collection-editor_lexi_tag": "Word",
     "collection-editor_prompt_tag": "Prompt",
     "collection-editor_new-word": "Add new word",
+    "collection-editor_delete-collection": "Delete Collection",
     "create-collection_title": "Create a New Collection",
     "create-collection_title-input": "Collection Title",
     "create-collection_description-input": "Collection Description"

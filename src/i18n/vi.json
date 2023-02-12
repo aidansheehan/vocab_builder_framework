@@ -31,7 +31,8 @@
     "collection-editor_lexi_tag": "Từ",
     "collection-editor_prompt_tag": "Mời",
     "collection-editor_new-word": "Thêm từ mới",
+    "collection-editor_delete-collection": "Xoá bộ sưu tập",
     "create-collection_title": "Tạo Một Bộ Sưu Tập Mới",
     "create-collection_title-input": "Tiêu đề bộ sưu tập",
-"create-collection_description-input": "Mô tả bộ sưu tập"
+    "create-collection_description-input": "Mô tả bộ sưu tập"
 }

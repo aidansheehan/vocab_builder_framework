@@ -28,6 +28,9 @@ export type ButtonComponentProps = {
     primary?: boolean,
 
     /** Whether a 'secondary' button for styling */
-    secondary?: boolean
+    secondary?: boolean,
+
+    /** Whether a 'warning' button for styling */
+    warning?: boolean
 
 }

@@ -1,13 +1,13 @@
-import classNames from 'classnames'
-import { useRef } from 'react'
-import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
-import { createCollection/*, updateCollection*/ } from '../../../redux/collections/actions/collections.actions'
-import { UpdateCollectionRequestType } from '../../../redux/collections/types/request.types'
-import useAppDispatch from '../../hooks/redux/use-app-dispatch.hook'
-import ButtonComponent from '../button/button.component'
-import TextComponent from '../text/text.component'
-import styles from './collection-info-form.component.scss'
+import classNames                                                       from 'classnames'
+import { useRef }                                                       from 'react'
+import { useForm }                                                      from 'react-hook-form'
+import { useNavigate }                                                  from 'react-router-dom'
+import { createCollection, updateCollection}                            from '../../../redux/collections/actions/collections.actions'
+import { CreateCollectionRequestType, UpdateCollectionRequestType }     from '../../../redux/collections/types/request.types'
+import useAppDispatch                                                   from '../../hooks/redux/use-app-dispatch.hook'
+import ButtonComponent                                                  from '../button/button.component'
+import TextComponent                                                    from '../text/text.component'
+import styles                                                           from './collection-info-form.component.scss'
 
 /** CollectionInfoFormComponentProps */
 type CollectionInfoFormComponentProps = {
@@ -19,7 +19,20 @@ type CollectionInfoFormComponentProps = {
     description?: string,
 
     /** CollectionId */
-    collectionId?: string
+    collectionId?: string,
+
+    /** function to execute after submit */
+    afterSubmit?: () => void
+
+    /** OnExit function to execute when user exits */
+    handleExit?: () => void,
+
+    /** Additional styles to be applied */
+    style?: string,
+
+    /** Additional button section styles to be applied */
+    buttonSectionStyle?: string
+    
 }
 
 /**
@@ -36,7 +49,7 @@ type CollectionInfoFormComponentProps = {
  */
 const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): JSX.Element => {
 
-    const { title, description, collectionId } = props    //Destructure props
+    const { title, description, collectionId, afterSubmit, handleExit, style, buttonSectionStyle } = props    //Destructure props
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -54,7 +67,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
 
     //Function to handle submit
     //TODO this will be UpdateCollectionRequestType | CreateCollectionRequestType
-    const onSubmit = async (data: UpdateCollectionRequestType) => {
+    const onSubmit = async (data: CreateCollectionRequestType | UpdateCollectionRequestType) => {
 
         const { title: newTitle, description: newDescription } = data
 
@@ -63,7 +76,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
 
             //Dispatch new collection data and wait for destructured response
             const { payload }   = await dispatch(createCollection({title: newTitle, description: newDescription}))
-            console.log('yo payload: ', payload)
+
             //Request was successful
             if (payload.status === 'success') {
 
@@ -81,15 +94,28 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
             else {
                 //TBD
             }
-            // console.log('RESPONSE: ', response)
 
-            //Navigate to new collection ID to add cards
-            // navigate(`/user/`)
+        }
+
+        //Collection ID request is to update existing collection
+        else {
+
+            //Dispatch updated collection data
+            await dispatch(updateCollection({title: newTitle, description: newDescription, collectionId}))
+
+            //Execute after submit function if supplied
+            afterSubmit && afterSubmit()
         }
     }
 
+    //Component className
+    const className = classNames(styles.collectionInfoForm, style)
+
+    //Button section component className
+    const buttonSectionClassName = classNames(styles.collectionInfoFormSection, styles.collectionInfoFormButtonSection, buttonSectionStyle)
+
     return (
-        <form className={styles.collectionInfoForm} ref={collectionFormRef} onSubmit={handleSubmit(onSubmit)} >
+        <form className={className} ref={collectionFormRef} onSubmit={handleSubmit(onSubmit)} >
             {/* <span>TITLE: {title}</span>
             <span>DESCRIPTION: {description}</span> */}
             <div className={styles.collectionInfoFormSection} >
@@ -112,8 +138,8 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
                 />
             </div>
 
-            <div className={classNames(styles.collectionInfoFormSection, styles.collectionInfoFormButtonSection)} >
-                <ButtonComponent icon='rotate-left' textRef='common_back_tag' secondary onClick={() => alert('i got clicked')}/>
+            <div className={buttonSectionClassName} >
+                {handleExit && <ButtonComponent icon='rotate-left' textRef='common_back_tag' secondary onClick={() => handleExit()}/>}
                 <ButtonComponent primary onClick={collectionFormRef.current?.submit} icon='floppy-disk' textRef='common_save_tag' />
             </div>
         </form>
