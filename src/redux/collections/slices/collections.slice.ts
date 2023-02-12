@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction }               from '@reduxjs/toolkit'
 import {    createCard, 
             createCollection,
+            deleteCard,
             deleteOneCollection, 
             getCollections, 
             getOneCollection, 
@@ -196,6 +197,29 @@ const collectionsSlice = createSlice({
         })
         //rejected
         builder.addCase(updateOneCard.rejected, (state, { payload }: PayloadAction<any>) => {
+            state.error = payload
+        })
+
+        /** Delete one card in a collection */
+        //pending
+        builder.addCase(deleteCard.pending, (/*state*/) => {
+            //TBD - should add loading state on individual cards either on this ticket or create a new one to improve this logic
+        })
+        //fulfilled
+        builder.addCase(deleteCard.fulfilled, (state, { payload }: PayloadAction<UpdateCollectionResponseType>) => {
+
+            //Destructure payload data TODO investigate response as not consistent with others
+            //@ts-ignore
+            const { _id, title, description, cards } = payload.data.collection  //TODO we should only update the changed card
+
+            //Create new collection object
+            const newCollection = { title, description, cards }
+
+            //state.loading = false     //Set loading flag false
+            state.collections[_id] = newCollection  //Update collection object
+        })
+        //rejected
+        builder.addCase(deleteCard.rejected, (state, { payload }: PayloadAction<any>) => {
             state.error = payload
         })
         

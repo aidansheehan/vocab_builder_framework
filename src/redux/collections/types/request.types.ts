@@ -22,3 +22,6 @@ export type CreateCardRequestType = {
 
 /** UpdateCardRequestType */
 export type UpdateCardRequestType = CardType & { collectionId: string }
+
+/** DeleteCardRequestType */
+export type DeleteCardRequestType = { collectionId: string, cardId: string }

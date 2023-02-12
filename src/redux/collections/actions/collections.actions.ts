@@ -1,7 +1,7 @@
-import { createAsyncThunk }                                                             from '@reduxjs/toolkit'
-import PrivateHttpClient                                                                from '../../../services/http-client/private-http-client.service'
-import { CollectionWithIdType }                                                         from '../types/collections.types'
-import { CreateCardRequestType, CreateCollectionRequestType, UpdateCardRequestType }    from '../types/request.types'
+import { createAsyncThunk }                                                                                     from '@reduxjs/toolkit'
+import PrivateHttpClient                                                                                        from '../../../services/http-client/private-http-client.service'
+import { CollectionWithIdType }                                                                                 from '../types/collections.types'
+import { CreateCardRequestType, CreateCollectionRequestType, DeleteCardRequestType, UpdateCardRequestType }     from '../types/request.types'
 
 /** Get one collection TODO this will need to be implemented so one user can access another users collection (unprotected route) */
 export const getOneCollection = createAsyncThunk(
@@ -181,6 +181,33 @@ export const updateOneCard = createAsyncThunk(
 
             return data
             
+        }
+
+        catch (error) {
+
+            //Return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+/** Delete a card */
+export const deleteCard = createAsyncThunk(
+    '/collections/cards/delete',
+    async ({ collectionId, cardId }: DeleteCardRequestType, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await PrivateHttpClient.delete(
+                `/collections/${collectionId}/cards/${cardId}`
+            )
+
+            return data
+
         }
 
         catch (error) {

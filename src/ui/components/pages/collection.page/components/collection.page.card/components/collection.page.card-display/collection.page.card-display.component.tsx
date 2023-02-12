@@ -1,14 +1,19 @@
 import { CollectionPageCardComponentProps } from '../../types/collection.page.card.component.props'
-import styles from './collection.page.card-display.component.scss'
-import classNames from 'classnames'
-import TextValueComponent from '../../../../../../text-value/text-value.component'
-import ButtonComponent from '../../../../../../button/button.component'
+import classNames                           from 'classnames'
+import TextValueComponent                   from '../../../../../../text-value/text-value.component'
+import ButtonComponent                      from '../../../../../../button/button.component'
+import useAppDispatch                       from '../../../../../../../hooks/redux/use-app-dispatch.hook'
+import { deleteCard }                       from '../../../../../../../../redux/collections/actions/collections.actions'
+import styles                               from './collection.page.card-display.component.scss'
 
 /** CollectionPageCardDisplayComponentProps type */
 type CollectionPageCardDisplayComponentProps = CollectionPageCardComponentProps & {
     
     //Function to begin editing the data
-    editHandler: () => void
+    editHandler: () => void,
+
+    //Collection Id
+    collectionId: string
 
 }
 
@@ -26,8 +31,10 @@ type CollectionPageCardDisplayComponentProps = CollectionPageCardComponentProps 
  */
 const CollectionPageCardDisplayComponent = (props: CollectionPageCardDisplayComponentProps): JSX.Element => {
 
-    const { card, editHandler }     = props //Destructure props
-    const { lexi, description }     = card  //Destructure card
+    const { card, editHandler, collectionId }       = props //Destructure props
+    const { lexi, description, id: cardId }                     = card  //Destructure card
+
+    const dispatch = useAppDispatch()
 
     return (
         <div className={styles.cardDisplay}>
@@ -40,7 +47,7 @@ const CollectionPageCardDisplayComponent = (props: CollectionPageCardDisplayComp
             </div>
 
             <div className={styles.buttonSection} >
-                <ButtonComponent icon='trash' onClick={() => alert('delete card TBD')} textRef='common_delete_tag' style={styles.cardDisplayBtn} />
+                <ButtonComponent icon='trash' onClick={() => dispatch(deleteCard({collectionId, cardId}))} textRef='common_delete_tag' style={styles.cardDisplayBtn} />
                 <ButtonComponent icon='pen-to-square' onClick={editHandler} textRef='common_edit_tag' style={styles.cardDisplayBtn} />
             </div>
 
