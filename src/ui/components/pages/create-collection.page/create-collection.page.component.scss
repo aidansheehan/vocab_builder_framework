@@ -1,0 +1,16 @@
+@use '../../../sass/color.vars' as *;
+
+.createCollectionPage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    margin: auto;
+    height: 100%;
+    >.createCollectionPageTitle {
+        color: $color-primary;
+        font-size: 16px;
+    }
+}

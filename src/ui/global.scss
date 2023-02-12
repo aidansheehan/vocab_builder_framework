@@ -33,12 +33,17 @@ body {
     }
 }
 
-input {
+input, textarea {
     border-color: #fff;
     box-shadow: none;
     border-style: solid;
     border-radius: $border-radius;
     height: 20px;
+    font-family: 'Inter', sans-serif;
+}
+
+textarea {
+    resize: none;
 }
 
 a, a:link, a:visited, a:focus, a:hover, a:active{

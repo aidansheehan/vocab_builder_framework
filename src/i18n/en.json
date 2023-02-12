@@ -30,5 +30,9 @@
     "collection-details_nav_play": "Play games",
     "collection-editor_lexi_tag": "Word",
     "collection-editor_prompt_tag": "Prompt",
-    "collection-editor_new-word": "Add new word"
+    "collection-editor_new-word": "Add new word",
+    "create-collection_title": "Create a New Collection",
+    "create-collection_title-input": "Collection Title",
+    "create-collection_description-input": "Collection Description"
+
 }

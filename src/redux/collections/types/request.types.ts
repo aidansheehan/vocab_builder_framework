@@ -1,10 +1,18 @@
-import { CardType, CollectionType, CollectionWithIdType } from './collections.types'
+import { CardType } from './collections.types'
 
 /** CreateCollectionRequestType */
-export type CreateCollectionRequestType = CollectionType
+export type CreateCollectionRequestType = {
+
+    /** Title */
+    title: string,
+
+    /** Description */
+    description: string
+
+}
 
 /** UpdateCollectionRequestType */
-export type UpdateCollectionRequestType = CollectionWithIdType
+export type UpdateCollectionRequestType = CreateCollectionRequestType & { collectionId: string }
 
 /** CreateCardRequestType TODO these need to be standardized */
 export type CreateCardRequestType = {

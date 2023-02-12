@@ -30,5 +30,8 @@
     "collection-details_nav_play": "Chơi trò chơi",
     "collection-editor_lexi_tag": "Từ",
     "collection-editor_prompt_tag": "Mời",
-    "collection-editor_new-word": "Thêm từ mới"
+    "collection-editor_new-word": "Thêm từ mới",
+    "create-collection_title": "Tạo Một Bộ Sưu Tập Mới",
+    "create-collection_title-input": "Tiêu đề bộ sưu tập",
+"create-collection_description-input": "Mô tả bộ sưu tập"
 }

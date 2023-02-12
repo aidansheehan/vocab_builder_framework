@@ -1,7 +1,10 @@
-import { createAsyncThunk }                                                                                     from '@reduxjs/toolkit'
-import PrivateHttpClient                                                                                        from '../../../services/http-client/private-http-client.service'
-import { CollectionWithIdType }                                                                                 from '../types/collections.types'
-import { CreateCardRequestType, CreateCollectionRequestType, DeleteCardRequestType, UpdateCardRequestType }     from '../types/request.types'
+import { createAsyncThunk }             from '@reduxjs/toolkit'
+import PrivateHttpClient                from '../../../services/http-client/private-http-client.service'
+import { CreateCardRequestType, 
+    CreateCollectionRequestType, 
+    DeleteCardRequestType, 
+    UpdateCardRequestType, 
+    UpdateCollectionRequestType }       from '../types/request.types'
 
 /** Get one collection TODO this will need to be implemented so one user can access another users collection (unprotected route) */
 export const getOneCollection = createAsyncThunk(
@@ -57,13 +60,13 @@ export const getCollections = createAsyncThunk(
 /** Create a collection */
 export const createCollection = createAsyncThunk(
     '/collections/new',
-    async ( {title, description, cards}: CreateCollectionRequestType, { rejectWithValue }) => {
+    async ( {title, description}: CreateCollectionRequestType, { rejectWithValue }) => {
 
         try {
 
             const { data } = await PrivateHttpClient.post(
                 'collections',
-                {title, description, cards}
+                {title, description}
             )
 
             return data
@@ -82,16 +85,15 @@ export const createCollection = createAsyncThunk(
 )
 
 /** Update one collection */
-//TODO - need to remove cards from this to fit with updates from VBB-8 where this route only updates collection info.
 export const updateCollection = createAsyncThunk(
     '/collections/update',
-    async ({ title, description, cards, _id }: CollectionWithIdType, { rejectWithValue }) => {
+    async ({ title, description, collectionId }: UpdateCollectionRequestType, { rejectWithValue }) => {
 
         try {
 
             const { data } = await PrivateHttpClient.put(
-                `collections/${_id}`,
-                {title, description, cards}
+                `collections/${collectionId}`,
+                {title, description}
             )
 
             return data
