@@ -1,13 +1,16 @@
-import { CollectionPageCardComponentProps } from '../../types/collection.page.card.component.props'
 import classNames                           from 'classnames'
-import TextValueComponent                   from '../../../../../../text-value/text-value.component'
-import ButtonComponent                      from '../../../../../../button/button.component'
-import useAppDispatch                       from '../../../../../../../hooks/redux/use-app-dispatch.hook'
-import { deleteCard }                       from '../../../../../../../../redux/collections/actions/collections.actions'
+import TextValueComponent                   from '../../../../text-value/text-value.component'
+import ButtonComponent                      from '../../../../button/button.component'
+import useAppDispatch                       from '../../../../../hooks/redux/use-app-dispatch.hook'
+import { deleteCard }                       from '../../../../../../redux/collections/actions/collections.actions'
+import { CardType }                         from '../../../../../../redux/collections/types/collections.types'
 import styles                               from './collection.page.card-display.component.scss'
 
 /** CollectionPageCardDisplayComponentProps type */
-type CollectionPageCardDisplayComponentProps = CollectionPageCardComponentProps & {
+type CollectionPageCardDisplayComponentProps = {
+
+    //Card data
+    card: CardType
     
     //Function to begin editing the data
     editHandler: () => void,
