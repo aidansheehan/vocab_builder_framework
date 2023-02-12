@@ -1,7 +1,7 @@
-import { createAsyncThunk }             from '@reduxjs/toolkit'
-import PrivateHttpClient                from '../../../services/http-client/private-http-client.service'
-import { CollectionWithIdType }         from '../types/collections.types'
-import { CreateCollectionRequestType }  from '../types/request.types'
+import { createAsyncThunk }                                                                                     from '@reduxjs/toolkit'
+import PrivateHttpClient                                                                                        from '../../../services/http-client/private-http-client.service'
+import { CollectionWithIdType }                                                                                 from '../types/collections.types'
+import { CreateCardRequestType, CreateCollectionRequestType, DeleteCardRequestType, UpdateCardRequestType }     from '../types/request.types'
 
 /** Get one collection TODO this will need to be implemented so one user can access another users collection (unprotected route) */
 export const getOneCollection = createAsyncThunk(
@@ -82,6 +82,7 @@ export const createCollection = createAsyncThunk(
 )
 
 /** Update one collection */
+//TODO - need to remove cards from this to fit with updates from VBB-8 where this route only updates collection info.
 export const updateCollection = createAsyncThunk(
     '/collections/update',
     async ({ title, description, cards, _id }: CollectionWithIdType, { rejectWithValue }) => {
@@ -138,3 +139,85 @@ export const deleteOneCollection = createAsyncThunk(
 
 /** Delete all collections */
 //TBD
+
+/** Create a new card */
+export const createCard = createAsyncThunk(
+    '/collections/cards',
+    async ({ collectionId, lexi, description }: CreateCardRequestType, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await PrivateHttpClient.post(
+                `/collections/${collectionId}/cards`,
+                {lexi, description}
+            )
+
+            return data
+        }
+
+        catch (error) {
+
+            //Return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+/** Update one card */
+export const updateOneCard = createAsyncThunk(
+    '/collections/cards/update',
+    async ({ collectionId, lexi, description, id }: UpdateCardRequestType, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await PrivateHttpClient.put(
+                `/collections/${collectionId}/cards/${id}`,
+                {lexi, description, id}
+            )
+
+            return data
+            
+        }
+
+        catch (error) {
+
+            //Return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)
+
+/** Delete a card */
+export const deleteCard = createAsyncThunk(
+    '/collections/cards/delete',
+    async ({ collectionId, cardId }: DeleteCardRequestType, { rejectWithValue }) => {
+
+        try {
+
+            const { data } = await PrivateHttpClient.delete(
+                `/collections/${collectionId}/cards/${cardId}`
+            )
+
+            return data
+
+        }
+
+        catch (error) {
+
+            //Return custom error message from API if any
+            if (error.response && error.response.data.message) {
+                return rejectWithValue(error.response.data.message)
+            } else {
+                return rejectWithValue(error.message)
+            }
+        }
+    }
+)

@@ -31,8 +31,8 @@ const ButtonComponent = (props: ButtonComponentProps) => {
             disabled={disabled}
             type={type}
         >
-            {textRef ? <TextComponent textRef={textRef} /> : null }
             {icon ? <IconComponent icon={{icon}} /> : null}
+            {textRef ? <TextComponent textRef={textRef} /> : null }
             { children ? children : null }
         </button>
     )

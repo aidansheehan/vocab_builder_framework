@@ -1,8 +1,5 @@
 import classNames               from 'classnames'
-import { useEffect }            from 'react'
 import { useNavigate }          from 'react-router-dom'
-import { getCollections }       from '../../../../redux/collections/actions/collections.actions'
-import useAppDispatch           from '../../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector           from '../../../hooks/redux/use-app-selector.hook'
 import ButtonComponent          from '../../button/button.component'
 import CollectionCardComponent  from '../../collection-card/collection-card.component'
@@ -25,15 +22,6 @@ const HomePageComponent = (): JSX.Element => {
     const { collections }   = useAppSelector(state => state.collections)    //Get user's collections
 
     const navigate = useNavigate()
-    const dispatch = useAppDispatch()
-
-    //componentDidMount
-    useEffect(() => {
-
-        //Get user's collections
-        dispatch(getCollections())
-
-    }, [])
 
     return (
         <div className={styles.homePage} >

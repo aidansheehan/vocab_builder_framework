@@ -12,6 +12,10 @@
     "common_email_tag": "Email",
     "common_password_tag": "Password",
     "common_username_tag": "Username",
+    "common_edit_tag": "Edit",
+    "common_save_tag": "Save",
+    "common_back_tag": "Go back",
+    "common_delete_tag": "Delete",
     "register_confirm_password_tag": "Confirm Password",
     "landing_text_1": "Are you tired of struggling to remember important information? Do you want to boost your studying efficiency and ace your exams? Look no further! Our flash card app is here to help.",
     "landing_text_2": "With an easy-to-use interface and a vast selection of pre-made flash card decks, you'll be able to quickly and effectively study any subject.",
@@ -24,5 +28,7 @@
     "home_greeting": "Hello, %v.",
     "home_play-random": "Play random",
     "collection-details_nav_play": "Play games",
-    "collection-details_nav_edit": "Edit"
+    "collection-editor_lexi_tag": "Word",
+    "collection-editor_prompt_tag": "Prompt",
+    "collection-editor_new-word": "Add new word"
 }

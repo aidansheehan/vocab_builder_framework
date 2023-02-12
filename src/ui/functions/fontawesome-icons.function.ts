@@ -13,6 +13,9 @@ import {
     faUserPlus,
     faPenToSquare,
     faPlay,
+    faFloppyDisk,
+    faRotateLeft,
+    faTrash,
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -34,6 +37,9 @@ export default function FontAwesomeIcons(): void {
         faFileCircleQuestion,
         faAddressBook,
         faPenToSquare,
-        faPlay
+        faPlay,
+        faFloppyDisk,
+        faRotateLeft,
+        faTrash
     )
 }
