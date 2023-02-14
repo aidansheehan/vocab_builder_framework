@@ -1,11 +1,11 @@
 import { useRef }                           from 'react'
-import { CardType }                         from '../../../../../../../../redux/collections/types/collections.types'
-import { UpdateCardRequestType }            from '../../../../../../../../redux/collections/types/request.types'
-import useAppDispatch                       from '../../../../../../../hooks/redux/use-app-dispatch.hook'
-import ButtonComponent                      from '../../../../../../button/button.component'
-import TextComponent                        from '../../../../../../text/text.component'
+import { CardType }                         from '../../../../../../redux/collections/types/collections.types'
+import { UpdateCardRequestType }            from '../../../../../../redux/collections/types/request.types'
+import useAppDispatch                       from '../../../../../hooks/redux/use-app-dispatch.hook'
+import ButtonComponent                      from '../../../../button/button.component'
+import TextComponent                        from '../../../../text/text.component'
 import { useForm }                          from 'react-hook-form'
-import { createCard, updateOneCard }        from '../../../../../../../../redux/collections/actions/collections.actions'
+import { createCard, updateOneCard }        from '../../../../../../redux/collections/actions/collections.actions'
 import styles                               from './collection.page.card-edit.component.scss'
 
 /** CollectionPageCardEditComponentProps type */

@@ -1,0 +1,22 @@
+.collectionInfoForm {
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 75%;
+    max-width: 400px;
+    >.collectionInfoFormSection {
+        display: flex;
+        flex-direction: column;
+        margin: 10px 0;
+        >textarea {
+            height: 100px;
+        }
+        &.collectionInfoFormButtonSection {
+            flex-direction: row;
+            justify-content: flex-end;
+            > * {
+                margin: 0 10px;
+            }
+        }
+    }
+}
