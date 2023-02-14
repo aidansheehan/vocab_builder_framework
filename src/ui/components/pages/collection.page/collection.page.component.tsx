@@ -25,6 +25,11 @@ const CollectionPageComponent = (): JSX.Element => {
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId from params
 
+    /**
+     * TODO VBF-31
+     *  - with active collection editor opened in modal this can be done by routing to card ID and we can get rid of this hacky stuff :) 
+     *  - close route back to main collection page on close modal
+     */
     const [ activeID, setActiveID ]                     = useState<string>(null)        //Whether actively editing card
     const [ inputNewCard, setInputNewCard ]             = useState<boolean>(false)      //Whether inputting new card
     const [ editCollectionInfo, setEditCollectionInfo ] = useState<boolean>(false)      //Whether editing collection info

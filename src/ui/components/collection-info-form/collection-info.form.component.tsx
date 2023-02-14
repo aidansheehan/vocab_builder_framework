@@ -79,8 +79,6 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
 
             //Request was successful
             if (payload.status === 'success') {
-
-                console.log('hi!')
                 
                 const { data }                  = payload
                 const { collection }            = data          //Destructure payload data
@@ -116,8 +114,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
 
     return (
         <form className={className} ref={collectionFormRef} onSubmit={handleSubmit(onSubmit)} >
-            {/* <span>TITLE: {title}</span>
-            <span>DESCRIPTION: {description}</span> */}
+
             <div className={styles.collectionInfoFormSection} >
                 <label htmlFor='title'>
                     <TextComponent textRef='create-collection_title-input' />
@@ -142,6 +139,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
                 {handleExit && <ButtonComponent icon='rotate-left' textRef='common_back_tag' secondary onClick={() => handleExit()}/>}
                 <ButtonComponent primary onClick={collectionFormRef.current?.submit} icon='floppy-disk' textRef='common_save_tag' />
             </div>
+            
         </form>
     )
 
