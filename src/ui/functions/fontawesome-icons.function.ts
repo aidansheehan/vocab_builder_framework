@@ -16,6 +16,7 @@ import {
     faFloppyDisk,
     faRotateLeft,
     faTrash,
+    faTimes,
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -40,6 +41,7 @@ export default function FontAwesomeIcons(): void {
         faPlay,
         faFloppyDisk,
         faRotateLeft,
-        faTrash
+        faTrash,
+        faTimes
     )
 }

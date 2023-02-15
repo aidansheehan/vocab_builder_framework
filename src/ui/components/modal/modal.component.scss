@@ -1,0 +1,80 @@
+@use '../../sass/color.vars' as *;
+@use '../../sass/placeholders/section-header';
+@use '../../sass/ui.vars' as *;
+@use '../../sass/mixins/mq.mixin' as mq;
+
+$header-padding: 10px;
+$padding: 60px;
+
+.modalOverlay {
+    background-color: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    color: $color-primary;
+    > .modal {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        border-radius: $border-radius;
+        border-width: $border-width;
+        border-style: solid;
+        border-color: $border-color;
+        width: 100%;
+        max-width: 600px;
+        height: 100%;
+        max-height: 600px;
+        background-color: $background-primary;
+        @include mq.mq(mobile-portrait) {
+            max-height: 80%;
+            max-width: 90%;
+        }
+
+        >.modalHeader {
+            @extend %section-header;
+            justify-content: space-between;
+            > .modalHeaderLeft {
+                align-items: flex-start;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: flex-start;
+                padding-left: $header-padding;
+                width: 90%;
+                > * {
+                    padding: 0 2px;
+                }
+            }
+            > .modalHeaderRight {
+                align-items: flex-end;
+                box-sizing: border-box;
+                display: flex;
+                justify-content: flex-end;
+                padding-right: $header-padding;
+                width: 10%;
+                > .modalHeaderCloseBtn {
+                    background-color: transparent;
+                    border-color: none;
+                    color: inherit;
+                }
+            }
+        }
+        >.modalContent {
+            overflow-y: scroll;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: calc(100% - $section-header-height);
+            box-sizing: border-box;
+            padding: 10px;
+            margin-bottom: 10px;
+            > * {
+                width: 100%;
+            }
+        }
+    }
+}
