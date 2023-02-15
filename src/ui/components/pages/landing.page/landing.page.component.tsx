@@ -16,6 +16,7 @@ const LandingPageComponent = () => {
 
     return (
         <div data-testid='landing-page' >
+            {/* TODO remove but leaving in for reference after holiday incase any benefits to using link component */}
             <Link to={`/auth/login`} state={{backgroundLocation: location}} >Log In Click Me I Work as Modal</Link>
             <p>
                 <TextComponent textRef='landing_text_1' />

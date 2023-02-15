@@ -1,7 +1,7 @@
 //Core
 import { useState } from 'react'
 //Router
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from '../../hooks/redux/use-app-selector.hook'
 //Components
@@ -36,6 +36,7 @@ const HeaderComponent = (): JSX.Element => {
 
     const device    = useDevice()
     const navigate  = useNavigate()
+    const location  = useLocation()
 
     //Function to toggle menu expanded
     const toggleMenuExpanded = () => {
@@ -61,8 +62,8 @@ const HeaderComponent = (): JSX.Element => {
                                 {
                                     device !== 'mobile' ?
                                     <>
-                                        <ButtonComponent onClick={() => navigate('/auth/register')} textRef='nav_register_link' style={styles.headerButton} primary />
-                                        <ButtonComponent onClick={() => navigate('/auth/login')} textRef='nav_login_link' style={styles.headerButton} primary />
+                                        <ButtonComponent onClick={() => navigate('/auth/register', {state: {backgroundLocation: location}})} textRef='nav_register_link' style={styles.headerButton} primary />
+                                        <ButtonComponent onClick={() => navigate('/auth/login', {state: {backgroundLocation: location}})} textRef='nav_login_link' style={styles.headerButton} primary />
                                     </>
                                     :
                                     <></>
