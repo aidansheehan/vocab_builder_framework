@@ -26,13 +26,17 @@ $padding: 60px;
         border-style: solid;
         border-color: $border-color;
         width: 100%;
-        max-width: 600px;
+        max-width: 420px;
         height: 100%;
-        max-height: 600px;
+        max-height: 500px;
         background-color: $background-primary;
         @include mq.mq(mobile-portrait) {
             max-height: 80%;
             max-width: 90%;
+        }
+        @include mq.mq(mobile-landscape) {
+            max-height: 90%;
+            max-width: 80%;
         }
 
         >.modalHeader {
@@ -60,6 +64,7 @@ $padding: 60px;
                     background-color: transparent;
                     border-color: none;
                     color: inherit;
+                    font-size: 26px;
                 }
             }
         }

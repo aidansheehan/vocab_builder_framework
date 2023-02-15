@@ -1,4 +1,4 @@
-import { Outlet }                                       from 'react-router-dom'
+import { Outlet, useNavigate }                                       from 'react-router-dom'
 import { Transition }                                   from 'react-transition-group'
 import ButtonComponent                                  from '../button/button.component'
 import { MODAL_ANIMATION_TIMER }                        from './constants/modal.animation-timer.constant'
@@ -26,10 +26,13 @@ const ModalComponent = (props: ModalComponentProps) => {
 
     const { onCloseCallback } = props   //Destructure props
 
+    const navigate = useNavigate()
+
     //Function to handle close modal
     const handleClose = () => {
 
-        alert('I got closed')
+        // alert('I got closed')
+        navigate(-1)
         onCloseCallback && onCloseCallback()    //Execute onCloseCallback if defined
     }
 
@@ -46,8 +49,7 @@ const ModalComponent = (props: ModalComponentProps) => {
                         <div className={styles.modalHeader}>
 
                             <div className={styles.modalHeaderLeft}>
-                                {/* TBD */}
-                                <span>HEADER</span>
+                                {/* TBD if needed or remove if not */}
                             </div>
 
                             <div className={styles.modalHeaderRight} >
@@ -56,10 +58,10 @@ const ModalComponent = (props: ModalComponentProps) => {
 
                         </div>
 
-                    </div>
+                        <div className={styles.modalContent} >
+                            <Outlet />
+                        </div>
 
-                    <div className={styles.modalContent} >
-                        <Outlet />
                     </div>
 
                 </div>

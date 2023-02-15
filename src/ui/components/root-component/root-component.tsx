@@ -1,5 +1,5 @@
 //Router
-import { useRoutes } from 'react-router-dom'
+import { Route, Routes, useLocation, useRoutes } from 'react-router-dom'
 //Components
 import PreloaderComponent               from '../preloader/preloader.component'
 import CollectionPageComponent          from '../pages/collection.page/collection.page.component'
@@ -16,6 +16,7 @@ import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
 //Containers
 import LoginFormContainer       from '../auth-form/containers/login-form/login-form.container'
 import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
+import ModalComponent from '../modal/modal.component'
 
 /**
  * Route container element for application to render
@@ -23,6 +24,73 @@ import RegisterFormContainer    from '../auth-form/containers/register-form/regi
  * @version 0.1.0
  */
 const RootComponent = (): JSX.Element => {
+
+    //Get location
+    const location = useLocation()
+
+    //Get state as background location
+    const state = location.state as { backgroundLocation?: Location }
+
+    return (
+        <>
+                <Routes location={state?.backgroundLocation || location}>
+
+                    <Route path='/' element={<PreloaderComponent />}>
+
+                        <Route index element={<LandingPageComponent />} />
+
+                        <Route path='new' element={<CreateCollectionPageComponent />} />
+
+                        <Route path='faq' element={<FAQPageComponent />} />
+
+                        <Route path='contact' element={<ContactPageComponent />} />
+
+                        <Route path='auth' element={<AuthLayoutComponent />}>
+
+                            <Route path='login' element={<LoginFormContainer />} />
+                            <Route path='register' element={<RegisterFormContainer />} />
+
+                        </Route>
+
+                        <Route path='user' >
+                            
+                            <Route index element={<HomePageComponent />} />
+                            <Route path='new' element={<CreateCollectionPageComponent />} />
+                            <Route path='help' element={<HelpPageComponent />} />
+                            
+                            <Route path='collection'>
+                                <Route index element={<CollectionPageComponent />} />
+                                <Route path='play' element={<GamePageComponent />} />
+                            </Route>
+
+                        </Route>
+
+                        <Route path='*' element={<ErrorPageComponent />} />
+
+                    </Route>
+
+                </Routes>
+
+                {/* Show the modal when a `backgroundLocation` is set */}
+                {state?.backgroundLocation && (
+                    <Routes>
+                        <Route path='auth' element={<ModalComponent />} >
+                            <Route path='login' element={<LoginFormContainer />} />
+                            <Route path='register' element={<RegisterFormContainer />} />
+                        </Route>
+
+                        <Route path='user' element={<ModalComponent />} >
+                            <Route path='new' element={<CreateCollectionPageComponent />} />
+                            {/* TODO add help, edit collection, create/edit card :) */}
+                        </Route>
+
+                    </Routes>
+                )}
+        </>
+
+        
+    )
+
 
     //Define app routes
     const routes = useRoutes([
@@ -32,36 +100,6 @@ const RootComponent = (): JSX.Element => {
             element: <PreloaderComponent />,
             errorElement: <ErrorPageComponent />,
             children: [
-                {
-                    index: true,
-                    element: <LandingPageComponent />
-                },
-                {
-                    path: 'new',
-                    element: <CreateCollectionPageComponent />
-                },
-                {
-                    path: 'faq',
-                    element: <FAQPageComponent />
-                },
-                {
-                    path: 'contact',
-                    element: <ContactPageComponent />
-                },
-                {
-                    path: 'auth',
-                    element: <AuthLayoutComponent />,
-                    children: [
-                        {
-                            path: 'login',
-                            element: <LoginFormContainer />
-                        },
-                        {
-                            path: 'register',
-                            element: <RegisterFormContainer />
-                        }
-                    ]
-                },
                 {
                     path: 'user',
                     children: [

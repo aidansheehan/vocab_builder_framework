@@ -1,4 +1,5 @@
 import classNames               from 'classnames'
+import { Link, useLocation } from 'react-router-dom'
 import { useNavigate }          from 'react-router-dom'
 import useAppSelector           from '../../../hooks/redux/use-app-selector.hook'
 import ButtonComponent          from '../../button/button.component'
@@ -22,6 +23,7 @@ const HomePageComponent = (): JSX.Element => {
     const { collections }   = useAppSelector(state => state.collections)    //Get user's collections
 
     const navigate = useNavigate()
+    const location = useLocation()
 
     return (
         <div className={styles.homePage} >
@@ -35,6 +37,7 @@ const HomePageComponent = (): JSX.Element => {
                 <div className={styles.controlButtons}>
                     <ButtonComponent textRef='home_play-random' secondary onClick={() => alert('play random TBD')} />
                     <ButtonComponent textRef='nav_new-collection_link' primary onClick={() => navigate('new')} />
+                    <Link to={'/user/new'} state={{backgroundLocation: location}}>New as Modal :)</Link>
                 </div>
             </div>
 
