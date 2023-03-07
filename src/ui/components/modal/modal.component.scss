@@ -2,6 +2,7 @@
 @use '../../sass/placeholders/section-header';
 @use '../../sass/ui.vars' as *;
 @use '../../sass/mixins/mq.mixin' as mq;
+@use '../../sass/mixins/hover.mixin' as hover;
 
 $header-padding: 10px;
 $padding: 60px;
@@ -21,7 +22,7 @@ $padding: 60px;
         box-sizing: border-box;
         display: flex;
         flex-direction: column;
-        border-radius: $border-radius;
+        border-radius: $modal-border-radius;
         border-width: $border-width;
         border-style: solid;
         border-color: $border-color;
@@ -42,6 +43,7 @@ $padding: 60px;
         >.modalHeader {
             @extend %section-header;
             justify-content: space-between;
+            border-radius: $modal-border-radius $modal-border-radius 0 0;
             > .modalHeaderLeft {
                 align-items: flex-start;
                 box-sizing: border-box;
@@ -58,13 +60,22 @@ $padding: 60px;
                 box-sizing: border-box;
                 display: flex;
                 justify-content: flex-end;
-                padding-right: $header-padding;
                 width: 10%;
                 > .modalHeaderCloseBtn {
                     background-color: transparent;
                     border-color: none;
                     color: inherit;
                     font-size: 26px;
+                    @include hover.hover(hover) {
+                        > * {
+                            opacity: .7;
+                        }
+                        &:hover {
+                            > * {
+                                opacity: 1;
+                            }
+                        }
+                    }
                 }
             }
         }

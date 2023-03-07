@@ -59,8 +59,6 @@ const AuthFormComponent = (props: AuthFormComponentProps): JSX.Element => {
 
     return (
 
-        <div className={styles.auth} >
-
             <form onSubmit={handleSubmit(onSubmit)} className={styles.authForm} ref={formRef}>
 
                 <>
@@ -131,7 +129,7 @@ const AuthFormComponent = (props: AuthFormComponentProps): JSX.Element => {
                     {
                         continueWithoutAccount
                         ?
-                        <div className={classNames(styles.authSection)} >
+                        <div className={styles.authSection} >
                             <NavLink to='/new'>
                                 <TextComponent textRef='nav_continue-without-account' />
                             </NavLink>
@@ -144,8 +142,6 @@ const AuthFormComponent = (props: AuthFormComponentProps): JSX.Element => {
                 </>
 
             </form>
-
-        </div>
 
     )
 

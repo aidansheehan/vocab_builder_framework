@@ -1,43 +1,35 @@
 @use '../../sass/color.vars' as *;
 @use '../../sass/mixins/mq.mixin' as mq;
 
-.auth {
-    height: 50%;
-    width: 75%;
+.authForm {
+    height: 100%;
+    width: 100%;
     max-width: 400px;
-    @include mq.mq(mobile) {
-        height: 60%;
-        width: 100%;
-    }
-    >.authForm {
-        height: 100%;
-        width: 100%;
-        max-width: 400px;
-        color: $color-primary;
+    color: $color-primary;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    > .authSection {
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
-        > .authSection {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 30px;
+        height: 40px;
+        width: 100%;
+        padding: 0 25%;
+        box-sizing: border-box;
+        text-align: center;
+        > input {
             width: 100%;
-            padding: 0 25%;
-            box-sizing: border-box;
-            > input {
-                width: 100%;
-            }
-            &.authHeader {
-                height: 50px;
-                text-align: center;
-            }
-            &.authButtonSection {
-                height: 50px;
-                justify-content: space-between;
-    
-            }
+        }
+        &.authHeader {
+            height: 50px;
+            text-align: center;
+        }
+        &.authButtonSection {
+            height: 50px;
+            justify-content: space-between;
+
         }
     }
 }
