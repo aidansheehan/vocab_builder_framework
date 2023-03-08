@@ -1,4 +1,4 @@
-import { Outlet, useNavigate }                                       from 'react-router-dom'
+import { Outlet, useNavigate }                          from 'react-router-dom'
 import { Transition }                                   from 'react-transition-group'
 import ButtonComponent                                  from '../button/button.component'
 import { MODAL_ANIMATION_TIMER }                        from './constants/modal.animation-timer.constant'
@@ -31,7 +31,6 @@ const ModalComponent = (props: ModalComponentProps) => {
     //Function to handle close modal
     const handleClose = () => {
 
-        // alert('I got closed')
         navigate(-1)
         onCloseCallback && onCloseCallback()    //Execute onCloseCallback if defined
     }

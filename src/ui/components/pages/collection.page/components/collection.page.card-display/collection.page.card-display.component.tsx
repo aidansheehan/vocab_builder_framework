@@ -35,7 +35,7 @@ type CollectionPageCardDisplayComponentProps = {
 const CollectionPageCardDisplayComponent = (props: CollectionPageCardDisplayComponentProps): JSX.Element => {
 
     const { card, editHandler, collectionId }       = props //Destructure props
-    const { lexi, description, id: cardId }                     = card  //Destructure card
+    const { lexi, description, id: cardId }         = card  //Destructure card
 
     const dispatch = useAppDispatch()
 

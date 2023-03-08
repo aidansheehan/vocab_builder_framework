@@ -122,6 +122,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
                 <input 
                     name='title' 
                     {...register('title')}
+                    required
                 />
             </div>
 
@@ -132,6 +133,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
                 <textarea 
                     name='description' 
                     {...register('description')}
+                    required
                 />
             </div>
 

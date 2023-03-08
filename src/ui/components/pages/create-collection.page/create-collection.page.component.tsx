@@ -23,6 +23,7 @@ const CreateCollectionPageComponent = (): JSX.Element => {
                 <TextComponent textRef='create-collection_title' />
             </div>
 
+            {/* TODO we should only do handle exit if not a modal */}
             <CollectionInfoFormComponent handleExit={() => navigate('/user')} />
         </div>
     )

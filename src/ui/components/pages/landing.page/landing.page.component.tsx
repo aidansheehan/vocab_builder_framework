@@ -1,5 +1,5 @@
-import { Link, useLocation } from 'react-router-dom'
-import TextComponent from '../../text/text.component'
+import { Link, useLocation }    from 'react-router-dom'
+import TextComponent            from '../../text/text.component'
 
 /**
  * Landing (!auth) Page

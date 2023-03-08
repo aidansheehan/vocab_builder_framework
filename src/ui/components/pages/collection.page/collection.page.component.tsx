@@ -3,10 +3,8 @@ import useAppSelector                           from '../../../hooks/redux/use-a
 import { useNavigate }                          from 'react-router-dom'
 import ButtonComponent                          from '../../button/button.component'
 import styles                                   from './collection.page.component.scss'
-import { useEffect, useState }                  from 'react'
-import CollectionPageCardEditComponent          from './components/collection.page.card-edit/collection.page.card-edit.component'
+import { useState }                             from 'react'
 import CollectionPageCardDisplayComponent       from './components/collection.page.card-display/collection.page.card-display.component'
-import classNames                               from 'classnames'
 import CollectionInfoFormComponent              from '../../collection-info-form/collection-info.form.component'
 import useAppDispatch                           from '../../../hooks/redux/use-app-dispatch.hook'
 import { deleteOneCollection }                  from '../../../../redux/collections/actions/collections.actions'
@@ -25,14 +23,7 @@ const CollectionPageComponent = (): JSX.Element => {
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId from params
 
-    /**
-     * TODO VBF-31
-     *  - with active collection editor opened in modal this can be done by routing to card ID and we can get rid of this hacky stuff :) 
-     *  - close route back to main collection page on close modal
-     */
-    const [ activeID, setActiveID ]                     = useState<string>(null)        //Whether actively editing card
-    const [ inputNewCard, setInputNewCard ]             = useState<boolean>(false)      //Whether inputting new card
-    const [ editCollectionInfo, setEditCollectionInfo ] = useState<boolean>(false)      //Whether editing collection info
+    const [ editCollectionInfo, setEditCollectionInfo ] = useState<boolean>(false)  //Whether editing collection info TODO remove and use routes
 
     const navigate = useNavigate()
     const dispatch = useAppDispatch()
@@ -41,7 +32,6 @@ const CollectionPageComponent = (): JSX.Element => {
         //TODO handle case no collection ID VBF-59
         console.error('no collection ID provided')
     }
-
 
     //Attempt to retrieve collection from redux store
     const collection = useAppSelector(state => state.collections.collections[collectionId])
@@ -61,25 +51,6 @@ const CollectionPageComponent = (): JSX.Element => {
         navigate('/user')
     }
 
-    //Monitor for whether user adding a new card
-    useEffect(() => {
-
-        //Stop editing any other card if new card being input
-        if (inputNewCard) setActiveID(null)
-
-    }, [ inputNewCard ])
-
-    //Monitor for whether user editing existing card
-    useEffect(() => {
-
-        //Stop creating new card if existing card being edited
-        if (activeID) setInputNewCard(false)
-        
-    }, [activeID])
-
-    const newCardInputSectionClassName = classNames(styles.collectionPageSection, {
-        [styles.collectionPageSectionActive]: inputNewCard
-    })
 
     return (
         <>
@@ -137,39 +108,25 @@ const CollectionPageComponent = (): JSX.Element => {
                         </div>
         
                     </div>
+
                     {
                         collection.cards.map(c_ => {
 
                             const { id } = c_   //Destructure card for ID
 
-                            //Component className
-                            const sectionClassName = classNames(styles.collectionPageSection, {
-                                [styles.collectionPageSectionActive]: id === activeID
-                            })
-
                             return (
-                                <div className={sectionClassName} key={id} >
-                                    {
-                                        id === activeID
-                                        ?
-                                        <CollectionPageCardEditComponent collectionId={collectionId} card={c_} closeHandler={() => setActiveID(null)}  />
-                                        :
-                                        <CollectionPageCardDisplayComponent collectionId={collectionId} card={c_} editHandler={() => setActiveID(id)} />
-                                    }
+                                <div className={styles.collectionPageSection} key={id} >
+    
+                                        <CollectionPageCardDisplayComponent collectionId={collectionId} card={c_} editHandler={() => navigate(`/user/collection/card?collectionId=${collectionId}&cardId=${id}`)} />
+
                                 </div>
                             )
                         })
                     }
 
                     {/* New Card Input */}
-                    <div className={newCardInputSectionClassName} >
-                        {
-                            inputNewCard
-                            ?
-                            <CollectionPageCardEditComponent collectionId={collectionId} closeHandler={() => setInputNewCard(false)} />
-                            :
-                            <ButtonComponent onClick={() => setInputNewCard(true)} textRef='collection-editor_new-word' style={styles.newCardBtn} />
-                        }
+                    <div className={styles.collectionPageSection} >
+                            <ButtonComponent onClick={() => navigate(`/user/collection/card?collectionId=${collectionId}`)} textRef='collection-editor_new-word' style={styles.newCardBtn} />
                     </div>
         
                 </div>
