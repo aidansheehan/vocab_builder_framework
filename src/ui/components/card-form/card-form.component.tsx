@@ -1,3 +1,4 @@
+import classNames                       from 'classnames'
 import { useRef }                       from 'react'
 import { useForm }                      from 'react-hook-form'
 import { useNavigate }                  from 'react-router-dom'
@@ -84,8 +85,6 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
     return (
         <form className={styles.cardEdit} ref={editFormRef} onSubmit={handleSubmit(onSubmit)} >
 
-            <div className={styles.cardEditData}>
-
                 <div className={styles.section} >
 
                     <label htmlFor='lexi'>
@@ -113,11 +112,9 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
 
                 </div>
 
-            </div>
-
-            <div className={styles.buttonSection}>
-                <ButtonComponent icon='rotate-left' onClick={navigateToCollection} style={styles.cardEditBtn} textRef='common_back_tag' />
-                <ButtonComponent icon='floppy-disk' onClick={editFormRef.current?.submit} style={styles.cardEditBtn} textRef='common_save_tag' />
+            <div className={classNames(styles.section, styles.buttonSection)}>
+                <ButtonComponent icon='rotate-left' onClick={navigateToCollection} style={styles.cardEditBtn} textRef='common_back_tag' secondary />
+                <ButtonComponent icon='floppy-disk' onClick={editFormRef.current?.submit} style={styles.cardEditBtn} textRef='common_save_tag' primary />
             </div>
 
         </form>
