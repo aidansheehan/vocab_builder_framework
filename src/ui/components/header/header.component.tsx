@@ -56,7 +56,7 @@ const HeaderComponent = (): JSX.Element => {
                     <nav className={styles.headerNav}>
                         {userInfo ? (
 
-                                <ButtonComponent style={styles.helpButton} onClick={() => navigate('/user/help')} icon='circle-question' />
+                                <ButtonComponent style={styles.helpButton} onClick={() => navigate('/user/help', {state: {backgroundLocation: location}})} icon='circle-question' />
                         ) : (
                             <>
                                 {

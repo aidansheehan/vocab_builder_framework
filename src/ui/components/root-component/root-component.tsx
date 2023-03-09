@@ -83,7 +83,7 @@ const RootComponent = (): JSX.Element => {
 
                         <Route path='user' element={<ModalComponent />} >
                             <Route path='new' element={<CreateCollectionPageComponent />} />
-
+                            <Route path='help' element={<HelpPageComponent />} />
                             <Route path='collection'>
                                 <Route path='card' element={<CardPageComponent />} />
                             </Route>
