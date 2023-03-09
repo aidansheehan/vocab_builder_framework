@@ -1,6 +1,6 @@
 import TextValueComponent                       from '../../text-value/text-value.component'
 import useAppSelector                           from '../../../hooks/redux/use-app-selector.hook'
-import { useNavigate }                          from 'react-router-dom'
+import { useLocation, useNavigate }             from 'react-router-dom'
 import ButtonComponent                          from '../../button/button.component'
 import styles                                   from './collection.page.component.scss'
 import { useState }                             from 'react'
@@ -26,6 +26,7 @@ const CollectionPageComponent = (): JSX.Element => {
     const [ editCollectionInfo, setEditCollectionInfo ] = useState<boolean>(false)  //Whether editing collection info TODO remove and use routes
 
     const navigate = useNavigate()
+    const location = useLocation()
     const dispatch = useAppDispatch()
 
     if (!collectionId) {
@@ -39,6 +40,20 @@ const CollectionPageComponent = (): JSX.Element => {
     if (!collection) {
         //TODO handle case collection for this ID doesn't exist VBF-59
         console.error('this collection does not exist or does not belong to current user')
+    }
+
+    //Function to handle open card editor
+    const openCardEditor = (cardId?: string) => {
+
+        //If no ID provided create new card
+        if (!cardId) {
+            navigate(`/user/collection/card?collectionId=${collectionId}`, {state: {backgroundLocation: location}})
+        }
+
+        // If id provided edit existing card 
+        else {
+            navigate(`/user/collection/card?collectionId=${collectionId}&cardId=${cardId}`, {state: {backgroundLocation: location}})
+        }
     }
 
     //Function to handle delete collection
@@ -117,7 +132,7 @@ const CollectionPageComponent = (): JSX.Element => {
                             return (
                                 <div className={styles.collectionPageSection} key={id} >
     
-                                        <CollectionPageCardDisplayComponent collectionId={collectionId} card={c_} editHandler={() => navigate(`/user/collection/card?collectionId=${collectionId}&cardId=${id}`)} />
+                                    <CollectionPageCardDisplayComponent collectionId={collectionId} card={c_} editHandler={() => openCardEditor(id)} />
 
                                 </div>
                             )
@@ -126,7 +141,7 @@ const CollectionPageComponent = (): JSX.Element => {
 
                     {/* New Card Input */}
                     <div className={styles.collectionPageSection} >
-                            <ButtonComponent onClick={() => navigate(`/user/collection/card?collectionId=${collectionId}`)} textRef='collection-editor_new-word' style={styles.newCardBtn} />
+                        <ButtonComponent onClick={() => openCardEditor()} textRef='collection-editor_new-word' style={styles.newCardBtn} />
                     </div>
         
                 </div>
