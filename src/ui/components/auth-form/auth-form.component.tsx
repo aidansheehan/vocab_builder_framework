@@ -130,7 +130,7 @@ const AuthFormComponent = (props: AuthFormComponentProps): JSX.Element => {
                         continueWithoutAccount
                         ?
                         <div className={styles.authSection} >
-                            <NavLink to='/new'>
+                            <NavLink to='/new' className={styles.continueWithoutAccountLink}>
                                 <TextComponent textRef='nav_continue-without-account' />
                             </NavLink>
                         </div>

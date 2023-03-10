@@ -36,7 +36,7 @@ const HomePageComponent = (): JSX.Element => {
 
                 <div className={styles.controlButtons}>
                     <ButtonComponent textRef='home_play-random' secondary onClick={() => alert('play random TBD')} />
-                    <ButtonComponent textRef='nav_new-collection_link' primary onClick={() => navigate('new', {state: {backgroundLocation: location}})} />
+                    <ButtonComponent textRef='nav_new-collection_link' primary onClick={() => navigate('collection/info', {state: {backgroundLocation: location}})} />
                 </div>
             </div>
 

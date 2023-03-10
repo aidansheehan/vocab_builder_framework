@@ -2,9 +2,10 @@ import classNames                                                       from 'cl
 import { useRef }                                                       from 'react'
 import { useForm }                                                      from 'react-hook-form'
 import { useNavigate }                                                  from 'react-router-dom'
-import { createCollection, updateCollection}                            from '../../../redux/collections/actions/collections.actions'
+import { createCollection, deleteOneCollection, updateCollection}       from '../../../redux/collections/actions/collections.actions'
 import { CreateCollectionRequestType, UpdateCollectionRequestType }     from '../../../redux/collections/types/request.types'
 import useAppDispatch                                                   from '../../hooks/redux/use-app-dispatch.hook'
+import useAppSelector                                                   from '../../hooks/redux/use-app-selector.hook'
 import ButtonComponent                                                  from '../button/button.component'
 import TextComponent                                                    from '../text/text.component'
 import styles                                                           from './collection-info-form.component.scss'
@@ -12,17 +13,11 @@ import styles                                                           from './
 /** CollectionInfoFormComponentProps */
 type CollectionInfoFormComponentProps = {
 
-    /** Title of the collection */
-    title?: string,
-
-    /** Collection description */
-    description?: string,
-
     /** CollectionId */
     collectionId?: string,
 
     /** function to execute after submit */
-    afterSubmit?: () => void
+    afterSubmit?: () => void,
 
     /** OnExit function to execute when user exits */
     handleExit?: () => void,
@@ -49,7 +44,13 @@ type CollectionInfoFormComponentProps = {
  */
 const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): JSX.Element => {
 
-    const { title, description, collectionId, afterSubmit, handleExit, style, buttonSectionStyle } = props    //Destructure props
+    const { collectionId, afterSubmit, handleExit, style, buttonSectionStyle } = props    //Destructure props
+
+    //Get users collection
+    const collection = collectionId ? useAppSelector(state => state.collections.collections[collectionId]) : null
+
+    //Destructure collection
+    const { title, description } = collection ? collection : { title: '', description: '' }
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -66,7 +67,6 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
     const collectionFormRef = useRef<HTMLFormElement>(null)
 
     //Function to handle submit
-    //TODO this will be UpdateCollectionRequestType | CreateCollectionRequestType
     const onSubmit = async (data: CreateCollectionRequestType | UpdateCollectionRequestType) => {
 
         const { title: newTitle, description: newDescription } = data
@@ -106,6 +106,16 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
         }
     }
 
+    //Function to handle delete collection
+    const handleDelete = async () => {
+
+        //Wait to delete the collection
+        await dispatch(deleteOneCollection(collectionId))
+
+        //Navigate to users home page
+        navigate('/user')
+    }
+
     //Component className
     const className = classNames(styles.collectionInfoForm, style)
 
@@ -138,7 +148,13 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
             </div>
 
             <div className={buttonSectionClassName} >
-                {handleExit && <ButtonComponent icon='rotate-left' textRef='common_back_tag' secondary onClick={() => handleExit()}/>}
+                {
+                    collectionId
+                    ?
+                    <ButtonComponent icon='trash' textRef='collection-editor_delete-collection' warning onClick={handleDelete} />
+                    :
+                    handleExit && <ButtonComponent icon='rotate-left' textRef='common_back_tag' secondary onClick={() => handleExit()}/>
+                }
                 <ButtonComponent primary onClick={collectionFormRef.current?.submit} icon='floppy-disk' textRef='common_save_tag' />
             </div>
             

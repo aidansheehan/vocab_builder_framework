@@ -56,13 +56,14 @@ const RootComponent = (): JSX.Element => {
                         <Route path='user' >
                             
                             <Route index element={<HomePageComponent />} />
-                            <Route path='new' element={<CreateCollectionPageComponent />} />
+                            {/* <Route path='new' element={<CreateCollectionPageComponent />} /> */}
                             <Route path='help' element={<HelpPageComponent />} />
                             
                             <Route path='collection'>
                                 <Route index element={<CollectionPageComponent />} />
                                 <Route path='play' element={<GamePageComponent />} />
                                 <Route path='card' element={<CardPageComponent />} />
+                                <Route path='info' element={<CreateCollectionPageComponent />} />
                             </Route>
 
                         </Route>
@@ -82,9 +83,10 @@ const RootComponent = (): JSX.Element => {
                         </Route>
 
                         <Route path='user' element={<ModalComponent />} >
-                            <Route path='new' element={<CreateCollectionPageComponent />} />
+                            {/* <Route path='new' element={<CreateCollectionPageComponent />} /> */}
                             <Route path='help' element={<HelpPageComponent />} />
                             <Route path='collection'>
+                                <Route path='info' element={<CreateCollectionPageComponent />} />
                                 <Route path='card' element={<CardPageComponent />} />
                             </Route>
                             {/* TODO add help, edit collection, create/edit card :) */}
