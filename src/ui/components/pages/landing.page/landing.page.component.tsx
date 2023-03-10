@@ -1,5 +1,4 @@
-import { Link, useLocation }    from 'react-router-dom'
-import TextComponent            from '../../text/text.component'
+import TextComponent from '../../text/text.component'
 
 /**
  * Landing (!auth) Page
@@ -12,12 +11,10 @@ import TextComponent            from '../../text/text.component'
  */
 const LandingPageComponent = () => {
 
-    const location = useLocation()
 
     return (
         <div data-testid='landing-page' >
-            {/* TODO remove but leaving in for reference after holiday incase any benefits to using link component */}
-            <Link to={`/auth/login`} state={{backgroundLocation: location}} >Log In Click Me I Work as Modal</Link>
+
             <p>
                 <TextComponent textRef='landing_text_1' />
             </p>
