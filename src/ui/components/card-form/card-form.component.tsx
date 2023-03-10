@@ -13,11 +13,14 @@ import styles                           from './card-form.component.scss'
 /** CardFormComponentProps */
 type CardFormComponentProps = {
 
+    /** Collection ID */
+    collectionId: string
+
     /** Current card data */
     card?: CardType,
 
-    /** Collection ID */
-    collectionId: string
+    /** Whether to show back to collection button */
+    showBackToCollectionBtn?: boolean
 
 }
 
@@ -32,7 +35,7 @@ type CardFormComponentProps = {
  */
 const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
 
-    const { card, collectionId } = props    //Destructure props
+    const { card, collectionId, showBackToCollectionBtn } = props    //Destructure props
 
     //Reference to form component
     const editFormRef = useRef<HTMLFormElement>(null)
@@ -56,7 +59,6 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
     const onSubmit = async (data: UpdateCardRequestType) => {
 
         const { lexi, description, id } = data  //Destructure form data
-
 
         //If card has ID is update request to existing
         if (id) {
@@ -113,7 +115,7 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
                 </div>
 
             <div className={classNames(styles.section, styles.buttonSection)}>
-                <ButtonComponent icon='rotate-left' onClick={navigateToCollection} style={styles.cardEditBtn} textRef='common_back_tag' secondary />
+                { showBackToCollectionBtn && <ButtonComponent icon='rotate-left' onClick={navigateToCollection} style={styles.cardEditBtn} textRef='card-form_back-to-collection' secondary /> }
                 <ButtonComponent icon='floppy-disk' onClick={editFormRef.current?.submit} style={styles.cardEditBtn} textRef='common_save_tag' primary />
             </div>
 

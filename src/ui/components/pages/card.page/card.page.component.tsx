@@ -1,7 +1,16 @@
+import { CardType } from '../../../../redux/collections/types/collections.types'
 import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
 import CardFormComponent from '../../card-form/card-form.component'
 import TextComponent from '../../text/text.component'
 import styles from './card.page.component.scss'
+
+/** CardPageComponentProps */
+type CardPageComponentProps = {
+
+    /** Whether is a modal */
+    isModal?: boolean
+
+}
 
 /**
  * Page to create or edit a specific card
@@ -12,7 +21,9 @@ import styles from './card.page.component.scss'
  *  <
  * )
  */
-const CardPageComponent = (): JSX.Element => {
+const CardPageComponent = (props: CardPageComponentProps): JSX.Element => {
+
+    const { isModal } = props
 
 
     const params        = new URLSearchParams(window.location.search)   //Get url search params
@@ -24,8 +35,16 @@ const CardPageComponent = (): JSX.Element => {
 
     }
 
-    //Find card if exists
-    const card = cardId ? useAppSelector(state => state.collections.collections[collectionId].cards.find(c_ => c_.id == cardId)) : null
+    //Find collection if exists and card ID provided
+    const collection = cardId ? useAppSelector(state => state.collections.collections[collectionId]) : null
+
+    //Init card variable
+    let card: CardType
+
+    //If collection retrieved
+    if (collection) {
+        card = collection.cards.find(c_ => c_.id == cardId) //Set card to card with matching id in collection
+    }
 
     return (
         <div className={styles.cardPage}>
@@ -40,7 +59,7 @@ const CardPageComponent = (): JSX.Element => {
                 }
             </div>
 
-            <CardFormComponent collectionId={collectionId} card={card} />
+            <CardFormComponent collectionId={collectionId} card={card} showBackToCollectionBtn={!isModal} />
 
         </div>
     )

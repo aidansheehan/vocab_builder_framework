@@ -85,7 +85,7 @@ const RootComponent = (): JSX.Element => {
                             <Route path='help' element={<HelpPageComponent />} />
                             <Route path='collection'>
                                 <Route path='info' element={<CreateCollectionPageComponent />} />
-                                <Route path='card' element={<CardPageComponent />} />
+                                <Route path='card' element={<CardPageComponent isModal={true} />} />
                             </Route>
                             {/* TODO add help, edit collection, create/edit card :) */}
                         </Route>

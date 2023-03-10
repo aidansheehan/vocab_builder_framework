@@ -37,5 +37,6 @@
     "create-collection_title": "Tạo Một Bộ Sưu Tập Mới",
     "update-collection_title": "Cập nhật bộ sưu tập",
     "create-collection_title-input": "Tiêu đề bộ sưu tập",
-    "create-collection_description-input": "Mô tả bộ sưu tập"
+    "create-collection_description-input": "Mô tả bộ sưu tập",
+    "card-form_back-to-collection": "Quay lại Bộ sưu tập"
 }

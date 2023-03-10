@@ -37,6 +37,6 @@
     "create-collection_title": "Create a New Collection",
     "update-collection_title": "Update Collection",
     "create-collection_title-input": "Collection Title",
-    "create-collection_description-input": "Collection Description"
-
+    "create-collection_description-input": "Collection Description",
+    "card-form_back-to-collection": "Back to Collection"
 }
