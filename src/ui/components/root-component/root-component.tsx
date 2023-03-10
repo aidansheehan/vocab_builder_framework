@@ -1,5 +1,5 @@
 //Router
-import { Route, Routes, useLocation, useRoutes } from 'react-router-dom'
+import { Route, Routes, useLocation } from 'react-router-dom'
 //Components
 import PreloaderComponent               from '../preloader/preloader.component'
 import CollectionPageComponent          from '../pages/collection.page/collection.page.component'
@@ -56,7 +56,6 @@ const RootComponent = (): JSX.Element => {
                         <Route path='user' >
                             
                             <Route index element={<HomePageComponent />} />
-                            {/* <Route path='new' element={<CreateCollectionPageComponent />} /> */}
                             <Route path='help' element={<HelpPageComponent />} />
                             
                             <Route path='collection'>
@@ -83,7 +82,6 @@ const RootComponent = (): JSX.Element => {
                         </Route>
 
                         <Route path='user' element={<ModalComponent />} >
-                            {/* <Route path='new' element={<CreateCollectionPageComponent />} /> */}
                             <Route path='help' element={<HelpPageComponent />} />
                             <Route path='collection'>
                                 <Route path='info' element={<CreateCollectionPageComponent />} />
@@ -99,51 +97,6 @@ const RootComponent = (): JSX.Element => {
         
     )
 
-
-    //Define app routes
-    const routes = useRoutes([
-    
-        {
-            path: '/',
-            element: <PreloaderComponent />,
-            errorElement: <ErrorPageComponent />,
-            children: [
-                {
-                    path: 'user',
-                    children: [
-                        {
-                            index: true,
-                            element: <HomePageComponent />
-                        },
-                        {
-                            path: 'new',
-                            element: <CreateCollectionPageComponent />
-                        },
-                        {
-                            path: 'help',
-                            element: <HelpPageComponent />
-                        },
-                        {
-                            path: 'collection',
-                            children: [
-                                {
-                                    index: true,
-                                    element: <CollectionPageComponent />
-                                },
-                                {
-                                    path: 'play',
-                                    element: <GamePageComponent />
-                                }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ])
-
-    // return routes
-    return routes
 }
 
 export default RootComponent
