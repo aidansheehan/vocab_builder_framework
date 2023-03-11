@@ -1,0 +1,28 @@
+@use '../../../../../sass/color.vars' as *;
+
+.cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    min-height: 250px;
+    height: 50%;
+    > .ctaImage {
+        width: 100px;
+        opacity: .2;
+    }
+    .ctaContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        max-width: 400px;
+        > .ctaLogo {
+            color: $color-primary;
+        }
+        > .ctaText {
+            color: #BAC8D0;
+        }
+    }
+}

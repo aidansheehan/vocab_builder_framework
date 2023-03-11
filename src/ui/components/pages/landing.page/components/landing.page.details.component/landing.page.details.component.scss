@@ -1,0 +1,15 @@
+@use '../../../../../sass/color.vars' as *;
+
+.landingPageDetails {
+    height: 50%;
+    min-height: 250px;
+    background-color: $background-secondary;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: $color-primary;
+    > .landingPageTitleSection {
+        font-size: 16px;
+    }
+}

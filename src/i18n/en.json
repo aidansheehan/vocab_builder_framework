@@ -17,6 +17,9 @@
     "common_back_tag": "Go back",
     "common_delete_tag": "Delete",
     "register_confirm_password_tag": "Confirm Password",
+    "landing-page_cta-text": "Create. Play. Learn. Repeat",
+    "landing-page_cta_button": "Get learning",
+    "landing-page_heading_primary": "Make learning fun and effective with custom flashcards!",
     "landing_text_1": "Are you tired of struggling to remember important information? Do you want to boost your studying efficiency and ace your exams? Look no further! Our flash card app is here to help.",
     "landing_text_2": "With an easy-to-use interface and a vast selection of pre-made flash card decks, you'll be able to quickly and effectively study any subject.",
     "landing_text_3": "Plus, you can create your own custom decks to suit your specific needs.",
@@ -35,5 +38,4 @@
     "create-collection_title": "Create a New Collection",
     "create-collection_title-input": "Collection Title",
     "create-collection_description-input": "Collection Description"
-
 }

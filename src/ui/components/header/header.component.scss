@@ -9,9 +9,9 @@
     color: $color-primary;
     >.headerLeft {
         justify-content: flex-start;
-        >.logo {
+        >.headerLogo {
             margin-left: 10px;
-            font-family: cursive;
+            font-size: 18px;
         }
     }
     >.headerRight {
