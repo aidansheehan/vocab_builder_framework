@@ -1,4 +1,5 @@
 .landingPage {
-    height: 100%;
-    overflow-y: scroll;
+    min-height: 100%;
+    display: grid;
+    grid-template-rows: minMax(50%) minMax(50%, 1fr);
 }

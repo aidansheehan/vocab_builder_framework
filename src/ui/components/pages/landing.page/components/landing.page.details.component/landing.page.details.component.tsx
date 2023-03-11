@@ -1,5 +1,8 @@
-import TextComponent from '../../../../text/text.component'
-import styles from './landing.page.details.component.scss'
+import CarouselComponent            from '../../../../carousel/carousel.component'
+import TextComponent                from '../../../../text/text.component'
+import { LANDING_CAROUSEL_CONFIG }  from '../../constants/landing.page.carousel-config.constant'
+import styles                       from './landing.page.details.component.scss'
+
 
 /**
  * Details component for landing page
@@ -21,8 +24,9 @@ const LandingPageDetailsComponent = (): JSX.Element => {
                 <TextComponent textRef='landing-page_heading_primary' />
 
             </div>
-            <p>Hello</p>
-            <p>World</p>
+
+            <CarouselComponent config={LANDING_CAROUSEL_CONFIG} />
+
         </div>
     )
 }
