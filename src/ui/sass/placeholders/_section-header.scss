@@ -1,0 +1,13 @@
+@use '../ui.vars' as *;
+@use '../color.vars' as *;
+
+%section-header {
+    padding: 10px;
+    display: flex;
+    width: 100%;
+    align-items: center;
+    height: $section-header-height;
+    box-sizing: border-box;
+    font-size: 20px;
+    background-color: $background-primary;
+}

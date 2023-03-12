@@ -13,7 +13,10 @@ export type HeaderItemsConfigType = {
 export type HeaderRouteButtonConfig = HeaderItemConfig & {
 
     /** Route to navigate to on click */
-    route: string
+    route: string,
+
+    /** Whether to open route as modal */
+    isModal?: boolean
 
 }
 

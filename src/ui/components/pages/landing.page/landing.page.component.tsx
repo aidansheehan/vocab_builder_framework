@@ -13,6 +13,7 @@ import styles                           from './landing.page.component.scss'
  */
 const LandingPageComponent = () => {
 
+
     return (
         <div data-testid='landing-page' className={styles.landingPage} >
 

@@ -2,7 +2,7 @@ import styles                           from './header-menu.component.scss'
 import { HeaderItemsConfigType }        from './types/header-menu.header-items-config.type'
 import { Transition }                   from 'react-transition-group'
 import HeaderMenuButtonComponent        from './components/header-menu-button/header-menu-button.component'
-import { useNavigate }                  from 'react-router-dom'
+import { useLocation, useNavigate }     from 'react-router-dom'
 import useAppDispatch                   from '../../../../hooks/redux/use-app-dispatch.hook'
 import useDevice                        from '../../../../hooks/useDevice.hook'
 
@@ -36,6 +36,7 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
     const { config, expanded, toggleExpanded } = props  //Destructure props
 
     const navigate = useNavigate()
+    const location = useLocation()
     const dispatch = useAppDispatch()
 
     const TRANSITION_TIMER = 350;
@@ -63,13 +64,17 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
     }
 
     //Handle navigate button click
-    const handleNavigate = (route: string) => {
+    const handleNavigate = (route: string, isModal?: boolean) => {
 
         //Close header menu
         toggleExpanded()
 
         //Navigate to chosen route
-        navigate(route)
+        if (isModal) {
+            navigate(route, {state: {backgroundLocation: location}})
+        } else {
+            navigate(route)
+        }
 
     }
 
@@ -96,15 +101,15 @@ const HeaderMenuComponent = (props: HeaderMenuComponentProps): JSX.Element => {
 
                         {config.routeButtons.map((v_, i_) => {
 
-                            const { route, icon, ref, devices } = v_    //Destructure config
+                            const { route, icon, ref, devices, isModal } = v_    //Destructure config
 
                             if (devices) {
 
-                                return devices.includes(device) && <HeaderMenuButtonComponent key={i_} handleClick={() => handleNavigate(route)} icon={icon} label={ref} />
+                                return devices.includes(device) && <HeaderMenuButtonComponent key={i_} handleClick={() => handleNavigate(route, isModal)} icon={icon} label={ref} />
                             }
 
                             else {
-                                return <HeaderMenuButtonComponent key={i_} handleClick={() => handleNavigate(route)} icon={icon} label={ref} />
+                                return <HeaderMenuButtonComponent key={i_} handleClick={() => handleNavigate(route, isModal)} icon={icon} label={ref} />
                             }
 
 

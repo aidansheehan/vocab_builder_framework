@@ -11,7 +11,7 @@ const HEADER_ITEMS_PRIVATE_CONFIG: HeaderItemsConfigType = {
     routeButtons: [
 
         { route: '/user', icon: 'house', ref: 'nav_home_link' },
-        { route: '/user/new', icon: 'file-circle-plus', ref: 'nav_new-collection_link' }
+        { route: '/user/collection/info', icon: 'file-circle-plus', ref: 'nav_new-collection_link', isModal: true }
     ],
 
     dispatchButtons: [

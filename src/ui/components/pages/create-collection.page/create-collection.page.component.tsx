@@ -14,17 +14,27 @@ import styles                       from './create-collection.page.component.scs
  */
 const CreateCollectionPageComponent = (): JSX.Element => {
 
+    const params        = new URLSearchParams(window.location.search)   //Get url search params
+    const collectionId  = params.get('collectionId')                    //Get collection ID
+
     const navigate = useNavigate()
 
     return (
         <div className={styles.createCollectionPage} >
         
             <div className={styles.createCollectionPageTitle} >
-                <TextComponent textRef='create-collection_title' />
+                {
+                    collectionId
+                    ?
+                    <TextComponent textRef='update-collection_title' />
+                    :
+                    <TextComponent textRef='create-collection_title' />
+                }
             </div>
 
-            <CollectionInfoFormComponent handleExit={() => navigate('/user')} />
-        </div>
+            {/* TODO we should only do handle exit if not a modal */}
+            <CollectionInfoFormComponent handleExit={() => navigate('/user')} collectionId={collectionId} />
+        </div> 
     )
 }
 

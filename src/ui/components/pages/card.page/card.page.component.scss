@@ -1,6 +1,6 @@
 @use '../../../sass/color.vars' as *;
 
-.createCollectionPage {
+.cardPage {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -10,7 +10,7 @@
     margin: auto;
     height: 100%;
     color: $color-primary;
-    >.createCollectionPageTitle {
+    >.cardPageTitle {
         font-size: 16px;
     }
 }

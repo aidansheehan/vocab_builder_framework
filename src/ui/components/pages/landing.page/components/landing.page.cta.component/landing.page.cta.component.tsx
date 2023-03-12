@@ -1,4 +1,4 @@
-import { useNavigate }  from 'react-router-dom'
+import { useLocation, useNavigate }  from 'react-router-dom'
 import ButtonComponent  from '../../../../button/button.component'
 import ImageComponent   from '../../../../image/image.component'
 import LogoComponent    from '../../../../logo.component/logo.component'
@@ -18,6 +18,7 @@ import styles           from './landing.page.cta.component.scss'
 const LandingPageCtaComponent = (): JSX.Element => {
 
     const navigate = useNavigate()
+    const location = useLocation()
 
     return (
         <div className={styles.cta} >
@@ -32,7 +33,7 @@ const LandingPageCtaComponent = (): JSX.Element => {
 
             </div>
 
-            <ButtonComponent primary onClick={() => navigate('/auth/register')} textRef='landing-page_cta_button' />
+            <ButtonComponent primary onClick={() => navigate('/auth/register', {state: {backgroundLocation: location}})} textRef='landing-page_cta_button' />
 
         </div>
     )
