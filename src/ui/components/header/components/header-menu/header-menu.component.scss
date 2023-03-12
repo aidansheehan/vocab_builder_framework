@@ -11,6 +11,7 @@
     top: $header-height;
     background-color: inherit;
     color: inherit;
+    z-index: 1;
     @extend %border;
     border-width: 0 0 0 $border-width;
     @include mq.mq(mobile) {
