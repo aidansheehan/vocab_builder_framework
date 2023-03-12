@@ -9,6 +9,7 @@ import HeaderMenuComponent          from './components/header-menu/header-menu.c
 import LocaleSelectorComponent      from '../locale-selector/locale-selector.component'
 import MenuBtnComponent             from './components/menu-btn/menu-btn.component'
 import ButtonComponent              from '../button/button.component'
+import LogoComponent                from '../logo.component/logo.component'
 //Constants
 import HEADER_ITEMS_PRIVATE_CONFIG  from './components/header-menu/constants/header-menu.header-items-private-config.constant'
 import HEADER_ITEMS_PUBLIC_CONFIG   from './components/header-menu/constants/header-menu.header-items-public-config.constant'
@@ -47,7 +48,7 @@ const HeaderComponent = (): JSX.Element => {
             <div className={styles.header}>
 
                 <div className={styles.headerLeft} >
-                    <span className={styles.logo}>Flashcard Factory</span>
+                    <LogoComponent style={styles.headerLogo} />
                 </div>
 
 
@@ -61,10 +62,7 @@ const HeaderComponent = (): JSX.Element => {
                             <>
                                 {
                                     device !== 'mobile' ?
-                                    <>
-                                        <ButtonComponent onClick={() => navigate('/auth/register', {state: {backgroundLocation: location}})} textRef='nav_register_link' style={styles.headerButton} primary />
-                                        <ButtonComponent onClick={() => navigate('/auth/login', {state: {backgroundLocation: location}})} textRef='nav_login_link' style={styles.headerButton} primary />
-                                    </>
+                                    <ButtonComponent onClick={() => navigate('/auth/login', {state: {backgroundLocation: location}})} textRef='nav_login_link' style={styles.headerButton} primary />
                                     :
                                     <></>
                                 }
@@ -79,7 +77,6 @@ const HeaderComponent = (): JSX.Element => {
 
                 </div>
                 
-                {/* TODO render auth config or not auth config (need better names) based on whether userInfo */}
                 <HeaderMenuComponent config={ userInfo ? HEADER_ITEMS_PRIVATE_CONFIG : HEADER_ITEMS_PUBLIC_CONFIG } expanded={expanded} toggleExpanded={toggleMenuExpanded} />
 
             </div>

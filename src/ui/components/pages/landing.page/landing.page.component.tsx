@@ -1,4 +1,6 @@
-import TextComponent from '../../text/text.component'
+import LandingPageCtaComponent          from './components/landing.page.cta.component/landing.page.cta.component'
+import LandingPageDetailsComponent      from './components/landing.page.details.component/landing.page.details.component'
+import styles                           from './landing.page.component.scss'
 
 /**
  * Landing (!auth) Page
@@ -13,20 +15,12 @@ const LandingPageComponent = () => {
 
 
     return (
-        <div data-testid='landing-page' >
+        <div data-testid='landing-page' className={styles.landingPage} >
 
-            <p>
-                <TextComponent textRef='landing_text_1' />
-            </p>
-            <p>
-                <TextComponent textRef='landing_text_2' />
-            </p>
-            <p>
-                <TextComponent textRef='landing_text_3' />
-            </p>
-            <p>
-                <TextComponent textRef='landing_text_4' />
-            </p>
+            <LandingPageCtaComponent />
+
+            <LandingPageDetailsComponent />
+            
         </div>
     )
 }

@@ -7,7 +7,10 @@ type TextComponentPropsType = {
     textRef: string,
 
     /** Values to display in string */
-    values?: (string | number)[]
+    values?: (string | number)[],
+
+    /** Additional styles to be applied */
+    style?: string
 
 }
 
@@ -24,7 +27,7 @@ type TextComponentPropsType = {
  */
 const TextComponent = (props: TextComponentPropsType) => {
 
-    const { textRef, values } = props   //Destructure props
+    const { textRef, values, style } = props   //Destructure props
 
     const intl = useIntl()
 
@@ -45,7 +48,7 @@ const TextComponent = (props: TextComponentPropsType) => {
     }
 
     return (
-        <span>
+        <span className={style}>
             {message}
         </span>
     )
