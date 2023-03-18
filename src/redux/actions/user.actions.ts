@@ -1,18 +1,25 @@
 import { createAsyncThunk }                                 from '@reduxjs/toolkit'
-import { RegisterUserRequestType, UserLoginRequestType }    from '../types/request.types'
-import PrivateHttpClient                                    from '../../../services/http-client/private-http-client.service'
-import PublicHttpClient                                     from '../../../services/http-client/public-http-client.service'
+import { RegisterUserRequestType, UserLoginRequestType }    from '../types/user/user.request.types'
+import PrivateHttpClient                                    from '../../services/http-client/private-http-client.service'
+import PublicHttpClient                                     from '../../services/http-client/public-http-client.service'
 
 /** registerUser action */
 export const registerUser = createAsyncThunk(
     'user/register',
     async ( { username, email, password, passwordConfirm }: RegisterUserRequestType, { rejectWithValue }) => {
         try {
+            
             //Make request to backend
-            await PublicHttpClient.post(
-                'auth/register',    //TODO configure proxy so don't need to hardcode this
+            const { data } = await PublicHttpClient.post(
+                'auth/register',
                 { username, email, password, passwordConfirm }
             )
+
+            //Store user's token in local storage TODO remove VBB-14
+            localStorage.setItem('userToken', data.data.accessToken)
+
+            return data.data
+
         } catch (error) {
             if (error.response && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)
@@ -29,14 +36,17 @@ export const userLogin = createAsyncThunk(
     async ({ email, password }: UserLoginRequestType, { rejectWithValue }) => {
         try {
 
+            //Make request to backend
             const { data } = await PublicHttpClient.post(
                 'auth/login',
                 { email, password }
             )
 
-            //Store user's token in local storage TODO need more secure place to store
-            localStorage.setItem('userToken', data.accessToken)
-            return data.user
+            //Store user's token in local storage TODO remove VBB-14
+            localStorage.setItem('userToken', data.data.accessToken)
+
+            return data.data
+
         } catch (error) {
 
             //Return custom error message from API if any
@@ -58,9 +68,11 @@ export const getUserDetails = createAsyncThunk(
 
         try {
 
-            const data = await PrivateHttpClient.get('users/me')
+            //Make request to get user's details
+            const { data } = await PrivateHttpClient.get('users/me')
 
-            return data.data
+            return data
+
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {
                 return rejectWithValue(error.response.data.message)

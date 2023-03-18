@@ -1,10 +1,10 @@
 import { createAsyncThunk }             from '@reduxjs/toolkit'
-import PrivateHttpClient                from '../../../services/http-client/private-http-client.service'
+import PrivateHttpClient                from '../../services/http-client/private-http-client.service'
 import { CreateCardRequestType, 
     CreateCollectionRequestType, 
     DeleteCardRequestType, 
     UpdateCardRequestType, 
-    UpdateCollectionRequestType }       from '../types/request.types'
+    UpdateCollectionRequestType }       from '../collections/types/request.types'
 
 /** Get one collection TODO this will need to be implemented so one user can access another users collection (unprotected route) */
 export const getOneCollection = createAsyncThunk(

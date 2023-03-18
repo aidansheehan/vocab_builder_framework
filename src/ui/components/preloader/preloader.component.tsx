@@ -1,9 +1,9 @@
 import { useEffect, useState }  from 'react'
 import App                      from '../../app'
 import useAppDispatch           from '../../hooks/redux/use-app-dispatch.hook'
-import { getUserDetails }       from '../../../redux/user/actions/user.actions'
+import { getUserDetails }       from '../../../redux/actions/user.actions'
 import styles                   from './preloader.component.scss'
-import { getCollections }       from '../../../redux/collections/actions/collections.actions'
+import { getCollections }       from '../../../redux/actions/collections.actions'
 import useAppSelector           from '../../hooks/redux/use-app-selector.hook'
 
 /**
@@ -23,8 +23,13 @@ const PreloaderComponent = () => {
 
     const dispatch = useAppDispatch()
 
-    const { userInfo } = useAppSelector(state => state.user)
+    // TODO retrieve accessToken from user state VBB-14
+    const { userInfo/*, accessToken*/ } = useAppSelector(state => state.user)
 
+    //Get accessToken TODO refactor in VBB-14 to get from redux
+    const accessToken = localStorage.getItem('userToken')
+
+    // Function to retrieve user details and log them in
     const loadUser = async () => {
 
         //Fetch user details from backend
@@ -34,6 +39,7 @@ const PreloaderComponent = () => {
         setUserLoaded(true)
     }
 
+    // Function to retrieve user's collections
     const loadCollections = async () => {
 
         //Fetch collection details from backend
@@ -47,9 +53,11 @@ const PreloaderComponent = () => {
     useEffect(() => {
 
         //Attempt to fetch user details
-        loadUser()
+        if (accessToken) loadUser()
+        // loadUser()
+        if (!accessToken) setUserLoaded(true)
 
-    }, [])
+    }, [accessToken])
 
     //Monitor for user changes and retrieve collections
     useEffect(() => {
