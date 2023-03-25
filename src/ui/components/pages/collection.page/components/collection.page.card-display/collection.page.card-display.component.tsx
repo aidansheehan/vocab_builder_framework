@@ -35,7 +35,7 @@ type CollectionPageCardDisplayComponentProps = {
 const CollectionPageCardDisplayComponent = (props: CollectionPageCardDisplayComponentProps): JSX.Element => {
 
     const { card, editHandler, collectionId }       = props //Destructure props
-    const { lexi, description, id: cardId }         = card  //Destructure card
+    const { lexi, textPrompt, id: cardId }         = card  //Destructure card
 
     const dispatch = useAppDispatch()
 
@@ -47,8 +47,8 @@ const CollectionPageCardDisplayComponent = (props: CollectionPageCardDisplayComp
                     <TextValueComponent value={lexi} />
                 </div>
 
-                <div className={classNames(styles.cardDescription, styles.cardText)} >
-                    <TextValueComponent value={description} />
+                <div className={classNames(styles.cardTextPrompt, styles.cardText)} >
+                    <TextValueComponent value={textPrompt} />
                 </div>
             </div>
 
