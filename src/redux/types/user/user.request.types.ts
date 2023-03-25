@@ -1,25 +1,27 @@
 /** UserLoginRequestType */
 export type UserLoginRequestType = {
 
-    /** User email*/
+    /** User email */
     email: string,
 
-    /** User's password */
+    /** User password */
     password: string
 
 }
 
+/** RegisterUserRequestType */
 export type RegisterUserRequestType = {
 
-    /** new user's username */
+    /** New user's username */
     username: string,
 
-    /** new user's email */
+    /** New user's email */
     email: string,
 
-    /** new user's password */
+    /** New user's password */
     password: string,
 
-    /** new user's password (confirm) */
+    /** New user's password (confirm) */
     passwordConfirm: string
+
 }

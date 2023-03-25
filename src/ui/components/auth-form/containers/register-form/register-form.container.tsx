@@ -1,7 +1,6 @@
-import { useEffect }                    from 'react'
 import { useNavigate }                  from 'react-router-dom'
-import { RegisterUserRequestType }       from '../../../../../redux/user/types/request.types'
-import { registerUser }                 from '../../../../../redux/user/actions/user.actions'
+import { RegisterUserRequestType }      from '../../../../../redux/types/user/user.request.types'
+import { registerUser }                 from '../../../../../redux/actions/user.actions'
 import useAppDispatch                   from '../../../../hooks/redux/use-app-dispatch.hook'
 import useAppSelector                   from '../../../../hooks/redux/use-app-selector.hook'
 import AuthFormComponent                from '../../auth-form.component'
@@ -22,7 +21,7 @@ import { AuthFormButtonConfig }         from '../../types/auth-form.button-confi
 const RegisterFormContainer = (): JSX.Element => {
 
     //User state values to handle UI state
-    const { loading, error, success, userInfo } = useAppSelector(state => state.user)
+    const { loading, error } = useAppSelector(state => state.user)
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
@@ -53,13 +52,6 @@ const RegisterFormContainer = (): JSX.Element => {
             textReference: 'nav_login_link'
         }
     ]
-
-    //Handle redirects TODO should log user in & redirect to home?
-    useEffect(() => {
-
-        //Redirect user to login if registration was successful
-        if (success) navigate('/auth/login')
-    }, [ navigate, success, userInfo ])
 
     return (
         <AuthFormComponent 

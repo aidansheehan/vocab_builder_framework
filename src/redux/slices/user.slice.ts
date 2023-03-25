@@ -3,15 +3,16 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 //Actions
 import { getUserDetails, registerUser, userLogin } from '../actions/user.actions'
 //Types
-import { LoginResponseType, UserDetailsResponseType }   from '../types/response.types'
-import { UserType }                                     from '../types/user.types'
+import { LoginResponseType, UserDetailsResponseType, RegisterResponseType } from '../types/user/user.response.types'
+import { UserType }                                                         from '../types/user/user.types'
 
 /** Initial State */
 const initialState: UserType = {
     loading: false,
     userInfo: null,
     error: null,
-    success: false
+    success: false,
+    accessToken: null
 }
 
 /**
@@ -28,6 +29,7 @@ const userSlice = createSlice({
                 state.loading       = false
                 state.userInfo      = null
                 state.error         = null
+                state.accessToken   = null
         },
     },
     extraReducers(builder) {
@@ -40,8 +42,10 @@ const userSlice = createSlice({
         })
         //fulfilled
         builder.addCase(userLogin.fulfilled, (state, { payload }: PayloadAction<LoginResponseType>) => {
-            state.loading   = false
-            state.userInfo  = { id: payload._id, username: payload.username, email: payload.email, roles: payload.roles }
+
+            state.loading       = false
+            // state.success       = true
+            state.accessToken   = payload.accessToken
         })
         //rejected TODO type response once finalized from backend
         builder.addCase(userLogin.rejected, (state, { payload }: PayloadAction<any>) => {
@@ -56,9 +60,10 @@ const userSlice = createSlice({
             state.error     = null
         })
         //fulfilled
-        builder.addCase(registerUser.fulfilled, state => {
+        builder.addCase(registerUser.fulfilled, (state, { payload }: PayloadAction<RegisterResponseType> ) => {
             state.loading = false
-            state.success = true
+            // state.success = true
+            state.accessToken = payload.accessToken
         })
         //rejected TODO type response once finalized from backend
         builder.addCase(registerUser.rejected, (state, { payload }: PayloadAction<any>) => {
@@ -73,16 +78,11 @@ const userSlice = createSlice({
         })
         //fulfilled TODO decide what to return from backend and type response need to send user info on getUserDetails!
         builder.addCase(getUserDetails.fulfilled, (state, { payload }: PayloadAction<UserDetailsResponseType>) => {
+
             state.loading   = false
+            state.userInfo  = payload
+            state.success   = true
 
-            const { user } = payload.data
-
-            state.userInfo = {
-                id: user._id,
-                username: user.username,
-                email: user.email,
-                roles: [ user.role ],   //TODO type on backend and once returns non unique array this can be roles: user.roles
-            }
         })
         //rejected
         builder.addCase(getUserDetails.rejected, state => {

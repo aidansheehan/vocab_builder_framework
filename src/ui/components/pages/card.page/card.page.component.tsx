@@ -1,8 +1,8 @@
-import { CardType } from '../../../../redux/collections/types/collections.types'
-import useAppSelector from '../../../hooks/redux/use-app-selector.hook'
-import CardFormComponent from '../../card-form/card-form.component'
-import TextComponent from '../../text/text.component'
-import styles from './card.page.component.scss'
+import { CardType }         from '../../../../redux/types/collections/collection.types'
+import useAppSelector       from '../../../hooks/redux/use-app-selector.hook'
+import CardFormComponent    from '../../card-form/card-form.component'
+import TextComponent        from '../../text/text.component'
+import styles               from './card.page.component.scss'
 
 /** CardPageComponentProps */
 type CardPageComponentProps = {

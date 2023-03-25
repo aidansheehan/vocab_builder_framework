@@ -2,8 +2,8 @@ import classNames                           from 'classnames'
 import TextValueComponent                   from '../../../../text-value/text-value.component'
 import ButtonComponent                      from '../../../../button/button.component'
 import useAppDispatch                       from '../../../../../hooks/redux/use-app-dispatch.hook'
-import { deleteCard }                       from '../../../../../../redux/collections/actions/collections.actions'
-import { CardType }                         from '../../../../../../redux/collections/types/collections.types'
+import { deleteCard }                       from '../../../../../../redux/actions/collections.actions'
+import { CardType }                         from '../../../../../../redux/types/collections/collection.types'
 import styles                               from './collection.page.card-display.component.scss'
 
 /** CollectionPageCardDisplayComponentProps type */

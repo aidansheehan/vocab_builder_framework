@@ -66,7 +66,7 @@ PrivateHttpClient.interceptors.request.use(
         //Get the access token from local storage
         const accessToken = localStorage.getItem('userToken')
 
-         //If no access token is found, return early and redirect user to login
+         //If no access token is found, return early and redirect user to login TODO here should try refresh VBB-14
         if (!accessToken) {
             return redirectToLogin()
         }

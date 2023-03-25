@@ -1,4 +1,4 @@
-import { CardType } from './collections.types'
+import { CardType } from './collection.types'
 
 /** CreateCollectionRequestType */
 export type CreateCollectionRequestType = {
