@@ -1,6 +1,6 @@
 import { configureStore }   from '@reduxjs/toolkit'
-import userReducer          from './user/slices/user.slice'
-import collectionReducer    from './collections/slices/collections.slice'
+import userReducer          from './slices/user.slice'
+import collectionReducer    from './slices/collections.slice'
 
 /**
  * App Store

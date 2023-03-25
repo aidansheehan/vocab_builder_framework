@@ -1,4 +1,4 @@
-import { CollectionWithIdType } from './collections.types'
+import { CollectionWithIdType } from "./collection.types"
 
 /** GetOneCollectionResponseType */
 export type GetOneCollectionResponseType = {

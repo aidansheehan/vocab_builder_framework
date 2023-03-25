@@ -7,12 +7,12 @@ import {    createCard,
             getOneCollection, 
             updateCollection, 
             updateOneCard }                         from '../actions/collections.actions'
-import { CollectionsStateType }                     from '../types/collections.types'
+import { CollectionsStateType }                     from '../types/collections/collection.types'
 import {    CreateCollectionResponseType,
             DeleteOneCollectionResponseType,
             GetCollectionsResponseType,
             GetOneCollectionResponseType,
-            UpdateCollectionResponseType }          from '../types/response.types'
+            UpdateCollectionResponseType }          from '../types/collections/collection.response.types'
 
 /** Initial State */
 const initialState: CollectionsStateType = {
