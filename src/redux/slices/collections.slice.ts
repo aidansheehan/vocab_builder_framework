@@ -97,10 +97,8 @@ const collectionsSlice = createSlice({
 
             state.loading = false   //Set loading flag false
 
-            const { data } = payload    //Destructure payload
-
-            // const { collection }    = payload.data  //Destructure payload data
-            const { _id }           = data    //Destructure collection for id
+            const { data }          = payload   //Destructure payload
+            const { _id }           = data      //Destructure data for id
 
             //New collections with additional collection
             const newCollections = { ...state.collections, [_id]: data }
