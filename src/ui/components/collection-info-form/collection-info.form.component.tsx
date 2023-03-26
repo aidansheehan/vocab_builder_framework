@@ -16,9 +16,6 @@ type CollectionInfoFormComponentProps = {
     /** CollectionId */
     collectionId?: string,
 
-    /** function to execute after submit */
-    afterSubmit?: () => void,
-
     /** OnExit function to execute when user exits */
     handleExit?: () => void,
 
@@ -44,7 +41,7 @@ type CollectionInfoFormComponentProps = {
  */
 const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): JSX.Element => {
 
-    const { collectionId, afterSubmit, handleExit, style, buttonSectionStyle } = props    //Destructure props
+    const { collectionId, handleExit, style, buttonSectionStyle } = props    //Destructure props
 
     //Get users collection
     const collection = collectionId ? useAppSelector(state => state.collections.collections[collectionId]) : null
@@ -67,7 +64,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
     const collectionFormRef = useRef<HTMLFormElement>(null)
 
     //Function to handle submit
-    const onSubmit = async (data: CreateCollectionRequestType | UpdateCollectionRequestType) => {
+    const onSubmitCb = async (data: CreateCollectionRequestType | UpdateCollectionRequestType) => {
 
         const { title: newTitle, description: newDescription } = data
 
@@ -80,9 +77,8 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
             //Request was successful
             if (payload.status === 'success') {
                 
-                const { data }                  = payload
-                const { collection }            = data          //Destructure payload data
-                const { _id: newCollectionId }  = collection    //Get new collectionId
+                const { data }                  = payload   //Destructure payload
+                const { _id: newCollectionId }  = data      //Destructure data to get new collectionId
 
                 //Navigate to collection details page
                 navigate(`/user/collection?collectionId=${newCollectionId}`)
@@ -101,16 +97,16 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
             //Dispatch updated collection data
             await dispatch(updateCollection({title: newTitle, description: newDescription, collectionId}))
 
-            //Execute after submit function if supplied
-            afterSubmit && afterSubmit()
+            //Navigate to collection details page
+            navigate(`/user/collection?collectionId=${collectionId}`)
         }
     }
 
     //Function to handle delete collection
-    const handleDelete = async () => {
+    const handleDelete = () => {
 
-        //Wait to delete the collection
-        await dispatch(deleteOneCollection(collectionId))
+        //Send request to delete the collection
+        dispatch(deleteOneCollection(collectionId))
 
         //Navigate to users home page
         navigate('/user')
@@ -123,7 +119,7 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
     const buttonSectionClassName = classNames(styles.collectionInfoFormSection, styles.collectionInfoFormButtonSection, buttonSectionStyle)
 
     return (
-        <form className={className} ref={collectionFormRef} onSubmit={handleSubmit(onSubmit)} >
+        <form className={className} ref={collectionFormRef} onSubmit={handleSubmit(onSubmitCb)} >
 
             <div className={styles.collectionInfoFormSection} >
                 <label htmlFor='title'>
@@ -151,9 +147,9 @@ const CollectionInfoFormComponent = (props: CollectionInfoFormComponentProps): J
                 {
                     collectionId
                     ?
-                    <ButtonComponent icon='trash' textRef='collection-editor_delete-collection' warning onClick={handleDelete} />
+                    <ButtonComponent icon='trash' textRef='collection-editor_delete-collection' warning onClick={handleDelete} type='button' />
                     :
-                    handleExit && <ButtonComponent icon='rotate-left' textRef='common_back_tag' secondary onClick={() => handleExit()}/>
+                    handleExit && <ButtonComponent icon='rotate-left' textRef='common_back_tag' secondary onClick={() => handleExit()} type='button'/>
                 }
                 <ButtonComponent primary onClick={collectionFormRef.current?.submit} icon='floppy-disk' textRef='common_save_tag' />
             </div>

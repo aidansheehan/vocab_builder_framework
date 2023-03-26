@@ -42,9 +42,9 @@ export const getCollections = createAsyncThunk(
 
         try {
             
-            const data = await PrivateHttpClient.get('collections')
+            const { data }    = await PrivateHttpClient.get('collections')    //Make get request for user's collections
 
-            return data.data
+            return data
             
         } catch (error) {
 
@@ -145,13 +145,13 @@ export const deleteOneCollection = createAsyncThunk(
 /** Create a new card */
 export const createCard = createAsyncThunk(
     '/collections/cards',
-    async ({ collectionId, lexi, description }: CreateCardRequestType, { rejectWithValue }) => {
+    async ({ collectionId, lexi, textPrompt }: CreateCardRequestType, { rejectWithValue }) => {
 
         try {
 
             const { data } = await PrivateHttpClient.post(
                 `/collections/${collectionId}/cards`,
-                {lexi, description}
+                {lexi, textPrompt}
             )
 
             return data
@@ -172,13 +172,13 @@ export const createCard = createAsyncThunk(
 /** Update one card */
 export const updateOneCard = createAsyncThunk(
     '/collections/cards/update',
-    async ({ collectionId, lexi, description, id }: UpdateCardRequestType, { rejectWithValue }) => {
+    async ({ collectionId, lexi, textPrompt, id }: UpdateCardRequestType, { rejectWithValue }) => {
 
         try {
 
             const { data } = await PrivateHttpClient.put(
                 `/collections/${collectionId}/cards/${id}`,
-                {lexi, description, id}
+                {lexi, textPrompt, id}
             )
 
             return data

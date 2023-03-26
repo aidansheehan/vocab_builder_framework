@@ -47,7 +47,7 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
     const { register, handleSubmit }    = useForm({
         defaultValues: {
             lexi: card ? card.lexi : '',
-            description: card ? card.description : '',
+            textPrompt: card ? card.textPrompt : '',
             id: card && card.id ? card.id : null
         }
     })
@@ -58,13 +58,13 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
     //Function to handle submit
     const onSubmit = async (data: UpdateCardRequestType) => {
 
-        const { lexi, description, id } = data  //Destructure form data
+        const { lexi, textPrompt, id } = data  //Destructure form data
 
         //If card has ID is update request to existing
         if (id) {
 
             //Dispatch new card data and wait for response
-            await dispatch(updateOneCard({collectionId, lexi, description, id}))
+            await dispatch(updateOneCard({collectionId, lexi, textPrompt, id}))
 
             //Navigate back to collection
             navigateToCollection()
@@ -76,7 +76,7 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
         else {
 
             //Dispatch new card data and wait for response
-            await dispatch(createCard({collectionId, lexi, description}))
+            await dispatch(createCard({collectionId, lexi, textPrompt}))
 
             //Navigate back to collection
             navigateToCollection()
@@ -102,13 +102,13 @@ const CardFormComponent = (props: CardFormComponentProps): JSX.Element => {
 
                 <div className={styles.section} >
 
-                    <label htmlFor='description'>
+                    <label htmlFor='textPrompt'>
                         <TextComponent textRef='collection-editor_prompt_tag' />
                     </label>
 
                     <input 
-                        {...register('description')}
-                        name='description'
+                        {...register('textPrompt')}
+                        name='textPrompt'
                         required
                     />
 

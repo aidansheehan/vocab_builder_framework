@@ -20,8 +20,8 @@ export type CreateCardRequestType = {
     /** New Card Lexi */
     lexi: string,
 
-    /** New card description */
-    description: string,
+    /** New card text prompt */
+    textPrompt: string,
 
     /** Collection to add card to */
     collectionId: string

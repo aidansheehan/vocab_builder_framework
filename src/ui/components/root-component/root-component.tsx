@@ -11,13 +11,13 @@ import HelpPageComponent                from '../pages/help.page/help-page.compo
 import FAQPageComponent                 from '../pages/faq.page/faq-page.component'
 import ContactPageComponent             from '../pages/contact.page/contact.page.component'
 import GamePageComponent                from '../pages/game.page/game.page.component'
+import ModalComponent                   from '../modal/modal.component'
+import CardPageComponent                from '../pages/card.page/card.page.component'
 //Layouts
 import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
 //Containers
 import LoginFormContainer       from '../auth-form/containers/login-form/login-form.container'
 import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
-import ModalComponent from '../modal/modal.component'
-import CardPageComponent from '../pages/card.page/card.page.component'
 
 /**
  * Route container element for application to render

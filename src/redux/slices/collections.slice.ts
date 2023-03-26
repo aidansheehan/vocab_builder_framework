@@ -1,18 +1,19 @@
 import { createSlice, PayloadAction }               from '@reduxjs/toolkit'
+import { CollectionsStateType }                     from '../types/collections/collection.types'
 import {    createCard, 
             createCollection,
             deleteCard,
             deleteOneCollection, 
             getCollections, 
-            getOneCollection, 
+            // getOneCollection, 
             updateCollection, 
             updateOneCard }                         from '../actions/collections.actions'
-import { CollectionsStateType }                     from '../types/collections/collection.types'
 import {    CreateCollectionResponseType,
             DeleteOneCollectionResponseType,
             GetCollectionsResponseType,
-            GetOneCollectionResponseType,
+            // GetOneCollectionResponseType,
             UpdateCollectionResponseType }          from '../types/collections/collection.response.types'
+            import { logout }                       from './user.slice'
 
 /** Initial State */
 const initialState: CollectionsStateType = {
@@ -34,29 +35,29 @@ const collectionsSlice = createSlice({
     },
     extraReducers(builder) {
 
-        /** Get one collection */
+        /** Get one collection - currently unused */
         //pending
-        builder.addCase(getOneCollection.pending, (state) => {
-            state.loading = true    //Set loading flag true
-        })
-        //fulfilled
-        builder.addCase(getOneCollection.fulfilled, (state, { payload }: PayloadAction<GetOneCollectionResponseType>) => {
+        // builder.addCase(getOneCollection.pending, (state) => {
+        //     state.loading = true    //Set loading flag true
+        // })
+        // //fulfilled
+        // builder.addCase(getOneCollection.fulfilled, (state, { payload }: PayloadAction<GetOneCollectionResponseType>) => {
 
-            //Set loading flag false
-            state.loading = false
+        //     //Set loading flag false
+        //     state.loading = false
 
-            //Destructure collection
-            const { _id, title, description, cards } = payload.collection
+        //     //Destructure collection
+        //     const { _id, title, description, cards } = payload.collection
 
-            //Set appropriate collection ID to new data
-            state.collections[_id] = { title, description, cards } 
+        //     //Set appropriate collection ID to new data
+        //     state.collections[_id] = { title, description, cards } 
             
-        })
-        //rejected
-        builder.addCase(getOneCollection.rejected, (state, { payload }: PayloadAction<any>) => {
-            state.loading = false   //Set loading flag false
-            state.error = payload   //Set error state
-        })
+        // })
+        // //rejected
+        // builder.addCase(getOneCollection.rejected, (state, { payload }: PayloadAction<any>) => {
+        //     state.loading = false   //Set loading flag false
+        //     state.error = payload   //Set error state
+        // })
 
         /** Get collections */
         //pending
@@ -70,7 +71,7 @@ const collectionsSlice = createSlice({
             state.loading = false
 
             //Loop through collections returned on payload
-            payload.data.collections.forEach(c_ => {
+            payload.data.forEach(c_ => {
 
                 //Set collections in state with id as key and rest of data as property
                 state.collections[c_._id] = {
@@ -96,11 +97,11 @@ const collectionsSlice = createSlice({
 
             state.loading = false   //Set loading flag false
 
-            const { collection }    = payload.data  //Destructure payload data
-            const { _id }           = collection    //Destructure collection for id
+            const { data }          = payload   //Destructure payload
+            const { _id }           = data      //Destructure data for id
 
             //New collections with additional collection
-            const newCollections = { ...state.collections, [_id]: collection }
+            const newCollections = { ...state.collections, [_id]: data }
 
             //Set collections to new collections state
             state.collections = newCollections
@@ -163,7 +164,7 @@ const collectionsSlice = createSlice({
 
             //Destructure payload data TODO investigate response as not consistent with others
             //@ts-ignore
-            const { _id, title, description, cards } = payload.data.collection  //TODO we should only update the changed card
+            const { _id, title, description, cards } = payload.data  //TODO we should only update the changed card VBF-71
 
             //Create new collection object
             const newCollection = { title, description, cards }
@@ -221,6 +222,14 @@ const collectionsSlice = createSlice({
         //rejected
         builder.addCase(deleteCard.rejected, (state, { payload }: PayloadAction<any>) => {
             state.error = payload
+        })
+
+        /** Listen for logout */
+        builder.addCase(logout, (state) => {
+
+            //Clear users collection data when the user logs out
+            state.collections = {};
+
         })
         
     }
