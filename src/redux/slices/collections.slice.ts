@@ -13,6 +13,7 @@ import {    CreateCollectionResponseType,
             GetCollectionsResponseType,
             // GetOneCollectionResponseType,
             UpdateCollectionResponseType }          from '../types/collections/collection.response.types'
+            import { logout }                       from './user.slice'
 
 /** Initial State */
 const initialState: CollectionsStateType = {
@@ -223,6 +224,14 @@ const collectionsSlice = createSlice({
         //rejected
         builder.addCase(deleteCard.rejected, (state, { payload }: PayloadAction<any>) => {
             state.error = payload
+        })
+
+        /** Listen for logout */
+        builder.addCase(logout, (state) => {
+
+            //Clear users collection data when the user logs out
+            state.collections = {};
+
         })
         
     }
