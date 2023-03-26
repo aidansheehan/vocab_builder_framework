@@ -52,9 +52,10 @@ const PreloaderComponent = () => {
     //Attempt to authenticate user
     useEffect(() => {
 
-        //Attempt to fetch user details
+        //Attempt to fetch user details if user has accessToken
         if (accessToken) loadUser()
-        // loadUser()
+        
+        //If no access token set userLoaded flag as true since no data to load (user is not logged in)
         if (!accessToken) setUserLoaded(true)
 
     }, [accessToken])

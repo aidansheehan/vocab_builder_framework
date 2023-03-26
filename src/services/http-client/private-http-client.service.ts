@@ -4,6 +4,17 @@ import { useNavigate }                  from 'react-router-dom'
 import BASE_URL                         from './constants/base-url.constant'
 
 /**
+ * @typedef {Object} AccessTokenData
+ * @property {string} accessToken - The access token.
+ */
+
+/**
+ * @typedef {Object} AccessTokenResponse
+ * @property {string} status - The status of the response ('success').
+ * @property {AccessTokenData} data - The response data containing the access token
+ */
+
+/**
  * Function to redirect inauthenticated user to login
  * @returns null
  */
@@ -15,7 +26,7 @@ const redirectToLogin = (): null => {
 
 /**
  * Function to send request to refresh user access token
- * @returns {any} result TODO type
+ * @returns {AccessTokenResponse} result
  */
 const refreshUser = async () => {
 
@@ -30,7 +41,7 @@ const refreshUser = async () => {
 
 /**
  * Function to check if access token is expired
- * @param t_ current accessToken
+ * @param {string} t_ current accessToken
  * @returns {boolean} whether accessToken is expired
  */
 const isAccessTokenExpired = (t_: string) => {
