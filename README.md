@@ -71,3 +71,11 @@ See [Jira Project](https://vocab-builder.atlassian.net/jira/software/projects/VB
 
 ## Versioning
 TBD
+
+## Contributing
+If you are interested in contributing to this project, please contact the author before making any changes or submitting pull requests. You can reach out to the author via [email](mailto:aidanmsheehan@gmail.com).
+
+Please note that this project is the author's private intellectual property and any contributions will be subject to the author's approval and licensing terms.
+
+## License
+All rights reserved. This project and its source code are the private intellectual property of the author. No part of this project may be copied, modified, distributed, or used in any manner without the explicit permission of the author.
