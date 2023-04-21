@@ -86,17 +86,19 @@ PrivateHttpClient.interceptors.request.use(
         //Check if the accessToken is expired
         else if (isAccessTokenExpired(accessToken)) {
 
-            const response = await refreshUser()
-
-            const { data } = response
+            const response  = await refreshUser()   //Make refresh request
+            const { data }  = response              //Destructure response
             
+            //If request successful
             if (data.status === 'success') {
                 
-                const { data: responseData }    = data
-                const newAccessToken            = responseData.accessToken
+                const { data: responseData }    = data                      //Destructure data
+                const newAccessToken            = responseData.accessToken  //Destructure response data for accessToken
 
+                //Set new user token in local storage
                 await localStorage.setItem('userToken', newAccessToken)
 
+                //Add access token as auth header to request
                 config.headers['Authorization'] = `Bearer ${newAccessToken}`
             }
 
@@ -110,6 +112,7 @@ PrivateHttpClient.interceptors.request.use(
         //accessToken is active
         else {
 
+            //Add access token as auth header to request
             config.headers['Authorization'] = `Bearer ${accessToken}`
 
         }
