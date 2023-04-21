@@ -42,9 +42,10 @@ const refreshUser = async () => {
 /**
  * Function to check if access token is expired
  * @param {string} t_ current accessToken
+ * @param {number} bufferSeconds time buffer to handle network latency
  * @returns {boolean} whether accessToken is expired
  */
-const isAccessTokenExpired = (t_: string) => {
+const isAccessTokenExpired = (t_: string, bufferSeconds = 30) => {
 
     //Get the decoded JWT
     const decoded: JwtPayload = jwtDecode(t_)
@@ -55,8 +56,8 @@ const isAccessTokenExpired = (t_: string) => {
     //Get current time (in UTC)
     const currentTime = Math.floor(Date.now() / 1000)
 
-    //Check if current time is greater than the expiration time and return
-    return currentTime > exp
+    //Check if current time is greater than the expiration time minus buffer time and return
+    return currentTime > exp - bufferSeconds
 }
 
 /**
@@ -85,17 +86,19 @@ PrivateHttpClient.interceptors.request.use(
         //Check if the accessToken is expired
         else if (isAccessTokenExpired(accessToken)) {
 
-            const response = await refreshUser()
-
-            const { data } = response
+            const response  = await refreshUser()   //Make refresh request
+            const { data }  = response              //Destructure response
             
+            //If request successful
             if (data.status === 'success') {
                 
-                const { data }          = response
-                const newAccessToken    = data.accessToken
+                const { data: responseData }    = data                      //Destructure data
+                const newAccessToken            = responseData.accessToken  //Destructure response data for accessToken
 
+                //Set new user token in local storage
                 await localStorage.setItem('userToken', newAccessToken)
 
+                //Add access token as auth header to request
                 config.headers['Authorization'] = `Bearer ${newAccessToken}`
             }
 
@@ -109,6 +112,7 @@ PrivateHttpClient.interceptors.request.use(
         //accessToken is active
         else {
 
+            //Add access token as auth header to request
             config.headers['Authorization'] = `Bearer ${accessToken}`
 
         }
