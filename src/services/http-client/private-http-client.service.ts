@@ -42,9 +42,10 @@ const refreshUser = async () => {
 /**
  * Function to check if access token is expired
  * @param {string} t_ current accessToken
+ * @param {number} bufferSeconds time buffer to handle network latency
  * @returns {boolean} whether accessToken is expired
  */
-const isAccessTokenExpired = (t_: string) => {
+const isAccessTokenExpired = (t_: string, bufferSeconds = 30) => {
 
     //Get the decoded JWT
     const decoded: JwtPayload = jwtDecode(t_)
@@ -55,8 +56,8 @@ const isAccessTokenExpired = (t_: string) => {
     //Get current time (in UTC)
     const currentTime = Math.floor(Date.now() / 1000)
 
-    //Check if current time is greater than the expiration time and return
-    return currentTime > exp
+    //Check if current time is greater than the expiration time minus buffer time and return
+    return currentTime > exp - bufferSeconds
 }
 
 /**
@@ -91,8 +92,8 @@ PrivateHttpClient.interceptors.request.use(
             
             if (data.status === 'success') {
                 
-                const { data }          = response
-                const newAccessToken    = data.accessToken
+                const { data: responseData }    = data
+                const newAccessToken            = responseData.accessToken
 
                 await localStorage.setItem('userToken', newAccessToken)
 
