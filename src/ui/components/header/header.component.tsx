@@ -71,7 +71,7 @@ const HeaderComponent = (): JSX.Element => {
 
                             </>
                         )}
-                        <MenuBtnComponent expanded={expanded} handleClick={toggleMenuExpanded} />
+                        { userInfo ? <MenuBtnComponent expanded={expanded} handleClick={toggleMenuExpanded} /> : <></> }
 
                     </nav>
 

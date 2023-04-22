@@ -56,9 +56,9 @@ const App = () => {
     return (
         <>
             <HeaderComponent />
-            <div id='main'>
+            {/* <div id='main'> */}
                 <Outlet />
-            </div>
+            {/* </div> */}
             <FooterComponent />
         </>
     )

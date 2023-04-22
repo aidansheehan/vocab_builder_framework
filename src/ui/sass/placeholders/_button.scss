@@ -4,15 +4,19 @@
     @extend %button;
     color: $button-primary-color;
     background-color: $button-primary-background-color;
-    border-radius: 20px;
+    border: 1px solid $button-primary-background-color;
+    border-radius: 10px;
     padding: 5px 10px;
 }
 
 %button-secondary {
     @extend %button;
     color: $button-secondary-color;
-    background-color: $button-secondary-background-color;
-    border-radius: 20px;
+    // background-color: $button-secondary-background-color;
+    background-color: transparent;
+    // border: 1px solid #044389;
+    border: 1px solid #0B0033;
+    border-radius: 10px;
     padding: 5px 10px;
 }
 
@@ -20,7 +24,7 @@
     @extend %button;
     color: $button-warning-color;
     background-color: $button-warning-background-color;
-    border-radius: 20px;
+    border-radius: 10px;
     padding: 5px 10px;
 }
 

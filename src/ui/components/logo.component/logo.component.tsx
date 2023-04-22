@@ -28,7 +28,7 @@ const LogoComponent = (props: LogoComponentProps): JSX.Element => {
 
     return (
         <div className={className} >
-            Flashcard Factory
+            flashcard.me
         </div>
     )
 

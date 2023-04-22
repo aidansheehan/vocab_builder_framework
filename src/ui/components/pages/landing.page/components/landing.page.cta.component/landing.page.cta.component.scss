@@ -1,28 +1,80 @@
 @use '../../../../../sass/color.vars' as *;
+@use '../../../../../sass/ui.vars' as *;
 
 .cta {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+    background-color: #81AAD9;
+    // background-color: #044389;
+    min-height: calc(100vh - $header-height);
+    max-height: 800px;
     width: 100%;
-    min-height: 250px;
-    height: 100%;
-    > .ctaImage {
-        width: 100px;
-        opacity: .2;
-    }
-    .ctaContent {
+    display: flex;
+    justify-content: center;
+    // align-items: space-around;
+    > .ctaContent {
+        width: 1000px;
+        box-sizing: border-box;
+        margin: auto;
+        padding: 40px;
         display: flex;
-        flex-direction: column;
-        justify-content: center;
+        flex-direction: row;
+        justify-content: space-between;
         align-items: center;
-        max-width: 400px;
-        > .ctaLogo {
-            color: $color-primary;
+        > .ctaImage {
+            width: 300px;
         }
-        > .ctaText {
-            color: #BAC8D0;
+        > .ctaPanel {
+            width: 60%;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            font-size: 32px;
+            color: #fff;
+            > .ctaControl {
+                width: 60%;
+                > * {
+                    width: 100%;
+                    margin-bottom: 10px;
+                    padding: 10px;
+                }
+            }
         }
     }
 }
+
+// .cta {
+//     display: flex;
+//     flex-direction: row;
+//     justify-content: space-around;
+//     align-items: center;
+//     width: 100%;
+//     min-height: 250px;
+//     height: calc(100vh - $header-height);
+//     max-height: 800px;
+//     background-color: #81AAD9;
+//     max-width
+//     > .ctaImage {
+//         width: 300px;
+//     }
+//     .ctaContent {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: center;
+//         width: 60%;
+//         margin: 0 30px;
+//         box-sizing: border-box;
+//         // max-width: 400px;
+//         // > .ctaLogo {
+//         //     color: $color-primary;
+//         // }
+//         // line-height: 40px;
+//         > .ctaText {
+//             // color: #BAC8D0;
+//             font-size: 32px;
+//             color: #fff;
+//         }
+//     }
+// }

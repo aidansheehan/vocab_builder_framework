@@ -1,7 +1,11 @@
 //Background color scheme
-$background-primary: #F3F5FB;
+// $background-primary: #F3F5FB;
+$background-primary: #81AAD9;
+
+//TODO just remove this and rename tertirary background secondary
 $background-secondary: #FFF;
-$background-tertiary: #E0E7EC;
+// $background-tertiary: #E0E7EC;
+$background-tertiary: #EF476F;
 
 //Text color scheme
 $color-primary: #94A2AB;
@@ -12,7 +16,8 @@ $color-tertiary: #000;
  $border-color: rgba(0, 0, 0, 0.1);
 
  //Accent color
- $accent-color: #649DFF;
+//  $accent-color: #649DFF;
+$accent-color: #06D6A0;
 
  //Button primary color scheme
  $button-primary-color: #fff;

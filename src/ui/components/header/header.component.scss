@@ -3,10 +3,14 @@
 @use '../../sass/placeholders/border';
 
 .header {
-    background-color: $background-tertiary;
+    background-color: $background-primary;
     display: flex;
     height: $header-height;
     color: $color-primary;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    margin: 0 50px;
     >.headerLeft {
         justify-content: flex-start;
         >.headerLogo {
@@ -42,7 +46,7 @@
         }
     }
     > .headerLeft, > .headerRight {
-        @extend %border;
+        // @extend %border;
         box-sizing: border-box;
         border-width: 0 0 $border-width 0;
         background-color: inherit;
