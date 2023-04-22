@@ -3,6 +3,6 @@
  * @author Aidan Sheehan
  * @version 0.1.0
  */
-const BASE_URL = 'http://localhost:8000/api/'   //TODO this should be set in an environment variable
+const BASE_URL = process.env.REACT_APP_API_URL;
 
 export default BASE_URL

@@ -14,6 +14,14 @@ UI interface for flashcard based custom game generation project
 npm install
 ````
 
+### Setting up the API URL
+1. Create a `.env` file in the root of the project if it doesn't already exist. 
+2. Add the following line to your `.env` file, assuming you are running the backend on localhost:8000:
+````
+REACT_APP_API_URL=https://localhost:8000/api
+````
+To use development or production servers replace with their URLs as appropriate - contact me for this information if required.
+
 ## Node tasks
 
 ### Documentation
