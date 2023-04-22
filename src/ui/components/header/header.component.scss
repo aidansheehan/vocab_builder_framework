@@ -13,10 +13,6 @@
     margin: 0 50px;
     >.headerLeft {
         justify-content: flex-start;
-        >.headerLogo {
-            margin-left: 10px;
-            font-size: 18px;
-        }
     }
     >.headerRight {
         justify-content: flex-end;
@@ -46,7 +42,6 @@
         }
     }
     > .headerLeft, > .headerRight {
-        // @extend %border;
         box-sizing: border-box;
         border-width: 0 0 $border-width 0;
         background-color: inherit;

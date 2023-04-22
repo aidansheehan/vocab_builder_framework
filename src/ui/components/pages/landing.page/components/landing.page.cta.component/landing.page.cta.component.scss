@@ -9,7 +9,7 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    // align-items: space-around;
+    font-weight: 700;
     > .ctaContent {
         width: 1000px;
         box-sizing: border-box;
@@ -43,38 +43,3 @@
         }
     }
 }
-
-// .cta {
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-around;
-//     align-items: center;
-//     width: 100%;
-//     min-height: 250px;
-//     height: calc(100vh - $header-height);
-//     max-height: 800px;
-//     background-color: #81AAD9;
-//     max-width
-//     > .ctaImage {
-//         width: 300px;
-//     }
-//     .ctaContent {
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: center;
-//         align-items: center;
-//         width: 60%;
-//         margin: 0 30px;
-//         box-sizing: border-box;
-//         // max-width: 400px;
-//         // > .ctaLogo {
-//         //     color: $color-primary;
-//         // }
-//         // line-height: 40px;
-//         > .ctaText {
-//             // color: #BAC8D0;
-//             font-size: 32px;
-//             color: #fff;
-//         }
-//     }
-// }
