@@ -40,14 +40,6 @@ const LandingPageCtaComponent = (): JSX.Element => {
                 
             </div>
 
-            {/* <div className={styles.ctaContent} >
-
-                <TextComponent textRef='landing-page_cta-text' style={styles.ctaText}/>
-
-                <ButtonComponent primary onClick={() => navigate('/auth/register', {state: {backgroundLocation: location}})} textRef='landing-page_cta_button' />
-
-            </div> */}
-
         </div>
     )
 
