@@ -10,17 +10,17 @@
 }
 
 @font-face {
-    font-family: 'Rubik';
+    font-family: 'Quicksand';
     font-style: normal;
     font-weight: 500;
-    src: url('../assets/fonts/Rubik-Medium.ttf') format('truetype');
+    src: url('../assets/fonts/Quicksand-Medium.ttf') format('truetype');
 }
 
 @font-face {
-    font-family: 'Rubik';
+    font-family: 'Quicksand';
     font-style: normal;
     font-weight: 700;
-    src: url('../assets/fonts/Rubik-Bold.ttf') format('truetype');
+    src: url('../assets/fonts/Quicksand-Bold.ttf') format('truetype');
 }
 
 html {
@@ -32,7 +32,7 @@ html {
 body {
     background-color: $background-primary;
     margin: 0;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Quicksand', sans-serif;
     font-weight: 500;
     font-size: 14px;
     > #root {
@@ -52,7 +52,7 @@ input, textarea {
     border-style: solid;
     border-radius: $border-radius;
     height: 20px;
-    font-family: 'Rubik', sans-serif;
+    font-family: 'Quicksand', sans-serif;
 }
 
 textarea {

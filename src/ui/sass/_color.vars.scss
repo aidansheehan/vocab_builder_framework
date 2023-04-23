@@ -1,11 +1,10 @@
 //Background color scheme
-// $background-primary: #F3F5FB;
-$background-primary: #81AAD9;
+$background-primary: #3B83BD;
+$background-secondary: #74B2D5;
+$background-warning: #EF476F;
 
-//TODO just remove this and rename tertirary background secondary
-$background-secondary: #FFF;
-// $background-tertiary: #E0E7EC;
-$background-tertiary: #EF476F;
+//TODO remove
+$background-tertiary: pink;
 
 //Text color scheme
 $color-primary: #94A2AB;
@@ -13,11 +12,10 @@ $color-secondary: #E0E7EC;
 $color-tertiary: #000;
 
  //Border color
- $border-color: rgba(0, 0, 0, 0.1);
+$border-color: #74B2D5;
 
  //Accent color
-//  $accent-color: #649DFF;
-$accent-color: #06D6A0;
+$accent-color: #2ECC71;
 
  //Button primary color scheme
  $button-primary-color: #fff;
@@ -25,8 +23,8 @@ $accent-color: #06D6A0;
 
  //Button secondary color scheme
  $button-secondary-color: #fff;
- $button-secondary-background-color: $background-tertiary;
+ $button-secondary-background-color: $background-secondary;
 
  //Warning button color scheme
  $button-warning-color: #fff;
- $button-warning-background-color: red;
+ $button-warning-background-color: $background-warning;

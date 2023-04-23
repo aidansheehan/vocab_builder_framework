@@ -1,23 +1,36 @@
 @use '../color.vars' as *;
+@use '../mixins/hover.mixin' as hover;
 
 %button-primary {
     @extend %button;
     color: $button-primary-color;
     background-color: $button-primary-background-color;
-    border: 1px solid $button-primary-background-color;
+    border: 2px solid $border-color;
     border-radius: 10px;
     padding: 5px 10px;
+    @include hover.hover(hover) {
+        &:hover {
+            background-color: #27ae60;
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    }
 }
 
 %button-secondary {
     @extend %button;
     color: $button-secondary-color;
-    // background-color: $button-secondary-background-color;
     background-color: transparent;
-    // border: 1px solid #044389;
-    border: 1px solid #0B0033;
+    border: 2px solid $border-color;
     border-radius: 10px;
     padding: 5px 10px;
+    @include hover.hover(hover) {
+        &:hover {
+            background-color: #5daade;
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    }
 }
 
 %button-warning {
@@ -33,4 +46,5 @@
     justify-content: space-around;
     align-items: center;
     flex-direction: row;
+    transition: all 0.3s ease;
 }

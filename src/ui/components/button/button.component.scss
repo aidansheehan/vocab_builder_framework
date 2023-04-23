@@ -1,6 +1,5 @@
 @use '../../sass/placeholders/remove-tap-highlight';
 @use '../../sass/placeholders/button';
-@use '../../sass/mixins/hover.mixin' as hover;
 
 .button {
     @extend %remove-tap-highlight;
@@ -22,16 +21,6 @@
     }
     &.warning {
         @extend %button-warning;
-    }
-    @include hover.hover(hover) {
-
-        > * {
-            opacity: .7;
-            &:hover {
-                opacity: 1;
-            }
-        }
-
     }
 
 }
