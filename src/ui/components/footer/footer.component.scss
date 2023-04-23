@@ -1,14 +1,14 @@
 @use '../../sass/color.vars' as *;
 @use '../../sass/ui.vars' as *;
-@use '../../sass/placeholders/border';
+// @use '../../sass/placeholders/border';
 
 .footer {
-    @extend %border;
+    // @extend %border;
     box-sizing: border-box;
-    border-width: $border-width 0 0 0;
+    // border-width: $border-width 0 0 0;
     height: $footer-height;
-    color: $color-primary;
-    background-color: $color-secondary;
+    // color: $color-primary;
+    // background-color: $color-secondary;
     display: flex;
     justify-content: center;
     align-items: center;

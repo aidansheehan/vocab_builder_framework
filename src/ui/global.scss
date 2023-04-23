@@ -30,11 +30,11 @@ html {
     }
 }
 body {
-    background-color: $background-primary;
     margin: 0;
     font-family: 'Quicksand', sans-serif;
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
+    line-height: 1.7;
     > #root {
         height: 100%;
         > * {
