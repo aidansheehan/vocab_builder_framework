@@ -1,4 +1,7 @@
-import styles from './footer.component.scss'
+import classNames               from 'classnames'
+import { useEffect, useState }  from 'react'
+import { useLocation }          from 'react-router-dom'
+import styles                   from './footer.component.scss'
 
 /**
  * Footer Component
@@ -12,8 +15,28 @@ import styles from './footer.component.scss'
  */
 const FooterComponent = () => {
 
+    //Landing page flag to apply additional styles
+    const [ isLanding, setIsLanding ] = useState<boolean>(false)
+
+    const location = useLocation()
+
+    console.log('path: ', location.pathname)
+
+    useEffect(() => {
+
+        //If root route
+        if (location.pathname === '/') {
+
+            //Set landing page flag true
+            setIsLanding(true)
+        }
+    }, [location.pathname])
+
+    // Component className
+    const className = classNames(styles.footer, { [styles.footerLanding]: isLanding })
+
     return (
-        <div className={styles.footer} >
+        <div className={className} >
             <span>© Aidan Sheehan 2023</span>
         </div>
     )

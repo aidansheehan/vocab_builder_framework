@@ -20,15 +20,18 @@
 %button-secondary {
     @extend %button;
     color: $button-secondary-color;
-    background-color: transparent;
+    background-color: rgba(255, 255, 255, 0.2);
     border: 2px solid $border-color;
     border-radius: 10px;
     padding: 5px 10px;
+    color: #34495e;
     @include hover.hover(hover) {
         &:hover {
-            background-color: #5daade;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-color: #5daade;
             transform: scale(1.02);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: #2c3250;
         }
     }
 }
@@ -42,9 +45,10 @@
 }
 
 %button {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
+    // display: flex;
+    // justify-content: space-around;
+    // align-items: center;
+    // flex-direction: row;
+    display: inline-block;
     transition: all 0.3s ease;
 }

@@ -1,6 +1,8 @@
 /** General App Style Rules */
 @use './sass/color.vars' as *;
 @use './sass/ui.vars' as *;
+@use './sass/breakpoints' as *;
+@use './sass/mixins/mq.mixin' as mq;
 
 @font-face {
     font-family: 'Indie Flower';
@@ -62,3 +64,18 @@ textarea {
 a, a:link, a:visited, a:focus, a:hover, a:active{
     color: inherit;
   }
+
+h2 {
+    margin: 0;
+}
+
+hr {
+    border-style: solid;
+    border-radius: 20px;
+    border-color: $border-color;
+    opacity: .5;
+    width: 100%;
+    @include mq.mq(desktop) {
+        max-width: #{$tablet}px;
+    }
+}

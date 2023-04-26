@@ -1,5 +1,6 @@
-import classNames from 'classnames'
-import styles from './logo.component.scss'
+import classNames   from 'classnames'
+import { APP_NAME } from '../../constants/app-name.constant'
+import styles       from './logo.component.scss'
 
 /** LogoComponentProps */
 type LogoComponentProps = {
@@ -28,7 +29,7 @@ const LogoComponent = (props: LogoComponentProps): JSX.Element => {
 
     return (
         <div className={className} >
-            flashcard.me
+            {APP_NAME}
         </div>
     )
 

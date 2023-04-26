@@ -1,20 +1,15 @@
+@use '../../../../../sass/placeholders/section';
+
 .features {
     margin-top: 10px;
     > .feature {
-        // padding: 10px;
-        // margin-bottom: 10px;
-        // padding: 0 10px;
-        margin: 0 10px 10px;
+        @extend %section;
         > .featureTitle {
             text-align: center;
-            // margin: 20px 0;
-            // padding: 20px 0;
             margin: 16px 40px 8px 40px;
 
         }
         > .featureList {
-            // padding-bottom: 10px;
-            // margin: 0 10px 10px 10px;
             padding-right: 40px;
         }
     }

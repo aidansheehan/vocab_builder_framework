@@ -7,11 +7,13 @@ const SUPPORTED_LANGUAGES: SUPPORTED_LANGUAGES_TYPE = [
     {
         code: 'en',
         name: 'English',
+        flag: '🇬🇧'
         // path: '' TODO can have path set so we know where to load JSON from
     },
     {
         code: 'vi',
         name: 'Tiếng Việt',
+        flag: '🇻🇳'
     }
 ]
 

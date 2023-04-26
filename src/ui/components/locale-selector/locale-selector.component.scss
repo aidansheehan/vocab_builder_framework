@@ -1,4 +1,74 @@
+@use '../../sass/placeholders/remove-tap-highlight';
+@use '../../sass/color.vars' as *;
+
 .localeSelector {
     color: inherit;
     border-color: inherit;
+    text-transform: uppercase;
+    position: relative;
+    > select {
+        > option {
+            display: hidden;
+        }
+    }
+    > .localeSelectorSelect {
+        font-family: inherit;
+        background-color: transparent;
+        border: none;
+        color: inherit;
+        font-size: inherit;
+        text-align: center;
+        @extend %remove-tap-highlight;
+        text-transform: uppercase;
+        &.hidden {
+            display: none;
+        }
+    }
+    > .localeSelectOptions {
+        list-style: none;
+        margin: 0;
+        padding: 10px;
+        > .localeSelectOption {
+            text-transform: capitalize;
+            cursor: pointer;
+        }
+        &.list {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            > .localeSelectOption {
+                display: inline-block;
+                margin: 0 12px;
+            }
+        }
+        &.dropdown {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            color: black;
+            border: 1px solid $border-color;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.2s ease-in-out;
+            top: 100%;
+            &.open {
+                opacity: 1;
+                pointer-events: auto;
+            }
+            > .localeSelectOption {
+                padding: 8px;
+                font-size: 16px;
+                &:hover {
+                    background-color: #f2f2d2;
+                }
+                &.selected {
+                    background-color: #007BFF;
+                    color: #fff;
+                }
+            }
+        }
+    }
 }
