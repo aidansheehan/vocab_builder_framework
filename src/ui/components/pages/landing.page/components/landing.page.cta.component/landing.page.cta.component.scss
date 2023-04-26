@@ -53,6 +53,7 @@
             color: #fff;
             width: 100%;
             margin-top: 40px;
+            padding-bottom: 40px;
             @include mq.mq(desktop) {
                 width: 60%;
                 margin-top: 0;
@@ -69,6 +70,7 @@
                 > * {
                     width: 100%;
                     padding: 10px;
+                    color: white;
                 }
             }
         }
