@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack serve --open --config webpack.dev.js --hot",
     "build": "webpack --config webpack.prod.js",
-    "serve": "serve dist/",
+    "serve": "serve -l 8080 dist/",
     "test": "jest",
     "docs": "jsdoc -c jsdoc.conf.json"
   },

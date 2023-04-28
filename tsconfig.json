@@ -17,9 +17,7 @@
     },
     "include": [
         "./src/**/*.(ts|tsx)",
-        "./src/globals.d.ts"
-        // "./src/**/*.tsx",
-        // "./typings/*"
+        "./globals.d.ts"
     ],
     "exclude": [
         "node_modules",
