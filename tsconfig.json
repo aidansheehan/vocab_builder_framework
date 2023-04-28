@@ -16,9 +16,10 @@
         "typeRoots": ["./typings", "./node_modules/@types"]
     },
     "include": [
-        "./src/**/*.ts",
-        "./src/**/*.tsx",
-        "./typings/*"
+        "./src/**/*.(ts|tsx)",
+        "./src/globals.d.ts"
+        // "./src/**/*.tsx",
+        // "./typings/*"
     ],
     "exclude": [
         "node_modules",
