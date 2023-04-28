@@ -1,15 +1,19 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'source-map',
     devServer: {
         port: 8080,
-        historyApiFallback: true,
+        // historyApiFallback: true,
         hot: true,
         proxy: { '/api/**': { target: 'http://localhost:8080', secure: false }}
     },
+    plugins: [
+        new ReactRefreshWebpackPlugin(),
+    ],
     module: {
         rules: [
             {
@@ -47,4 +51,7 @@ module.exports = merge(common, {
             }
         ]
     },
-})
+    resolve: {
+        extensions: ['.tsx', '.ts', '.js', '.jsx'],
+    }
+});
