@@ -13,11 +13,13 @@
         "sourceMap": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "typeRoots": ["./typings", "./node_modules/@types"]
+        "typeRoots": ["./globals.d.ts", "./node_modules/@types"]
     },
-    "include": [
-        "./src/**/*.(ts|tsx)",
+    "files": [
         "./globals.d.ts"
+    ],
+    "include": [
+        "src/**/*",
     ],
     "exclude": [
         "node_modules",
