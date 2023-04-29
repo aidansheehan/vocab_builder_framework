@@ -1,14 +1,14 @@
 //Core
 import { useEffect } from 'react'
 //Router
-import { Outlet, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
 //Components
-import HeaderComponent from './components/header/header.component'
-import FooterComponent from './components/footer/footer.component'
 //Stylesheets TODO would be better if global module
 import './global.scss'
+import SidebarLayoutComponent from './components/layouts/sidebar.layout.component/sidebar.layout.component'
+import HeaderLayoutComponent from './components/layouts/header.layout.component/header.layout.component'
 
 /**
  * Main app component
@@ -55,11 +55,13 @@ const App = () => {
 
     return (
         <>
-            <HeaderComponent />
-            {/* <div id='main'> */}
-                <Outlet />
-            {/* </div> */}
-            <FooterComponent />
+            {
+                !!userInfo
+                ?
+                <SidebarLayoutComponent />
+                :
+                <HeaderLayoutComponent />
+            }
         </>
     )
 

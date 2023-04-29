@@ -37,15 +37,6 @@ body {
     font-weight: 500;
     font-size: 16px;
     line-height: 1.7;
-    > #root {
-        height: 100%;
-        > * {
-            > #main {
-                height: calc(100% - $header-height - $footer-height);
-                overflow-y: scroll;
-            }
-        }
-    }
 }
 
 input, textarea {
