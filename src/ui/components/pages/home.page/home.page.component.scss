@@ -1,5 +1,6 @@
 @use '../../../sass/color.vars' as *;
 @use '../../../sass/mixins/mq.mixin' as mq;
+@use '../../../sass/placeholders/page-header';
 
 .homePage {
     width: 100%;
@@ -10,25 +11,9 @@
         margin: 10px 0;
     }
     .homeHeader {
-        background-color: #fff;
-        display: flex;
-        justify-content: space-between;
-        position: sticky;
-        top: 0;
+        @extend %page-header;
         > .control {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            justify-content: space-between;
-            padding: 1rem;
-            margin: 1rem 1rem 0 1rem;
-            border-radius: 10px;
-            background-color: #E8F2F8;
-            @include mq.mq(mobile-portrait) {
-                margin: 0;
-                border-radius: 0;
-                width: 100%;
-            }
+            @extend %page-header-inner;
             >.welcomeBanner {
                 width: 50%;
                 display: flex;

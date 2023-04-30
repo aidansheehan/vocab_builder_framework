@@ -57,25 +57,29 @@ const CollectionPageComponent = (): JSX.Element => {
                 <div className={styles.collectionDetails}>
 
                     <div className={styles.topPanel}>
-        
-                        <div className={styles.collectionInfo} >
 
-                            <div className={styles.collectionInfoDetails}>
+                        <div className={styles.topPanelControl} >
 
-                                        <div className={styles.title} >
-                                            <TextValueComponent value={collection.title} />
-                                        </div>
+                            <div className={styles.collectionInfo} >
+
+                                <div className={styles.collectionInfoDetails}>
+
+                                            <div className={styles.title} >
+                                                <TextValueComponent value={collection.title} />
+                                            </div>
+                
+                                            <div className={styles.description}>
+                                                <TextValueComponent value={collection.description} />
+                                            </div>
+                                </div>
+
+                                <div className={styles.collectionInfoButtons}>
+                                            <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
+                                            <ButtonComponent secondary icon='pen-to-square' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
+                                </div>
             
-                                        <div className={styles.description}>
-                                            <TextValueComponent value={collection.description} />
-                                        </div>
                             </div>
-
-                            <div className={styles.collectionInfoButtons}>
-                                        <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
-                                        <ButtonComponent secondary icon='pen-to-square' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
-                            </div>
-        
+                            
                         </div>
         
                     </div>

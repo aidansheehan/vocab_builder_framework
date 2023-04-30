@@ -1,48 +1,48 @@
 @use '../../../sass/color.vars' as *;
 @use '../../../sass/ui.vars' as *;
 @use '../../../sass/mixins/hover.mixin' as hover;
+@use '../../../sass/placeholders/page-header';
 
 .collectionDetails {
-    width: 80%;
-    margin: auto;
+    height: 100%;
+    width: 100%;
     >.topPanel {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        margin: 20px 0;
-        >.collectionInfo {
-            display: flex;
-            flex-direction: row;
-            width: 100%;
-            align-items: flex-start;
-            >.collectionInfoDetails {
-                width: 50%;
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-                justify-content: space-between;
-                color: $color-primary;
-                >.title {
-                    font-size: 16px;
-                }
-                >.description {
-                    font-size: 12px;
-                }
-                >.collectionPageInfoForm {
-                    width: 100%;
-                    >.collectionPageInfoFormButtons {
-                        justify-content: flex-start;
-                    }
-                }
-            }
-            >.collectionInfoButtons {
+        @extend %page-header;
+        > .topPanelControl {
+            @extend %page-header-inner;
+            >.collectionInfo {
                 display: flex;
                 flex-direction: row;
-                justify-content: flex-end;
-                width: 50%;
-                > * {
-                    margin: 0 5px;
+                width: 100%;
+                align-items: flex-start;
+                >.collectionInfoDetails {
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    color: $color-primary;
+                    >.title {
+                        font-size: 16px;
+                    }
+                    >.description {
+                        font-size: 12px;
+                    }
+                    >.collectionPageInfoForm {
+                        width: 100%;
+                        >.collectionPageInfoFormButtons {
+                            justify-content: flex-start;
+                        }
+                    }
+                }
+                >.collectionInfoButtons {
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: flex-end;
+                    width: 50%;
+                    > * {
+                        margin: 0 5px;
+                    }
                 }
             }
         }
