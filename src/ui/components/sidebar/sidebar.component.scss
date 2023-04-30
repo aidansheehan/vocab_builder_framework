@@ -9,6 +9,10 @@
     padding: 0 16px;
     > .sidebarLogo {
         color: $background-primary;
-        padding: 32px 0 22px 10px;
+        padding: 32px 10px 10px;
+        margin-bottom: 10px;
+        @include mq.mq(desktop) {
+            padding: 32px 0 22px 10px;
+        }
     }
 }

@@ -1,6 +1,7 @@
 import { useNavigate }                  from 'react-router-dom'
 import useAppDispatch                   from '../../hooks/redux/use-app-dispatch.hook'
 import useDevice                        from '../../hooks/useDevice.hook'
+import ImageComponent                   from '../image/image.component'
 import LogoComponent                    from '../logo.component/logo.component'
 import SidebarButtonComponent           from './components/sidebar.button.component'
 import SIDEBAR_ITEMS_CONFIG_CONSTANT    from './constants/sidebar-items-config.constant'
@@ -44,7 +45,13 @@ const SidebarComponent = (): JSX.Element => {
 
     return (
         <div className={styles.sidebar} >
-            <LogoComponent style={styles.sidebarLogo} />
+            {
+                device === 'desktop'
+                ?
+                <LogoComponent style={styles.sidebarLogo} />
+                :
+                <ImageComponent style={styles.sidebarLogo} id='logo' />
+            }
 
             {
                 SIDEBAR_ITEMS_CONFIG_CONSTANT.routeButtons.map((v_, i_) => {
