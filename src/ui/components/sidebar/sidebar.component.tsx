@@ -51,13 +51,16 @@ const SidebarComponent = (): JSX.Element => {
 
                     const { route, icon, reference, devices, isModal } = v_     //Destructure config
 
+                    //Determine if current route
+                    const isActive = location.pathname === route
+
                     if (devices) {
 
-                        return devices.includes(device) && <SidebarButtonComponent key={i_} handleClick={() => handleNavigate(route, isModal)} icon={icon} reference={reference} />
+                        return devices.includes(device) && <SidebarButtonComponent key={i_} handleClick={() => handleNavigate(route, isModal)} icon={icon} reference={reference} active={isActive} />
                     }
 
                     else {
-                        return <SidebarButtonComponent key={i_} handleClick={() => handleNavigate(route, isModal)} icon={icon} reference={reference} />
+                        return <SidebarButtonComponent key={i_} handleClick={() => handleNavigate(route, isModal)} icon={icon} reference={reference} active={isActive} />
                     }
 
                 })

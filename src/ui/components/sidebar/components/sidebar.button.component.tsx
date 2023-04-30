@@ -16,6 +16,9 @@ type SidebarButtonComponentProps = {
     /** Click Handler */
     handleClick: () => void,
 
+    /** Whether route active */
+    active?: boolean,
+
     /** Additional styles to be applied */
     style?: string
 
@@ -36,10 +39,10 @@ type SidebarButtonComponentProps = {
 const SidebarButtonComponent = (props: SidebarButtonComponentProps): JSX.Element => {
 
     //Destructure props
-    const { reference, icon, handleClick, style } = props
+    const { reference, icon, handleClick, style, active } = props
 
     //Component className
-    const className = classNames(styles.sidebarButton, style)
+    const className = classNames(styles.sidebarButton, { [styles.active]: active }, style)
 
     //Construct JSX to pass to button component to render as children
     const sidebarButtonComponentJsx: JSX.Element = (
