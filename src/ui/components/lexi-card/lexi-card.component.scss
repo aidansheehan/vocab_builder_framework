@@ -1,0 +1,13 @@
+@use '../../sass/placeholders/item-grid';
+
+.lexiCard {
+    @extend %item;
+    > .lexi {
+        @extend %item-title;
+    }
+    >.lexiCardActions {
+        >.btn {
+            @extend %item-btn;
+        }
+    }
+}

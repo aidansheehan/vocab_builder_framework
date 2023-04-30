@@ -39,7 +39,7 @@
 %button-warning {
     @extend %button;
     color: $button-warning-color;
-    background-color: $button-warning-background-color;
+    background-color: $button-warning-background-color !important;
     border-radius: 10px;
     padding: 5px 10px;
 }

@@ -1,24 +1,9 @@
-@use '../../sass/color.vars' as *;
-@use '../../sass/ui.vars' as *;
-@use '../../sass/mixins/mq.mixin' as mq;
+@use '../../sass/placeholders/item-grid';
 
 .collection {
-    display: flex;
-    flex-direction: column;
-    padding: 1rem;
-    background-color: #F2E8D7;
-    border-radius: 10px;
-    @include mq.mq(mobile-landscape) {
-        width: 200px;
-    }
-    @include mq.mq(mobile-portrait) {
-        width: 250px;
-    }
+    @extend %item;
     > .collectionTitle {
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        color: #434343;
+        @extend %item-title;
     }
     > .collectionDescription {
         font-size: 1rem;
@@ -27,11 +12,7 @@
     }
     >.collectionActions {
         >.playBtn, >.editBtn {
-            background-color: #3B83BD;
-            color: #fff;
-            border-radius: 4px;
-            padding: 0.5rem 1rem;
-            margin-right: 0.5rem;
+            @extend %item-btn;
         }
     }
 }

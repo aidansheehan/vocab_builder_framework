@@ -1,15 +1,13 @@
 @use '../../../sass/color.vars' as *;
 @use '../../../sass/mixins/mq.mixin' as mq;
 @use '../../../sass/placeholders/page-header';
+@use '../../../sass/placeholders/item-grid';
 
 .homePage {
     width: 100%;
     box-sizing: border-box;
     height: 100%;
     overflow-y: scroll;
-    .homePageSection {
-        margin: 10px 0;
-    }
     .homeHeader {
         @extend %page-header;
         > .control {
@@ -45,16 +43,6 @@
         }
     }
     >.collectionGrid {
-        max-width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: flex-start;
-        align-items: center;
-        margin: 20px;
-        @include mq.mq(mobile) {
-            justify-content: center;
-        }
+        @extend %item-grid;
     }
 }
