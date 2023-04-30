@@ -1,4 +1,3 @@
-import mountainPlaceholder from '../../../../assets/images/mountain-placeholder.png'
 import logo from '../../../../assets/images/logo.svg'
 
 /**
@@ -10,7 +9,6 @@ import logo from '../../../../assets/images/logo.svg'
  * @constant
  */
 const IMAGES_CONSTANT = {
-    placeholder: mountainPlaceholder,
     logo: logo
 }
 
