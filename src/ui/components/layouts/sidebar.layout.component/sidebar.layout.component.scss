@@ -3,13 +3,13 @@
 .sidebarLayout {
     display: grid;
     grid-template-columns: 88px 1fr;
-    min-height: 100vh;
+    height: 100vh;
     >.sidebarHeader {
         display: none;
     }
     @include mq.mq(mobile-portrait) {
         grid-template-columns: 1fr;
-        grid-template-rows: 50px 1fr 50px;
+        grid-template-rows: 70px 1fr 70px;
         >.sidebarHeader {
             display: flex;
         }

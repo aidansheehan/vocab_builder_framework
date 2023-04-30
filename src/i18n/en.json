@@ -41,6 +41,7 @@
     "login_signup_link": "Don't have an account?",
     "register_header": "Sign up for a new account",
     "collection_play_link": "Play",
+    "collection_edit_link": "Edit",
     "home_greeting": "Hello, %v.",
     "home_play-random": "Play random",
     "collection-details_nav_play": "Play games",

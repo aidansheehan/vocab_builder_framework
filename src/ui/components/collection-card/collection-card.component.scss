@@ -1,43 +1,37 @@
 @use '../../sass/color.vars' as *;
 @use '../../sass/ui.vars' as *;
+@use '../../sass/mixins/mq.mixin' as mq;
 
-.collectionCard {
-    background-color: $background-secondary;
-    color: $color-primary;
-    border-radius: $border-radius;
+.collection {
     display: flex;
     flex-direction: column;
-    width: 280px;
-    height: 120px;
-    justify-content: space-around;
-    >.collectionCardTop {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        >.collectionCardViewBtn {
-            background-color: #FFF3A4;
-            border-radius: $border-radius;
-            padding: 15px;
-            margin: 0 10px;
-        }
-        >.collectionCardDetails {
-            display: flex;
-            flex-direction: column;
-            >.collectionCardTitle {
-                width: 100%;
-                font-size: 16px;
-            }
-            >.collectionCardDescription {
-                width: 100%;
-                opacity: .7;
-
-            }
-        }
+    padding: 1rem;
+    background-color: #F2E8D7;
+    border-radius: 6px;
+    @include mq.mq(mobile-landscape) {
+        width: 200px;
     }
-    >.collectionCardBottom {
-        display: flex;
-        flex-direction: row;
-        justify-content: flex-end;
-        padding: 0 20px;
+    @include mq.mq(mobile-portrait) {
+        width: 250px;
+    }
+    > .collectionTitle {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #434343;
+    }
+    > .collectionDescription {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        color: #7D8EA3;
+    }
+    >.collectionActions {
+        >.playBtn, >.editBtn {
+            background-color: #3B83BD;
+            color: #fff;
+            border-radius: 4px;
+            padding: 0.5rem 1rem;
+            margin-right: 0.5rem;
+        }
     }
 }

@@ -2,17 +2,20 @@
 @use '../../../sass/mixins/mq.mixin' as mq;
 
 .homePage {
-    height: fit-content;
     width: 100%;
     box-sizing: border-box;
+    height: 100%;
+    overflow-y: scroll;
     .homePageSection {
         margin: 10px 0;
     }
     .homeHeader {
-        background-color: #f2ccb1;
+        background-color: #E8F2F8;
+        border-bottom: 2px solid #AFC4D9;
         display: flex;
         justify-content: space-between;
-
+        position: sticky;
+        top: 0;
     }
     .control {
         display: flex;
@@ -58,7 +61,8 @@
         gap: 30px;
         justify-content: flex-start;
         align-items: center;
-        @include mq.mq(mobile-portrait) {
+        margin: 20px;
+        @include mq.mq(mobile) {
             justify-content: center;
         }
     }

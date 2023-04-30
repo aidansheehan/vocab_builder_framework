@@ -26,6 +26,10 @@
     @include mq.mq(desktop) {
         justify-content: start;
     }
+    @include mq.mq(mobile-portrait) {
+        width: fit-content;
+        margin-bottom: 0;
+    }
     @include hover.hover(hover) {
         transition: all 0.3s ease;
         &:hover {
