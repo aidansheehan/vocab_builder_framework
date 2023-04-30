@@ -4,6 +4,16 @@
     display: grid;
     grid-template-columns: 88px 1fr;
     min-height: 100vh;
+    >.sidebarHeader {
+        display: none;
+    }
+    @include mq.mq(mobile-portrait) {
+        grid-template-columns: 1fr;
+        grid-template-rows: 50px 1fr 50px;
+        >.sidebarHeader {
+            display: flex;
+        }
+    }
     @include mq.mq(desktop) {
         grid-template-columns: 256px 1fr;
     }

@@ -5,6 +5,13 @@ import LogoComponent                from '../logo.component/logo.component'
 import useDevice from '../../hooks/useDevice.hook'
 //Styles
 import styles from './header.component.scss'
+import classNames from 'classnames'
+
+type HeaderComponentProps = {
+
+    /** Additional styles to be applied */
+    style?: string
+}
 
 /**
  * Header component
@@ -16,12 +23,17 @@ import styles from './header.component.scss'
  *   <HeaderComponent />
  * )
  */
-const HeaderComponent = (): JSX.Element => {
+const HeaderComponent = (props: HeaderComponentProps): JSX.Element => {
+
+    const { style } = props         //Destructure props
 
     const device = useDevice()
 
+    //Component className
+    const className = classNames(styles.header, style)
+
     return (
-        <div className={styles.header} >
+        <div className={className} >
 
             <LogoComponent style={styles.headerLogo} />
 

@@ -15,12 +15,10 @@ import styles                   from './footer.component.scss'
  */
 const FooterComponent = () => {
 
-    //Landing page flag to apply additional styles
+    //Landing page flag to apply additional styles TODO remove
     const [ isLanding, setIsLanding ] = useState<boolean>(false)
 
     const location = useLocation()
-
-    console.log('path: ', location.pathname)
 
     useEffect(() => {
 
