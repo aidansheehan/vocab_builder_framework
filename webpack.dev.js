@@ -7,7 +7,7 @@ module.exports = merge(common, {
     devtool: 'source-map',
     devServer: {
         port: 8080,
-        // historyApiFallback: true,
+        historyApiFallback: true,
         hot: true,
         proxy: { '/api/**': { target: 'http://localhost:8080', secure: false }}
     },
