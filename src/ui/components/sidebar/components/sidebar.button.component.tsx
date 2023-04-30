@@ -47,8 +47,8 @@ const SidebarButtonComponent = (props: SidebarButtonComponentProps): JSX.Element
     //Construct JSX to pass to button component to render as children
     const sidebarButtonComponentJsx: JSX.Element = (
         <>
-            <IconComponent icon={ {icon: icon} } />
-            <TextComponent textRef={reference} />
+            <IconComponent icon={ {icon: icon} } style={styles.sidebarButtonIcon} />
+            <TextComponent textRef={reference} style={styles.sidebarButtonText} />
         </>
     )
 
