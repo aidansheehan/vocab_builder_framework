@@ -10,34 +10,40 @@
         margin: 10px 0;
     }
     .homeHeader {
-        background-color: #E8F2F8;
-        border-bottom: 2px solid #AFC4D9;
+        background-color: #fff;
         display: flex;
         justify-content: space-between;
         position: sticky;
         top: 0;
-    }
-    .control {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        padding: 1rem;
-        margin: auto;
-        >.welcomeBanner {
-            width: 50%;
-            display: flex;
-            align-items: center;
-            color: $color-primary;
-        }
-        >.controlButtons {
+        > .control {
             display: flex;
             flex-direction: row;
-            justify-content: flex-end;
-            gap: 10px;
-            align-items: center;
+            width: 100%;
+            justify-content: space-between;
+            padding: 1rem;
+            margin: 1rem 1rem 0 1rem;
+            border-radius: 16px;
+            background-color: #E8F2F8;
             @include mq.mq(mobile-portrait) {
-                flex-direction: column;
+                margin: 0;
+                border-radius: 0;
+                width: 100%;
+            }
+            >.welcomeBanner {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                color: $color-primary;
+            }
+            >.controlButtons {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                gap: 10px;
+                align-items: center;
+                @include mq.mq(mobile-portrait) {
+                    flex-direction: column;
+                }
             }
         }
     }
