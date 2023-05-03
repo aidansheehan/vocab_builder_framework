@@ -1,9 +1,13 @@
-import classNames   from 'classnames'
-import { APP_NAME } from '../../constants/app-name.constant'
-import styles       from './logo.component.scss'
+import classNames                   from 'classnames'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { APP_NAME }                 from '../../constants/app-name.constant'
+import styles                       from './logo.component.scss'
 
 /** LogoComponentProps */
 type LogoComponentProps = {
+
+    /** Link to navigate to */
+    linkTo?: string,
 
     /** Additional Styles to be Applied */
     style?: string
@@ -22,13 +26,19 @@ type LogoComponentProps = {
  */
 const LogoComponent = (props: LogoComponentProps): JSX.Element => {
 
-    const { style } = props //Destructure props
+    const { style, linkTo } = props //Destructure props
+    
+    const navigate = useNavigate()
+    const location = useLocation()
+
+    //Whether logo is link
+    const isLink = linkTo && location.pathname !== linkTo
 
     //Create component class name
-    const className = classNames(styles.logo, style)
+    const className = classNames(styles.logo, { [styles.isLink]: isLink }, style)
 
     return (
-        <div className={className} >
+        <div className={className} onClick={() => isLink && navigate(linkTo)} >
             {APP_NAME}
         </div>
     )

@@ -9,6 +9,9 @@ import classNames from 'classnames'
 
 type HeaderComponentProps = {
 
+    /** Logo link */
+    linkTo?: string,
+
     /** Additional styles to be applied */
     style?: string
 }
@@ -25,9 +28,9 @@ type HeaderComponentProps = {
  */
 const HeaderComponent = (props: HeaderComponentProps): JSX.Element => {
 
-    const { style } = props         //Destructure props
+    const { style, linkTo } = props         //Destructure props
 
-    const device = useDevice()
+    const device    = useDevice()
 
     //Component className
     const className = classNames(styles.header, style)
@@ -35,7 +38,7 @@ const HeaderComponent = (props: HeaderComponentProps): JSX.Element => {
     return (
         <div className={className} >
 
-            <LogoComponent style={styles.headerLogo} />
+            <LogoComponent style={styles.headerLogo} linkTo={linkTo} />
 
             {
                 device !== 'mobile'

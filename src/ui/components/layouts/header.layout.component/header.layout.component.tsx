@@ -13,9 +13,12 @@ import HeaderComponent  from '../../header/header.component'
  */
 const HeaderLayoutComponent = () => {
 
+    //Header logo links to landing page
+    const linkTo = '/'
+
     return (
         <>
-            <HeaderComponent />
+            <HeaderComponent linkTo={linkTo}  />
             <Outlet />
             <FooterComponent />
         </>

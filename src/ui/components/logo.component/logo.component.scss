@@ -1,6 +1,9 @@
 .logo {
     font-family: 'Indie Flower';
     font-size: 35px;
-    // font-size: 3rem;
     color: #fff;
+    cursor: default;
+    &.isLink {
+        cursor: pointer;
+    }
 }
