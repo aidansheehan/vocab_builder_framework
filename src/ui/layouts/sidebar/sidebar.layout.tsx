@@ -1,7 +1,7 @@
 import { Outlet }           from 'react-router-dom'
-import HeaderComponent      from '../../header/header.component'
-import SidebarComponent     from '../../sidebar/sidebar.component'
-import styles               from './sidebar.layout.component.scss'
+import HeaderComponent      from '../../components/header/header.component'
+import SidebarComponent     from '../../components/sidebar/sidebar.component'
+import styles               from './sidebar.layout.scss'
 
 /**
  * Layout with sidebar
@@ -10,10 +10,10 @@ import styles               from './sidebar.layout.component.scss'
  * @component
  * @example
  * return (
- *   <SidebarLayoutComponent />
+ *   <SidebarLayout />
  * )
  */
-const SidebarLayoutComponent = () => {
+const SidebarLayout = () => {
 
     return (
         <div className={styles.sidebarLayout} >
@@ -24,4 +24,4 @@ const SidebarLayoutComponent = () => {
     )
 }
 
-export default SidebarLayoutComponent
+export default SidebarLayout

@@ -5,8 +5,8 @@ import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
 //Layouts
-import SidebarLayoutComponent from './components/layouts/sidebar.layout.component/sidebar.layout.component'
-import HeaderLayoutComponent from './components/layouts/header.layout.component/header.layout.component'
+import SidebarLayout from './layouts/sidebar/sidebar.layout'
+import HeaderLayout from './layouts/header/header.layout'
 //Stylesheets TODO would be better if global module
 import './global.scss'
 
@@ -58,9 +58,9 @@ const App = () => {
             {
                 !!userInfo
                 ?
-                <SidebarLayoutComponent />
+                <SidebarLayout />
                 :
-                <HeaderLayoutComponent />
+                <HeaderLayout />
             }
         </>
     )

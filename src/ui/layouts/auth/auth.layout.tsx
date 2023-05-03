@@ -1,5 +1,5 @@
 import { Outlet }       from 'react-router-dom'
-import styles           from './auth.layout.component.scss'
+import styles           from './auth.layout.scss'
 
 /**
  * Generic layout for authorization pages (login, register)
@@ -8,10 +8,10 @@ import styles           from './auth.layout.component.scss'
  * @component
  * @example
  * return (
- *   <AuthLayoutComponent />
+ *   <AuthLayout />
  * )
  */
-const AuthLayoutComponent = () => {
+const AuthLayout = () => {
 
     return (
         <div className={styles.authPage}>
@@ -23,4 +23,4 @@ const AuthLayoutComponent = () => {
 
 }
 
-export default AuthLayoutComponent
+export default AuthLayout

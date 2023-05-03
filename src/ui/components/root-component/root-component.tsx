@@ -14,7 +14,7 @@ import GamePage                from '../../pages/game.page/game.page'
 import ModalComponent                   from '../modal/modal.component'
 import CardPage                from '../../pages/card.page/card.page'
 //Layouts
-import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
+import AuthLayout      from '../../layouts/auth/auth.layout'
 //Containers
 import LoginFormContainer       from '../auth-form/containers/login-form/login-form.container'
 import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
@@ -46,7 +46,7 @@ const RootComponent = (): JSX.Element => {
 
                         <Route path='contact' element={<ContactPage />} />
 
-                        <Route path='auth' element={<AuthLayoutComponent />}>
+                        <Route path='auth' element={<AuthLayout />}>
 
                             <Route path='login' element={<LoginFormContainer />} />
                             <Route path='register' element={<RegisterFormContainer />} />

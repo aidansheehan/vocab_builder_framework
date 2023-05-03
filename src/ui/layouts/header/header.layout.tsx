@@ -1,6 +1,6 @@
 import { Outlet }       from 'react-router-dom'
-import FooterComponent  from '../../footer/footer.component'
-import HeaderComponent  from '../../header/header.component'
+import FooterComponent  from '../../components/footer/footer.component'
+import HeaderComponent  from '../../components/header/header.component'
 
 /**
  * Layout with header
@@ -9,9 +9,9 @@ import HeaderComponent  from '../../header/header.component'
  * @component
  * @example
  * return (
- *   <HeaderLayoutComponent />)
+ *   <HeaderLayout />)
  */
-const HeaderLayoutComponent = () => {
+const HeaderLayout = () => {
 
     //Header logo links to landing page
     const linkTo = '/'
@@ -26,4 +26,4 @@ const HeaderLayoutComponent = () => {
 
 }
 
-export default HeaderLayoutComponent
+export default HeaderLayout

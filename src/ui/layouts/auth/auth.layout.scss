@@ -1,5 +1,5 @@
-@use '../../../sass/color.vars' as *;
-@use '../../../sass/mixins/mq.mixin' as mq;
+@use '../../sass/color.vars' as *;
+@use '../../sass/mixins/mq.mixin' as mq;
 
 .authPage {
     height: calc(100vh - 100px);
