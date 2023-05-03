@@ -16,11 +16,7 @@ const AuthLayoutComponent = () => {
     return (
         <div className={styles.authPage}>
 
-            <div className={styles.authContent}>
-
                 <Outlet />
-
-            </div>
 
         </div>
     )

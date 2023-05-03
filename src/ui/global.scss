@@ -40,9 +40,9 @@ body {
 }
 
 input, textarea {
-    border-color: #fff;
+    border: 1px solid #AFC4D9;
+    padding: 5px;
     box-shadow: none;
-    border-style: solid;
     border-radius: $border-radius;
     height: 20px;
     font-family: 'Quicksand', sans-serif;

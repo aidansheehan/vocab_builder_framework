@@ -8,6 +8,7 @@
     box-sizing: border-box;
     height: 100%;
     overflow-y: scroll;
+    background-color: $page-background;
     .homeHeader {
         @extend %page-header;
         > .control {

@@ -1,7 +1,8 @@
 @use '../mixins/mq.mixin' as mq;
+@use '../color.vars' as *;
 
 %page-header {
-    background-color: #fff;
+    background-color: $page-background;
     display: flex;
     justify-content: space-between;
     position: sticky;
