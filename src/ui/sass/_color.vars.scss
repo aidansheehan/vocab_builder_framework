@@ -1,7 +1,8 @@
 //Background color scheme
-$background-primary: #F3F5FB;
-$background-secondary: #FFF;
-$background-tertiary: #E0E7EC;
+$background-primary: #3B83BD;
+$background-secondary: #74B2D5;
+$background-warning: #E74C3C;
+$page-background: #F5F5F5;
 
 //Text color scheme
 $color-primary: #94A2AB;
@@ -9,19 +10,22 @@ $color-secondary: #E0E7EC;
 $color-tertiary: #000;
 
  //Border color
- $border-color: rgba(0, 0, 0, 0.1);
+$border-color: #74B2D5;
 
  //Accent color
- $accent-color: #649DFF;
+$accent-color: #2ECC71;
 
  //Button primary color scheme
  $button-primary-color: #fff;
  $button-primary-background-color: $accent-color;
+ $button-primary-background-hover: #27ae60;
 
  //Button secondary color scheme
- $button-secondary-color: #fff;
- $button-secondary-background-color: $background-tertiary;
+ $button-secondary-color: $background-primary;
+ $button-secondary-background-color: $background-secondary;
+ $button-secondary-background-hover: #74b2d5;
+ $button-secondary-color-hover: #fff;
 
  //Warning button color scheme
  $button-warning-color: #fff;
- $button-warning-background-color: red;
+ $button-warning-background-color: $background-warning;

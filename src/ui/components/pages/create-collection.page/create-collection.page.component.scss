@@ -1,12 +1,12 @@
 @use '../../../sass/color.vars' as *;
 
 .createCollectionPage {
+    background-color: $page-background;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
-    max-width: 400px;
     margin: auto;
     height: 100%;
     color: $color-primary;

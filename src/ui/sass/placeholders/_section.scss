@@ -1,0 +1,15 @@
+@use '../breakpoints' as *;
+@use '../mixins/mq.mixin' as mq;
+
+%section {
+    padding: 20px 40px;
+    box-sizing: border-box;
+    margin: 20px auto;
+    width: 100%;
+    @include mq.mq(desktop) {
+        max-width: #{$tablet}px;
+    }
+    @include mq.mq(mobile) {
+        padding: 20px 10px;
+    }
+}

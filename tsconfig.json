@@ -12,11 +12,14 @@
         "noUnusedParameters": true,
         "sourceMap": true,
         "resolveJsonModule": true,
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "typeRoots": ["./globals.d.ts", "./node_modules/@types"]
     },
+    "files": [
+        "./globals.d.ts"
+    ],
     "include": [
-        "./src/**/*.ts",
-        "./src/**/*.tsx"
+        "src/**/*",
     ],
     "exclude": [
         "node_modules",

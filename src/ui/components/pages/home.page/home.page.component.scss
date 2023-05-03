@@ -1,35 +1,33 @@
 @use '../../../sass/color.vars' as *;
 @use '../../../sass/mixins/mq.mixin' as mq;
+@use '../../../sass/placeholders/page-header';
+@use '../../../sass/placeholders/item-grid';
 
 .homePage {
-    height: fit-content;
     width: 100%;
-    padding: 20px 30px;
     box-sizing: border-box;
-    .homePageSection {
-        margin: 10px 0;
-    }
-    .control {
-        display: flex;
-        flex-direction: row;
-        width: 100%;
-        justify-content: space-between;
-        margin: auto;
-        >.welcomeBanner {
-            width: 50%;
-            display: flex;
-            align-items: center;
-            color: $color-primary;
-        }
-        >.controlButtons {
-            display: flex;
-            flex-direction: row;
-            width: 50%;
-            justify-content: flex-end;
-            gap: 10px;
-            align-items: center;
-            @include mq.mq(mobile-portrait) {
-                flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: $page-background;
+    .homeHeader {
+        @extend %page-header;
+        > .control {
+            @extend %page-header-inner;
+            >.welcomeBanner {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                color: $color-primary;
+            }
+            >.controlButtons {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                gap: 10px;
+                align-items: center;
+                @include mq.mq(mobile-portrait) {
+                    flex-direction: column;
+                }
             }
         }
     }
@@ -46,15 +44,6 @@
         }
     }
     >.collectionGrid {
-        max-width: 100%;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 30px;
-        justify-content: flex-start;
-        align-items: center;
-        @include mq.mq(mobile-portrait) {
-            justify-content: center;
-        }
+        @extend %item-grid;
     }
 }

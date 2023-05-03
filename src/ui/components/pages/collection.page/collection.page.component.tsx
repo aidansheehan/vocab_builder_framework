@@ -3,7 +3,7 @@ import useAppSelector                           from '../../../hooks/redux/use-a
 import { useLocation, useNavigate }             from 'react-router-dom'
 import ButtonComponent                          from '../../button/button.component'
 import styles                                   from './collection.page.component.scss'
-import CollectionPageCardDisplayComponent       from './components/collection.page.card-display/collection.page.card-display.component'
+import LexiCardComponent                        from '../../lexi-card/lexi-card.component'
 
 /**
  * Collection Page for view, edit & link to play games with a collection
@@ -57,47 +57,44 @@ const CollectionPageComponent = (): JSX.Element => {
                 <div className={styles.collectionDetails}>
 
                     <div className={styles.topPanel}>
-        
-                        <div className={styles.collectionInfo} >
 
-                            <div className={styles.collectionInfoDetails}>
+                        <div className={styles.topPanelControl} >
 
-                                        <div className={styles.title} >
-                                            <TextValueComponent value={collection.title} />
-                                        </div>
+                            <div className={styles.collectionInfo} >
+
+                                <div className={styles.collectionInfoDetails}>
+
+                                    <div className={styles.title} >
+                                        <TextValueComponent value={collection.title} />
+                                    </div>
+                
+                                    <div className={styles.description}>
+                                        <TextValueComponent value={collection.description} />
+                                    </div>
+
+                                </div>
+
+                                <div className={styles.collectionInfoButtons}>
+                                    <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
+                                    <ButtonComponent secondary icon='pen-to-square' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
+                                </div>
             
-                                        <div className={styles.description}>
-                                            <TextValueComponent value={collection.description} />
-                                        </div>
                             </div>
-
-                            <div className={styles.collectionInfoButtons}>
-                                        <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
-                                        <ButtonComponent secondary icon='pen-to-square' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
-                            </div>
-        
+                            
                         </div>
         
                     </div>
 
-                    {
-                        collection.cards.map(c_ => {
+                    <div className={styles.lexiGrid} >
+                        {
+                            collection.cards.map(c_ => {
 
-                            const { id } = c_   //Destructure card for ID
+                                const { id } = c_   //Destructure card for ID
 
-                            return (
-                                <div className={styles.collectionPageSection} key={id} >
-    
-                                    <CollectionPageCardDisplayComponent collectionId={collectionId} card={c_} editHandler={() => openCardEditor(id)} />
-
-                                </div>
-                            )
-                        })
-                    }
-
-                    {/* New Card Input */}
-                    <div className={styles.collectionPageSection} >
-                        <ButtonComponent onClick={() => openCardEditor()} textRef='collection-editor_new-word' style={styles.newCardBtn} />
+                                return <LexiCardComponent key={id} collectionId={collectionId} card={c_} editHandler={() => openCardEditor(id)} />
+                            })
+                        }
+                        <ButtonComponent onClick={() => openCardEditor()} icon='plus' textRef='collection-editor_new-word' style={styles.newCardBtn} primary />
                     </div>
         
                 </div>

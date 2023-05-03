@@ -1,0 +1,50 @@
+@use '../../../sass//mixins/hover.mixin' as hover;
+@use '../../../sass/mixins/mq.mixin' as mq;
+
+.sidebarButton {
+    height: 45px;
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    gap: 10px;
+    border-radius: 10px;
+    color: #5D6D7E;
+    margin-bottom: 10px;
+    font-family: 'Quicksand';
+    justify-content: center;
+    >.sidebarButtonIcon {
+        font-size: 20px;
+        color: #7D8EA3;
+        transition: all 0.3s ease;
+    }
+    >.sidebarButtonText {
+        display: none;
+        @include mq.mq(desktop) {
+            display: inline;
+        }
+    }
+    @include mq.mq(desktop) {
+        justify-content: start;
+    }
+    @include mq.mq(mobile-portrait) {
+        width: fit-content;
+        margin-bottom: 0;
+    }
+    @include hover.hover(hover) {
+        transition: all 0.3s ease;
+        &:hover {
+            color: #34495E;
+            background-color: #EAF2F8;
+            transform: scale(1.05);
+            > * {
+                color: #3B83BD;
+            }
+        }
+    }
+    &.active {
+        color: #3B83BD;
+        background-color: #D6EAF8;
+        font-weight: bold;
+        pointer-events: none;
+    }
+}

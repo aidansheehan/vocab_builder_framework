@@ -1,4 +1,4 @@
-import mountainPlaceholder from '../../../../assets/images/mountain-placeholder.png'
+import logo from '../../../../assets/images/logo.svg'
 
 /**
  * Constant mapping of image keys to images
@@ -9,7 +9,7 @@ import mountainPlaceholder from '../../../../assets/images/mountain-placeholder.
  * @constant
  */
 const IMAGES_CONSTANT = {
-    placeholder: mountainPlaceholder
+    logo: logo
 }
 
 export default IMAGES_CONSTANT

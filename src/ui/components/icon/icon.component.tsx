@@ -1,11 +1,15 @@
 import { FontAwesomeIcon, FontAwesomeIconProps }    from '@fortawesome/react-fontawesome'
+import classNames                                   from 'classnames'
 import styles                                       from './icon.component.scss'
 
 /** IconComponentProps */
 type IconComponentProps = {
 
     /** FontAwesome icon config */
-    icon:   { [key in keyof FontAwesomeIconProps]: any }
+    icon:   { [key in keyof FontAwesomeIconProps]: any },
+
+    /** Additional styles to be applied */
+    style?: string
 
 }
 
@@ -23,9 +27,12 @@ type IconComponentProps = {
  */
 const IconComponent = (props: IconComponentProps) => {
 
-    const { icon } = props  //Destructure props
+    const { icon, style } = props  //Destructure props
 
-    return <FontAwesomeIcon className={styles.icon} {...icon} />
+    //Component className
+    const className = classNames(styles.icon, style)
+
+    return <FontAwesomeIcon className={className} {...icon} />
 
 }
 

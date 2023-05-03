@@ -1,14 +1,18 @@
-import { useContext }           from 'react'
-import LocaleContext            from '../../context/locale.context'
-import SUPPORTED_LANGUAGES      from '../../../i18n/constants/supported-languages.constant'
-import classNames               from 'classnames'
-import styles                   from './locale-selector.component.scss'
+import { useContext, useEffect, useRef, useState }      from 'react'
+import LocaleContext                                    from '../../context/locale.context'
+import SUPPORTED_LANGUAGES                              from '../../../i18n/constants/supported-languages.constant'
+import classNames                                       from 'classnames'
+import styles                                           from './locale-selector.component.scss'
+import TextComponent                                    from '../text/text.component'
 
 /** LocaleSelectorComponentProps type */
 type LocaleSelectorProps = {
 
     /** Additional styles to be applied */
     style?: string
+
+    /** Whether to render the options as a dropdown list */
+    dropdown?: boolean
 
 }
 
@@ -24,10 +28,26 @@ type LocaleSelectorProps = {
  */
 const LocaleSelectorComponent = (props: LocaleSelectorProps): JSX.Element => {
 
-    //Get current locale and function to switch locale
-    const { locale, setLocale } = useContext(LocaleContext)
+    const { locale, setLocale }     = useContext(LocaleContext)     //Get current locale and function to switch locale
+    const { style, dropdown }       = props                         //Destructure props
+    const [ isOpen, setIsOpen ]     = useState<boolean>(dropdown ? false : true)      //Whether menu open
+    const timeoutRef                = useRef<number>()              //Timeout reference             
 
-    const { style } = props //Destructure props
+    //Handle mouse enter
+    const handleMouseEnter = () => {
+        setIsOpen(true)
+    }
+
+    //Handle mouse leave
+    const handleMouseLeave = () => {
+        timeoutRef.current = window.setTimeout(() => {
+            setIsOpen(false)
+        }, 100)
+    }
+
+    const handleOptionMouseEnter = () => {
+        clearTimeout(timeoutRef.current)
+    }
 
     //Handle user select new locale
     const localeChangeHandler = ((e_: React.ChangeEvent<HTMLSelectElement>) => {
@@ -36,22 +56,42 @@ const LocaleSelectorComponent = (props: LocaleSelectorProps): JSX.Element => {
         setLocale(value)            //update locale with new selected value
     })
 
+    //Close the timer when the component unmounts
+    useEffect(() => {
+        return () => {
+            clearTimeout(timeoutRef.current)
+        }
+    }, [])
+
     const className = classNames(styles.localeSelector, style)
 
     return (
+ 
+                <div className={className} onMouseEnter={dropdown ? handleMouseEnter : () => {}} onMouseLeave={dropdown ? handleMouseLeave : () => {}}>
 
-        <select className={className} value={locale} name='locale' onChange={localeChangeHandler} >
-            {
-                SUPPORTED_LANGUAGES.map((l_, i_) => (
-                    <option key={i_} value={l_.code}>
-                        {l_.name}
-                    </option>
-                ))
-            }
+                    <TextComponent textRef='locale-selector-tag' style={styles.localeSelectorTag} />:
 
-        </select>
+                    <select className={classNames(styles.localeSelectorSelect, {[styles.hidden]: !dropdown})} value={locale} name='locale' onChange={localeChangeHandler}>
+                        {
+                            SUPPORTED_LANGUAGES.map((l_, i_) => (
+                                <option key={i_} value={l_.code}>{l_.name}</option>
+                            ))
+                        }
+                    </select>
+                    <ul className={classNames(styles.localeSelectOptions, {[styles.open]: isOpen, [styles.dropdown]: dropdown, [styles.list]: !dropdown})} onMouseEnter={handleOptionMouseEnter} >
+                            {
+                                SUPPORTED_LANGUAGES.map((l_, i_) => (
+                                    <li key={i_} onClick={() => setLocale(l_.code)} className={classNames(styles.localeSelectOption, {[styles.selected]: l_.code === locale })}>
+                                        {dropdown ? l_.flag : null}
+                                        {l_.name}
+                                    </li>
+                                ))
+                            }
+                        </ul>
+                </div>
 
     )
+
 }
 
 export default LocaleSelectorComponent

@@ -1,4 +1,9 @@
 .logo {
-    font-family: cursive;
-    font-size: 22px;
+    font-family: 'Indie Flower';
+    font-size: 35px;
+    color: #fff;
+    cursor: default;
+    &.isLink {
+        cursor: pointer;
+    }
 }

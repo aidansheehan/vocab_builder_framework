@@ -70,16 +70,18 @@ const PreloaderComponent = () => {
     }, [userInfo])
 
     return (
-        <div className={styles.preloader}>
+        <>
             {
-                (!userInfo && userLoaded) || (userInfo && collectionsLoaded)
+                !userInfo && userLoaded || userInfo && collectionsLoaded
                 ?
                 <App />
                 :
-                // TODO: replace with loader (spinner) component VBF-58
-                <div>Loading...</div>
+                // TODO: replace with loader (spinner) component
+                <div className={styles.preloader} >
+                    <div>Loading...</div>
+                </div>
             }
-        </div>
+        </>
     )
 }
 

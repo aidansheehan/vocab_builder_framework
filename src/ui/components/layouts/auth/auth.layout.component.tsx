@@ -1,6 +1,4 @@
 import { Outlet }       from 'react-router-dom'
-import ImageComponent   from '../../image/image.component'
-import SidebarComponent from '../../sidebar/sidebar.component'
 import styles           from './auth.layout.component.scss'
 
 /**
@@ -18,15 +16,7 @@ const AuthLayoutComponent = () => {
     return (
         <div className={styles.authPage}>
 
-            <SidebarComponent style={styles.authSidebar}>
-                <ImageComponent id='placeholder' style={styles.authImage}/>
-            </SidebarComponent>
-
-            <div className={styles.authContent}>
-
                 <Outlet />
-
-            </div>
 
         </div>
     )

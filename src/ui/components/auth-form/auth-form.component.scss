@@ -4,10 +4,12 @@
 .authForm {
     height: 100%;
     width: 100%;
-    max-width: 400px;
-    color: $color-primary;
+    max-width: 600px;
+    width: 100%;
+    padding: 2rem;
     display: flex;
     flex-direction: column;
+    box-sizing: border-box;
     justify-content: center;
     align-items: center;
     > .authSection {
@@ -16,11 +18,12 @@
         align-items: center;
         height: 40px;
         width: 100%;
-        padding: 0 25%;
+        max-width: 400px;
         box-sizing: border-box;
         text-align: center;
         > input {
             width: 100%;
+            margin: 2rem 0;
         }
         &.authHeader {
             height: 50px;

@@ -10,7 +10,10 @@ type TextComponentPropsType = {
     values?: (string | number)[],
 
     /** Additional styles to be applied */
-    style?: string
+    style?: string,
+
+    /** Whether to use h2 */
+    title?: boolean
 
 }
 
@@ -27,7 +30,7 @@ type TextComponentPropsType = {
  */
 const TextComponent = (props: TextComponentPropsType) => {
 
-    const { textRef, values, style } = props   //Destructure props
+    const { textRef, values, style, title } = props   //Destructure props
 
     const intl = useIntl()
 
@@ -48,9 +51,19 @@ const TextComponent = (props: TextComponentPropsType) => {
     }
 
     return (
-        <span className={style}>
-            {message}
-        </span>
+        <>
+        {
+            title
+            ?
+            <h2 className={style}>
+                {message}
+            </h2>
+            :
+            <span className={style} >
+                {message}
+            </span>
+        }
+        </>
     )
 
 }

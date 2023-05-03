@@ -1,0 +1,38 @@
+@use '../../../../../sass/color.vars' as *;
+@use '../../../../../sass/mixins/mq.mixin' as mq;
+@use '../../../../../sass/placeholders/section';
+
+.landingPageFooter {
+    background-color: $background-primary;
+    color: #fff;
+    > .landingPageCta {
+        @extend %section;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        padding-top: 60px;
+        padding-bottom: 60px;
+        > .landingPageCtaText {
+            display: inline-block;
+            margin-right: 48px;
+        }
+        @include mq.mq(mobile-portrait) {
+            flex-direction: column;
+            text-align: center;
+            line-height: 1.2;
+            > .landingPageCtaText {
+                margin: 10px 0;
+            }
+            > .landingPageCtaBtn {
+                width: 60%;
+                padding: 10px;
+            }
+        }
+    }
+    > .footerLocaleSelector {
+        @extend %section;
+        margin-bottom: 0;
+        font-size: 12px;
+    }
+}

@@ -1,5 +1,6 @@
 import LandingPageCtaComponent          from './components/landing.page.cta.component/landing.page.cta.component'
-import LandingPageDetailsComponent      from './components/landing.page.details.component/landing.page.details.component'
+import LandingPageFeaturesComponent     from './components/landing.page.features.component/landing.page.features.component'
+import LandingPageFooterComponent       from './components/landing.page.footer.component/landing.page.footer.component'
 import styles                           from './landing.page.component.scss'
 
 /**
@@ -19,7 +20,9 @@ const LandingPageComponent = () => {
 
             <LandingPageCtaComponent />
 
-            <LandingPageDetailsComponent />
+            <LandingPageFeaturesComponent />
+
+            <LandingPageFooterComponent />
             
         </div>
     )

@@ -44,25 +44,22 @@ const CollectionCardComponent = (props: CollectionCardComponentProps): JSX.Eleme
     }
 
     return (
-        <div className={styles.collectionCard} >
+        <div className={styles.collection} >
 
-            <div className={styles.collectionCardTop}>
+            <TextValueComponent value={title} style={styles.collectionTitle} />
 
-                <ButtonComponent style={styles.collectionCardViewBtn} onClick={handleViewClick} icon='pen-to-square' />
+            <TextValueComponent value={description} style={styles.collectionDescription} />
 
-                <div className={styles.collectionCardDetails} >
-                    <TextValueComponent value={title} style={styles.collectionCardTitle} />
-                    <TextValueComponent value={description} style={styles.collectionCardDescription} />
-                </div>
+            <div className={styles.collectionActions} >
 
-            </div>
+                <ButtonComponent secondary style={styles.editBtn} onClick={handleViewClick} textRef='collection_edit_link' icon='pen-to-square' />
+                <ButtonComponent primary style={styles.playBtn} onClick={handlePlayClick} textRef='collection_play_link' icon='play' />
 
-            <div className={styles.collectionCardBottom} >
-                <ButtonComponent onClick={handlePlayClick} textRef='collection_play_link' icon='play' primary />
             </div>
 
         </div>
     )
+
 }
 
 export default CollectionCardComponent

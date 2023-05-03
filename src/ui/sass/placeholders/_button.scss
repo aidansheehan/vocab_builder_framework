@@ -1,32 +1,49 @@
 @use '../color.vars' as *;
+@use '../mixins/hover.mixin' as hover;
 
 %button-primary {
     @extend %button;
     color: $button-primary-color;
     background-color: $button-primary-background-color;
-    border-radius: 20px;
-    padding: 5px 10px;
+    @include hover.hover(hover) {
+        &:hover {
+            background-color: $button-primary-background-hover;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+    }
 }
 
 %button-secondary {
     @extend %button;
     color: $button-secondary-color;
-    background-color: $button-secondary-background-color;
-    border-radius: 20px;
-    padding: 5px 10px;
+    background-color: transparent;
+    border: 1px solid #7fb2d5;
+    color: #34495e;
+    @include hover.hover(hover) {
+        &:hover {
+            background-color: $button-secondary-background-hover;
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            color: $button-secondary-color-hover;
+        }
+    }
 }
 
 %button-warning {
     @extend %button;
     color: $button-warning-color;
-    background-color: $button-warning-background-color;
-    border-radius: 20px;
+    background-color: $button-warning-background-color !important;
+    border-radius: 10px;
     padding: 5px 10px;
 }
 
 %button {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
+    padding: 0.75rem 1rem;
+    font-family: 'Quicksand';
+    font-weight: bold;
+    border-radius: 4px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    cursor: pointer;
 }

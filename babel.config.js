@@ -1,4 +1,4 @@
-const plugins = ["@babel/plugin-transform-runtime"]
+const plugins = ["@babel/plugin-transform-runtime", "react-refresh/babel"]
 
 module.exports = {
     presets: [
