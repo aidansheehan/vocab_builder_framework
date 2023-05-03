@@ -17,7 +17,7 @@ module.exports = merge(common, {
     module: {
         rules: [
             {
-                test: /\.component\.s(a|c)ss$/,
+                test: /\.(component|page|layout)\.s(a|c)ss$/,
                 use: [
                     'style-loader',
                     {
@@ -37,7 +37,7 @@ module.exports = merge(common, {
             },
             {
                 test: /\.s(a|c)ss$/,
-                exclude: /\.component.(s(a|c)ss)$/,
+                exclude: /\.(component|page|layout)\.s(a|c)ss$/,
                 use: [
                     'style-loader',
                     'css-loader',

@@ -2,17 +2,17 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 //Components
 import PreloaderComponent               from '../preloader/preloader.component'
-import CollectionPageComponent          from '../pages/collection.page/collection.page.component'
-import CreateCollectionPageComponent    from '../pages/create-collection.page/create-collection.page.component'
-import ErrorPageComponent               from '../pages/error.page/error.page.component'
-import HomePageComponent                from '../pages/home.page/home.page.component'
-import LandingPageComponent             from '../pages/landing.page/landing.page.component'
-import HelpPageComponent                from '../pages/help.page/help-page.component'
-import FAQPageComponent                 from '../pages/faq.page/faq-page.component'
-import ContactPageComponent             from '../pages/contact.page/contact.page.component'
-import GamePageComponent                from '../pages/game.page/game.page.component'
+import CollectionPage          from '../../pages/collection.page/collection.page'
+import CreateCollectionPage    from '../../pages/create-collection.page/create-collection.page'
+import ErrorPage               from '../../pages/error.page/error.page'
+import HomePage                from '../../pages/home.page/home.page'
+import LandingPage             from '../../pages/landing.page/landing.page.component'
+import HelpPage                from '../../pages/help.page/help-page'
+import FAQPage                 from '../../pages/faq.page/faq-page.component'
+import ContactPage             from '../../pages/contact.page/contact.page.component'
+import GamePage                from '../../pages/game.page/game.page'
 import ModalComponent                   from '../modal/modal.component'
-import CardPageComponent                from '../pages/card.page/card.page.component'
+import CardPage                from '../../pages/card.page/card.page'
 //Layouts
 import AuthLayoutComponent      from '../layouts/auth/auth.layout.component'
 //Containers
@@ -38,13 +38,13 @@ const RootComponent = (): JSX.Element => {
 
                     <Route path='/' element={<PreloaderComponent />}>
 
-                        <Route index element={<LandingPageComponent />} />
+                        <Route index element={<LandingPage />} />
 
-                        <Route path='new' element={<CreateCollectionPageComponent />} />
+                        <Route path='new' element={<CreateCollectionPage />} />
 
-                        <Route path='faq' element={<FAQPageComponent />} />
+                        <Route path='faq' element={<FAQPage />} />
 
-                        <Route path='contact' element={<ContactPageComponent />} />
+                        <Route path='contact' element={<ContactPage />} />
 
                         <Route path='auth' element={<AuthLayoutComponent />}>
 
@@ -55,19 +55,19 @@ const RootComponent = (): JSX.Element => {
 
                         <Route path='user' >
                             
-                            <Route index element={<HomePageComponent />} />
-                            <Route path='help' element={<HelpPageComponent />} />
+                            <Route index element={<HomePage />} />
+                            <Route path='help' element={<HelpPage />} />
                             
                             <Route path='collection'>
-                                <Route index element={<CollectionPageComponent />} />
-                                <Route path='play' element={<GamePageComponent />} />
-                                <Route path='card' element={<CardPageComponent />} />
-                                <Route path='info' element={<CreateCollectionPageComponent />} />
+                                <Route index element={<CollectionPage />} />
+                                <Route path='play' element={<GamePage />} />
+                                <Route path='card' element={<CardPage />} />
+                                <Route path='info' element={<CreateCollectionPage />} />
                             </Route>
 
                         </Route>
 
-                        <Route path='*' element={<ErrorPageComponent />} />
+                        <Route path='*' element={<ErrorPage />} />
 
                     </Route>
 
@@ -82,10 +82,10 @@ const RootComponent = (): JSX.Element => {
                         </Route>
 
                         <Route path='user' element={<ModalComponent />} >
-                            <Route path='help' element={<HelpPageComponent />} />
+                            <Route path='help' element={<HelpPage />} />
                             <Route path='collection'>
-                                <Route path='info' element={<CreateCollectionPageComponent />} />
-                                <Route path='card' element={<CardPageComponent isModal={true} />} />
+                                <Route path='info' element={<CreateCollectionPage />} />
+                                <Route path='card' element={<CardPage isModal={true} />} />
                             </Route>
                             {/* TODO add help, edit collection, create/edit card :) */}
                         </Route>
