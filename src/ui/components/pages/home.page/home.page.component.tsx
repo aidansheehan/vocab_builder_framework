@@ -19,7 +19,6 @@ import styles                   from './home.page.component.scss'
  */
 const HomePageComponent = (): JSX.Element => {
 
-    // const { userInfo }      = useAppSelector((state) => state.user)         //Get user info
     const { collections }   = useAppSelector(state => state.collections)    //Get user's collections
 
     const navigate = useNavigate()

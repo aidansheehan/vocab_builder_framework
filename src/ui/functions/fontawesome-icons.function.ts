@@ -29,7 +29,6 @@ export default function FontAwesomeIcons(): void {
     //Expose core icons across framework
     library.add(
         faHouse,
-        // faFileCirclePlus,
         faPlus,
         faRightFromBracket,
         faRightToBracket,

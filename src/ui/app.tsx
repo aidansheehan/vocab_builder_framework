@@ -4,11 +4,11 @@ import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
-//Components
-//Stylesheets TODO would be better if global module
-import './global.scss'
+//Layouts
 import SidebarLayoutComponent from './components/layouts/sidebar.layout.component/sidebar.layout.component'
 import HeaderLayoutComponent from './components/layouts/header.layout.component/header.layout.component'
+//Stylesheets TODO would be better if global module
+import './global.scss'
 
 /**
  * Main app component
