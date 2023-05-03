@@ -52,8 +52,8 @@ const CollectionCardComponent = (props: CollectionCardComponentProps): JSX.Eleme
 
             <div className={styles.collectionActions} >
 
-                <ButtonComponent style={styles.playBtn} onClick={handlePlayClick} textRef='collection_play_link' icon='play' />
-                <ButtonComponent style={styles.editBtn} onClick={handleViewClick} textRef='collection_edit_link' icon='pen-to-square' />
+                <ButtonComponent secondary style={styles.editBtn} onClick={handleViewClick} textRef='collection_edit_link' icon='pen-to-square' />
+                <ButtonComponent primary style={styles.playBtn} onClick={handlePlayClick} textRef='collection_play_link' icon='play' />
 
             </div>
 
