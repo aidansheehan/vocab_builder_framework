@@ -5,9 +5,9 @@ import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
 //Layouts
-import SidebarLayout from './layouts/sidebar/sidebar.layout'
-import HeaderLayout from './layouts/header/header.layout'
-//Stylesheets TODO would be better if global module
+import SidebarLayout    from './layouts/sidebar/sidebar.layout'
+import HeaderLayout     from './layouts/header/header.layout'
+//Stylesheets
 import './global.scss'
 
 /**

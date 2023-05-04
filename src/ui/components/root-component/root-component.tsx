@@ -2,6 +2,8 @@
 import { Route, Routes, useLocation } from 'react-router-dom'
 //Components
 import PreloaderComponent               from '../preloader/preloader.component'
+import ModalComponent                   from '../modal/modal.component'
+//Pages
 import CollectionPage          from '../../pages/collection.page/collection.page'
 import CreateCollectionPage    from '../../pages/create-collection.page/create-collection.page'
 import ErrorPage               from '../../pages/error.page/error.page'
@@ -11,7 +13,6 @@ import HelpPage                from '../../pages/help.page/help-page'
 import FAQPage                 from '../../pages/faq.page/faq-page'
 import ContactPage             from '../../pages/contact.page/contact.page.component'
 import GamePage                from '../../pages/game.page/game.page'
-import ModalComponent                   from '../modal/modal.component'
 import CardPage                from '../../pages/card.page/card.page'
 //Layouts
 import AuthLayout      from '../../layouts/auth/auth.layout'
