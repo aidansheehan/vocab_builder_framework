@@ -1,0 +1,27 @@
+@use '../../sass/color.vars' as *;
+@use '../../sass/mixins/mq.mixin' as mq;
+
+.authPage {
+    height: calc(100vh - 100px);
+    background-color: $page-background;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    box-sizing: border-box;
+    @include mq.mq(desktop) {
+        background-color: #fff;
+        > * {
+            background-color: $page-background;
+            border-radius: 6px;
+        }
+    }
+    @include mq.mq(tablet) {
+        background-color: #fff;
+        > * {
+            background-color: $page-background;
+            border-radius: 6px;
+        }
+    }
+}

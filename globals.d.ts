@@ -1,4 +1,6 @@
 declare module '*.component.scss';
+declare module '*.page.scss';
+declare module '*.layout.scss';
 declare module '*.jpg';
 declare module '*.png';
 declare module '*.jpeg';

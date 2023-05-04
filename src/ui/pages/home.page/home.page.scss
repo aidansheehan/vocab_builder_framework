@@ -1,0 +1,49 @@
+@use '../../sass/color.vars' as *;
+@use '../../sass/mixins/mq.mixin' as mq;
+@use '../../sass/placeholders/page-header';
+@use '../../sass/placeholders/item-grid';
+
+.homePage {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-y: scroll;
+    background-color: $page-background;
+    .homeHeader {
+        @extend %page-header;
+        > .control {
+            @extend %page-header-inner;
+            >.welcomeBanner {
+                width: 50%;
+                display: flex;
+                align-items: center;
+                color: $color-primary;
+            }
+            >.controlButtons {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-end;
+                gap: 10px;
+                align-items: center;
+                @include mq.mq(mobile-portrait) {
+                    flex-direction: column;
+                }
+            }
+        }
+    }
+    >.searchContainer {
+        width: 100%;
+        display: flex;
+        >.searchInput {
+            display: inline-block;
+            width: 50%;
+            min-width: 200px;
+            @include mq.mq(mobile-portrait) {
+                margin: auto;
+            }
+        }
+    }
+    >.collectionGrid {
+        @extend %item-grid;
+    }
+}
