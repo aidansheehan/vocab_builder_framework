@@ -1,4 +1,6 @@
-import MultipleChoiceContainer from '../../games/multiple-choice/multiple-choice.container'
+import { useEffect}                 from 'react'
+import MultipleChoiceContainer      from '../../games/multiple-choice/multiple-choice.container'
+import useGoToQuestion              from './hooks/go-to-question.hook'
 
 /**
  * Game page
@@ -11,9 +13,17 @@ import MultipleChoiceContainer from '../../games/multiple-choice/multiple-choice
  */
 const GamePage = (): JSX.Element => {
 
-    return (
-        <MultipleChoiceContainer />
-    )
+    //Custom hook to navigate to next question
+    const goToQuestion = useGoToQuestion()
+    
+    //Navigate to first question on component mount
+    useEffect(() => {
+        goToQuestion(1)
+    }, [])
+
+     return (
+         <MultipleChoiceContainer />
+     )
 }
 
 export default GamePage
