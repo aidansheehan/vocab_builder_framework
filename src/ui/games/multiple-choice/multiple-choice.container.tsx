@@ -1,7 +1,9 @@
-import { useEffect/*, useState*/ } from "react"
-import useAppSelector from "../../hooks/redux/use-app-selector.hook"
-import generateQuestions from "./functions/multiple-choice.generate-questions.function"
-// import { MultipleChoiceQuestionType } from "./types/multiple-choice.question.type"
+import { useEffect, useState }                          from 'react'
+import { Outlet }                                       from 'react-router-dom'
+import useAppSelector                                   from '../../hooks/redux/use-app-selector.hook'
+import QuestionsContext                                 from './context/questions.context'
+import generateQuestions                                from './functions/multiple-choice.generate-questions.function'
+import { MultipleChoiceQuestionType }                   from './types/multiple-choice.question.type'
 
 /**
  * Container for multiple choice game
@@ -15,9 +17,8 @@ import generateQuestions from "./functions/multiple-choice.generate-questions.fu
  */
 const MultipleChoiceContainer = (): JSX.Element => {
 
-    //Questions state
-    //@ts-ignore
-    // const [ questions, setQuestions ] = useState<MultipleChoiceQuestionType[]>([])
+    // Questions state
+    const [ questions, setQuestions ] = useState<MultipleChoiceQuestionType[]>([])
 
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId
@@ -28,9 +29,7 @@ const MultipleChoiceContainer = (): JSX.Element => {
     useEffect(() => {
 
         //Generate questions
-        const generatedQuestions = generateQuestions(collection)
-
-        console.log('generated questions: ', generatedQuestions)
+        setQuestions(generateQuestions(collection))
 
     }, [ collectionId ])
 
@@ -38,8 +37,9 @@ const MultipleChoiceContainer = (): JSX.Element => {
 
 
     return (
-        <div>
-        </div>
+        <QuestionsContext.Provider value={{questions, setQuestions}}>
+            <Outlet />
+        </QuestionsContext.Provider>
     )
 
 }
