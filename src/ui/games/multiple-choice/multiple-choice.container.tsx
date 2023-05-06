@@ -26,6 +26,7 @@ const MultipleChoiceContainer = (): JSX.Element => {
     //Get this collection
     const collection = useAppSelector(state => state.collections.collections[collectionId])
 
+    //Monitor for changes to collectionId and update questions TODO VBF-91 will need a flag to regenerate if user selects 'play again' 
     useEffect(() => {
 
         //Generate questions

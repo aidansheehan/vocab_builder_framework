@@ -6,6 +6,11 @@ import { MultipleChoiceAnswerType, MultipleChoiceQuestionType }     from '../typ
 
 /**
  * Function to generate questions for multiple choice quiz from collection data
+ * @author Aidan Sheehan <aidanmsheehan@gmail.com>
+ * @version 0.1.0
+ * @param {CollectionType} collection The collection to generate questions for
+ * @param {number} numberOfAnswers Number of answers (multiple choice 'choices') to generate for each question
+ * @returns {MultipleChoiceQuestionType[]}
  */
 const generateQuestions = (collection: CollectionType, numberOfAnswers: number = 3): MultipleChoiceQuestionType[] => {
 
