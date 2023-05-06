@@ -19,6 +19,8 @@ import AuthLayout      from '../../layouts/auth/auth.layout'
 //Containers
 import LoginFormContainer       from '../auth-form/containers/login-form/login-form.container'
 import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
+import GameQuestionContainer    from '../../pages/game.page/containers/game-question.container'
+import GameFinishPage           from '../../pages/game-finish.page/game-finish.page'
 
 /**
  * Route container element for application to render
@@ -61,7 +63,10 @@ const RootComponent = (): JSX.Element => {
                             
                             <Route path='collection'>
                                 <Route index element={<CollectionPage />} />
-                                <Route path='play' element={<GamePage />} />
+                                <Route path='play' element={<GamePage />} >
+                                    <Route path='question/:questionNumber' element={<GameQuestionContainer />} />
+                                    <Route path='finish' element={<GameFinishPage />} />
+                                </Route>
                                 <Route path='card' element={<CardPage />} />
                                 <Route path='info' element={<CreateCollectionPage />} />
                             </Route>
