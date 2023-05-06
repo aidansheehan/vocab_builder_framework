@@ -30,8 +30,8 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
 
     return (
         <div>
-            I'm a multiple choice quesiton :D
-            <button onClick={questionAnsweredHandler} >Click Me!</button>
+            {/* TODO remove */}
+            <button onClick={questionAnsweredHandler} >Next Question</button>
         </div>
     )
 }
