@@ -1,3 +1,5 @@
+import MultipleChoiceContainer from '../../games/multiple-choice/multiple-choice.container'
+
 /**
  * Game page
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
@@ -10,9 +12,7 @@
 const GamePage = (): JSX.Element => {
 
     return (
-        <div>
-            I am the Game Page.
-        </div>
+        <MultipleChoiceContainer />
     )
 }
 
