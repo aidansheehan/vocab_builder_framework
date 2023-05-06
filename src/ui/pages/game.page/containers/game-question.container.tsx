@@ -48,7 +48,7 @@ const GameQuestionContainer = (): JSX.Element => {
     }
     
     
-    return <MultipleChoiceQuestionComponent nextQuestion={nextQuestion} />
+    return <MultipleChoiceQuestionComponent questionNumber={parseInt(questionNumber)} nextQuestion={nextQuestion} />
 
 }
 
