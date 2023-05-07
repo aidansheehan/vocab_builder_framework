@@ -21,7 +21,7 @@
     padding: 2rem;
     justify-content: space-around;
     >.promptAnsweredCorrectly {
-        animation: pulse #{calc($second-animation-length / 2)}ms ease-in-out;
+        animation: pulse #{$second-animation-length}ms ease-in-out;
     }
     >.answersContainer {
         display: flex;

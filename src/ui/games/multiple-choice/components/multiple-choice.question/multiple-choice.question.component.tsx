@@ -106,7 +106,7 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
                                     //Navigate to next question after time
                                     timeoutRef.current = window.setTimeout(() => {
                                         questionAnsweredHandler()
-                                    }, +SECOND_ANIMATION_LENGTH / 2)
+                                    }, +SECOND_ANIMATION_LENGTH)
                                 }
 
                                 //If loss
