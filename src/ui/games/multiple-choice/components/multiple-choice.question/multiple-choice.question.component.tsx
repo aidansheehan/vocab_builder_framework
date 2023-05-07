@@ -74,6 +74,9 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     //Prompt className
     const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly })
 
+    //Answers container className
+    const answersContainerClassName = classNames(styles.answersContainer, { [styles.answeredCorrectly]: answeredCorrectly })
+
     return (
 
             <div className={styles.question}>
@@ -81,7 +84,7 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
                 {/* The prompt */}
                 <GameCardComponent value={question.prompt} style={promptClassName} />
 
-                <div className={styles.answersContainer} >
+                <div className={answersContainerClassName} >
                     {
                         answerState.map((a_, i_) => {
 

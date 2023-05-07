@@ -28,5 +28,8 @@
         flex-wrap: wrap;
         justify-content: center;
         gap: 1rem;
+        &.answeredCorrectly {
+            pointer-events: none;
+        }
     }
 }
