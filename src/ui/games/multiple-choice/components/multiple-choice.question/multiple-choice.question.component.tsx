@@ -120,7 +120,7 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
                                 }
                             }
 
-                            return <MultipleChoiceAnswerComponent clickHandler={handleClick} answer={a_} key={i_} />
+                            return <MultipleChoiceAnswerComponent clickHandler={handleClick} answer={a_} key={i_} roundFinished={answeredCorrectly} />
 
                         })
                     }
