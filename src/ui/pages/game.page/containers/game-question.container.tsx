@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState }              from 'react'
 import { useNavigate, useParams, useSearchParams }      from 'react-router-dom'
 import MultipleChoiceQuestionComponent                  from '../../../games/multiple-choice/components/multiple-choice.question/multiple-choice.question.component'
-import QuestionsContext                                 from '../../../games/multiple-choice/context/questions.context'
+import QuestionsContext                                 from '../../../games/context/questions.context'
 import useGoToQuestion                                  from '../hooks/go-to-question.hook'
 
 /**

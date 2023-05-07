@@ -1,7 +1,7 @@
 import { useEffect, useState }                          from 'react'
 import { Outlet }                                       from 'react-router-dom'
 import useAppSelector                                   from '../../hooks/redux/use-app-selector.hook'
-import QuestionsContext                                 from './context/questions.context'
+import QuestionsContext                                 from '../context/questions.context'
 import generateQuestions                                from './functions/multiple-choice.generate-questions.function'
 import { MultipleChoiceQuestionType }                   from './types/multiple-choice.question.type'
 
