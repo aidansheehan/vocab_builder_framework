@@ -22,3 +22,14 @@ export type MultipleChoiceAnswerType = {
     id: string
 
 }
+
+/** Answer 'state' type for managing answer components */
+export type MultipleChoiceAnswerStateType = {
+
+    /** Lexi */
+    lexi: string,
+
+    /** State */
+    currentState: 'unclicked' | 'correct' | 'incorrect'
+    
+}
