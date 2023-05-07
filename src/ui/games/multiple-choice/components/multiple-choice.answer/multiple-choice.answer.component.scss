@@ -31,8 +31,8 @@
         &::after {
             content: '✓';
             position: absolute;
-            top: 5px;
-            right: 5px;
+            top: 15px;
+            right: -5px;
             transform: translate(-50%, -50%);
             font-size: 2rem;
             color: #2E8B57;
