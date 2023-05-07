@@ -1,10 +1,11 @@
+import { useContext, useEffect, useState }              from 'react'
 import { useNavigate, useParams, useSearchParams }      from 'react-router-dom'
-import MultipleChoiceQuestionPreloaderComponent from '../../../games/multiple-choice/components/multiple-choice.question.preloader/multiple-choice.question.preloader.component'
-// import MultipleChoiceQuestionComponent                  from '../../../games/multiple-choice/components/multiple-choice.question/multiple-choice.question.component'
+import MultipleChoiceQuestionComponent                  from '../../../games/multiple-choice/components/multiple-choice.question/multiple-choice.question.component'
+import QuestionsContext                                 from '../../../games/multiple-choice/context/questions.context'
 import useGoToQuestion                                  from '../hooks/go-to-question.hook'
 
 /**
- * Container for a game question element
+ * Container for a game question element, handles data fetching for game question
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  * @component
@@ -15,8 +16,10 @@ import useGoToQuestion                                  from '../hooks/go-to-que
  */
 const GameQuestionContainer = (): JSX.Element => {
 
-    const { questionNumber }    = useParams()           //Current questionNumber
-    const [ searchParams ]      = useSearchParams()     //Search params
+    const [ loaded, setLoaded ] = useState<boolean>(false)      //Loaded state
+    const { questionNumber }    = useParams()                   //Current questionNumber
+    const [ searchParams ]      = useSearchParams()             //Search params
+    const { questions }         = useContext(QuestionsContext)  //Destructure questions context
 
     /**
      * TODO
@@ -45,12 +48,49 @@ const GameQuestionContainer = (): JSX.Element => {
 
         }
 
-
     }
-    
-    
-    // return <MultipleChoiceQuestionComponent questionNumber={parseInt(questionNumber)} nextQuestion={nextQuestion} />
-    return <MultipleChoiceQuestionPreloaderComponent questionNumber={parseInt(questionNumber)} nextQuestion={nextQuestion} />
+
+    //componentDidMount
+    useEffect(() => {
+
+        const question = questions[parseInt(questionNumber) - 1]  //Destructure questions context
+
+        //If questions exists
+        if (question) {
+
+            const { answers } = question    //Destructure question
+
+            //If answers exist
+            if (answers && answers.length) {
+
+                //Set loaded flag true
+                setLoaded(true)
+
+                //Return to allow game play
+                return
+
+            }
+        }
+
+        //Game start path
+        const gameStartPath = `/user/collection/play${searchParams ? '?' + searchParams.toString() : ''}`
+
+        //Navigate to game start
+        navigate(gameStartPath)
+
+    })
+
+    return (
+        <>
+            {
+                loaded
+                ?
+                <MultipleChoiceQuestionComponent nextQuestion={nextQuestion} questionNumber={parseInt(questionNumber)} />
+                :
+                <></>
+            }
+        </>
+    )
 
 }
 
