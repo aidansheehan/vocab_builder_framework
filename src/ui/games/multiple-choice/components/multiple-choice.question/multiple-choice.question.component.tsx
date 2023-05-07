@@ -43,21 +43,13 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     const question      = questions[questionNumber - 1]     //Get this question
     const { answers }   = question                          //Destructure question
 
-    const [ answerState, setAnswerState ]               = useState<AnswerStateType[]>(answers.map(a_ => ({lexi: a_.lexi, currentState: 'unclicked'})))  //Init answers state
-    const [ answeredCorrectly, setAnsweredCorrectly ]   = useState<boolean>(false)                                                                      //Answered correctly state
-    const timeoutRef                                    = useRef<number>()                                                                              //Timeout reference
+    const [ answerState, setAnswerState ]                   = useState<AnswerStateType[]>(answers.map(a_ => ({lexi: a_.lexi, currentState: 'unclicked'})))  //Init answers state
+    const [ answeredCorrectly, setAnsweredCorrectly ]       = useState<boolean>(false)                                                                      //Answered correctly state
+    const [ answeredIncorrectly, setAnsweredIncorrectly ]   = useState<boolean>(false)                                                                      //Answered incorrectly state
+    const timeoutRef                                        = useRef<number>()                                                                              //Timeout reference
 
     //Destructure styles for animation time constants
     const { SECOND_ANIMATION_LENGTH } = styles
-
-    //Monitor for changes to question number
-    useEffect(() => {
-
-        //Reset answer states
-        setAnswerState(answers.map(a_ => ({ lexi: a_.lexi, currentState: 'unclicked' })))
-        setAnsweredCorrectly(false)
-
-    }, [ questionNumber ])
 
     //Function to handle question answered
     const questionAnsweredHandler = () => {
@@ -72,10 +64,19 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     }
 
     //Prompt className
-    const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly })
+    const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly, [styles.promptAnsweredIncorrectly]: answeredIncorrectly })
 
     //Answers container className
-    const answersContainerClassName = classNames(styles.answersContainer, { [styles.answeredCorrectly]: answeredCorrectly })
+    const answersContainerClassName = classNames(styles.answersContainer, { [styles.answeredCorrectly]: answeredCorrectly, [styles.answeredIncorrectly]: answeredIncorrectly })
+
+    //Monitor for changes to question number
+    useEffect(() => {
+
+        //Reset answer states
+        setAnswerState(answers.map(a_ => ({ lexi: a_.lexi, currentState: 'unclicked' })))
+        setAnsweredCorrectly(false)
+    
+    }, [ questionNumber ])
 
     return (
 
@@ -117,6 +118,15 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
 
                                     //Update state
                                     setAnswerState(newAnswerState)
+                                    setAnsweredIncorrectly(true)
+
+                                    //Wait 1s
+                                    setTimeout(() => {
+
+                                        //Set incorrect answer state back to false
+                                        setAnsweredIncorrectly(false)
+                                    }, 1000)
+
                                 }
                             }
 
