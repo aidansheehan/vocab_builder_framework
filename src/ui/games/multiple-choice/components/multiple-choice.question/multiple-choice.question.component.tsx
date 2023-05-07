@@ -1,5 +1,5 @@
 import classNames                           from 'classnames'
-import { useContext, useEffect, useState }  from 'react'
+import { useContext, useEffect, useRef, useState }  from 'react'
 import GameCardComponent                    from '../../../../components/game-card/game-card.component'
 import QuestionsContext                     from '../../context/questions.context'
 import MultipleChoiceAnswerComponent        from '../multiple-choice.answer/multiple-choice.answer.component'
@@ -43,31 +43,36 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     const question      = questions[questionNumber - 1]     //Get this question
     const { answers }   = question                          //Destructure question
 
+    const [ answerState, setAnswerState ]               = useState<AnswerStateType[]>(answers.map(a_ => ({lexi: a_.lexi, currentState: 'unclicked'})))  //Init answers state
+    const [ answeredCorrectly, setAnsweredCorrectly ]   = useState<boolean>(false)                                                                      //Answered correctly state
+    const timeoutRef                                    = useRef<number>()                                                                              //Timeout reference
+
     //Destructure styles for animation time constants
     const { SECOND_ANIMATION_LENGTH } = styles
-
-    //Init answers state
-    const [ answerState, setAnswerState ] = useState<AnswerStateType[]>(answers.map(a_ => ({lexi: a_.lexi, currentState: 'unclicked'})))
-
-    //Answered correctly state
-    const [ answeredCorrectly, setAnsweredCorrectly ] = useState<boolean>(false)
 
     //Monitor for changes to question number
     useEffect(() => {
 
         //Reset answer states
         setAnswerState(answers.map(a_ => ({ lexi: a_.lexi, currentState: 'unclicked' })))
+        setAnsweredCorrectly(false)
+
     }, [ questionNumber ])
 
     //Function to handle question answered
-    const questionAnsweredHandler = () => nextQuestion(questions.length)
+    const questionAnsweredHandler = () => {
+
+        //If timeout
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)    //clear timeout
+        }
+
+        //Navigate to next question
+        nextQuestion(questions.length)
+    }
 
     //Prompt className
     const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly })
-
-    useEffect(() => {
-        setAnsweredCorrectly(false)
-    }, [ questionNumber ])
 
     return (
         <div className={styles.multipleChoiceGame}>
@@ -95,7 +100,7 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
                                 setAnsweredCorrectly(true)
 
                                 //Navigate to next question after time
-                                setTimeout(() => {
+                                timeoutRef.current = window.setTimeout(() => {
                                     questionAnsweredHandler()
                                 }, +SECOND_ANIMATION_LENGTH)
                             }
