@@ -1,6 +1,5 @@
 import classNames               from 'classnames'
 import { MouseEventHandler }    from 'react'
-import MULTIPLE_CHOICE_ANIMATION_TIMER from '../../games/multiple-choice/constants/multiple-choice.animation-timer.constant'
 import TextValueComponent       from '../text-value/text-value.component'
 import styles                   from './game-card.component.scss'
 
@@ -12,9 +11,6 @@ type GameCardComponentProps = {
 
     /** Click handler */
     onClick?: MouseEventHandler<HTMLDivElement>,
-
-    /** Current button state */
-    currentState?: 'unclicked' | 'correct' | 'incorrect',
 
     /** Additional styles to be applied */
     style?: string
@@ -34,13 +30,13 @@ type GameCardComponentProps = {
  */
 const GameCardComponent = (props: GameCardComponentProps): JSX.Element => {
 
-    const { value, onClick, currentState, style } = props    //Destructure props
+    const { value, onClick, style } = props    //Destructure props
 
     //Component className
-    const className = classNames(styles.gameCard, { [styles.gameCardDisplay]: !onClick, [styles.correct]: currentState === 'correct', [styles.incorrect]: currentState === 'incorrect' }, style)
+    const className = classNames(styles.gameCard, { [styles.gameCardDisplay]: !onClick }, style)
 
     return (
-        <div className={className} onClick={onClick} style={{transition: `all ${MULTIPLE_CHOICE_ANIMATION_TIMER}ms ease`}} >
+        <div className={className} onClick={onClick} >
             <TextValueComponent value={value} style={styles.gameCardText}/>
         </div>
     )

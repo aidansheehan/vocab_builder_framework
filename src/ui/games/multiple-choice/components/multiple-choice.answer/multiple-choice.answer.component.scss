@@ -1,0 +1,46 @@
+@use '../../constants/multiple-choice.constants' as *;
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes celebrate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.multipleChoiceAnswer {
+    transition: all #{$first-animation-length}ms ease;
+    &.correct {
+        background-color: #A4D4AE;;
+        border: 2px solid #2E8B57;
+        animation: celebrate #{calc($second-animation-length / 2)}ms ease-in-out;
+        position: relative;
+        &::after {
+            content: '✓';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #2E8B57;
+        }
+    }
+    &.incorrect {
+        background-color: #F5b7B1;
+        border: 2px solid #E74c3C;
+        animation: fadeOut #{calc($second-animation-length / 2)}ms linear #{calc($second-animation-length / 2)}ms forwards;
+    }
+}

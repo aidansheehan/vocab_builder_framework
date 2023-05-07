@@ -1,8 +1,8 @@
-import classNames from 'classnames'
+import classNames                           from 'classnames'
 import { useContext, useEffect, useState }  from 'react'
 import GameCardComponent                    from '../../../components/game-card/game-card.component'
-// import MULTIPLE_CHOICE_ANIMATION_TIMER      from '../constants/multiple-choice.animation-timer.constant'
 import QuestionsContext                     from '../context/questions.context'
+import MultipleChoiceAnswerComponent        from './multiple-choice.answer/multiple-choice.answer.component'
 import styles                               from './multiple-choice.question.component.scss'
 
 /** MultipleChoiceQuestionComponentProps */
@@ -43,6 +43,9 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     const question      = questions[questionNumber - 1]     //Get this question
     const { answers }   = question                          //Destructure question
 
+    //Destructure styles for animation time constants
+    const { SECOND_ANIMATION_LENGTH } = styles
+
     //Init answers state
     const [ answerState, setAnswerState ] = useState<AnswerStateType[]>(answers.map(a_ => ({lexi: a_.lexi, currentState: 'unclicked'})))
 
@@ -61,6 +64,10 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
 
     //Prompt className
     const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly })
+
+    useEffect(() => {
+        setAnsweredCorrectly(false)
+    }, [ questionNumber ])
 
     return (
         <div className={styles.multipleChoiceGame}>
@@ -90,7 +97,7 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
                                 //Navigate to next question after time
                                 setTimeout(() => {
                                     questionAnsweredHandler()
-                                }, 2000/*MULTIPLE_CHOICE_ANIMATION_TIMER*/)
+                                }, +SECOND_ANIMATION_LENGTH)
                             }
 
                             //If loss
@@ -104,7 +111,9 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
                             }
                         }
 
-                        return <GameCardComponent onClick={handleClick} value={a_.lexi} key={i_} currentState={a_.currentState} />
+                        return <MultipleChoiceAnswerComponent clickHandler={handleClick} answer={a_} key={i_} />
+
+                        // return <GameCardComponent onClick={handleClick} value={a_.lexi} key={i_} currentState={a_.currentState} />
                     })
                 }
             </div>

@@ -1,3 +1,5 @@
+@use '../constants/multiple-choice.constants' as *;
+
 @keyframes pulse {
     0% {
         transform: scale(1);
@@ -19,7 +21,7 @@
     padding: 2rem;
     justify-content: space-around;
     >.promptAnsweredCorrectly {
-        animation: pulse 1s ease-in-out;
+        animation: pulse #{calc($second-animation-length / 2)}ms ease-in-out;
     }
     >.answersContainer {
         display: flex;
