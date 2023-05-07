@@ -1,5 +1,5 @@
 import { createContext }                from 'react'
-import { MultipleChoiceQuestionType }   from '../types/multiple-choice.question.type'
+import { MultipleChoiceQuestionType }   from '../multiple-choice/types/multiple-choice.question.type'
 
 /** QuestionsContextType */
 type QuestionsContextType = {
@@ -12,7 +12,7 @@ type QuestionsContextType = {
 }
 
 /**
- * Context for exposing generated multiple choice questions to game
+ * Generic context for exposing generated questions to game
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  */

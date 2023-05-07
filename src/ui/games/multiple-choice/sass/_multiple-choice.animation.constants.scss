@@ -1,0 +1,7 @@
+$first-animation-length: 300;
+$second-animation-length: 2000;
+
+:export {
+    FIRST_ANIMATION_LENGTH: $first-animation-length;
+    SECOND_ANIMATION_LENGTH: $second-animation-length;
+}
