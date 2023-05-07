@@ -1,5 +1,26 @@
 @use '../../sass/mixins/hover.mixin' as hover;
 
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes celebrate {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .gameCard {
     display: flex;
     flex-direction: column;
@@ -10,6 +31,8 @@
     text-align: center;
     min-width: 100px;
     cursor: pointer;
+    height: fit-content;
+
     @include hover.hover(hover) {
         &:hover {
             background-color: #E8D5C0;
@@ -20,10 +43,22 @@
     &.correct {
         background-color: #A4D4AE;;
         border: 2px solid #2E8B57;
+        animation: celebrate 1s ease-in-out;
+        position: relative;
+        &::after {
+            content: '✓';
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #2E8B57;
+        }
     }
     &.incorrect {
         background-color: #F5b7B1;
         border: 2px solid #E74c3C;
+        animation: fadeOut 1s linear 1s forwards;
     }
     >.gameCardText {
         font-size: 1.2rem;

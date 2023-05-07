@@ -1,3 +1,15 @@
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .multipleChoiceGame {
     display: flex;
     flex-direction: column;
@@ -6,6 +18,9 @@
     margin: 0 auto;
     padding: 2rem;
     justify-content: space-around;
+    >.promptAnsweredCorrectly {
+        animation: pulse 1s ease-in-out;
+    }
     >.answersContainer {
         display: flex;
         flex-wrap: wrap;

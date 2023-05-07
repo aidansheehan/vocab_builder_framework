@@ -1,6 +1,7 @@
+import classNames from 'classnames'
 import { useContext, useEffect, useState }  from 'react'
 import GameCardComponent                    from '../../../components/game-card/game-card.component'
-import MULTIPLE_CHOICE_ANIMATION_TIMER      from '../constants/multiple-choice.animation-timer.constant'
+// import MULTIPLE_CHOICE_ANIMATION_TIMER      from '../constants/multiple-choice.animation-timer.constant'
 import QuestionsContext                     from '../context/questions.context'
 import styles                               from './multiple-choice.question.component.scss'
 
@@ -45,6 +46,9 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     //Init answers state
     const [ answerState, setAnswerState ] = useState<AnswerStateType[]>(answers.map(a_ => ({lexi: a_.lexi, currentState: 'unclicked'})))
 
+    //Answered correctly state
+    const [ answeredCorrectly, setAnsweredCorrectly ] = useState<boolean>(false)
+
     //Monitor for changes to question number
     useEffect(() => {
 
@@ -55,11 +59,14 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     //Function to handle question answered
     const questionAnsweredHandler = () => nextQuestion(questions.length)
 
+    //Prompt className
+    const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly })
+
     return (
         <div className={styles.multipleChoiceGame}>
             
             {/* The prompt */}
-            <GameCardComponent value={question.prompt} />
+            <GameCardComponent value={question.prompt} style={promptClassName} />
 
             <div className={styles.answersContainer} >
                 {
@@ -78,11 +85,12 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
 
                                 //Update state
                                 setAnswerState(newAnswerState)
+                                setAnsweredCorrectly(true)
 
                                 //Navigate to next question after time
                                 setTimeout(() => {
                                     questionAnsweredHandler()
-                                }, MULTIPLE_CHOICE_ANIMATION_TIMER)
+                                }, 2000/*MULTIPLE_CHOICE_ANIMATION_TIMER*/)
                             }
 
                             //If loss
