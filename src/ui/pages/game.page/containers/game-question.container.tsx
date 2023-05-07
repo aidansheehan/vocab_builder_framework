@@ -1,6 +1,6 @@
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
-import MultipleChoiceQuestionComponent from '../../../games/multiple-choice/components/multiple-choice.question.component'
-import useGoToQuestion from '../hooks/go-to-question.hook'
+import { useNavigate, useParams, useSearchParams }      from 'react-router-dom'
+import MultipleChoiceQuestionComponent                  from '../../../games/multiple-choice/components/multiple-choice.question/multiple-choice.question.component'
+import useGoToQuestion                                  from '../hooks/go-to-question.hook'
 
 /**
  * Container for a game question element
