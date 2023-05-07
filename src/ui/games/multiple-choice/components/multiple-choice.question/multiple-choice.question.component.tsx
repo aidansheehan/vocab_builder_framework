@@ -15,7 +15,7 @@ type MultipleChoiceQuestionComponentProps = {
     nextQuestion: (quizLength: number) => void
 }
 
-/** Answer state type */
+/** Answer state type TODO import */
 type AnswerStateType = {
 
     /** Lexi */

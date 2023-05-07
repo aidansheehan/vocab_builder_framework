@@ -1,4 +1,4 @@
-import { useEffect}                 from 'react'
+import { useEffect, useState } from 'react'
 import MultipleChoiceContainer      from '../../games/multiple-choice/multiple-choice.container'
 import useGoToQuestion              from './hooks/go-to-question.hook'
 
@@ -13,16 +13,31 @@ import useGoToQuestion              from './hooks/go-to-question.hook'
  */
 const GamePage = (): JSX.Element => {
 
+    //Game started
+    const [ gameStarted, setGameStarted ] = useState<boolean>(false)
+
     //Custom hook to navigate to next question
     const goToQuestion = useGoToQuestion()
-    
-    //Navigate to first question on component mount
+
+    //Function to start the game
+    const startGame = () => {
+        setGameStarted(true)
+    }
+
+    //Monitor for changes to gameStarted state
     useEffect(() => {
-        goToQuestion(1)
-    }, [])
+
+        //If game started
+        if (gameStarted) {
+
+            //Go to first question
+            goToQuestion(1)
+        }
+
+    }, [gameStarted] )
 
      return (
-         <MultipleChoiceContainer />
+         <MultipleChoiceContainer startGame={startGame} />
      )
 }
 

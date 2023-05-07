@@ -5,6 +5,14 @@ import QuestionsContext                                 from './context/question
 import generateQuestions                                from './functions/multiple-choice.generate-questions.function'
 import { MultipleChoiceQuestionType }                   from './types/multiple-choice.question.type'
 
+/** MultipleChoiceContainerProps */
+type MultipleChoiceContainerProps = {
+
+    /** Function to start the game */
+    startGame: () => void
+
+}
+
 /**
  * Container for multiple choice game
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
@@ -15,10 +23,12 @@ import { MultipleChoiceQuestionType }                   from './types/multiple-c
  *   <MultipleChoiceContainer />
  * )
  */
-const MultipleChoiceContainer = (): JSX.Element => {
+const MultipleChoiceContainer = (props: MultipleChoiceContainerProps): JSX.Element => {
 
     // Questions state
     const [ questions, setQuestions ] = useState<MultipleChoiceQuestionType[]>([])
+
+    const { startGame } = props //Destructure props
 
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId
@@ -26,16 +36,14 @@ const MultipleChoiceContainer = (): JSX.Element => {
     //Get this collection
     const collection = useAppSelector(state => state.collections.collections[collectionId])
 
-    //Monitor for changes to collectionId and update questions TODO VBF-91 will need a flag to regenerate if user selects 'play again' 
     useEffect(() => {
 
         //Generate questions
         setQuestions(generateQuestions(collection))
 
-    }, [ collectionId ])
-
-
-
+        //Start the game
+        startGame()
+    }, [])
 
     return (
         <QuestionsContext.Provider value={{questions, setQuestions}}>

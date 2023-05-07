@@ -1,5 +1,6 @@
 import { useNavigate, useParams, useSearchParams }      from 'react-router-dom'
-import MultipleChoiceQuestionComponent                  from '../../../games/multiple-choice/components/multiple-choice.question/multiple-choice.question.component'
+import MultipleChoiceQuestionPreloaderComponent from '../../../games/multiple-choice/components/multiple-choice.question.preloader/multiple-choice.question.preloader.component'
+// import MultipleChoiceQuestionComponent                  from '../../../games/multiple-choice/components/multiple-choice.question/multiple-choice.question.component'
 import useGoToQuestion                                  from '../hooks/go-to-question.hook'
 
 /**
@@ -48,7 +49,8 @@ const GameQuestionContainer = (): JSX.Element => {
     }
     
     
-    return <MultipleChoiceQuestionComponent questionNumber={parseInt(questionNumber)} nextQuestion={nextQuestion} />
+    // return <MultipleChoiceQuestionComponent questionNumber={parseInt(questionNumber)} nextQuestion={nextQuestion} />
+    return <MultipleChoiceQuestionPreloaderComponent questionNumber={parseInt(questionNumber)} nextQuestion={nextQuestion} />
 
 }
 
