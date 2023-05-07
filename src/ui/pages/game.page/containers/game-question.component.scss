@@ -1,3 +1,4 @@
+@use '../../../sass/mixins/mq.mixin' as mq;
 
 .questionWrapper {
     position: absolute;
@@ -8,6 +9,9 @@
     justify-content: center;
     box-sizing: border-box;
     padding: 2rem;
+    @include mq.mq(mobile) {
+        padding: 0;
+    }
 }
 
 .entering {
