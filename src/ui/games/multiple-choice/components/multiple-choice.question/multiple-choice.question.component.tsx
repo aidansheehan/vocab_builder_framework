@@ -75,54 +75,56 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly })
 
     return (
-        <div className={styles.multipleChoiceGame}>
-            
-            {/* The prompt */}
-            <GameCardComponent value={question.prompt} style={promptClassName} />
 
-            <div className={styles.answersContainer} >
-                {
-                    answerState.map((a_, i_) => {
+            <div className={styles.question}>
+                
+                {/* The prompt */}
+                <GameCardComponent value={question.prompt} style={promptClassName} />
 
-                        //Function to handle click
-                        const handleClick = () => {
+                <div className={styles.answersContainer} >
+                    {
+                        answerState.map((a_, i_) => {
 
-                            const newAnswerState = [...answerState]  //Copy answer state
+                            //Function to handle click
+                            const handleClick = () => {
 
-                            //If win
-                            if (answers[i_].id === question.id) {
+                                const newAnswerState = [...answerState]  //Copy answer state
 
-                                //Set answer correct
-                                newAnswerState[i_].currentState = 'correct'
+                                //If win
+                                if (answers[i_].id === question.id) {
 
-                                //Update state
-                                setAnswerState(newAnswerState)
-                                setAnsweredCorrectly(true)
+                                    //Set answer correct
+                                    newAnswerState[i_].currentState = 'correct'
 
-                                //Navigate to next question after time
-                                timeoutRef.current = window.setTimeout(() => {
-                                    questionAnsweredHandler()
-                                }, +SECOND_ANIMATION_LENGTH)
+                                    //Update state
+                                    setAnswerState(newAnswerState)
+                                    setAnsweredCorrectly(true)
+
+                                    //Navigate to next question after time
+                                    timeoutRef.current = window.setTimeout(() => {
+                                        questionAnsweredHandler()
+                                    }, +SECOND_ANIMATION_LENGTH / 2)
+                                }
+
+                                //If loss
+                                else {
+
+                                    //Set answer incorrect
+                                    newAnswerState[i_].currentState = 'incorrect'
+
+                                    //Update state
+                                    setAnswerState(newAnswerState)
+                                }
                             }
 
-                            //If loss
-                            else {
+                            return <MultipleChoiceAnswerComponent clickHandler={handleClick} answer={a_} key={i_} />
 
-                                //Set answer incorrect
-                                newAnswerState[i_].currentState = 'incorrect'
+                        })
+                    }
+                </div>
 
-                                //Update state
-                                setAnswerState(newAnswerState)
-                            }
-                        }
-
-                        return <MultipleChoiceAnswerComponent clickHandler={handleClick} answer={a_} key={i_} />
-
-                    })
-                }
             </div>
 
-        </div>
     )
 }
 
