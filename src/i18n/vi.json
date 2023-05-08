@@ -55,5 +55,16 @@
     "update-collection_title": "Cập nhật bộ sưu tập",
     "create-collection_title-input": "Tiêu đề bộ sưu tập",
     "create-collection_description-input": "Mô tả bộ sưu tập",
-    "card-form_back-to-collection": "Quay lại Bộ sưu tập"
+    "card-form_back-to-collection": "Quay lại Bộ sưu tập",
+    "game-finish_message_1": "Tuyệt vời!",
+    "game-finish_message_2": "Xuất sắc!",
+    "game-finish_message_3": "Giỏi quá!",
+    "game-finish_message_4": "Rất tốt!",
+    "game-finish_message_5": "Tiến bộ nhiều đấy!",
+    "game-finish_message_6": "Cố lên!",
+    "game-finish_message_7": "Bạn đã hoàn thành tốt!",
+    "game-finish_message_8": "Bạn thật tài giỏi!",
+    "game-finish_message_9": "Tiếp tục phát huy nhé!",
+    "game-finish_message_10": "Chúc mừng bạn!",
+    "game-finish_play-again": "Chơi lại"
 }
