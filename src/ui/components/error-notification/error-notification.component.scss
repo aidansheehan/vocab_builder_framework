@@ -1,3 +1,5 @@
+@use '../../sass/mixins/hover.mixin' as hover;
+
 .errorNotification {
     background-color: #E74C3C;
     color: #FFF;
@@ -11,6 +13,32 @@
     font-size: 1rem;
     font-weight: 500;
     animation: fadeIn 0.5s ease-out, fadeOut 0.5s ease-in calc(var(--duration) - 0.5s) forwards;
+    max-width: 80%;
+    word-wrap: break-word;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 25px;
+    >.errorNotificationCloseBtn {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-left: 1rem;
+        outline: none;
+
+        position: absolute;
+        right: 5px;
+        top: 5px;
+
+        @include hover.hover(hover) {
+            &:hover {
+                color: #ddd;
+            }
+        }
+        
+    }
 }
 
 @keyframes fadeIn {
