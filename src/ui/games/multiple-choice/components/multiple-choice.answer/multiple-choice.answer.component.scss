@@ -42,6 +42,7 @@
         background-color: #F5b7B1;
         border: 2px solid #E74C3C;
         animation: fadeOut #{$first-animation-length}ms linear #{$first-animation-length}ms forwards;
+        position: relative;
         &::after {
             content: '✘';
             position: absolute;
