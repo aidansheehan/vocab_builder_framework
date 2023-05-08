@@ -4,6 +4,8 @@ import { useEffect } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
+//Components
+import ErrorNotificationComponent from './components/error-notification/error-notification.component'
 //Layouts
 import SidebarLayout    from './layouts/sidebar/sidebar.layout'
 import HeaderLayout     from './layouts/header/header.layout'
@@ -62,6 +64,7 @@ const App = () => {
                 :
                 <HeaderLayout />
             }
+            <ErrorNotificationComponent />
         </>
     )
 
