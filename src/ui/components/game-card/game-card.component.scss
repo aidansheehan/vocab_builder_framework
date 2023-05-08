@@ -1,4 +1,5 @@
 @use '../../sass/mixins/hover.mixin' as hover;
+@use '../../sass/placeholders/remove-tap-highlight';
 
 @keyframes fadeOut {
     0% {
@@ -22,6 +23,7 @@
 }
 
 .gameCard {
+    @extend %remove-tap-highlight;
     display: flex;
     flex-direction: column;
     padding: 1rem;
@@ -32,7 +34,7 @@
     min-width: 100px;
     cursor: pointer;
     height: fit-content;
-
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
     @include hover.hover(hover) {
         &:hover {
             background-color: #E8D5C0;

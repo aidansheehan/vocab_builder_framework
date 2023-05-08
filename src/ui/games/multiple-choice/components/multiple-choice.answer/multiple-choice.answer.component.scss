@@ -26,7 +26,7 @@
     &.correct {
         background-color: #A4D4AE;;
         border: 2px solid #2E8B57;
-        animation: celebrate #{calc($second-animation-length / 2)}ms ease-in-out;
+        animation: celebrate #{$second-animation-length}ms ease-in-out;
         position: relative;
         &::after {
             content: '✓';
@@ -40,7 +40,19 @@
     }
     &.incorrect {
         background-color: #F5b7B1;
-        border: 2px solid #E74c3C;
-        animation: fadeOut #{calc($second-animation-length / 2)}ms linear #{calc($second-animation-length / 2)}ms forwards;
+        border: 2px solid #E74C3C;
+        animation: fadeOut #{$first-animation-length}ms linear #{$first-animation-length}ms forwards;
+        &::after {
+            content: '✘';
+            position: absolute;
+            top: 15px;
+            right: -5px;
+            transform: translate(-50%, -50%);
+            font-size: 2rem;
+            color: #E74C3C;
+        }
+    }
+    &.remove {
+        animation: fadeOut #{$first-animation-length}ms linear #{$first-animation-length}ms forwards;
     }
 }

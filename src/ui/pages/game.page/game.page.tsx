@@ -1,6 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState }      from 'react'
 import MultipleChoiceContainer      from '../../games/multiple-choice/multiple-choice.container'
 import useGoToQuestion              from './hooks/go-to-question.hook'
+import styles                       from './game.page.scss'
 
 /**
  * Game page
@@ -37,7 +38,9 @@ const GamePage = (): JSX.Element => {
     }, [gameStarted] )
 
      return (
-         <MultipleChoiceContainer startGame={startGame} />
+        <div className={styles.gamePage} >
+            <MultipleChoiceContainer startGame={startGame} />
+        </div>
      )
 }
 

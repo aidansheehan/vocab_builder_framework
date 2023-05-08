@@ -1,0 +1,9 @@
+@use '../../sass/color.vars' as *;
+
+.gamePage {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    background-color: $page-background;
+    position: relative;
+}
