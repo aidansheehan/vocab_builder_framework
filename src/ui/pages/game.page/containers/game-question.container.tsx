@@ -3,8 +3,7 @@ import { useNavigate, useParams, useSearchParams }      from 'react-router-dom'
 import MultipleChoiceQuestionComponent                  from '../../../games/multiple-choice/components/multiple-choice.question/multiple-choice.question.component'
 import QuestionsContext                                 from '../../../games/context/questions.context'
 import useGoToQuestion                                  from '../hooks/go-to-question.hook'
-import { TransitionGroup, CSSTransition }               from 'react-transition-group'
-import styles                                           from './game-question.component.scss'
+import GameQuestionComponent                            from '../components/game-question.component/game-question.component'
 
 /**
  * Container for a game question element, handles data fetching for game question
@@ -83,30 +82,9 @@ const GameQuestionContainer = (): JSX.Element => {
     })
 
     return (
-        <>
-            {
-                loaded
-                ?
-                <TransitionGroup component={null}>
-                    <CSSTransition
-                        key={questionNumber}
-                        timeout={500}
-                        classNames={{
-                            enter: styles.entering,
-                            enterActive: styles.entered,
-                            exit: styles.exiting
-                        }}
-                    >
-                        <div className={styles.questionWrapper} >
-                            <MultipleChoiceQuestionComponent nextQuestion={nextQuestion} questionNumber={parseInt(questionNumber)} />
-                        </div>
-                        
-                    </CSSTransition>
-                </TransitionGroup>
-                :
-                <></>
-            }
-        </>
+        <GameQuestionComponent loaded={loaded} animationKey={questionNumber} >
+            <MultipleChoiceQuestionComponent nextQuestion={nextQuestion} questionNumber={parseInt(questionNumber)} /> 
+        </GameQuestionComponent>
     )
 
 }

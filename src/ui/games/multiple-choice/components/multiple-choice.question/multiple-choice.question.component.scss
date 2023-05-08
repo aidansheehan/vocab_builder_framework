@@ -38,6 +38,7 @@
     margin: 0 auto;
     padding: 2rem;
     justify-content: space-around;
+    height: 100%;
     >.promptAnsweredCorrectly {
         animation: pulse #{$second-animation-length}ms ease-in-out;
     }
