@@ -45,7 +45,7 @@ const generateQuestions = (collection: CollectionType, numberOfAnswers: number =
         const correctAnswer = new MultipleChoiceAnswer(card_.lexi, card_.id)
 
         //Generate a random index to insert correct answer in answers array
-        const randomIndex = Math.floor(Math.random() * answers.length)
+        const randomIndex = Math.floor(Math.random() * (answers.length + 1))
 
         //Insert correct answer at random index
         answers.splice(randomIndex, 0, correctAnswer)
