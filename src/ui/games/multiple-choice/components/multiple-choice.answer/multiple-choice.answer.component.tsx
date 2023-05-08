@@ -31,8 +31,8 @@ type MultipleChoiceAnswerComponentProps = {
  */
 const MultipleChoiceAnswerComponent = (props: MultipleChoiceAnswerComponentProps): JSX.Element => {
 
-    const { answer, clickHandler, roundFinished }  = props     //Destructure props
-    const { lexi, currentState }    = answer    //Destructure answer
+    const { answer, clickHandler, roundFinished }   = props     //Destructure props
+    const { lexi, currentState }                    = answer    //Destructure answer
 
     //Component className
     const className = classNames(styles.multipleChoiceAnswer, {
