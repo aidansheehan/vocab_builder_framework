@@ -19,6 +19,7 @@
         >.gameFinishMessage {
             font-size: 2rem;
             margin-bottom: 1.5rem;
+            animation: celebration 1s ease-in-out infinite alternate;
         }
         >.gameFinishControl {
             display: flex;
@@ -27,5 +28,14 @@
             margin-top: 2rem;
             width: 100%;
         }
+    }
+}
+
+@keyframes celebration {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-10px);
     }
 }
