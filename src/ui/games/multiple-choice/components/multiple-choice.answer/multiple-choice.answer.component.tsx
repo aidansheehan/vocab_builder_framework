@@ -11,7 +11,10 @@ type MultipleChoiceAnswerComponentProps = {
     answer: MultipleChoiceAnswerStateType,
 
     /** clickHandler */
-    clickHandler: MouseEventHandler<HTMLDivElement>
+    clickHandler: MouseEventHandler<HTMLDivElement>,
+
+    /** roundFinished flag to apply finish styles */
+    roundFinished?: boolean
 
 }
 
@@ -28,13 +31,14 @@ type MultipleChoiceAnswerComponentProps = {
  */
 const MultipleChoiceAnswerComponent = (props: MultipleChoiceAnswerComponentProps): JSX.Element => {
 
-    const { answer, clickHandler }  = props     //Destructure props
-    const { lexi, currentState }    = answer    //Destructure answer
+    const { answer, clickHandler, roundFinished }   = props     //Destructure props
+    const { lexi, currentState }                    = answer    //Destructure answer
 
     //Component className
     const className = classNames(styles.multipleChoiceAnswer, {
         [styles.correct]: currentState === 'correct',
-        [styles.incorrect]: currentState === 'incorrect'
+        [styles.incorrect]: currentState === 'incorrect',
+        [styles.remove]: currentState === 'unclicked' && roundFinished
     })
 
     return <GameCardComponent onClick={clickHandler} value={lexi} style={className} />
