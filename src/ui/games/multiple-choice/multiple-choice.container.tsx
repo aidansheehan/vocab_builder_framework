@@ -30,20 +30,39 @@ const MultipleChoiceContainer = (props: MultipleChoiceContainerProps): JSX.Eleme
 
     const { startGame } = props //Destructure props
 
+    //Game in progress
+    const { waitingToStart } = useAppSelector(state => state.game)
+
     const params        = new URLSearchParams(window.location.search)   //Get url search params
     const collectionId  = params.get('collectionId')                    //Get collectionId
 
     //Get this collection
     const collection = useAppSelector(state => state.collections.collections[collectionId])
 
+    //Monitor changes to waitingToStart flag
     useEffect(() => {
 
-        //Generate questions
-        setQuestions(generateQuestions(collection))
+        //If waitingToStart game
+        if (waitingToStart) {
 
-        //Start the game
-        startGame()
-    }, [])
+            //Generate questions
+            setQuestions(generateQuestions(collection))
+
+        }
+
+    }, [ waitingToStart ])
+
+    //Monitor changes to questions context
+    useEffect(() => {
+
+        //If questions defined
+        if (questions.length > 0) {
+
+            //Start the game
+            startGame()
+        }
+        
+    }, [ questions ])
 
     return (
         <QuestionsContext.Provider value={{questions, setQuestions}}>
