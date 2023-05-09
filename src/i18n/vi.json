@@ -55,5 +55,6 @@
     "update-collection_title": "Cập nhật bộ sưu tập",
     "create-collection_title-input": "Tiêu đề bộ sưu tập",
     "create-collection_description-input": "Mô tả bộ sưu tập",
-    "card-form_back-to-collection": "Quay lại Bộ sưu tập"
+    "card-form_back-to-collection": "Quay lại Bộ sưu tập",
+    "error_message_generic": "Ối, đã xảy ra lỗi! Vui lòng thử lại"
 }

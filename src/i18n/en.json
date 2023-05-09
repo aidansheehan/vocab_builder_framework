@@ -55,5 +55,6 @@
     "update-collection_title": "Update Collection",
     "create-collection_title-input": "Collection Title",
     "create-collection_description-input": "Collection Description",
-    "card-form_back-to-collection": "Back to Collection"
+    "card-form_back-to-collection": "Back to Collection",
+    "error_message_generic": "Oops, something went wrong! Please try again"
 }

@@ -1,6 +1,7 @@
 import { configureStore }   from '@reduxjs/toolkit'
 import userReducer          from './slices/user.slice'
 import collectionReducer    from './slices/collections.slice'
+import errorReducer         from './slices/error.slice'
 
 /**
  * App Store
@@ -10,7 +11,8 @@ import collectionReducer    from './slices/collections.slice'
 const store = configureStore({
     reducer: {
         user: userReducer,
-        collections: collectionReducer
+        collections: collectionReducer,
+        error: errorReducer
     },
     devTools: true //TODO set false for prod
 })
