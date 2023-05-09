@@ -35,7 +35,7 @@ const ErrorNotificationComponent = (): JSX.Element => {
                 dispatch(clearError())
             }, ERROR_DISPLAY_DURATION)
 
-            //Clean up timer on exit DOM
+            //Clean up timer on component unmount
             return () => clearTimeout(timer)
         }
     }, [ errorFlag ])
