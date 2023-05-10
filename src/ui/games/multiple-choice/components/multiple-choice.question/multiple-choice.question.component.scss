@@ -30,6 +30,18 @@
     }
 }
 
+@keyframes breathing {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .question {
     display: flex;
     flex-direction: column;
@@ -38,11 +50,15 @@
     margin: 0 auto;
     padding: 2rem;
     justify-content: space-around;
-    >.promptAnsweredCorrectly {
-        animation: pulse #{$second-animation-length}ms ease-in-out;
-    }
-    >.promptAnsweredIncorrectly {
-        animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+    height: 100%;
+    >.prompt {
+        animation: breathing 3s infinite ease-in-out;
+        &.promptAnsweredCorrectly {
+            animation: pulse #{$second-animation-length}ms ease-in-out;
+        }
+        &.promptAnsweredIncorrectly {
+            animation: shake 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+        }
     }
     >.answersContainer {
         display: flex;

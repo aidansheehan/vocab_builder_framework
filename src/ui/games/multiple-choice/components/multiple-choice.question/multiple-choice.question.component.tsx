@@ -64,7 +64,7 @@ const MultipleChoiceQuestionComponent = (props: MultipleChoiceQuestionComponentP
     }
 
     //Prompt className
-    const promptClassName = classNames({ [styles.promptAnsweredCorrectly]: answeredCorrectly, [styles.promptAnsweredIncorrectly]: answeredIncorrectly })
+    const promptClassName = classNames(styles.prompt, { [styles.promptAnsweredCorrectly]: answeredCorrectly, [styles.promptAnsweredIncorrectly]: answeredIncorrectly })
 
     //Answers container className
     const answersContainerClassName = classNames(styles.answersContainer, { [styles.answeredCorrectly]: answeredCorrectly, [styles.answeredIncorrectly]: answeredIncorrectly })

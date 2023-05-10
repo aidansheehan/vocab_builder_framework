@@ -55,5 +55,16 @@
     "update-collection_title": "Update Collection",
     "create-collection_title-input": "Collection Title",
     "create-collection_description-input": "Collection Description",
-    "card-form_back-to-collection": "Back to Collection"
+    "card-form_back-to-collection": "Back to Collection",
+    "game-finish_message_1": "Well done!",
+    "game-finish_message_2": "Nice work!",
+    "game-finish_message_3": "Good job!",
+    "game-finish_message_4": "Keep it up!",
+    "game-finish_message_5": "You're doing great!",
+    "game-finish_message_6": "Great effort!",
+    "game-finish_message_7": "Awesome progress!",
+    "game-finish_message_8": "Fantastic!",
+    "game-finish_message_9": "Impressive!",
+    "game-finish_message_10": "You've got this!",
+    "game-finish_play-again": "Play again"
 }

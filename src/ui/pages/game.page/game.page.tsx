@@ -1,7 +1,9 @@
-import { useEffect, useState }      from 'react'
-import MultipleChoiceContainer      from '../../games/multiple-choice/multiple-choice.container'
-import useGoToQuestion              from './hooks/go-to-question.hook'
-import styles                       from './game.page.scss'
+import { useEffect }                        from 'react'
+import MultipleChoiceContainer              from '../../games/multiple-choice/multiple-choice.container'
+import useGoToQuestion                      from './hooks/go-to-question.hook'
+import styles                               from './game.page.scss'
+import useAppDispatch                       from '../../hooks/redux/use-app-dispatch.hook'
+import { gameInitialised, gameStarted }     from '../../../redux/slices/game.slice'
 
 /**
  * Game page
@@ -14,28 +16,28 @@ import styles                       from './game.page.scss'
  */
 const GamePage = (): JSX.Element => {
 
-    //Game started
-    const [ gameStarted, setGameStarted ] = useState<boolean>(false)
+    const dispatch = useAppDispatch()
 
     //Custom hook to navigate to next question
     const goToQuestion = useGoToQuestion()
 
     //Function to start the game
     const startGame = () => {
-        setGameStarted(true)
+
+        dispatch(gameStarted()) //Dispatch gameStarted
+        goToQuestion(1)         //Navigate to first question
     }
 
-    //Monitor for changes to gameStarted state
+    //ComponentDidMount
     useEffect(() => {
 
-        //If game started
-        if (gameStarted) {
+        //Cleanup
+        return () => {
 
-            //Go to first question
-            goToQuestion(1)
+            //Re-Initialise game when user navigates away
+            dispatch(gameInitialised())
         }
-
-    }, [gameStarted] )
+    }, [])
 
      return (
         <div className={styles.gamePage} >
