@@ -66,5 +66,6 @@
     "game-finish_message_8": "Bạn thật tài giỏi!",
     "game-finish_message_9": "Tiếp tục phát huy nhé!",
     "game-finish_message_10": "Chúc mừng bạn!",
-    "game-finish_play-again": "Chơi lại"
+    "game-finish_play-again": "Chơi lại",
+    "error_message_generic": "Ối, đã xảy ra lỗi! Vui lòng thử lại"
 }
