@@ -1,5 +1,6 @@
 import { useNavigate }          from 'react-router-dom'
 import ButtonComponent          from '../button/button.component'
+import PlayButtonComponent      from '../play-button/play-button.component'
 import TextValueComponent       from '../text-value/text-value.component'
 import styles                   from './collection-card.component.scss'
 
@@ -38,11 +39,6 @@ const CollectionCardComponent = (props: CollectionCardComponentProps): JSX.Eleme
         navigate('collection' + `?collectionId=${id}`)
     }
 
-    //Function to handle play click
-    const handlePlayClick = () => {
-        navigate('collection/play' + `?collectionId=${id}`)
-    }
-
     return (
         <div className={styles.collection} >
 
@@ -53,7 +49,7 @@ const CollectionCardComponent = (props: CollectionCardComponentProps): JSX.Eleme
             <div className={styles.collectionActions} >
 
                 <ButtonComponent secondary style={styles.editBtn} onClick={handleViewClick} textRef='collection_edit_link' icon='pen-to-square' />
-                <ButtonComponent primary style={styles.playBtn} onClick={handlePlayClick} textRef='collection_play_link' icon='play' />
+                <PlayButtonComponent collectionId={id} />
 
             </div>
 

@@ -22,5 +22,7 @@
     &.warning {
         @extend %button-warning;
     }
-
+    &.disabled {
+        @extend %button-disabled;
+    }
 }

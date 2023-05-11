@@ -2,6 +2,7 @@ import { CardType, CollectionType }                                 from '../../
 import shuffle                                                      from '../../functions/shuffle'
 import MultipleChoiceAnswer                                         from '../classes/multiple-choice-answer.class'
 import MultipleChoiceQuestion                                       from '../classes/multiple-choice-question.class'
+import MULTIPLE_CHOICE_OPTIONS                                      from '../constants/multiple-choice.multiple-choice-options.constant'
 import { MultipleChoiceAnswerType, MultipleChoiceQuestionType }     from '../types/multiple-choice.question.type'
 
 /**
@@ -12,11 +13,16 @@ import { MultipleChoiceAnswerType, MultipleChoiceQuestionType }     from '../typ
  * @param {number} numberOfAnswers Number of answers (multiple choice 'choices') to generate for each question
  * @returns {MultipleChoiceQuestionType[]}
  */
-const generateQuestions = (collection: CollectionType, numberOfAnswers: number = 3): MultipleChoiceQuestionType[] => {
+const generateQuestions = (collection: CollectionType, numberOfAnswers: number = MULTIPLE_CHOICE_OPTIONS): MultipleChoiceQuestionType[] => {
 
     const result: MultipleChoiceQuestionType[]  = []                //Init results array 
     const { cards }                             = collection        //Destructure collection
     const shuffledCards                         = shuffle(cards)    //Randomly shuffle collection cards
+
+    //numberOfAnswers not greater than length
+    if (collection.cards.length < numberOfAnswers) {
+        numberOfAnswers = collection.cards.length
+    }
 
     //Generate a question for each shuffled array element
     shuffledCards.forEach((card_: CardType) => {
