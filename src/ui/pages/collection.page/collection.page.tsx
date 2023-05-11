@@ -76,7 +76,7 @@ const CollectionPage = (): JSX.Element => {
 
                                 <div className={styles.collectionInfoButtons}>
                                     <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
-                                    <ButtonComponent secondary icon='pen-to-square' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
+                                    <ButtonComponent secondary icon='pen-to-square' textRef='common_edit_tag' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
                                 </div>
             
                             </div>
