@@ -23,15 +23,6 @@
         @extend %button-warning;
     }
     &.disabled {
-        background-color: #888;
-        color: #ccc;
-        cursor: not-allowed;
-        border-color: #444;
-        &:hover {
-            background-color: #888;
-            color: #ccc;
-            border-color: #444;
-        }
+        @extend %button-disabled;
     }
-
 }
