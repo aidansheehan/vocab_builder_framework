@@ -1,3 +1,7 @@
+@use '../../sass/color.vars' as *;
+@use '../../sass/mixins/mq.mixin' as mq;
+
+
 .settingsPage {
     display: flex;
     flex-direction: column;
@@ -6,4 +10,28 @@
     box-sizing: border-box;
     align-items: center;
     height: 100%;
+    background-color: $page-background;
+    > * {
+        width: 80%;
+        @include mq.mq(mobile-portrait) {
+            width: 100%;
+        }
+    }
+    > .baseSettings {
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        height: 60%;
+    }
+    > .settingsControl {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        > .settingsButton {
+            width: 60%;
+        }
+        height: 20%;
+    }
 }
