@@ -1,3 +1,4 @@
+import { useEffect }                                    from 'react'
 import { Outlet, useNavigate }                          from 'react-router-dom'
 import { Transition }                                   from 'react-transition-group'
 import ButtonComponent                                  from '../button/button.component'
@@ -34,6 +35,18 @@ const ModalComponent = (props: ModalComponentProps) => {
         navigate(-1)
         onCloseCallback && onCloseCallback()    //Execute onCloseCallback if defined
     }
+
+    //Component mount
+    useEffect(() => {
+
+        //Prevent scroll on body
+        document.body.classList.add('no-scroll')
+
+        //Component unmount cleanup
+        return () => {
+            document.body.classList.remove('no-scroll');
+        }
+    }, [])
 
     return (
         <Transition in={true} timeout={MODAL_ANIMATION_TIMER} appear unmountOnExit >

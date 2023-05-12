@@ -17,6 +17,7 @@ $padding: 60px;
     justify-content: center;
     align-items: center;
     z-index: 999;
+    position: fixed;
     > .modal {
         box-sizing: border-box;
         display: flex;
