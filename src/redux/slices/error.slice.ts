@@ -21,7 +21,7 @@ const errorSlice = createSlice({
     initialState,
     reducers: {
         setError: (state, action?: PayloadAction<string>) => {
-            state.errorMessage  = action.payload ? action.payload : 'error_message_generic'     //Set error message
+            state.errorMessage  = action.payload ? action.payload : 'error-message_generic'     //Set error message
             state.errorFlag     = true                                                          //Set error flag true
         },
         clearError: (state) => {

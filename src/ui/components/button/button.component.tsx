@@ -22,7 +22,8 @@ const ButtonComponent = (props: ButtonComponentProps) => {
     const className = classNames(styles.button, style, {
         [styles.secondary]: !!secondary,
         [styles.primary]: !!primary,
-        [styles.warning]: !!warning
+        [styles.warning]: !!warning,
+        [styles.disabled]: disabled
     })
 
     return (

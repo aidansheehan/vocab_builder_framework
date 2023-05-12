@@ -1,6 +1,7 @@
 import { configureStore }   from '@reduxjs/toolkit'
 import userReducer          from './slices/user.slice'
 import collectionReducer    from './slices/collections.slice'
+import gameReducer          from './slices/game.slice'
 import errorReducer         from './slices/error.slice'
 
 /**
@@ -12,6 +13,7 @@ const store = configureStore({
     reducer: {
         user: userReducer,
         collections: collectionReducer,
+        game: gameReducer,
         error: errorReducer
     },
     devTools: true //TODO set false for prod

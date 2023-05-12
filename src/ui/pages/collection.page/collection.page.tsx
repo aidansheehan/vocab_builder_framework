@@ -4,6 +4,7 @@ import { useLocation, useNavigate }             from 'react-router-dom'
 import ButtonComponent                          from '../../components/button/button.component'
 import LexiCardComponent                        from '../../components/lexi-card/lexi-card.component'
 import styles                                   from './collection.page.scss'
+import PlayButtonComponent                      from '../../components/play-button/play-button.component'
 
 /**
  * Collection Page for view, edit & link to play games with a collection
@@ -75,8 +76,8 @@ const CollectionPage = (): JSX.Element => {
                                 </div>
 
                                 <div className={styles.collectionInfoButtons}>
-                                    <ButtonComponent textRef='collection-details_nav_play' primary onClick={() => navigate('/user/collection/play' + `?collectionId=${collectionId}`)} />
-                                    <ButtonComponent secondary icon='pen-to-square' textRef='common_edit_tag' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
+                                    <PlayButtonComponent collectionId={collectionId} />
+                                    <ButtonComponent secondary icon='pen-to-square' onClick={() => navigate(`/user/collection/info?collectionId=${collectionId}`, {state: {backgroundLocation: location}})} />
                                 </div>
             
                             </div>
