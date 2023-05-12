@@ -29,3 +29,4 @@ $accent-color: #2ECC71;
  //Warning button color scheme
  $button-warning-color: #fff;
  $button-warning-background-color: $background-warning;
+ $button-warning-background-hover: darken($background-warning, 10%);

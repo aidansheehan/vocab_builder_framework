@@ -53,7 +53,7 @@ const LexiCardComponent = (props: LexiCardComponentProps): JSX.Element => {
 
                 <ButtonComponent icon='trash' onClick={() => dispatch(deleteCard({collectionId, cardId}))} style={styles.btn} warning />
 
-                <ButtonComponent icon='pen-to-square' onClick={editHandler} textRef='common_edit_tag' style={styles.btn} />
+                <ButtonComponent icon='pen-to-square' secondary onClick={editHandler} style={styles.btn} />
 
             </div>
 
