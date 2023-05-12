@@ -79,7 +79,7 @@ const GameQuestionContainer = (): JSX.Element => {
         //Navigate to game start
         navigate(gameStartPath)
 
-    })
+    }, [])
 
     return (
         <GameQuestionComponent loaded={loaded} animationKey={questionNumber} >
