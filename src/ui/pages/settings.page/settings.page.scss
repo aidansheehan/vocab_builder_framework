@@ -6,32 +6,39 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 2rem;
     box-sizing: border-box;
     align-items: center;
     height: 100%;
     background-color: $page-background;
-    > * {
-        width: 80%;
-        @include mq.mq(mobile-portrait) {
-            width: 100%;
-        }
-    }
+    width: 100%;
     > .baseSettings {
         display: flex;
         flex-direction: column;
-        // justify-content: center;
-        // align-items: center;
-        height: 60%;
+        flex-grow: 1;
+        width: 80%;
+        box-sizing: border-box;
+        @include mq.mq(mobile-portrait) {
+            width: 100%;
+            padding: 1rem;
+        }
     }
     > .settingsControl {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        width: 80%;
+        box-sizing: border-box;
+        margin-bottom: 80px;
+        @include mq.mq(mobile) {
+            margin-bottom: 20px;
+        }
+        @include mq.mq(mobile-portrait) {
+            width: 100%;
+            padding: 1rem;
+        }
         > .settingsButton {
             width: 60%;
         }
-        height: 20%;
     }
 }

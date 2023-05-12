@@ -18,6 +18,7 @@ import {
     faTimes,
     faPlus,
     faGear,
+    faUser,
 } from '@fortawesome/free-solid-svg-icons'
 
 /**
@@ -44,6 +45,7 @@ export default function FontAwesomeIcons(): void {
         faRotateLeft,
         faTrash,
         faTimes,
-        faGear
+        faGear,
+        faUser
     )
 }

@@ -1,4 +1,5 @@
 import useAppSelector       from '../../hooks/redux/use-app-selector.hook'
+import IconComponent        from '../icon/icon.component'
 import TextValueComponent   from '../text-value/text-value.component'
 import styles               from './user-banner.component.scss'
 
@@ -17,8 +18,16 @@ const UserBannerComponent = (): JSX.Element => {
     const { username } = useAppSelector(state => state.user.userInfo)
 
     return (
-        <div className={styles.userBanner} >
-            <TextValueComponent value={username} title />
+        <div className={styles.userBannerContainer} >
+
+            <div className={styles.userBanner} >
+
+                <IconComponent icon={{icon: 'user'}} style={styles.userIcon} />
+
+                <TextValueComponent style={styles.username} value={username} title />
+
+            </div>
+
         </div>
     )
 }
