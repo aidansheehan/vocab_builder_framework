@@ -8,6 +8,9 @@ type TextValueComponentProps = {
     /** Additional styles to be applied */
     style?: string
 
+    /** Whether to use h2 */
+    title?: boolean
+
 }
 
 /**
@@ -23,9 +26,23 @@ type TextValueComponentProps = {
  */
 const TextValueComponent = (props: TextValueComponentProps): JSX.Element => {
 
-    const { value, style } = props  //Destructure props
+    const { value, style, title } = props  //Destructure props
 
-    return <span className={style} >{value}</span>
+    return (
+        <>
+        {
+            title
+            ?
+            <h2 className={style} >
+                {value}
+            </h2>
+            :
+            <span className={style} >
+                {value}
+            </span>
+        }
+        </>
+    )
 
 }
 
