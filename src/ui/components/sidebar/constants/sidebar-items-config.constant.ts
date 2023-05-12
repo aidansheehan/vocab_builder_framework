@@ -11,7 +11,8 @@ const SIDEBAR_ITEMS_CONFIG_CONSTANT: SidebarItemsConfigType = {
     routeButtons: [
 
         { route: '/user', icon: 'house', reference: 'nav_home_link' },
-        { route: '/user/collection/info', icon: 'plus', reference: 'nav_new-collection_link', isModal: true }
+        { route: '/user/collection/info', icon: 'plus', reference: 'nav_new-collection_link', isModal: true },
+        { route: '/user/settings', icon: 'gear', reference: 'nav_settings_link' }
 
     ],
 
