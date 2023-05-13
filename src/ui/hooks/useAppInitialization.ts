@@ -1,29 +1,21 @@
-import { useEffect } from "react"
-import { useLocation, useNavigate } from "react-router-dom"
-import { getCollections } from "../../redux/actions/collections.actions"
-import { getUserDetails } from "../../redux/actions/user.actions"
-import { logout, userLoaded } from "../../redux/slices/user.slice"
-import useAppDispatch from "./redux/use-app-dispatch.hook"
-import useAppSelector from "./redux/use-app-selector.hook"
+import { useEffect }                    from 'react'
+import { useLocation, useNavigate }     from 'react-router-dom'
+import { getCollections }               from '../../redux/actions/collections.actions'
+import { getUserDetails }               from '../../redux/actions/user.actions'
+import { logout, userLoaded }           from '../../redux/slices/user.slice'
+import useAppDispatch                   from './redux/use-app-dispatch.hook'
+import useAppSelector                   from './redux/use-app-selector.hook'
 
 const useAppInitialization = () => {
-
-    // const [ userLoaded, setUserLoaded ]                 = useState<boolean>(false)
-    // const [ collectionsLoaded, setCollectionsLoaded ]   = useState<boolean>(false)
-
-    // const [ isLoading, setIsLoading ] = useState<boolean>(true)
 
     const dispatch = useAppDispatch()
     const navigate = useNavigate()
     const location = useLocation()
 
-    const { userInfo, loading, loggingOut }  = useAppSelector(state => state.user)
-    const accessToken   = localStorage.getItem('userToken')
-
+    const { userInfo, loading, loggingOut }     = useAppSelector(state => state.user)   //Destructure user state
+    const accessToken                           = localStorage.getItem('userToken')     //Get accessToken
 
     useEffect(() => {
-
-        console.log('HELLO WORLD')
 
         const fetchUserDetailsAndNavigate = async () => {
             
