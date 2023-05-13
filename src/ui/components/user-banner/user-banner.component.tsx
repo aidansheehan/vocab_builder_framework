@@ -15,7 +15,12 @@ import styles               from './user-banner.component.scss'
  */
 const UserBannerComponent = (): JSX.Element => {
 
-    const { username } = useAppSelector(state => state.user.userInfo)
+    const { userInfo } = useAppSelector(state => state.user)
+
+    // TODO investigate why rendered before app component
+    if (!userInfo) return null
+
+    const { username } = userInfo
 
     return (
         <div className={styles.userBannerContainer} >

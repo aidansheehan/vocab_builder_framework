@@ -31,6 +31,9 @@ export type UserType = {
     error: any, //TBD
 
     /** Whether request successful */
-    success: boolean
+    success: boolean,
+
+    /** If logging out */
+    loggingOut: boolean
 
 }

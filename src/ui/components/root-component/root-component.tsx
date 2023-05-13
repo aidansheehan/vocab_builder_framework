@@ -1,7 +1,6 @@
 //Router
 import { Route, Routes, useLocation } from 'react-router-dom'
 //Components
-import PreloaderComponent               from '../preloader/preloader.component'
 import ModalComponent                   from '../modal/modal.component'
 import GameFinishPage                   from '../../pages/game-finish.page/game-finish.page'
 import SettingsPage                     from '../../pages/settings.page/settings.page'
@@ -22,6 +21,7 @@ import AuthLayout      from '../../layouts/auth/auth.layout'
 import LoginFormContainer       from '../auth-form/containers/login-form/login-form.container'
 import RegisterFormContainer    from '../auth-form/containers/register-form/register-form.container'
 import GameQuestionContainer    from '../../pages/game.page/containers/game-question.container'
+import App from '../../app'
 
 /**
  * Route container element for application to render
@@ -40,7 +40,7 @@ const RootComponent = (): JSX.Element => {
         <>
                 <Routes location={state?.backgroundLocation || location}>
 
-                    <Route path='/' element={<PreloaderComponent />}>
+                    <Route path='/' element={<App />}>
 
                         <Route index element={<LandingPage />} />
 

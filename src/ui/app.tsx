@@ -1,7 +1,7 @@
 //Core
-import { useEffect } from 'react'
+// import { useEffect } from 'react'
 //Router
-import { useLocation, useNavigate } from 'react-router-dom'
+// import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
 //Components
@@ -11,6 +11,7 @@ import SidebarLayout    from './layouts/sidebar/sidebar.layout'
 import HeaderLayout     from './layouts/header/header.layout'
 //Stylesheets
 import './global.scss'
+import useAppInitialization from './hooks/useAppInitialization'
 
 /**
  * Main app component
@@ -23,37 +24,19 @@ import './global.scss'
 */
 const App = () => {
 
-    const { userInfo } = useAppSelector(state => state.user)    //Get userInfo
+    const { userInfo, loading: userLoading }    = useAppSelector(state => state.user)           //Get userInfo and user loading
+    const { loading: collectionsLoading }       = useAppSelector(state => state.collections)    //Get apploading
 
-    const location = useLocation()  //Init useLocation
-    const navigate = useNavigate()  //Init useNavigate
+    //Initialize app
+    useAppInitialization()
 
-    /** Route Guard Redirect Logic */
-    useEffect(() => {
-
-        //If user is logged in
-        if (!!userInfo) {
-
-            //If user is trying to access public route
-            if (!location.pathname.includes('user')) {
-
-                //Redirect to user home page
-                navigate('/user')
-            }
-        }
-
-        //If user is not logged in
-        if (!userInfo) {
-
-            //If user is trying to access private route
-            if (location.pathname.includes('user')) {
-
-                //Redirect to login page
-                navigate('/auth/login')
-            }
-        }
-
-    }, [ userInfo, navigate ] )
+    if (userLoading || collectionsLoading) {
+        return (
+            <div>
+                LOADING...
+            </div>
+        )
+    }
 
     return (
         <>

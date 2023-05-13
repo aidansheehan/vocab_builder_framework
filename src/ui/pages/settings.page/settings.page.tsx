@@ -1,9 +1,9 @@
-import { logout }               from '../../../redux/slices/user.slice'
-import ButtonComponent          from '../../components/button/button.component'
-import LocaleSelectorComponent  from '../../components/locale-selector/locale-selector.component'
-import UserBannerComponent      from '../../components/user-banner/user-banner.component'
-import useAppDispatch           from '../../hooks/redux/use-app-dispatch.hook'
-import styles                   from './settings.page.scss'
+import { logoutInititialized }      from '../../../redux/slices/user.slice'
+import ButtonComponent              from '../../components/button/button.component'
+import LocaleSelectorComponent      from '../../components/locale-selector/locale-selector.component'
+import UserBannerComponent          from '../../components/user-banner/user-banner.component'
+import useAppDispatch               from '../../hooks/redux/use-app-dispatch.hook'
+import styles                       from './settings.page.scss'
 
 /**
  * Settings page
@@ -29,7 +29,7 @@ const SettingsPage = (): JSX.Element => {
             </div>
 
             <div className={styles.settingsControl}>
-                <ButtonComponent secondary onClick={() => dispatch(logout())} icon='right-from-bracket' textRef='nav_logout_link' style={styles.settingsButton} />
+                <ButtonComponent secondary onClick={() => dispatch(logoutInititialized())} icon='right-from-bracket' textRef='nav_logout_link' style={styles.settingsButton} />
             </div>
 
         </div>

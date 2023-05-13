@@ -16,6 +16,7 @@ import BASE_URL                         from './constants/base-url.constant'
 
 /**
  * Function to redirect inauthenticated user to login
+ * TODO i think this should re-trigger initialization logic rather than directly redirect
  * @returns null
  */
 const redirectToLogin = (): null => {
