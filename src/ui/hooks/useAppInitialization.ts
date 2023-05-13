@@ -50,7 +50,7 @@ const useAppInitialization = () => {
             logoutAndNavigate()
         }
 
-    }, [ accessToken, dispatch, navigate, userInfo, loading, loggingOut ])
+    }, [ accessToken, dispatch, navigate, userInfo, loggingOut ])
 
 }
 
