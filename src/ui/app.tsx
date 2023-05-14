@@ -1,7 +1,3 @@
-//Core
-// import { useEffect } from 'react'
-//Router
-// import { useLocation, useNavigate } from 'react-router-dom'
 //Redux
 import useAppSelector from './hooks/redux/use-app-selector.hook'
 //Components
