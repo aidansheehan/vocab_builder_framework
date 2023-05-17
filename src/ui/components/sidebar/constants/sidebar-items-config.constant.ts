@@ -1,4 +1,3 @@
-import { logout }                   from '../../../../redux/slices/user.slice'
 import { SidebarItemsConfigType }   from '../types/siderbar-items-config.type'
 
 /**
@@ -11,13 +10,8 @@ const SIDEBAR_ITEMS_CONFIG_CONSTANT: SidebarItemsConfigType = {
     routeButtons: [
 
         { route: '/user', icon: 'house', reference: 'nav_home_link' },
-        { route: '/user/collection/info', icon: 'plus', reference: 'nav_new-collection_link', isModal: true }
-
-    ],
-
-    dispatchButtons: [
-
-        { callback: logout, icon: 'right-from-bracket', reference: 'nav_logout_link' }
+        { route: '/user/collection/info', icon: 'plus', reference: 'nav_new-collection_link', isModal: true },
+        { route: '/user/settings', icon: 'gear', reference: 'nav_settings_link' }
 
     ]
 

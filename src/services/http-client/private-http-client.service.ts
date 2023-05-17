@@ -1,6 +1,7 @@
 import axios, { AxiosRequestConfig }    from 'axios'
 import jwtDecode, { JwtPayload }        from 'jwt-decode'
-import { useNavigate }                  from 'react-router-dom'
+import { logoutInititialized }          from '../../redux/slices/user.slice'
+import useAppDispatch                   from '../../ui/hooks/redux/use-app-dispatch.hook'
 import BASE_URL                         from './constants/base-url.constant'
 
 /**
@@ -16,11 +17,16 @@ import BASE_URL                         from './constants/base-url.constant'
 
 /**
  * Function to redirect inauthenticated user to login
+ * TODO i think this should re-trigger initialization logic rather than directly redirect
  * @returns null
  */
 const redirectToLogin = (): null => {
-    const navigate = useNavigate()
-    navigate('auth/login')
+
+    const dispatch = useAppDispatch()
+
+    //Log user out
+    dispatch(logoutInititialized())
+
     return null
 }
 
@@ -86,23 +92,31 @@ PrivateHttpClient.interceptors.request.use(
         //Check if the accessToken is expired
         else if (isAccessTokenExpired(accessToken)) {
 
-            const response  = await refreshUser()   //Make refresh request
-            const { data }  = response              //Destructure response
-            
-            //If request successful
-            if (data.status === 'success') {
-                
-                const { data: responseData }    = data                      //Destructure data
-                const newAccessToken            = responseData.accessToken  //Destructure response data for accessToken
+            try {
 
-                //Set new user token in local storage
-                await localStorage.setItem('userToken', newAccessToken)
+                const response = await refreshUser()    //Make refresh request
+                const { data } = response               //Destructure response
 
-                //Add access token as auth header to request
-                config.headers['Authorization'] = `Bearer ${newAccessToken}`
+                //If request successful
+                if (data.status === 'success') {
+                    
+                    const { data: responseData }    = data                      //Destructure data
+                    const newAccessToken            = responseData.accessToken  //Destructure response data for accessToken
+
+                    //Set new user token in local storage
+                    await localStorage.setItem('userToken', newAccessToken)
+
+                    //Add access token as auth header to request
+                    config.headers['Authorization'] = `Bearer ${newAccessToken}`
+                }
+
+                //TODO handle this case
             }
 
-            else {
+            catch {
+
+                //Remove accessToken from local store
+                await localStorage.removeItem('userToken')
 
                 //Navigate to login
                 return redirectToLogin()

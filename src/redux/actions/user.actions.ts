@@ -71,7 +71,7 @@ export const getUserDetails = createAsyncThunk(
             //Make request to get user's details
             const { data } = await PrivateHttpClient.get('users/me')
 
-            return data
+            return data.data
 
         } catch (error) {
             if (error.response && error.response.data && error.response.data.message) {

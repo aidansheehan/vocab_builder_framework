@@ -12,7 +12,8 @@ const initialState: UserType = {
     userInfo: null,
     error: null,
     success: false,
-    accessToken: null
+    accessToken: null,
+    loggingOut: false
 }
 
 /**
@@ -24,13 +25,20 @@ const userSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
+            logoutInititialized: (state) => {
+                state.loggingOut = true
+                state.loading = true
+            },
             logout: (state) => {
                 localStorage.removeItem('userToken') //Deletes token from storage
-                state.loading       = false
                 state.userInfo      = null
                 state.error         = null
                 state.accessToken   = null
-        },
+                state.loggingOut    = false
+            },
+            userLoaded: (state) => {
+                state.loading = false
+            }
     },
     extraReducers(builder) {
 
@@ -93,5 +101,5 @@ const userSlice = createSlice({
 })
 
 //Export actions
-export const { logout } = userSlice.actions
+export const { logout, logoutInititialized, userLoaded } = userSlice.actions
 export default userSlice.reducer
