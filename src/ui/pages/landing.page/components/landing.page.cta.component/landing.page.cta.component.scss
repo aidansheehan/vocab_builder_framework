@@ -4,7 +4,7 @@
 
 .cta {
     background-color: #3B83BD;
-    min-height: calc(100vh - $header-height);
+    min-height: calc(100% - $header-height);
     max-height: 800px;
     width: 100%;
     display: flex;

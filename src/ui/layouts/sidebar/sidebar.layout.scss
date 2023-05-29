@@ -1,15 +1,13 @@
 @use '../../sass/mixins/mq.mixin' as mq;
 
 body {
-    @include mq.mq(mobile) {
-        overflow: hidden;
-    }
+    overflow: hidden;
 }
 
 .sidebarLayout {
     display: grid;
     grid-template-columns: 88px 1fr;
-    height: 100vh;
+    height: 100%;
     >.sidebarHeader {
         display: none;
     }
