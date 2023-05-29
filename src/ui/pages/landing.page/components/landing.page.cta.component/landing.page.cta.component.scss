@@ -4,7 +4,7 @@
 
 .cta {
     background-color: #3B83BD;
-    min-height: calc(100vh - $header-height);
+    min-height: calc(100% - $header-height);
     max-height: 800px;
     width: 100%;
     display: flex;
@@ -33,7 +33,7 @@
             width: 100%;
         }
         > .ctaImage {
-            width: 150px;
+            width: 100px;
             @include mq.mq(desktop) {
                 width: 300px;
             }
@@ -64,6 +64,9 @@
             }
             @include mq.mq(tablet-portrait) {
                 width: 60%;
+            }
+            @include mq.mq(mobile) {
+                gap: 20px;
             }
             > .ctaControl {
                 width: 60%;

@@ -2,7 +2,7 @@
 @use '../../sass/mixins/mq.mixin' as mq;
 
 .authPage {
-    height: calc(100vh - 100px);
+    height: calc(100% - 100px);
     background-color: $page-background;
     display: flex;
     flex-direction: column;
