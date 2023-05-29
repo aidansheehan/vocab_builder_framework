@@ -19,13 +19,11 @@
         }
     }
     @include mq.mq(mobile-portrait) {
-        order: 2;
+        order: 3;
         height: 70px;
         justify-content: space-around;
         align-items: center;
         flex-direction: row;
-        position: fixed;
-        bottom: 0;
         z-index: 2;
         background-color: #fff;
         width: 100%;

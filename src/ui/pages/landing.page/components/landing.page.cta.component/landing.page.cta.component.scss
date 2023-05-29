@@ -33,7 +33,7 @@
             width: 100%;
         }
         > .ctaImage {
-            width: 150px;
+            width: 100px;
             @include mq.mq(desktop) {
                 width: 300px;
             }
@@ -64,6 +64,9 @@
             }
             @include mq.mq(tablet-portrait) {
                 width: 60%;
+            }
+            @include mq.mq(mobile) {
+                gap: 20px;
             }
             > .ctaControl {
                 width: 60%;
