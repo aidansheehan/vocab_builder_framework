@@ -48,7 +48,7 @@ module.exports = {
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Flashcard Factory',
+            title: 'vocabulaar',
             template: path.join(__dirname, '/src/index.html')
         }),
         new CleanWebpackPlugin(),

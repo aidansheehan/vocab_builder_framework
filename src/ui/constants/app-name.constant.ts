@@ -3,4 +3,4 @@
  * @author Aidan Sheehan <aidanmsheehan@gmail.com>
  * @version 0.1.0
  */
-export const APP_NAME: string = 'flaschardopia'
+export const APP_NAME: string = 'vocabulaar'
